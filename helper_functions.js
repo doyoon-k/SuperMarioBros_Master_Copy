@@ -5,7 +5,7 @@
   GAM100
   Fall 2019
 
-  JoonHo Hwang wrote HexFloatToDec()
+  JoonHo Hwang Wrote HexFloatToDec()
   DoYoon Kim did ---
   SeungGeon Kim Wrote DrawSprite();
 
