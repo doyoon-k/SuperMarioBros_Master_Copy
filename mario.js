@@ -111,10 +111,14 @@ class Mario {
 
           if (this.speedX > -this.maxSpeedRunX) {
             this.speedX += -this.walkingAcceleration;
-            this.framesToKeepRunning = 10;
           }
 
+          this.framesToKeepRunning = 10;
+
         } else {
+
+          if (this.framesToKeepRunning > 0)
+            this.framesToKeepRunning--;
 
           if (this.speedX > -this.maxSpeedWalkX) {
             this.speedX += -this.walkingAcceleration;
@@ -144,10 +148,14 @@ class Mario {
 
           if (this.speedX < this.maxSpeedRunX) {
             this.speedX += this.walkingAcceleration;
-            this.framesToKeepRunning = 10;
           }
 
+          this.framesToKeepRunning = 10;
+
         } else {
+
+          if (this.framesToKeepRunning > 0)
+            this.framesToKeepRunning--;
 
           if (this.speedX < this.maxSpeedWalkX) {
             this.speedX += this.walkingAcceleration;
