@@ -20,7 +20,7 @@ let objMario;
 // let millis2;
 // let deltaTime;
 
-//2 By default
+//Should be 2 By default, but feel free to change it
 let pixelMutliplier = 3;
 
 

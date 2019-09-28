@@ -5,9 +5,9 @@
   GAM100
   Fall 2019
 
-  JoonHo Hwang did ---
+  JoonHo Hwang Added some helper comments
   DoYoon Kim did ---
-  SeungGeon Kim Wrote this all
+  SeungGeon Kim Wrote almost all of this
 
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */

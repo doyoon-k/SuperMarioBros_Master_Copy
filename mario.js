@@ -5,9 +5,9 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang did ---
+  JoonHo Hwang's HexFloatToDec() was used to initialize variables inside the class constructor
   DoYoon Kim did ---
-  SeungGeon Kim Arranged the class properties, and wrote the main animation & movement logic.
+  SeungGeon Kim Arranged the class properties, and Wrote the main animation & movement logic.
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
