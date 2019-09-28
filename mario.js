@@ -29,6 +29,10 @@ class Mario {
 
     this.walkingAcceleration = 0.03;
     this.runningAcceleration = 0.05;
+    this.releaseDeacceleration = 0.05;
+
+    this.skidDeacceleration = 0.10;
+    this.skidTurnaroundSpeed = 0.56;
 
     this.maxSpeedWalkX = 1.56;
     this.maxSpeedRunX = 2.56;
@@ -44,6 +48,8 @@ class Mario {
     this.mario_running_2 = loadImage('Sprites/Mario/mario_running_2.png');
     this.mario_running_3 = loadImage('Sprites/Mario/mario_running_3.png');
 
+    this.mario_turnaround = loadImage('Sprites/Mario/mario_turnaround.png');
+
     this.spriteToDraw = this.mario_stand_still;
 
     this.animationFrameRate = 10;
@@ -55,7 +61,8 @@ class Mario {
     this.frameCount = 0;
     this.drawIndex = 0;
 
-    this.jumping = false;
+    this.isJumping = false;
+    this.isSkidding = false;
 
     this.isLookingLeft = false;
 
@@ -91,19 +98,30 @@ class Mario {
 
       this.isLookingLeft = true;
 
-      if (isDash) {
+      if (this.speedX > this.skidTurnaroundSpeed) {
 
-        if (this.speedX > -this.maxSpeedRunX) {
-          this.speedX += -this.walkingAcceleration;
-          this.framesToKeepRunning = 10;
-        }
+        this.speedX += -this.skidDeacceleration;
+        this.isSkidding = true;
 
       } else {
 
-        if (this.speedX > -this.maxSpeedWalkX) {
-          this.speedX += -this.walkingAcceleration;
+        this.isSkidding = false;
+
+        if (isDash) {
+
+          if (this.speedX > -this.maxSpeedRunX) {
+            this.speedX += -this.walkingAcceleration;D
+            this.framesToKeepRunning = 10;
+          }
+
         } else {
-          this.speedX += 0.05;
+
+          if (this.speedX > -this.maxSpeedWalkX) {
+            this.speedX += -this.walkingAcceleration;
+          } else {
+            this.speedX += this.releaseDeacceleration;
+          }
+
         }
 
       }
@@ -113,19 +131,30 @@ class Mario {
 
       this.isLookingLeft = false;
 
-      if (isDash) {
+      if (this.speedX < -this.skidTurnaroundSpeed) {
 
-        if (this.speedX < this.maxSpeedRunX) {
-          this.speedX += this.walkingAcceleration;
-          this.framesToKeepRunning = 10;
-        }
+        this.speedX += this.skidDeacceleration;
+        this.isSkidding = true;
 
       } else {
 
-        if (this.speedX < this.maxSpeedWalkX) {
-          this.speedX += this.walkingAcceleration;
+        this.isSkidding = false;
+
+        if (isDash) {
+
+          if (this.speedX < this.maxSpeedRunX) {
+            this.speedX += this.walkingAcceleration;
+            this.framesToKeepRunning = 10;
+          }
+
         } else {
-          this.speedX += -0.05;
+
+          if (this.speedX < this.maxSpeedWalkX) {
+            this.speedX += this.walkingAcceleration;
+          } else {
+            this.speedX += -this.releaseDeacceleration;
+          }
+
         }
 
       }
@@ -136,10 +165,10 @@ class Mario {
       if (this.framesToKeepRunning == 0) {
 
         //Prevent oscillation
-        if (this.speedX < -0.05) {
-          this.speedX += 0.05;
-        } else if (this.speedX > 0.05) {
-          this.speedX += -0.05;
+        if (this.speedX < -this.releaseDeacceleration) {
+          this.speedX += this.releaseDeacceleration;
+        } else if (this.speedX > this.releaseDeacceleration) {
+          this.speedX += -this.releaseDeacceleration;
         } else {
           this.speedX = 0;
         }
@@ -220,26 +249,34 @@ class Mario {
   //Call Animate() & Draw Mario
   Draw() {
 
-    if (!this.jumping) {
+    if (!this.isJumping) {
 
-      if (this.speedX == 0) {
+      if (!this.isSkidding) {
 
-        this.spriteToDraw = this.mario_stand_still;
+        if (this.speedX == 0) {
 
-      } else if (abs(this.speedX) < this.maxSpeedWalkX * (2 / 3)) {
+          this.spriteToDraw = this.mario_stand_still;
 
-        this.Animate(this.mario_running_1, this.mario_running_2, this.mario_running_3);
-        this.animationFrameRate = this.walkFrameRateSlow;
+        } else if (abs(this.speedX) < this.maxSpeedWalkX * (2 / 3)) {
 
-      } else if (abs(this.speedX) < this.maxSpeedWalkX + 0.1) {
+          this.Animate(this.mario_running_1, this.mario_running_2, this.mario_running_3);
+          this.animationFrameRate = this.walkFrameRateSlow;
 
-        this.Animate(this.mario_running_1, this.mario_running_2, this.mario_running_3);
-        this.animationFrameRate = this.walkFrameRateFast;
+        } else if (abs(this.speedX) < this.maxSpeedWalkX + 0.1) {
+
+          this.Animate(this.mario_running_1, this.mario_running_2, this.mario_running_3);
+          this.animationFrameRate = this.walkFrameRateFast;
+
+        } else {
+
+          this.Animate(this.mario_running_1, this.mario_running_2, this.mario_running_3);
+          this.animationFrameRate = this.runFrameRate;
+
+        }
 
       } else {
 
-        this.Animate(this.mario_running_1, this.mario_running_2, this.mario_running_3);
-        this.animationFrameRate = this.runFrameRate;
+        this.spriteToDraw = this.mario_turnaround;
 
       }
 
