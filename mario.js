@@ -19,7 +19,7 @@ class Mario {
   constructor() {
 
     this.x = 10;
-    this.y = 200;
+    this.y = 100;
 
     this.speedX = 0;
     this.speedY = 0;
@@ -72,7 +72,7 @@ class Mario {
 
 
 
-  //Call the needed functions, plus manage the animation
+  //Call the needed functions
   Update() {
 
     this.Debug();
@@ -157,6 +157,7 @@ class Mario {
 
 
 
+  //Manage the animations
   Animate(sprite1, sprite2, sprite3) {
 
     if (this.frameCount > this.animationFrameRate) {
@@ -216,7 +217,7 @@ class Mario {
 
 
 
-  //Animate & Draw Mario
+  //Call Animate() & Draw Mario
   Draw() {
 
     if (!this.jumping) {
@@ -248,7 +249,7 @@ class Mario {
 
       //Flip the sprite, then draw it
       push();
-      translate(this.x * 2 + this.spriteToDraw.width * 2, this.y * 2);
+      translate(this.x * pixelMutliplier + this.spriteToDraw.width * pixelMutliplier, this.y * pixelMutliplier);
       scale(-1, 1);
       DrawSprite(this.spriteToDraw, 0, 0);
       pop();

@@ -16,5 +16,5 @@
 
 //Translates & draws sprites (16x16 system onto 32x32 system)
 function DrawSprite(sprite, x, y) {
-    image(sprite, x * 2, y * 2, sprite.width * 2, sprite.height * 2);
+    image(sprite, x * pixelMutliplier, y * pixelMutliplier, sprite.width * pixelMutliplier, sprite.height * pixelMutliplier);
 }

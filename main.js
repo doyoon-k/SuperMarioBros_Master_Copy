@@ -21,7 +21,7 @@ let objMario;
 // let deltaTime;
 
 //2 By default
-let pixelMutliplier = 2;
+let pixelMutliplier = 3;
 
 
 
