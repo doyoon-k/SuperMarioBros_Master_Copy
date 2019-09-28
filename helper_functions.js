@@ -19,6 +19,16 @@ function DrawSprite(sprite, x, y) {
     image(sprite, x * pixelMutliplier, y * pixelMutliplier, sprite.width * pixelMutliplier, sprite.height * pixelMutliplier);
 }
 
+function DrawText(string, x, y, size)
+{
+  push();
+  fill(255);
+  textFont(font);
+  textSize(size * pixelMutliplier);
+  text(string, x * pixelMutliplier, y * pixelMutliplier);
+  pop();
+}
+
 function HexFloatToDec(hexStr)
 {
   [integerPart, floatPart] = hexStr.split('.');

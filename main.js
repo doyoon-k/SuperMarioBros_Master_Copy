@@ -15,6 +15,8 @@
 
 
 let objMario;
+let ui;
+let font;
 
 // let millis1;
 // let millis2;
@@ -23,7 +25,10 @@ let objMario;
 //Should be 2 By default, but feel free to change it
 let pixelMutliplier = 3;
 
-
+function preload()
+{
+  font = loadFont("Font/font.ttf");
+}
 
 function setup() {
 
@@ -38,6 +43,7 @@ function setup() {
   imageMode(CORNER);
 
   objMario = new Mario();
+  ui = new UI();
 }
 
 function draw() {
@@ -48,6 +54,7 @@ function draw() {
 
   background(119, 181, 254);
 
+  ui.Update();
   objMario.Update();
   
 }
