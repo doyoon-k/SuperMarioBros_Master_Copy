@@ -1,5 +1,6 @@
 /*
   main.js
+  mario.js
   Super Mario Bros.
 
   GAM100 
@@ -7,6 +8,8 @@
 
   JunHo Hwang did ---
   DoYun Kim did ---
+  JoonHo Hwang did ---
+  DoYoon Kim did ---
   SeungGeon Kim Arranged the class properties, and wrote the main animation & movement logic.
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
@@ -27,15 +30,22 @@ class Mario {
     //needed to do the 10-frame speed conservation thing
     this.framesToKeepRunning = 0;
 
+<<<<<<< HEAD
     this.walkingAcceleration = 0.03;
     this.runningAcceleration = 0.05;
     this.releaseDeacceleration = 0.05;
 
     this.skidDeacceleration = 0.10;
     this.skidTurnaroundSpeed = 0.56;
+=======
+    this.walkingAcceleration = HexFloatToDec("0.098");
+    this.runningAcceleration = HexFloatToDec("0.0E4");
+>>>>>>> 48c1173ac7c561fd1b6bf7dd13015a3d5841c2d7
 
     this.maxSpeedWalkX = 1.56;
     this.maxSpeedRunX = 2.56;
+    this.maxSpeedWalkX = HexFloatToDec("1.900");
+    this.maxSpeedRunX = HexFloatToDec("2.900");
 
     this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
     this.big_mario_climbing_2 = loadImage('Sprites/Mario/big_mario_climbing_2.png');
@@ -57,6 +67,8 @@ class Mario {
     this.walkFrameRateSlow = 10;
     this.walkFrameRateFast = 5;
     this.runFrameRate = 3;
+    this.walkFrameRateFast = 4;
+    this.runFrameRate = 1;
 
     this.frameCount = 0;
     this.drawIndex = 0;

@@ -5,8 +5,8 @@
   GAM100 
   Fall 2019
 
-  JunHo Hwang did ---
-  DoYun Kim did ---
+  JoonHo Hwang did ---
+  DoYoon Kim did ---
   SeungGeon Kim did ---
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
