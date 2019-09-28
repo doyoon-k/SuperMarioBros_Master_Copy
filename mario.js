@@ -1,13 +1,10 @@
 /*
-  main.js
   mario.js
   Super Mario Bros.
 
   GAM100 
   Fall 2019
 
-  JunHo Hwang did ---
-  DoYun Kim did ---
   JoonHo Hwang did ---
   DoYoon Kim did ---
   SeungGeon Kim Arranged the class properties, and wrote the main animation & movement logic.
@@ -30,20 +27,13 @@ class Mario {
     //needed to do the 10-frame speed conservation thing
     this.framesToKeepRunning = 0;
 
-<<<<<<< HEAD
-    this.walkingAcceleration = 0.03;
-    this.runningAcceleration = 0.05;
-    this.releaseDeacceleration = 0.05;
-
-    this.skidDeacceleration = 0.10;
-    this.skidTurnaroundSpeed = 0.56;
-=======
     this.walkingAcceleration = HexFloatToDec("0.098");
     this.runningAcceleration = HexFloatToDec("0.0E4");
->>>>>>> 48c1173ac7c561fd1b6bf7dd13015a3d5841c2d7
+    this.releaseDeacceleration = HexFloatToDec("0.0D0");
 
-    this.maxSpeedWalkX = 1.56;
-    this.maxSpeedRunX = 2.56;
+    this.skidDeacceleration = HexFloatToDec("0.1A0");
+    this.skidTurnaroundSpeed = HexFloatToDec("0.900");
+
     this.maxSpeedWalkX = HexFloatToDec("1.900");
     this.maxSpeedRunX = HexFloatToDec("2.900");
 
@@ -65,8 +55,6 @@ class Mario {
     this.animationFrameRate = 10;
 
     this.walkFrameRateSlow = 10;
-    this.walkFrameRateFast = 5;
-    this.runFrameRate = 3;
     this.walkFrameRateFast = 4;
     this.runFrameRate = 1;
 
@@ -122,7 +110,7 @@ class Mario {
         if (isDash) {
 
           if (this.speedX > -this.maxSpeedRunX) {
-            this.speedX += -this.walkingAcceleration;D
+            this.speedX += -this.walkingAcceleration;
             this.framesToKeepRunning = 10;
           }
 
