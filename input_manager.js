@@ -5,7 +5,7 @@
   GAM100
   Fall 2019
 
-  JunHo Hwang did ---
+  JoonHo Hwang did ---
   DoYun Kim did ---
   SeungGeon Kim Wrote this all
 
@@ -27,28 +27,28 @@ let isJump = false;
 
 function keyPressed() {
     switch (keyCode) {
-        case 87:
+        case 87:  //W
             isDPadUp = true;
             break;
-        case 65:
+        case 65:  //A
             isDPadLeft = true;
             break;
-        case 83:
+        case 83:  //S
             isDPadDown = true;
             break;
-        case 68:
+        case 68:  //D
             isDPadRight = true;
             break;
-        case 85:
+        case 85:  //U
             isSelect = true;
             break;
-        case 73:
+        case 73:  //I
             isStart = true;
             break;
-        case 74:
+        case 74:  //J
             isDash = true;
             break;
-        case 75:
+        case 75:  //K
             isJump = true;
             break;
     }

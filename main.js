@@ -5,7 +5,7 @@
   GAM100 
   Fall 2019
 
-  JunHo Hwang did ---
+  JoonHo Hwang did ---
   DoYun Kim did ---
   SeungGeon Kim did ---
   
