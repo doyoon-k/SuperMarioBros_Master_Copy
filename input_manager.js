@@ -6,7 +6,7 @@
   Fall 2019
 
   JoonHo Hwang did ---
-  DoYun Kim did ---
+  DoYoon Kim did ---
   SeungGeon Kim Wrote this all
 
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.

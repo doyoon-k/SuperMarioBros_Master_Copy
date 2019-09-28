@@ -6,7 +6,7 @@
   Fall 2019
 
   JoonHo Hwang did ---
-  DoYun Kim did ---
+  DoYoon Kim did ---
   SeungGeon Kim Arranged the class properties, and wrote the main animation & movement logic.
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.

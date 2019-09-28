@@ -6,7 +6,7 @@
   Fall 2019
 
   JoonHo Hwang wrote HexFloatToDec()
-  DoYun Kim did ---
+  DoYoon Kim did ---
   SeungGeon Kim Wrote DrawSprite();
 
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
