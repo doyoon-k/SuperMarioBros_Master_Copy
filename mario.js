@@ -98,7 +98,7 @@ class Mario {
 
       this.isLookingLeft = true;
 
-      if (this.speedX > this.skidTurnaroundSpeed) {
+      if (this.speedX >= this.skidTurnaroundSpeed) {
 
         this.speedX += -this.skidDeacceleration;
         this.isSkidding = true;
@@ -131,7 +131,7 @@ class Mario {
 
       this.isLookingLeft = false;
 
-      if (this.speedX < -this.skidTurnaroundSpeed) {
+      if (this.speedX <= -this.skidTurnaroundSpeed) {
 
         this.speedX += this.skidDeacceleration;
         this.isSkidding = true;
