@@ -213,13 +213,13 @@ class Mario {
     if (this.isSkidding) {
       if (abs(this.speedX) >= this.skidTurnaroundSpeed) {
 
-        this.speedX = AbsoluteAcceleration(this.speedX, -this.skidDeacceleration);
+        this.speedX = ReturnAbsoluteAcceleration(this.speedX, -this.skidDeacceleration);
 
       } else {
 
         this.speedX = 0;
         this.isSkidding = false;
-        
+
       }
     }
 
