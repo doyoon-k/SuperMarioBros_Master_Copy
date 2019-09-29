@@ -100,17 +100,19 @@ class Mario {
 
       if (this.speedX >= this.skidTurnaroundSpeed) {
 
-        this.speedX += -this.skidDeacceleration;
         this.isSkidding = true;
 
       } else {
 
-        this.isSkidding = false;
-
         if (isDash) {
 
           if (this.speedX > -this.maxSpeedRunX) {
-            this.speedX += -this.walkingAcceleration;
+
+            this.speedX += -this.runningAcceleration;
+
+            if (this.speedX < -this.maxSpeedRunX)
+              this.speedX = -this.maxSpeedRunX;
+
           }
 
           this.framesToKeepRunning = 10;
@@ -121,9 +123,18 @@ class Mario {
             this.framesToKeepRunning--;
 
           if (this.speedX > -this.maxSpeedWalkX) {
+
             this.speedX += -this.walkingAcceleration;
+
+            if (abs(this.speedX) > this.maxSpeedWalkX)
+              this.speedX = this.maxSpeedWalkX * this.speedX / abs(this.speedX);
+
           } else {
-            this.speedX += this.releaseDeacceleration;
+
+            if (this.framesToKeepRunning == 0 &&
+              this.speedX < -this.maxSpeedWalkX + -this.releaseDeacceleration)
+              this.speedX += this.releaseDeacceleration;
+
           }
 
         }
@@ -137,17 +148,19 @@ class Mario {
 
       if (this.speedX <= -this.skidTurnaroundSpeed) {
 
-        this.speedX += this.skidDeacceleration;
         this.isSkidding = true;
 
       } else {
 
-        this.isSkidding = false;
-
         if (isDash) {
 
           if (this.speedX < this.maxSpeedRunX) {
-            this.speedX += this.walkingAcceleration;
+
+            this.speedX += this.runningAcceleration;
+
+            if (this.speedX > this.maxSpeedRunX)
+              this.speedX = this.maxSpeedRunX;
+
           }
 
           this.framesToKeepRunning = 10;
@@ -158,9 +171,18 @@ class Mario {
             this.framesToKeepRunning--;
 
           if (this.speedX < this.maxSpeedWalkX) {
+
             this.speedX += this.walkingAcceleration;
+
+            if (abs(this.speedX) > this.maxSpeedWalkX)
+              this.speedX = this.maxSpeedWalkX * this.speedX / abs(this.speedX);
+
           } else {
-            this.speedX += -this.releaseDeacceleration;
+
+            if (this.framesToKeepRunning == 0 &&
+              this.speedX > this.maxSpeedWalkX + this.releaseDeacceleration)
+              this.speedX += -this.releaseDeacceleration;
+
           }
 
         }
@@ -185,6 +207,20 @@ class Mario {
         this.framesToKeepRunning--;
       }
 
+    }
+
+    //Manage skid
+    if (this.isSkidding) {
+      if (abs(this.speedX) >= this.skidTurnaroundSpeed) {
+
+        this.speedX = AbsoluteAcceleration(this.speedX, -this.skidDeacceleration);
+
+      } else {
+
+        this.speedX = 0;
+        this.isSkidding = false;
+        
+      }
     }
 
     this.x += this.speedX;
@@ -270,7 +306,7 @@ class Mario {
           this.Animate(this.mario_running_1, this.mario_running_2, this.mario_running_3);
           this.animationFrameRate = this.walkFrameRateSlow;
 
-        } else if (abs(this.speedX) < this.maxSpeedWalkX + 0.1) {
+        } else if (abs(this.speedX) < this.maxSpeedWalkX + this.walkingAcceleration) {
 
           this.Animate(this.mario_running_1, this.mario_running_2, this.mario_running_3);
           this.animationFrameRate = this.walkFrameRateFast;

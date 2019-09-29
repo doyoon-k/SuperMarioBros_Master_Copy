@@ -34,3 +34,8 @@ function HexFloatToDec(hexStr)
 
   return result;
 }
+
+function AbsoluteAcceleration(speed, acceleration) {
+  speed += acceleration * speed / abs(speed);
+  return speed;
+}
