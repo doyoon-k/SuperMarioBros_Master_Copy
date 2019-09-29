@@ -110,6 +110,7 @@ class Mario {
 
             this.speedX += -this.runningAcceleration;
 
+            //Assign max run speed
             if (this.speedX < -this.maxSpeedRunX)
               this.speedX = -this.maxSpeedRunX;
 
@@ -126,6 +127,7 @@ class Mario {
 
             this.speedX += -this.walkingAcceleration;
 
+            //Assign max walk speed
             if (this.speedX < -this.maxSpeedWalkX)
               this.speedX = -this.maxSpeedWalkX;
 
@@ -158,6 +160,7 @@ class Mario {
 
             this.speedX += this.runningAcceleration;
 
+            //Assign max run speed
             if (this.speedX > this.maxSpeedRunX)
               this.speedX = this.maxSpeedRunX;
 
@@ -174,6 +177,7 @@ class Mario {
 
             this.speedX += this.walkingAcceleration;
 
+            //Assign max walk speed
             if (this.speedX > this.maxSpeedWalkX)
               this.speedX = this.maxSpeedWalkX;
 
@@ -301,12 +305,12 @@ class Mario {
 
           this.spriteToDraw = this.mario_stand_still;
 
-        } else if (abs(this.speedX) < this.maxSpeedWalkX * (2 / 3)) {
+        } else if (abs(this.speedX) < this.maxSpeedWalkX) {
 
           this.Animate(this.mario_running_1, this.mario_running_2, this.mario_running_3);
           this.animationFrameRate = this.walkFrameRateSlow;
 
-        } else if (abs(this.speedX) < this.maxSpeedWalkX + this.walkingAcceleration) {
+        } else if (abs(this.speedX) <= this.maxSpeedWalkX + this.walkingAcceleration) {
 
           this.Animate(this.mario_running_1, this.mario_running_2, this.mario_running_3);
           this.animationFrameRate = this.walkFrameRateFast;
