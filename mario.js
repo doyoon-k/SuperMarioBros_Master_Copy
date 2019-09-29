@@ -126,8 +126,8 @@ class Mario {
 
             this.speedX += -this.walkingAcceleration;
 
-            if (abs(this.speedX) > this.maxSpeedWalkX)
-              this.speedX = this.maxSpeedWalkX * this.speedX / abs(this.speedX);
+            if (this.speedX < -this.maxSpeedWalkX)
+              this.speedX = -this.maxSpeedWalkX;
 
           } else {
 
@@ -174,8 +174,8 @@ class Mario {
 
             this.speedX += this.walkingAcceleration;
 
-            if (abs(this.speedX) > this.maxSpeedWalkX)
-              this.speedX = this.maxSpeedWalkX * this.speedX / abs(this.speedX);
+            if (this.speedX > this.maxSpeedWalkX)
+              this.speedX = this.maxSpeedWalkX;
 
           } else {
 
