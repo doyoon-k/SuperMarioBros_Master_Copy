@@ -19,7 +19,7 @@ class Mario {
   constructor() {
 
     this.x = 10;
-    this.y = 100;
+    this.y = 200;
 
     this.speedX = 0;
     this.speedY = 0;
@@ -60,6 +60,8 @@ class Mario {
 
     this.maxFallSpeed = HexFloatToDec("4.800");
 
+    this.previousY = 0;
+
 
 
     this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
@@ -96,6 +98,8 @@ class Mario {
 
     this.jumpKeyReleased = false;
 
+    this.topReached = false;
+
   }
 
 
@@ -121,10 +125,10 @@ class Mario {
     this.Move();
 
     //Temporary anti-fall-through-screen-border logic
-    if (this.y > 100) {
+    if (this.y > 200) {
       this.isJumping = false;
       this.speedY = 0;
-      this.y = 100;
+      this.y = 200;
     }
 
   }
@@ -172,6 +176,8 @@ class Mario {
 
           this.isJumping = true;
 
+          this.topReached = false;
+
           if (abs(this.speedX) < this.speedXStandard_2) {
             this.speedY = -this.initialJumpSpeed_1;
           } else {
@@ -180,7 +186,7 @@ class Mario {
 
         }
 
-        //When Jump key is held during jumpkdj
+        //When Jump key is held during jump
       } else {
 
         //Keep gravity to reduced gravity
@@ -342,6 +348,17 @@ class Mario {
       }
     }
 
+    if (this.isJumping) {
+
+      if (this.y + this.speedY > this.previousY) {
+        this.topReached = true;
+      }
+
+      if (this.topReached)
+        this.currentGravity = this.potentialOriginalGravity;
+
+    }
+
     //Apply gravity
     this.speedY += this.currentGravity;
 
@@ -351,6 +368,8 @@ class Mario {
 
     this.x += this.speedX;
     this.y += this.speedY;
+
+    this.previousY = this.y;
 
   }
 
