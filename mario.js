@@ -7,7 +7,7 @@
 
   JoonHo Hwang's HexFloatToDec() was used to initialize variables inside the class constructor
   DoYoon Kim did ---
-  SeungGeon Kim Arranged the class properties, and Wrote the main animation & movement logic.
+  SeungGeon Kim Arranged the class properties, and Wrote the main animation & movement logic. About 99% of this entire script.
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -37,6 +37,32 @@ class Mario {
     this.maxSpeedWalkX = HexFloatToDec("1.900");
     this.maxSpeedRunX = HexFloatToDec("2.900");
 
+
+
+    this.speedXStandard_1 = HexFloatToDec("1.000");
+    this.speedXStandard_2 = HexFloatToDec("2.4FF");
+
+    this.initialJumpSpeed_1 = HexFloatToDec("4.000");
+    this.initialJumpSpeed_2 = HexFloatToDec("4.000");
+
+    this.currentGravity = 0;
+
+    this.potentialHoldGravity = 0;
+    this.potentialOriginalGravity = 0;
+
+    this.holdGravity_1 = HexFloatToDec("0.200");
+    this.holdGravity_2 = HexFloatToDec("0.1E0");
+    this.holdGravity_3 = HexFloatToDec("0.280");
+
+    this.originalGravity_1 = HexFloatToDec("0.700");
+    this.originalGravity_2 = HexFloatToDec("0.600");
+    this.originalGravity_3 = HexFloatToDec("0.900");
+    this.originalGravity_3 = HexFloatToDec("0.280");
+
+    this.maxFallSpeed = HexFloatToDec("4.800");
+
+
+
     this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
     this.big_mario_climbing_2 = loadImage('Sprites/Mario/big_mario_climbing_2.png');
 
@@ -49,6 +75,8 @@ class Mario {
     this.mario_running_3 = loadImage('Sprites/Mario/mario_running_3.png');
 
     this.mario_turnaround = loadImage('Sprites/Mario/mario_turnaround.png');
+
+    this.mario_jump = loadImage('Sprites/Mario/mario_jump.png');
 
     this.spriteToDraw = this.mario_stand_still;
 
@@ -65,6 +93,9 @@ class Mario {
     this.isSkidding = false;
 
     this.isLookingLeft = false;
+    this.isJumpingLeft = false;
+
+    this.jumpKeyReleased = false;
 
   }
 
@@ -75,6 +106,11 @@ class Mario {
     text("frameCount : " + this.frameCount, 10, 20);
     text("framesToKeepRunning : " + this.framesToKeepRunning, 10, 40);
     text("speedX : " + this.speedX, 10, 60);
+    text("speedY : " + this.speedY, 10, 140);
+    text("currentGravity : " + this.currentGravity, 10, 100);
+    text("isJumping : " + this.isJumping, 10, 120);
+    text("isPastJump : " + this.isJumping, 10, 160);
+    text("potentialHold : " + this.potentialHoldGravity, 10, 180);
   }
 
 
@@ -85,12 +121,93 @@ class Mario {
     this.Debug();
     this.Move();
 
+    //Temporary anti-fall-through-screen-border logic
+    if (this.y > 100) {
+      this.isJumping = false;
+      this.speedY = 0;
+      this.y = 100;
+    }
+
   }
 
 
 
   //Calculate velocity & Move Mario accordingly
   Move() {
+
+    //Assign gravity
+    if (abs(this.speedX) < this.speedXStandard_1) {
+
+      this.potentialHoldGravity = this.holdGravity_1;
+      this.potentialOriginalGravity = this.originalGravity_1;
+
+    } else if (abs(this.speedX) < this.speedXStandard_2) {
+
+      this.potentialHoldGravity = this.holdGravity_2;
+      this.potentialOriginalGravity = this.originalGravity_2;
+
+    } else {
+
+      this.potentialHoldGravity = this.holdGravity_3;
+      this.potentialOriginalGravity = this.originalGravity_3;
+
+    }
+
+    //Go for the Jump key
+    if (isJump) {
+
+      if (!this.isJumping) {
+
+        this.currentGravity = 0;
+
+        //Start Jump, gets called only once
+        if (!isPastJump) {
+
+          if (this.isLookingLeft) {
+            this.isJumpingLeft = true;
+          } else {
+            this.isJumpingLeft = false;
+          }
+
+          isPastJump = true;
+
+          this.isJumping = true;
+
+          if (this.speedX < this.speedXStandard_2) {
+            this.speedY = -this.initialJumpSpeed_1;
+          } else {
+            this.speedY = -this.initialJumpSpeed_2;
+          }
+
+        }
+
+        //When Jump key is held during jump
+      } else {
+
+        //Keep gravity to reduced gravity
+        if (!this.jumpKeyReleased) {
+
+          this.currentGravity = this.potentialHoldGravity;
+
+          //Keep gravity to original gravity
+        } else {
+
+          this.currentGravity = this.potentialOriginalGravity;
+
+        }
+
+      }
+
+      //Keep gravity to original gravity
+    } else {
+
+      if (this.isJumping) {
+        this.currentGravity = this.potentialOriginalGravity;
+      } else {
+        this.currentGravity = 0;
+      }
+
+    }
 
     //Go for the left key first 
     if (isDPadLeft) {
@@ -226,6 +343,13 @@ class Mario {
       }
     }
 
+    //Apply gravity
+    this.speedY += this.currentGravity;
+
+    //Limit gravity
+    if (this.speedY > this.maxFallSpeed)
+      this.speedY = this.maxFallSpeed;
+
     this.x += this.speedX;
     this.y += this.speedY;
 
@@ -327,20 +451,43 @@ class Mario {
 
       }
 
-    }
 
-    if (this.isLookingLeft) {
 
-      //Flip the sprite, then draw it
-      push();
-      translate(this.x * pixelMutliplier + this.spriteToDraw.width * pixelMutliplier, this.y * pixelMutliplier);
-      scale(-1, 1);
-      DrawSprite(this.spriteToDraw, 0, 0);
-      pop();
+      if (this.isLookingLeft) {
+
+        //Flip the sprite, then draw it
+        push();
+        translate(this.x * pixelMutliplier + this.spriteToDraw.width * pixelMutliplier, this.y * pixelMutliplier);
+        scale(-1, 1);
+        DrawSprite(this.spriteToDraw, 0, 0);
+        pop();
+
+      } else {
+
+        DrawSprite(this.spriteToDraw, this.x, this.y);
+
+      }
+
+
 
     } else {
 
-      DrawSprite(this.spriteToDraw, this.x, this.y);
+      this.spriteToDraw = this.mario_jump;
+
+      if (this.isJumpingLeft) {
+
+        //Flip the sprite, then draw it
+        push();
+        translate(this.x * pixelMutliplier + this.spriteToDraw.width * pixelMutliplier, this.y * pixelMutliplier);
+        scale(-1, 1);
+        DrawSprite(this.spriteToDraw, 0, 0);
+        pop();
+
+      } else {
+
+        DrawSprite(this.spriteToDraw, this.x, this.y);
+
+      }
 
     }
 

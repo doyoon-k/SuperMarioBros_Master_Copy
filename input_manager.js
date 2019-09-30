@@ -25,6 +25,8 @@ let isStart = false;
 let isDash = false;
 let isJump = false;
 
+let isPastJump = false;
+
 function keyPressed() {
     switch (keyCode) {
         case 87:  //W
@@ -50,6 +52,7 @@ function keyPressed() {
             break;
         case 75:  //K
             isJump = true;
+            isPastJump = false;
             break;
     }
 }

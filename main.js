@@ -22,12 +22,8 @@ let statistics;
 let font;
 let sprites;
 
-// let millis1;
-// let millis2;
-// let deltaTime;
-
 //Should be 2 By default, but feel free to change it
-let pixelMutliplier = 3;
+let pixelMutliplier = 2;
 
 function preload()
 {
@@ -77,7 +73,6 @@ function preload()
 
 function setup() {
 
-
   //Two times bigger than the original resolution
   createCanvas(1024, 480);
 
@@ -95,10 +90,6 @@ function setup() {
 }
 
 function Draw() {
-
-  // millis2 = millis();
-  // deltaTime = (millis2 - millis1) / 16.7;
-  // millis1 = millis();
 
   background(119, 181, 254);
 
