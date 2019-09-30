@@ -43,7 +43,7 @@ class Mario {
     this.speedXStandard_2 = HexFloatToDec("2.4FF");
 
     this.initialJumpSpeed_1 = HexFloatToDec("4.000");
-    this.initialJumpSpeed_2 = HexFloatToDec("4.000");
+    this.initialJumpSpeed_2 = HexFloatToDec("5.000");
 
     this.currentGravity = 0;
 
@@ -57,7 +57,6 @@ class Mario {
     this.originalGravity_1 = HexFloatToDec("0.700");
     this.originalGravity_2 = HexFloatToDec("0.600");
     this.originalGravity_3 = HexFloatToDec("0.900");
-    this.originalGravity_3 = HexFloatToDec("0.280");
 
     this.maxFallSpeed = HexFloatToDec("4.800");
 
@@ -173,7 +172,7 @@ class Mario {
 
           this.isJumping = true;
 
-          if (this.speedX < this.speedXStandard_2) {
+          if (abs(this.speedX) < this.speedXStandard_2) {
             this.speedY = -this.initialJumpSpeed_1;
           } else {
             this.speedY = -this.initialJumpSpeed_2;
@@ -181,7 +180,7 @@ class Mario {
 
         }
 
-        //When Jump key is held during jump
+        //When Jump key is held during jumpkdj
       } else {
 
         //Keep gravity to reduced gravity
