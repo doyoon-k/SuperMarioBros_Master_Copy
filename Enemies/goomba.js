@@ -6,7 +6,7 @@
   Fall 2019
 
   JoonHo Hwang Wrote all of this
-  DoYoon Kim 
+  DoYoon Kim wrote case InactiveBlock: of onCollisionWith() function.
   SeungGeon Kim 
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
@@ -86,6 +86,16 @@ class Goomba extends BaseEnemy
         switch (typeof collider)
         {
             case InactiveBlock:
+                switch(direction)
+                {
+                    case "SIDE":
+                        this.isGoingLeft = !this.isGoingLeft;
+                        break;
+                    case "DOWN":
+                        //this.y를 블록 y좌표 - 블록높이로 고정.
+                        this.y = collider.y-16;
+                }
+                break;
             case ActiveBlock:
                 switch (direction)
                 {
