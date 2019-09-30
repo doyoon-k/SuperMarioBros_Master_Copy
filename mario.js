@@ -5,7 +5,7 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang's HexFloatToDec() was used to initialize variables inside the class constructor
+  JoonHo Hwang's QA'd the Mario's movement constantly, found lots of bugs.
   DoYoon Kim did ---
   SeungGeon Kim Arranged the class properties, and Wrote the main animation & movement logic. About 99% of this entire script.
   

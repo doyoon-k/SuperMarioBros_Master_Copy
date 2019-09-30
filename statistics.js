@@ -21,11 +21,11 @@ class Statistics
         this.coin = 0;
         this.world = 1; // this will never be changed since we're doing only 1-1 and (possibly) 1-2.
         this.level = 1;
-        this.time = 160 * 60; // Note that it's not TIME, it's in seconds * 60
-        /*************CONVERSION TABLE*********
-         * 1 TIME == 0.4 second == 24 this.time
-         * 1 second == 2.5 TIME == 60 this.time
-         *************************************/
+        this.time = LEVEL_SECONDS * 60; // Note that it's not TIME, it's in seconds * 60
+        /*************CONVERSION TABLE***********
+         * 1 TIME == 0.4 second == 24 this.time *
+         * 1 second == 2.5 TIME == 60 this.time *
+         ****************************************/
 
         this.isUnderground = false;  // we should get this value somewhere outside of this class in the future, it's temporary
         this.doTickTime = true;
@@ -42,7 +42,7 @@ class Statistics
 
         this.coinSpriteToDraw = this.sprites.coin_1;
         this.animationFrameCount = 0;
-        this.animationFrameRate = 12;
+        this.animationFrameRate = 10;
         this.animator = this.ChangeSprite();
     }
 
