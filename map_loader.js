@@ -5,9 +5,9 @@
   GAM100
   Fall 2019
 
-  JoonHo Hwang Wrote HexFloatToDec() and DrawText().
-  DoYoon Kim did ---
-  SeungGeon Kim Wrote DrawSprite() and ReturnAbsoluteAcceleration().
+  JoonHo Hwang did ---
+  DoYoon Kim wrote all
+  SeungGeon Kim did ---
 
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
