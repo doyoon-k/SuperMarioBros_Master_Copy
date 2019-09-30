@@ -32,11 +32,19 @@ function preload()
   font = loadFont("Font/font.ttf");
   sprites = {
     block_ground : loadImage("Sprites/Block/block_ground.png"),
-    block_ground_underground : loadImage("Sprites/Block/block_ground_underground.png"),
     block_hard : loadImage("Sprites/Block/block_hard.png"),
-    block_hard_underground : loadImage("Sprites/Block/block_hard_underground.png"),
     block_empty : loadImage("Sprites/Block/block_empty.png"),
+    block_question_1 : loadImage("Sprites/Block/block_question_1.png"),
+    block_question_2 : loadImage("Sprites/Block/block_question_2.png"),
+    block_question_3 : loadImage("Sprites/Block/block_question_3.png"),
+    block_brick : loadImage("Sprites/Block/block_brick.png"),
+    
+    block_ground_underground : loadImage("Sprites/Block/block_ground_underground.png"),
+    block_hard_underground : loadImage("Sprites/Block/block_hard_underground.png"),
     block_empty_underground : loadImage("Sprites/Block/block_empty_underground.png"),
+    block_question_underground_1 : loadImage("Sprites/Block/block_question_underground_1.png"),
+    block_question_underground_2 : loadImage("Sprites/Block/block_question_underground_2.png"),
+    block_question_underground_3 : loadImage("Sprites/Block/block_question_underground_3.png"),
 
 
     goomba_1 : loadImage("Sprites/Enemy/enemy_goomba_1.png"),
