@@ -18,7 +18,6 @@ class Goomba extends BaseEnemy
     {
         super(x, y);
         this.isStomped = false;
-        this.isInstaKilled = false;
 
         this.spriteToDraw = sprites.goomba_1;
     }
@@ -82,16 +81,12 @@ class Goomba extends BaseEnemy
         DrawSprite(this.spriteToDraw, this.x, this.y);
     }
 
-    Destroy()
-    {
-        objectsToUpdate.splice(objectsToUpdate.indexOf(this), 1);
-    }
-
     OnCollisionWith(collider, direction)
     {
         switch (typeof collider)
         {
-            case Block:
+            case InactiveBlock:
+            case ActiveBlock:
                 switch (direction)
                 {
                     case "SIDE":
@@ -109,6 +104,7 @@ class Goomba extends BaseEnemy
                 break;
                 
             case Mario:
+                this.isGoingLeft = !this.isGoingLeft;
                 break;
         }
     }

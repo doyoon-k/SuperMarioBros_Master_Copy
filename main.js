@@ -15,7 +15,7 @@
 
 
 let objMario;
-let objectsToUpdate;
+let objectsToUpdate = [];  // temporary
 let statistics;
 let font;
 let sprites;
@@ -31,6 +31,14 @@ function preload()
 {
   font = loadFont("Font/font.ttf");
   sprites = {
+    block_ground : loadImage("Sprites/Block/block_ground.png"),
+    block_ground_underground : loadImage("Sprites/Block/block_ground_underground.png"),
+    block_hard : loadImage("Sprites/Block/block_hard.png"),
+    block_hard_underground : loadImage("Sprites/Block/block_hard_underground.png"),
+    block_empty : loadImage("Sprites/Block/block_empty.png"),
+    block_empty_underground : loadImage("Sprites/Block/block_empty_underground.png"),
+
+
     goomba_1 : loadImage("Sprites/Enemy/enemy_goomba_1.png"),
     goomba_2 : loadImage("Sprites/Enemy/enemy_goomba_2.png"),
     goomba_stomped : loadImage("Sprites/Enemy/enemy_goomba_stomped.png"),
@@ -70,7 +78,8 @@ function setup() {
 
   objMario = new Mario();
   statistics = new Statistics();
-  objectsToUpdate = [new Goomba(10, 10)];  // temporary variable
+  new Goomba(10, 10);
+  new InactiveBlock(20, 20, EInactiveBlockType.Empty);
 
   // frameRate() is not working well
   setInterval(Draw, 1 / 60 * 1000);

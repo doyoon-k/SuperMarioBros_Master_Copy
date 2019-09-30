@@ -21,23 +21,36 @@ class BaseEnemy
 
         this.isGoingLeft = false;
 
+        this.isInstaKilled = false;
+
+        this.fallilngAcceleration = HexFloatToDec("");
+        this.maxFallSpeed = HexFloatToDec("");
+
         this.walkingSpeed = HexFloatToDec("0.900");
+        this.fallingSpeed = 0;
 
         this.spriteToDraw = undefined;
         this.animationFrameCount = 0;
         this.animationFrameRate = 6;
         this.animator = this.ChangeSprite();
+
+        objectsToUpdate.push(this);
     }
 
     *ChangeSprite() {}
 
     Animate() {}
 
+    Move() {}
+
     Stomped() {}
 
     InstaKilled() {}
 
-    Destroy() {}
+    Destroy()
+    {
+        objectsToUpdate.splice(objectsToUpdate.indexOf(this), 1);
+    }
 
     Update() {}
 
