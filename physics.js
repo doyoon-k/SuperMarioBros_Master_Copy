@@ -39,6 +39,7 @@ class Physics {
       for(obj of movingObjects)
       {
           //obj.pos + obj.velocity 해서 bucket맵 인덱싱 하고 bucket 안의 오브젝트들이랑 충돌체크 후 충돌하면 object.collisionWith() 호출해줌.
+          
       }
     }
 }
