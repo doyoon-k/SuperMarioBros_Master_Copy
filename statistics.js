@@ -64,7 +64,6 @@ class Statistics
     Update()
     {
         this.TickTime();
-        this.DrawStatistics();
     }
 
     TickTime()

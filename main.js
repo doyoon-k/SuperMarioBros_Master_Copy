@@ -15,7 +15,9 @@
 
 
 let objMario;
-let objectsToUpdate = [];  // temporary
+let gameObjects = [];
+let backgroundObjects = [];
+let objectsToUpdate = [];
 let statistics;
 let font;
 let sprites;
@@ -86,8 +88,7 @@ function setup() {
 
   objMario = new Mario();
   statistics = new Statistics();
-  new Goomba(10, 10);
-  new InactiveBlock(20, 20, EInactiveBlockType.Empty);
+  objectsToUpdate.push(objMario);
 
   // frameRate() is not working well
   setInterval(Draw, 1 / 60 * 1000);
@@ -101,7 +102,10 @@ function Draw() {
 
   background(119, 181, 254);
 
-  statistics.Update();
-  objMario.Update();
   objectsToUpdate.forEach(object => object.Update());
+  statistics.Update();
+  
+  backgroundObjects.forEach(object => object.Draw());
+  statistics.DrawStatistics();
+  objectsToUpdate.forEach(object => object.Draw());
 }

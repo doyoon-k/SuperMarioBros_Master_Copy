@@ -74,35 +74,59 @@ class KoopaTroopa extends BaseEnemy
     Update()
     {
         this.Move();
+    }
+
+    Draw()
+    {
         this.Animate();
         DrawSprite(this.spriteToDraw, this.x, this.y);
     }
 
     OnCollisionWith(collider, direction)
     {
-        switch (typeof collider)
+        if (collider instanceof InactiveBlock)
         {
-            case InactiveBlock:
-            case ActiveBlock:
-                switch (direction)
-                {
-                    case "SIDE":
-                        this.isGoingLeft = !this.isGoingLeft;
-                        break;
-                  
-                    case "DOWN":
-                        this.InstaKilled();
-                        break;
-                }
-                break;
+            switch(direction)
+            {
+                case "SIDE":
+                    this.isGoingLeft = !this.isGoingLeft;
+                    break;
 
-            case BaseEnemy:
-                this.isGoingLeft = !this.isGoingLeft;
-                break;
-              
-            case Mario:
-                this.isGoingLeft = !this.isGoingLeft;
-                break;
+                case "DOWN":
+                    //this.y를 블록 y좌표 - 블록높이로 고정.
+                    this.y = collider.y - BLOCK_SIZE;
+                    break;
+            }
+        }
+        else if (collider instanceof ActiveBlock)
+        {
+            switch (direction)
+            {
+                case "SIDE":
+                    this.isGoingLeft = !this.isGoingLeft;
+                    break;
+                    
+                case "DOWN":
+                    this.InstaKilled();
+                    break;
+            }
+        }
+        else if (collider instanceof BaseEnemy)
+        {
+            this.isGoingLeft = !this.isGoingLeft;
+        }
+        else if (collider instanceof Mario)
+        {
+            switch (direction)
+            {
+                case "SIDE":
+                    this.isGoingLeft = !this.isGoingLeft;
+                    break;
+                
+                case "UP":
+                    this.Stomped();
+                    break;
+            }
         }
     }
 }

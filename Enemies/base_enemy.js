@@ -33,19 +33,24 @@ class BaseEnemy
         this.animationFrameCount = 0;
         this.animationFrameRate = 6;
         this.animator = this.ChangeSprite();
-
-        objectsToUpdate.push(this);
     }
 
     *ChangeSprite() {}
 
     Animate() {}
 
+    Draw() {}
+
     Move() {}
 
     Stomped() {}
 
     InstaKilled() {}
+
+    Awake()
+    {
+        objectsToUpdate.push(this);
+    }
 
     Destroy()
     {
@@ -54,5 +59,5 @@ class BaseEnemy
 
     Update() {}
 
-    OnCollisionWith(collider) {}
+    OnCollisionWith(collider, direction) {}
 }

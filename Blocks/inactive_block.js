@@ -18,9 +18,7 @@ class InactiveBlock
     {
         this.x = x;
         this.y = y;
-        this.type = type;  // EInactiveBlockType
-
-        objectsToUpdate.push(this);
+        this.type = type;  // EInactiveBlockType; See below
     }
 
     Draw()
@@ -39,10 +37,12 @@ class InactiveBlock
         }
     }
 
-    Update()
+    Awake()
     {
-        this.Draw();
+        objectsToUpdate.push(this);
     }
+
+    Update() {}
 
     Destroy()
     {

@@ -84,7 +84,6 @@ class Mario {
 
     this.Debug();
     this.Move();
-    this.Draw();
 
   }
 

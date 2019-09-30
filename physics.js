@@ -6,7 +6,7 @@
   Fall 2019
 
   JoonHo Hwang did ---
-  DoYoon Kim did all.
+  DoYoon Kim wrote this file.
   SeungGeon Kim did ---
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
@@ -36,10 +36,10 @@ class Physics {
     }
     collisionCheck()
     {
-      for(obj of movingObjects)
+      for(let obj of movingObjects)
       {
-          //obj.pos + obj.velocity 해서 bucket맵 인덱싱 하고 bucket 안의 오브젝트들이랑 충돌체크 후 충돌하면 object.collisionWith() 호출해줌.
-          
+          //후보 1obj.pos + obj.velocity 해서 bucket맵 인덱싱 하고 bucket 안의 오브젝트들이랑 충돌체크 후 충돌하면 object.collisionWith() 호출해줌.
+          //후보 2 위치들은 이미 객체들 개별로 update 콜해서 업데이트되어있고,여기서는 겹쳤는지만 판단
       }
     }
 }
