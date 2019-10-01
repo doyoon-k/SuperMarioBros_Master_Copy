@@ -29,6 +29,10 @@ let isPastJump = false;
 
 function keyPressed() {
     switch (keyCode) {
+        case 32:  //Space
+            if (!objMario.isTransforming)
+                objMario.PowerupTo(1);
+            break;
         case 87:  //W
             isDPadUp = true;
             break;
