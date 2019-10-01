@@ -42,6 +42,8 @@ class Mario {
     this.speedXStandard_1 = HexFloatToDec("1.000");
     this.speedXStandard_2 = HexFloatToDec("2.4FF");
 
+    this.initialXStandard = HexFloatToDec("1.D00");
+
     this.initialJumpSpeed_1 = HexFloatToDec("4.000");
     this.initialJumpSpeed_2 = HexFloatToDec("5.000");
 
@@ -61,6 +63,8 @@ class Mario {
     this.maxFallSpeed = HexFloatToDec("4.800");
 
     this.previousY = 0;
+
+    this.initialX = 0;
 
 
 
@@ -107,8 +111,8 @@ class Mario {
   Debug() {
     text("frameRate : " + this.animationFrameRate, 10, 80);
     text("frameCount : " + this.frameCount, 10, 20);
-    text("framesToKeepRunning : " + this.framesToKeepRunning, 10, 40);
-    text("speedX : " + this.speedX, 10, 60);
+    text("framesToKeepRunning : " + this.framesToKeepRunning, 10, 200);
+    text("speedX : " + this.speedX, 10, 220);
     text("speedY : " + this.speedY, 10, 140);
     text("currentGravity : " + this.currentGravity, 10, 100);
     text("isJumping : " + this.isJumping, 10, 120);
@@ -172,6 +176,8 @@ class Mario {
             this.isJumpingLeft = false;
           }
 
+          this.initialX = this.speedX;
+
           isPastJump = true;
 
           this.isJumping = true;
@@ -219,45 +225,86 @@ class Mario {
 
       this.isLookingLeft = true;
 
-      if (this.speedX >= this.skidTurnaroundSpeed) {
+      if (!this.isJumping) {
 
-        this.isSkidding = true;
+        if (this.speedX >= this.skidTurnaroundSpeed) {
 
+          this.isSkidding = true;
+
+        } else {
+
+          if (isDash) {
+
+            if (this.speedX > -this.maxSpeedRunX) {
+
+              this.speedX += -this.runningAcceleration;
+
+              //Assign max run speed
+              if (this.speedX < -this.maxSpeedRunX)
+                this.speedX = -this.maxSpeedRunX;
+
+            }
+
+            this.framesToKeepRunning = 10;
+
+          } else {
+
+            if (this.framesToKeepRunning > 0)
+              this.framesToKeepRunning--;
+
+            if (this.speedX > -this.maxSpeedWalkX) {
+
+              this.speedX += -this.walkingAcceleration;
+
+              //Assign max walk speed
+              if (this.speedX < -this.maxSpeedWalkX)
+                this.speedX = -this.maxSpeedWalkX;
+
+            } else {
+
+              if (this.framesToKeepRunning == 0 &&
+                this.speedX < -this.maxSpeedWalkX + -this.releaseDeacceleration)
+                this.speedX += this.releaseDeacceleration;
+
+            }
+
+          }
+
+        }
+
+        //If jumping && pressed left
       } else {
 
-        if (isDash) {
+        //Looking left, pressed left
+        if (this.isJumpingLeft) {
 
-          if (this.speedX > -this.maxSpeedRunX) {
+          if (abs(this.speedX) <= this.maxSpeedWalkX) {
+            this.speedX += -this.walkingAcceleration;
 
+            //Assign max run speed
+            if (this.speedX < -this.maxSpeedRunX)
+              this.speedX = -this.maxSpeedRunX;
+          } else {
             this.speedX += -this.runningAcceleration;
 
             //Assign max run speed
             if (this.speedX < -this.maxSpeedRunX)
               this.speedX = -this.maxSpeedRunX;
-
           }
 
-          this.framesToKeepRunning = 10;
-
+          //Looking right, pressed left
         } else {
 
-          if (this.framesToKeepRunning > 0)
-            this.framesToKeepRunning--;
+          if (abs(this.speedX) < this.maxSpeedWalkX) {
 
-          if (this.speedX > -this.maxSpeedWalkX) {
-
-            this.speedX += -this.walkingAcceleration;
-
-            //Assign max walk speed
-            if (this.speedX < -this.maxSpeedWalkX)
-              this.speedX = -this.maxSpeedWalkX;
+            if (abs(this.initialX) < this.initialXStandard) {
+              this.speedX += -this.walkingAcceleration;
+            } else {
+              this.speedX += -this.releaseDeacceleration;
+            }
 
           } else {
-
-            if (this.framesToKeepRunning == 0 &&
-              this.speedX < -this.maxSpeedWalkX + -this.releaseDeacceleration)
-              this.speedX += this.releaseDeacceleration;
-
+            this.speedX += -this.runningAcceleration;
           }
 
         }
@@ -267,47 +314,89 @@ class Mario {
       //Next, the right key
     } else if (isDPadRight) {
 
-      this.isLookingLeft = false;
 
-      if (this.speedX <= -this.skidTurnaroundSpeed) {
+      if (!this.isJumping) {
 
-        this.isSkidding = true;
+        this.isLookingLeft = false;
 
+        if (this.speedX <= -this.skidTurnaroundSpeed) {
+
+          this.isSkidding = true;
+
+        } else {
+
+          if (isDash) {
+
+            if (this.speedX < this.maxSpeedRunX) {
+
+              this.speedX += this.runningAcceleration;
+
+              //Assign max run speed
+              if (this.speedX > this.maxSpeedRunX)
+                this.speedX = this.maxSpeedRunX;
+
+            }
+
+            this.framesToKeepRunning = 10;
+
+          } else {
+
+            if (this.framesToKeepRunning > 0)
+              this.framesToKeepRunning--;
+
+            if (this.speedX < this.maxSpeedWalkX) {
+
+              this.speedX += this.walkingAcceleration;
+
+              //Assign max walk speed
+              if (this.speedX > this.maxSpeedWalkX)
+                this.speedX = this.maxSpeedWalkX;
+
+            } else {
+
+              if (this.framesToKeepRunning == 0 &&
+                this.speedX > this.maxSpeedWalkX + this.releaseDeacceleration)
+                this.speedX += -this.releaseDeacceleration;
+
+            }
+
+          }
+
+        }
+
+        //If jumping && pressed right
       } else {
 
-        if (isDash) {
+        //Looking right, pressed left
+        if (!this.isJumpingLeft) {
 
-          if (this.speedX < this.maxSpeedRunX) {
+          if (abs(this.speedX) <= this.maxSpeedWalkX) {
+            this.speedX += this.walkingAcceleration;
 
+            //Assign max run speed
+            if (this.speedX > this.maxSpeedRunX)
+              this.speedX = this.maxSpeedRunX;
+          } else {
             this.speedX += this.runningAcceleration;
 
             //Assign max run speed
             if (this.speedX > this.maxSpeedRunX)
               this.speedX = this.maxSpeedRunX;
-
           }
 
-          this.framesToKeepRunning = 10;
-
+          //Looking left, pressed right
         } else {
 
-          if (this.framesToKeepRunning > 0)
-            this.framesToKeepRunning--;
+          if (abs(this.speedX) < this.maxSpeedWalkX) {
 
-          if (this.speedX < this.maxSpeedWalkX) {
-
-            this.speedX += this.walkingAcceleration;
-
-            //Assign max walk speed
-            if (this.speedX > this.maxSpeedWalkX)
-              this.speedX = this.maxSpeedWalkX;
+            if (abs(this.initialX) < this.initialXStandard) {
+              this.speedX += this.walkingAcceleration;
+            } else {
+              this.speedX += this.releaseDeacceleration;
+            }
 
           } else {
-
-            if (this.framesToKeepRunning == 0 &&
-              this.speedX > this.maxSpeedWalkX + this.releaseDeacceleration)
-              this.speedX += -this.releaseDeacceleration;
-
+            this.speedX += this.runningAcceleration;
           }
 
         }
