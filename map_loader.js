@@ -97,7 +97,42 @@ class MapLoader
          let y = backgroundObj.position.y;
          let backgroundType = backgroundObj.backgroundType;
 
-         if()
+         if(backgroundType == "Mountain")
+         {
+           let mountain = new BackgroundObject(x,y,EBackgroundObjectType.Mountain);
+           backgroundObjects.push(mountain);
+         }
+         else if(backgroundType == "Cloud1")
+         {
+           let cloud1 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud1);
+           backgroundObjects.push(cloud1);
+         }
+         else if(backgroundType == "Cloud2")
+         {
+           let cloud2 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud2);
+           backgroundObjects.push(cloud2);
+         }
+         else if(backgroundType == "Cloud3")
+         {
+           let cloud3 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud3);
+           backgroundObjects.push(cloud3);
+         }
+         else if(backgroundType == "Bush1")
+         {
+           let bush1 = new BackgroundObject(x,y,EBackgroundObjectType.Bush1);
+           backgroundObjects.push(bush1);
+         }
+         else if(backgroundType == "Bush2")
+         {
+           let bush2 = new BackgroundObject(x,y,EBackgroundObjectType.Bush2);
+           backgroundObjects.push(bush2);
+         }
+         else if(backgroundType == "Bush3")
+         {
+          let bush3 = new BackgroundObject(x,y,EBackgroundObjectType.Bush3);
+          backgroundObjects.push(bush3);
+         }
+
        }
     }
 
@@ -108,11 +143,7 @@ class MapLoader
          let x = character.position.x;
          let y = character.position.y;
          let characterType = character.characterType;
-         if(characterType == "Mario")
-         {
-            
-         }
-         else if(characterType == "Goomba")
+         if(characterType == "Goomba")
          {
            let goomba = new Goomba(x,y);
            gameObjects.push(goomba);
