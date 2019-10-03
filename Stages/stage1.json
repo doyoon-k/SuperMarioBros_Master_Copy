@@ -1,294 +1,294 @@
 {
     "backgrounds": [
         {
-            "characterType": "Mountain",
+            "backgroundType": "Mountain",
             "position": {
                 "x": 40,
                 "y": 208
             }
         },
         {
-            "characterType": "Cloud1",
+            "backgroundType": "Cloud1",
             "position": {
                 "x": 152,
                 "y": 72
             }
         },
         {
-            "characterType": "Cloud1",
+            "backgroundType": "Cloud1",
             "position": {
                 "x": 327,
                 "y": 56
             }
         },
         {
-            "characterType": "Bush3",
+            "backgroundType": "Bush3",
             "position": {
                 "x": 215,
                 "y": 208
             }
         },
         {
-            "characterType": "Mountain",
+            "backgroundType": "Mountain",
             "position": {
                 "x": 279,
                 "y": 223
             }
         },
         {
-            "characterType": "Bush1",
+            "backgroundType": "Bush1",
             "position": {
                 "x": 392,
                 "y": 208
             }
         },
         {
-            "characterType": "Cloud3",
+            "backgroundType": "Cloud3",
             "position": {
                 "x": 472,
                 "y": 72
             }
         },
         {
-            "characterType": "Cloud2",
+            "backgroundType": "Cloud2",
             "position": {
                 "x": 608,
                 "y": 56
             }
         },
         {
-            "characterType": "Bush2",
+            "backgroundType": "Bush2",
             "position": {
                 "x": 687,
                 "y": 208
             }
         },
         {
-            "characterType": "Mountain",
+            "backgroundType": "Mountain",
             "position": {
                 "x": 808,
                 "y": 208
             }
         },
         {
-            "characterType": "Bush3",
+            "backgroundType": "Bush3",
             "position": {
                 "x": 983,
                 "y": 208
             }
         },
         {
-            "characterType": "Mountain",
+            "backgroundType": "Mountain",
             "position": {
                 "x": 1048,
                 "y": 223
             }
         },
         {
-            "characterType": "Cloud1",
+            "backgroundType": "Cloud1",
             "position": {
                 "x": 919,
                 "y": 72
             }
         },
         {
-            "characterType": "Cloud1",
+            "backgroundType": "Cloud1",
             "position": {
                 "x": 1096,
                 "y": 56
             }
         },
         {
-            "characterType": "Cloud3",
+            "backgroundType": "Cloud3",
             "position": {
                 "x": 1239,
                 "y": 72
             }
         },
         {
-            "characterType": "Bush1",
+            "backgroundType": "Bush1",
             "position": {
                 "x": 1160,
                 "y": 208
             }
         },
         {
-            "characterType": "Cloud2",
+            "backgroundType": "Cloud2",
             "position": {
                 "x": 1375,
                 "y": 56
             }
         },
         {
-            "characterType": "Bush2",
+            "backgroundType": "Bush2",
             "position": {
                 "x": 1456,
                 "y": 208
             }
         },
         {
-            "characterType": "Mountain",
+            "backgroundType": "Mountain",
             "position": {
                 "x": 1576,
                 "y": 208
             }
         },
         {
-            "characterType": "Cloud1",
+            "backgroundType": "Cloud1",
             "position": {
                 "x": 1687,
                 "y": 72
             }
         },
         {
-            "characterType": "Bush3",
+            "backgroundType": "Bush3",
             "position": {
                 "x": 1751,
                 "y": 208
             }
         },
         {
-            "characterType": "Mountain",
+            "backgroundType": "Mountain",
             "position": {
                 "x": 1815,
                 "y": 223
             }
         },
         {
-            "characterType": "Cloud1",
+            "backgroundType": "Cloud1",
             "position": {
                 "x": 1864,
                 "y": 56
             }
         },
         {
-            "characterType": "Cloud3",
+            "backgroundType": "Cloud3",
             "position": {
                 "x": 2007,
                 "y": 72
             }
         },
         {
-            "characterType": "Cloud2",
+            "backgroundType": "Cloud2",
             "position": {
                 "x": 2143,
                 "y": 56
             }
         },
         {
-            "characterType": "Bush1",
+            "backgroundType": "Bush1",
             "position": {
                 "x": 1927,
                 "y": 208
             }
         },
         {
-            "characterType": "Bush2",
+            "backgroundType": "Bush2",
             "position": {
                 "x": 2224,
                 "y": 208
             }
         },
         {
-            "characterType": "Mountain",
+            "backgroundType": "Mountain",
             "position": {
                 "x": 2343,
                 "y": 208
             }
         },
         {
-            "characterType": "Bush1",
+            "backgroundType": "Bush1",
             "position": {
                 "x": 2535,
                 "y": 207
             }
         },
         {
-            "characterType": "Mountain",
+            "backgroundType": "Mountain",
             "position": {
                 "x": 2583,
                 "y": 223
             }
         },
         {
-            "characterType": "Bush1",
+            "backgroundType": "Bush1",
             "position": {
                 "x": 2695,
                 "y": 207
             }
         },
         {
-            "characterType": "Cloud1",
+            "backgroundType": "Cloud1",
             "position": {
                 "x": 2455,
                 "y": 72
             }
         },
         {
-            "characterType": "Cloud1",
+            "backgroundType": "Cloud1",
             "position": {
                 "x": 2631,
                 "y": 55
             }
         },
         {
-            "characterType": "Cloud3",
+            "backgroundType": "Cloud3",
             "position": {
                 "x": 2776,
                 "y": 72
             }
         },
         {
-            "characterType": "Cloud2",
+            "backgroundType": "Cloud2",
             "position": {
                 "x": 2912,
                 "y": 55
             }
         },
         {
-            "characterType": "Mountain",
+            "backgroundType": "Mountain",
             "position": {
                 "x": 3111,
                 "y": 208
             }
         },
         {
-            "characterType": "Cloud1",
+            "backgroundType": "Cloud1",
             "position": {
                 "x": 3223,
                 "y": 72
             }
         },
         {
-            "characterType": "Bush1",
+            "backgroundType": "Bush1",
             "position": {
                 "x": 3303,
                 "y": 207
             }
         },
         {
-            "characterType": "Mountain",
+            "backgroundType": "Mountain",
             "position": {
                 "x": 3352,
                 "y": 223
             }
         },
         {
-            "characterType": "Bush1",
+            "backgroundType": "Bush1",
             "position": {
                 "x": 3464,
                 "y": 207
             }
         },
         {
-            "characterType": "Cloud1",
+            "backgroundType": "Cloud1",
             "position": {
                 "x": 3399,
                 "y": 55
             }
         },
         {
-            "characterType": "Cloud3",
+            "backgroundType": "Cloud3",
             "position": {
                 "x": 3544,
                 "y": 72
@@ -5530,133 +5530,133 @@
     ],
     "environments": [
         {
-            "characterType": "Pipe Head Horizontal",
+            "environmentType": "Pipe Head Horizontal",
             "position": {
                 "x": 464,
                 "y": 191
             }
-        },
+            },
         {
-            "characterType": "Pipe Body Horizontal",
+            "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 464,
                 "y": 208
             }
         },
         {
-            "characterType": "Pipe Head Horizontal",
+            "environmentType": "Pipe Head Horizontal",
             "position": {
                 "x": 624,
                 "y": 176
             }
         },
         {
-            "characterType": "Pipe Body Horizontal",
+            "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 624,
                 "y": 191
             }
         },
         {
-            "characterType": "Pipe Body Horizontal",
+            "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 624,
                 "y": 208
             }
         },
         {
-            "characterType": "Pipe Head Horizontal",
+            "environmentType": "Pipe Head Horizontal",
             "position": {
                 "x": 751,
                 "y": 159
             }
         },
         {
-            "characterType": "Pipe Body Horizontal",
+            "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 751,
                 "y": 176
             }
         },
         {
-            "characterType": "Pipe Body Horizontal",
+            "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 751,
                 "y": 191
             }
         },
         {
-            "characterType": "Pipe Body Horizontal",
+            "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 751,
                 "y": 208
             }
         },
         {
-            "characterType": "Pipe Head Horizontal",
+            "environmentType": "Pipe Head Horizontal",
             "position": {
                 "x": 928,
                 "y": 159
             }
         },
         {
-            "characterType": "Pipe Body Horizontal",
+            "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 928,
                 "y": 176
             }
         },
         {
-            "characterType": "Pipe Body Horizontal",
+            "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 928,
                 "y": 191
             }
         },
         {
-            "characterType": "Pipe Body Horizontal",
+            "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 928,
                 "y": 208
             }
         },
         {
-            "characterType": "Pipe Head Horizontal",
+            "environmentType": "Pipe Head Horizontal",
             "position": {
                 "x": 2623,
                 "y": 191
             }
         },
         {
-            "characterType": "Pipe Body Horizontal",
+            "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 2623,
                 "y": 207
             }
         },
         {
-            "characterType": "Pipe Head Horizontal",
+            "environmentType": "Pipe Head Horizontal",
             "position": {
                 "x": 2879,
                 "y": 191
             }
         },
         {
-            "characterType": "Pipe Body Horizontal",
+            "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 2879,
                 "y": 207
             }
         },
         {
-            "characterType": "Flag",
+            "environmentType": "Flag",
             "position": {
                 "x": 3176,
                 "y": 192
             }
         },
         {
-            "characterType": "Castle",
+            "environmentType": "Castle",
             "position": {
                 "x": 3272,
                 "y": 208

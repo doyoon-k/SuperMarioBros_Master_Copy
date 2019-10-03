@@ -83,7 +83,7 @@ class MapLoader
           {
              inactiveBlockType = EInactiveBlockType.Ground;
           }
-           let inactiveBlock = new inactiveBlock(x,y,inactiveBlockType);
+           let inactiveBlock = new InactiveBlock(x,y,inactiveBlockType);
            gameObjects.push(inactiveBlock);
         }
       }
@@ -91,7 +91,14 @@ class MapLoader
 
     createBackgrounds(backgrounds)
     {
-       
+       for(let backgroundObj of backgrounds)
+       {
+         let x = backgroundObj.position.x;
+         let y = backgroundObj.position.y;
+         let backgroundType = backgroundObj.backgroundType;
+
+         if()
+       }
     }
 
     createCharacters(characters)
@@ -107,7 +114,7 @@ class MapLoader
          }
          else if(characterType == "Goomba")
          {
-           let goomba = new goomba(x,y);
+           let goomba = new Goomba(x,y);
            gameObjects.push(goomba);
          }
          else if(characterType == "Green Koopa Troopa")

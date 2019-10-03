@@ -67,6 +67,18 @@ function preload() {
     turtle_red_2: loadImage("Sprites/Enemy/enemy_turtle_red_2.png"),
     turtle_shell_red: loadImage("Sprites/Enemy/enemy_turtle_shell_red.png"),
     turtle_awakening_red: loadImage("Sprites/Enemy/enemy_turtle_awakening_red.png"),
+
+    bush_single: loadImage("Sprites/background/bg_bush_single.png"),
+    bush_double: loadImage("Sprites/background/bg_bush_double.png"),
+    bush_triple: loadImage("Sprites/background/bg_bush_triple.png"),
+
+    cloud_single: loadImage("Sprites/background/bg_cloud_single.png"),
+    cloud_double: loadImage("Sprites/background/bg_cloud_double.png"),
+    cloud_triple: loadImage("Sprites/background/bg_cloud_triple.png"),
+
+    mountain: loadImage("Sprites/background/bg_mountain.png"),
+
+    castle: loadImage("Sprites/background/bg_castle.png")
   };
 }
 
