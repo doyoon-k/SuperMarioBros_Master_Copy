@@ -93,9 +93,11 @@ function setup() {
   imageMode(CORNER);
 
   objMario = new Mario();
+  tempGoomba = new Goomba(50, 0);
   objMario.RefreshSpritePool();
   statistics = new Statistics();
   objectsToUpdate.push(objMario);
+  objectsToUpdate.push(tempGoomba);
 
   // frameRate() is not working well
   setInterval(Draw, 1 / 60 * 1000);

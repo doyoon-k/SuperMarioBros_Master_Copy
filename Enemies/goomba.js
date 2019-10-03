@@ -39,11 +39,13 @@ class Goomba extends BaseEnemy
         setTimeout(this.Destroy, GOOMBA_REMAINS_STOMPED_SECONDS * 1000);
     }
 
-    InstaKilled()
+    InstaKilled(direction)
     {
         this.isInstaKilled = true;
+        // TODO: 버킷맵에서 제거, movingObjects에서 제거
         // flip the sprite upside-down
-        // sprite's coordinate should draw a parabola
+        this.fallingSpeed = this.instaKilledInitialSpeed;
+        this.isGoingLeft = direction == "RIGHT";
     }
 
     *ChangeSprite()
@@ -78,6 +80,7 @@ class Goomba extends BaseEnemy
     Update()
     {
         this.Move();
+        this.Gravitate();
     }
 
     Draw()
@@ -97,8 +100,8 @@ class Goomba extends BaseEnemy
                     break;
 
                 case "DOWN":
-                    //this.y를 블록 y좌표 - 블록높이로 고정.
                     this.y = collider.y - BLOCK_SIZE;
+                    break;
             }
         }
         else if (collider instanceof ActiveBlock)
@@ -110,7 +113,14 @@ class Goomba extends BaseEnemy
                     break;
                     
                 case "DOWN":
-                    this.InstaKilled();
+                    if (collider.isBouncing)
+                    {
+                        this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
+                    }
+                    else
+                    {
+                        this.y = collider.y - BLOCK_SIZE;
+                    }
                     break;
             }
         }
@@ -120,16 +130,22 @@ class Goomba extends BaseEnemy
         }
         else if (collider instanceof Mario)
         {
+            if (collider.isInvincible)
+            {
+                this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
+                return;
+            }
+
             switch (direction)
             {
-                case "SIDE":
-                    this.isGoingLeft = !this.isGoingLeft;
-                    break;
-                
                 case "UP":
                     this.Stomped();
                     break;
             }
+        }
+        else if (collider instanceof Fireball)
+        {
+            this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
         }
     }
 }

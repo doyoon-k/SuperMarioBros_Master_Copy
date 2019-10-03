@@ -20,6 +20,8 @@ class ActiveBlock
         this.y = y;
         this.isQuestion = isQuestion;  // else Brick
         this.containingItem = containingItem;  // EContainingItemType; See below
+
+        this.isBouncing = false;
     }
 
     Draw()
@@ -45,7 +47,9 @@ class ActiveBlock
     Hit()
     {
         physics.movingObjects.push(this);
-        setTimeout(() => physics.movingObjects.splice(physics.movingObjects.indexOf(this), 1), BLOCK_BOUNCING_SECONDS * 1000);
+
+        this.isBouncing = true;
+        setTimeout(() => {physics.movingObjects.splice(physics.movingObjects.indexOf(this), 1); this.isBouncing = false;}, BLOCK_BOUNCING_SECONDS * 1000);
     }
 
     OnCollisionWith(collider, direction)

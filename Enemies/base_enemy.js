@@ -19,15 +19,17 @@ class BaseEnemy
         this.x = x;
         this.y = y;
 
-        this.isGoingLeft = false;
+        this.isGoingLeft = true;
 
-        this.isInstaKilled = false;
-
-        this.fallilngAcceleration = HexFloatToDec("");
-        this.maxFallSpeed = HexFloatToDec("");
+        this.isInstaKilled = true;
 
         this.walkingSpeed = HexFloatToDec("0.900");
+
         this.fallingSpeed = 0;
+        this.fallingAcceleration = HexFloatToDec("0.900");
+        this.maxFallSpeed = HexFloatToDec("4.800");
+
+        this.instaKilledInitialSpeed = HexFloatToDec("4.000");
 
         this.spriteToDraw = undefined;
         this.animationFrameCount = 0;
@@ -43,17 +45,30 @@ class BaseEnemy
 
     Move() {}
 
+    Gravitate()
+    {
+        this.fallingSpeed += this.fallingAcceleration;
+        if (this.fallingSpeed > this.maxFallSpeed)
+        {
+            this.fallingSpeed = this.maxFallSpeed;
+        }
+        
+        this.y += this.fallingSpeed;
+    }
+
     Stomped() {}
 
-    InstaKilled() {}
+    InstaKilled(direction) {}
 
     Awake()
     {
+        // TODO: 업뎃오브젝트에 푸시
         objectsToUpdate.push(this);
     }
 
     Destroy()
     {
+        // TODO: 업뎃오브젝트에서 제거, 버킷맵에서 제거
         objectsToUpdate.splice(objectsToUpdate.indexOf(this), 1);
     }
 
