@@ -12,38 +12,49 @@
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
 
-class Goomba extends BaseEnemy {
-    constructor(x, y) {
+class Goomba extends BaseEnemy
+{
+    constructor(x, y)
+    {
         super(x, y);
         this.isStomped = false;
 
         this.spriteToDraw = sprites.goomba_1;
+
+        this.temp = false;
     }
 
-    Move() {
-        if (this.isStomped || this.isInstaKilled) {
+    Move()
+    {
+        if (!this.temp) return;
+        if (this.isStomped)
+        {
             return;
         }
 
-        this.x += this.walkingSpeed * (this.isGoingLeft ? -1 : 1);
+        this.x += (this.isInstaKilled ? this.instaKilledWalkingSpeed : this.walkingSpeed) * (this.isGoingLeft ? -1 : 1);
     }
 
-    Stomped() {
+    Stomped()
+    {
         this.isStomped = true;
         this.spriteToDraw = sprites.goomba_stomped;
         setTimeout(this.Destroy, GOOMBA_REMAINS_STOMPED_SECONDS * 1000);
     }
 
-    InstaKilled(direction) {
+    InstaKilled(direction)
+    {
         this.isInstaKilled = true;
-        // TODO: 버킷맵에서 제거, movingObjects에서 제거
-        // flip the sprite upside-down
-        this.fallingSpeed = this.instaKilledInitialSpeed;
+        this.speedY = this.instaKilledInitialSpeed;
         this.isGoingLeft = direction == "RIGHT";
+        physics.RemoveFromMovingObjectsArray(this);
+        physics.RemoveFromBucketMap(this);
     }
 
-    *ChangeSprite() {
-        while (true) {
+    *ChangeSprite()
+    {
+        while (true)
+        {
             this.spriteToDraw = sprites.goomba_1;
             yield;
             this.spriteToDraw = sprites.goomba_2;
@@ -51,33 +62,42 @@ class Goomba extends BaseEnemy {
         }
     }
 
-    Animate() {
-        if (this.isStomped) {
+    Animate()
+    {
+        if (this.isStomped)
+        {
             return;
         }
 
-        if (this.animationFrameRate < this.animationFrameCount) {
+        if (this.animationFrameRate < this.animationFrameCount)
+        {
             this.animationFrameCount = 0;
             this.animator.next();
         }
-        else {
+        else
+        {
             this.animationFrameCount++;
         }
     }
 
-    Update() {
+    Update()
+    {
         this.Move();
         this.Gravitate();
     }
 
-    Draw() {
+    Draw()
+    {
         this.Animate();
-        DrawSprite(this.spriteToDraw, this.x, this.y, 0, 1);
+        DrawSprite(this.spriteToDraw, this.x, this.y, false, this.isInstaKilled);
     }
 
-    OnCollisionWith(collider, direction) {
-        if (collider instanceof InactiveBlock) {
-            switch (direction) {
+    OnCollisionWith(collider, direction)
+    {
+        if (collider instanceof InactiveBlock)
+        {
+            switch (direction)
+            {
                 case "SIDE":
                     this.isGoingLeft = !this.isGoingLeft;
                     break;
@@ -87,38 +107,47 @@ class Goomba extends BaseEnemy {
                     break;
             }
         }
-        else if (collider instanceof ActiveBlock) {
-            switch (direction) {
+        else if (collider instanceof ActiveBlock)
+        {
+            switch (direction)
+            {
                 case "SIDE":
                     this.isGoingLeft = !this.isGoingLeft;
                     break;
 
                 case "DOWN":
-                    if (collider.isBouncing) {
+                    if (collider.isBouncing)
+                    {
                         this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
                     }
-                    else {
+                    else
+                    {
                         this.y = collider.y - BLOCK_SIZE;
                     }
                     break;
             }
         }
-        else if (collider instanceof BaseEnemy) {
+        else if (collider instanceof BaseEnemy)
+        {
             this.isGoingLeft = !this.isGoingLeft;
         }
-        else if (collider instanceof Mario) {
-            if (collider.isInvincible) {
+        else if (collider instanceof Mario)
+        {
+            if (collider.isInvincible)
+            {
                 this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
                 return;
             }
 
-            switch (direction) {
+            switch (direction)
+            {
                 case "UP":
                     this.Stomped();
                     break;
             }
         }
-        else if (collider instanceof Fireball) {
+        else if (collider instanceof Fireball)
+        {
             this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
         }
     }

@@ -93,7 +93,6 @@ class KoopaTroopa extends BaseEnemy
                     break;
 
                 case "DOWN":
-                    //this.y를 블록 y좌표 - 블록높이로 고정.
                     this.y = collider.y - BLOCK_SIZE;
                     break;
             }
@@ -107,7 +106,7 @@ class KoopaTroopa extends BaseEnemy
                     break;
                     
                 case "DOWN":
-                    this.InstaKilled();
+                    this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
                     break;
             }
         }
@@ -117,16 +116,22 @@ class KoopaTroopa extends BaseEnemy
         }
         else if (collider instanceof Mario)
         {
+            if (collider.isInvincible)
+            {
+                this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
+                return;
+            }
+
             switch (direction)
             {
-                case "SIDE":
-                    this.isGoingLeft = !this.isGoingLeft;
-                    break;
-                
                 case "UP":
                     this.Stomped();
                     break;
             }
+        }
+        else if (collider instanceof Fireball)
+        {
+            this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
         }
     }
 }

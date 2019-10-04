@@ -37,16 +37,11 @@ class InactiveBlock
         }
     }
 
-    Awake()
-    {
-        objectsToUpdate.push(this);
-    }
-
     Update() {}
 
     Destroy()
     {
-        objectsToUpdate.splice(objectsToUpdate.indexOf(this), 1);
+        game.Expel(this);
     }
 }
 

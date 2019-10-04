@@ -22,6 +22,8 @@ class ActiveBlock
         this.containingItem = containingItem;  // EContainingItemType; See below
 
         this.isBouncing = false;
+        
+        this.speedX = this.speedY = 0;  // very ugly variables for collision detection, never get changed
     }
 
     Draw()
@@ -34,22 +36,16 @@ class ActiveBlock
         
     }
 
-    Awake()
-    {
-        objectsToUpdate.push(this);
-    }
-
     Destroy()
     {
-        objectsToUpdate.splice(objectsToUpdate.indexOf(this), 1);
+        game.Expel(this);
     }
 
     Hit()
     {
-        physics.movingObjects.push(this);
-
         this.isBouncing = true;
-        setTimeout(() => {physics.movingObjects.splice(physics.movingObjects.indexOf(this), 1); this.isBouncing = false;}, BLOCK_BOUNCING_SECONDS * 1000);
+        physics.RegisterToMovingObjectsArray(this);
+        setTimeout(() => {physics.RemoveFromMovingObjectsArray(this); this.isBouncing = false;}, BLOCK_BOUNCING_SECONDS * 1000);
     }
 
     OnCollisionWith(collider, direction)

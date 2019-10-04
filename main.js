@@ -14,16 +14,15 @@
 
 
 
-let objMario;
-let gameObjects = [];
-let backgroundObjects = [];
-let objectsToUpdate = [];
-let statistics;
+let objMario;  // temporary
+let game;
+let physics;
 let font;
 let sprites;
+let mapLoader; // temporary
 
 //Should be 2 By default, but feel free to change it
-let pixelMutliplier = 2.5;
+let pixelMutliplier = 3.5;
 
 function preload() {
   font = loadFont("Font/font.ttf");
@@ -84,20 +83,25 @@ function preload() {
 
 function setup() {
 
-  //Two times bigger than the original resolution
-  createCanvas(1024, 480);
+  createCanvas(16 * 16 * pixelMutliplier, 16 * 16 * pixelMutliplier);
 
   //Essential to stop image functions blurring the iamge all up
   noSmooth();
 
   imageMode(CORNER);
 
+  game = new Game();
+  physics = new Physics();
+  mapLoader = new MapLoader();
+
+  mapLoader.LoadMap("Stages/stage1.json");
+
+  // All below is temporary
   objMario = new Mario();
-  tempGoomba = new Goomba(50, 0);
+  tempGoomba = new Goomba(50, 100);
   objMario.RefreshSpritePool();
-  statistics = new Statistics();
-  objectsToUpdate.push(objMario);
-  objectsToUpdate.push(tempGoomba);
+  game.objectsToUpdate.push(objMario);
+  game.objectsToUpdate.push(tempGoomba);
 
   // frameRate() is not working well
   setInterval(Draw, 1 / 60 * 1000);
@@ -107,10 +111,13 @@ function Draw() {
 
   background(119, 181, 254);
 
-  objectsToUpdate.forEach(object => object.Update());
-  statistics.Update();
+  game.Update();
+  game.Draw();
+}
 
-  backgroundObjects.forEach(object => object.Draw());
-  statistics.DrawStatistics();
-  objectsToUpdate.forEach(object => object.Draw());
+
+function mouseClicked()
+{
+  tempGoomba.InstaKilled("LEFT");
+  tempGoomba.temp = true;
 }

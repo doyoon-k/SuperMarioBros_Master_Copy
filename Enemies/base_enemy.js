@@ -21,20 +21,26 @@ class BaseEnemy
 
         this.isGoingLeft = true;
 
-        this.isInstaKilled = true;
+        this.isInstaKilled = false;
 
         this.walkingSpeed = HexFloatToDec("0.900");
+        this.speedX = this.walkingSpeed;
 
-        this.fallingSpeed = 0;
+        this.speedY = 0;
         this.fallingAcceleration = HexFloatToDec("0.900");
         this.maxFallSpeed = HexFloatToDec("4.800");
 
-        this.instaKilledInitialSpeed = HexFloatToDec("4.000");
+        this.instaKilledWalkingSpeed = HexFloatToDec("1.200");
+        this.instaKilledInitialSpeed = -HexFloatToDec("4.000");
+        this.instaKilledMaxFallSpeed = HexFloatToDec("3.000");
+        this.instaKilledFallingAcceleration = HexFloatToDec("0.500");
 
         this.spriteToDraw = undefined;
         this.animationFrameCount = 0;
         this.animationFrameRate = 6;
         this.animator = this.ChangeSprite();
+
+        physics.RegisterToMovingObjectsArray(this);
     }
 
     *ChangeSprite() {}
@@ -47,29 +53,30 @@ class BaseEnemy
 
     Gravitate()
     {
-        this.fallingSpeed += this.fallingAcceleration;
-        if (this.fallingSpeed > this.maxFallSpeed)
+        if (!this.temp) return;
+
+        this.speedY += (this.isInstaKilled ? this.instaKilledFallingAcceleration : this.fallingAcceleration);
+        if (this.isInstaKilled && this.speedY > this.instaKilledMaxFallSpeed)
         {
-            this.fallingSpeed = this.maxFallSpeed;
+            this.speedY = this.instaKilledMaxFallSpeed;
+        }
+        else if (this.speedY > this.maxFallSpeed)
+        {
+            this.speedY = this.maxFallSpeed;
         }
         
-        this.y += this.fallingSpeed;
+        this.y += this.speedY;
     }
 
     Stomped() {}
 
     InstaKilled(direction) {}
 
-    Awake()
-    {
-        // TODO: 업뎃오브젝트에 푸시
-        objectsToUpdate.push(this);
-    }
-
     Destroy()
     {
-        // TODO: 업뎃오브젝트에서 제거, 버킷맵에서 제거
-        objectsToUpdate.splice(objectsToUpdate.indexOf(this), 1);
+        physics.RemoveFromMovingObjectsArray(this);
+        physics.RemoveFromBucketMap(this);
+        game.Expel(this);
     }
 
     Update() {}

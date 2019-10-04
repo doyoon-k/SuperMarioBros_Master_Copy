@@ -5,7 +5,7 @@ class BackgroundObject
         this.x = x;
         this.y = y;
         this.type = type;
-        this.spriteToDraw;
+        this.spriteToDraw = undefined;
         switch(type)
         {
             case EBackgroundObjectType.Mountain:
@@ -21,18 +21,18 @@ class BackgroundObject
                 this.spriteToDraw = sprites.cloud_triple;
                 break;
             case EBackgroundObjectType.Bush1:
-                this.spriteToDraw = sprite.bush_single;
+                this.spriteToDraw = sprites.bush_single;
                 break;
             case EBackgroundObjectType.Bush2:
-                this.spriteToDraw = sprite.bush_double;
+                this.spriteToDraw = sprites.bush_double;
                 break;
             case EBackgroundObjectType.Bush3:
-                this.spriteToDraw = sprite.bush_triple;
+                this.spriteToDraw = sprites.bush_triple;
                 break;
         }
     }
 
-    draw()
+    Draw()
     {
        DrawSprite(this.spriteToDraw,this.x,this.y);
     }
@@ -47,4 +47,4 @@ const EBackgroundObjectType = {
     Bush1:4,
     Bush2:5,
     Bush3:6 
-}
+};

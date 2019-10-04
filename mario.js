@@ -45,6 +45,8 @@ class Mario {
     this.speedXStandard_1 = HexFloatToDec("1.000");
     this.speedXStandard_2 = HexFloatToDec("2.4FF");
 
+    this.initialXStandard = HexFloatToDec("1.D00");
+
     this.initialJumpSpeed_1 = HexFloatToDec("4.000");
     this.initialJumpSpeed_2 = HexFloatToDec("5.000");
 
@@ -213,6 +215,7 @@ class Mario {
           isPastJump = true;
           this.isJumping = true;
           this.topReached = false;
+          this.initialX = this.speedX;
 
           this.initialX = this.speedX;
 
@@ -472,10 +475,9 @@ class Mario {
 
     if (this.isJumping) {
 
-      if (this.y + this.speedY > this.previousY) {
+      if (this.y + this.speedY > this.previousY) 
         this.topReached = true;
-      }
-
+      
       if (this.topReached)
         this.currentGravity = this.potentialOriginalGravity;
 

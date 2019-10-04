@@ -15,13 +15,10 @@
 
 
 //Translates & draws sprites (16x16 system onto 32x32 system if pixelmultiplier is 2)
-function DrawSprite(sprite, x, y, isLeft, isUpsideDown, baseHeightDivision) {
+function DrawSprite(sprite, x, y, isLeft=false, isUpsideDown=false, baseHeightDivision=2) {
 
   xMultiplier = 1;
   yMultiplier = 1;
-
-  if (!baseHeightDivision)
-  baseHeightDivision = 2;
 
   push();
 

@@ -19,16 +19,20 @@ class MapLoader
 
     }
 
-    loadMap(jsonMap)
+    LoadMap(jsonMap)
     {
-      let mapData = loadJSON(jsonMap);
-      this.createBackgrounds(jsonMap.backgrounds);
-      this.createBlocks(jsonMap.blocks);
-      this.createCharacters(jsonMap.characters);
+      this.mapData = loadJSON(jsonMap, this.Loaded);
     }
 
-    //determines the blocktype and create & add the block instance in gameObjects array.
-    createBlocks(blocks)
+    Loaded()
+    {
+      mapLoader.CreateBackgrounds(mapLoader.mapData.backgrounds);
+      mapLoader.CreateBlocks(mapLoader.mapData.blocks);
+      mapLoader.CreateCharacters(mapLoader.mapData.characters);
+    }
+
+    //determines the blocktype and create & add the block instance in gameObjects array and BucketMap.
+    CreateBlocks(blocks)
     {
       for(let block of blocks)
       {
@@ -65,12 +69,14 @@ class MapLoader
         if(isQuestionMarkBlock != -1)
         {
            let QuestionMarkBlock = new ActiveBlock(x,y,true,itemType);
-           gameObjects.push(QuestionMarkBlock);
+           game.gameObjects.push(QuestionMarkBlock);
+           physics.RegisterToBucketMap(QuestionMarkBlock);
         }
         else if(isBrickBlock != -1)
         {
            let BrickBlock = new ActiveBlock(x,y,false,itemType);
-           gameObjects.push(BrickBlock);
+           game.gameObjects.push(BrickBlock);
+           physics.RegisterToBucketMap(BrickBlock);
         }
         else
         {
@@ -84,12 +90,13 @@ class MapLoader
              inactiveBlockType = EInactiveBlockType.Ground;
           }
            let inactiveBlock = new InactiveBlock(x,y,inactiveBlockType);
-           gameObjects.push(inactiveBlock);
+           game.gameObjects.push(inactiveBlock);
+           physics.RegisterToBucketMap(inactiveBlock);
         }
       }
     }
 
-    createBackgrounds(backgrounds)
+    CreateBackgrounds(backgrounds)
     {
        for(let backgroundObj of backgrounds)
        {
@@ -100,43 +107,43 @@ class MapLoader
          if(backgroundType == "Mountain")
          {
            let mountain = new BackgroundObject(x,y,EBackgroundObjectType.Mountain);
-           backgroundObjects.push(mountain);
+           game.backgroundObjects.push(mountain);
          }
          else if(backgroundType == "Cloud1")
          {
            let cloud1 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud1);
-           backgroundObjects.push(cloud1);
+           game.backgroundObjects.push(cloud1);
          }
          else if(backgroundType == "Cloud2")
          {
            let cloud2 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud2);
-           backgroundObjects.push(cloud2);
+           game.backgroundObjects.push(cloud2);
          }
          else if(backgroundType == "Cloud3")
          {
            let cloud3 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud3);
-           backgroundObjects.push(cloud3);
+           game.backgroundObjects.push(cloud3);
          }
          else if(backgroundType == "Bush1")
          {
            let bush1 = new BackgroundObject(x,y,EBackgroundObjectType.Bush1);
-           backgroundObjects.push(bush1);
+           game.backgroundObjects.push(bush1);
          }
          else if(backgroundType == "Bush2")
          {
            let bush2 = new BackgroundObject(x,y,EBackgroundObjectType.Bush2);
-           backgroundObjects.push(bush2);
+           game.backgroundObjects.push(bush2);
          }
          else if(backgroundType == "Bush3")
          {
           let bush3 = new BackgroundObject(x,y,EBackgroundObjectType.Bush3);
-          backgroundObjects.push(bush3);
+          game.backgroundObjects.push(bush3);
          }
 
        }
     }
 
-    createCharacters(characters)
+    CreateCharacters(characters)
     {
        for(let character of characters)
        {
@@ -146,23 +153,25 @@ class MapLoader
          if(characterType == "Goomba")
          {
            let goomba = new Goomba(x,y);
-           gameObjects.push(goomba);
+           game.gameObjects.push(goomba);
+           physics.RegisterToBucketMap(goomba);
          }
          else if(characterType == "Green Koopa Troopa")
          {
            let greenKoopaTroopa = new KoopaTroopa(x,y,false);
-           gameObjects.push(greenKoopaTroopa);
+           game.gameObjects.push(greenKoopaTroopa);
+           physics.RegisterToBucketMap(greenKoopaTroopa);
          }
          //going to add as soon as the rest of the character classes are made.
        }
     }
 
-    createEnvironments(environments)
+    CreateEnvironments(environments)
     {
 
     }
 
-    createItems(items)
+    CreateItems(items)
     {
        for(let item of items)
        {
