@@ -14,42 +14,40 @@
 
 
 
-//Translates & draws sprites (16x16 system onto 32x32 system if pixelmultiplier is 2)
-function DrawSprite(sprite, x, y, isLeft=false, isUpsideDown=false, baseHeightDivision=2) {
+//Translates & flips & draws sprites (16x16 system onto 32x32 system if pixelmultiplier is 2)
+function DrawSprite(sprite, x, y, isLeft = false, isUpsideDown = false) {
 
   xMultiplier = 1;
   yMultiplier = 1;
 
+  baseHeight = 0;
+
   push();
 
   //base position
-  ellipse(x * pixelMutliplier, y * pixelMutliplier, 3);
+  ellipse(x * pixelMutliplier, y * pixelMutliplier, 25);
 
   if (isUpsideDown) {
+    baseHeight = sprite.height;
     yMultiplier = -1;
-    if (isLeft) {
-      xMultiplier = -1;
-    } else {
-      xMultiplier = 1;
-    }
   } else {
     yMultiplier = 1;
-   if (isLeft) {
-     xMultiplier = -1;
-   } else {
-     xMultiplier = 1;
-   }
+  }
+  if (isLeft) {
+    xMultiplier = -1;
+  } else {
+    xMultiplier = 1;
   }
 
-  translate((x - xMultiplier * sprite.width / 2) * pixelMutliplier, (y - yMultiplier * sprite.height / baseHeightDivision) * pixelMutliplier);
-
-  scale(xMultiplier, yMultiplier);
+  translate((x - xMultiplier * sprite.width / 2) * pixelMutliplier, (y - yMultiplier * sprite.height) * pixelMutliplier);
 
   //Drawing position
   ellipse(0, 0, 5);
 
+  scale(xMultiplier, yMultiplier);
+
   //x and y coordinate of an object is center-bottom.
-  image(sprite, 0, 0, sprite.width * pixelMutliplier, sprite.height * pixelMutliplier);
+  image(sprite, 0, baseHeight * pixelMutliplier, sprite.width * pixelMutliplier, sprite.height * pixelMutliplier);
 
   pop();
 
