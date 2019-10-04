@@ -15,22 +15,38 @@
 
 
 //Translates & draws sprites (16x16 system onto 32x32 system if pixelmultiplier is 2)
-function DrawSprite(sprite, x, y, direction) {
+function DrawSprite(sprite, x, y, isLeft, isUpsideDown, baseHeightDivision) {
+
+  xMultiplier = 1;
+  yMultiplier = 1;
+
+  if (!baseHeightDivision)
+  baseHeightDivision = 2;
 
   push();
 
   //base position
   ellipse(x * pixelMutliplier, y * pixelMutliplier, 3);
 
-  if (direction) {
-    multiplier = -1;
+  if (isUpsideDown) {
+    yMultiplier = -1;
+    if (isLeft) {
+      xMultiplier = -1;
+    } else {
+      xMultiplier = 1;
+    }
   } else {
-    multiplier = 1;
+    yMultiplier = 1;
+   if (isLeft) {
+     xMultiplier = -1;
+   } else {
+     xMultiplier = 1;
+   }
   }
 
-  translate((x - multiplier * sprite.width / 2) * pixelMutliplier, (y - sprite.height) * pixelMutliplier);
+  translate((x - xMultiplier * sprite.width / 2) * pixelMutliplier, (y - yMultiplier * sprite.height / baseHeightDivision) * pixelMutliplier);
 
-  scale(multiplier, 1);
+  scale(xMultiplier, yMultiplier);
 
   //Drawing position
   ellipse(0, 0, 5);
