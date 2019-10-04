@@ -91,6 +91,7 @@ class Mario {
     this.stand_still = 0;
 
     this.mario_stand_still = loadImage('Sprites/Mario/mario_stand_still.png');
+    this.mario_getting_bigger = loadImage('Sprites/Mario/mario_getting_bigger.png');
     this.big_mario_stand_still = loadImage('Sprites/Mario/big_mario_stand_still.png');
 
     this.running_1 = 0;
@@ -475,9 +476,9 @@ class Mario {
 
     if (this.isJumping) {
 
-      if (this.y + this.speedY > this.previousY) 
+      if (this.y + this.speedY > this.previousY)
         this.topReached = true;
-      
+
       if (this.topReached)
         this.currentGravity = this.potentialOriginalGravity;
 
@@ -501,16 +502,41 @@ class Mario {
 
 
   //Manage the animations
-  Animate(sprite1, sprite2, newFrameRate, sprite3) {
+  Animate(sprite1, sprite2, newFrameRate, sprite3, isSequenced) {
     this.animationFrameRate = newFrameRate;
     if (this.frameCount > this.animationFrameRate) {
       this.frameCount = 0;
-      if (this.drawIndex == 2) {
-        this.drawIndex = 0;
+      if (!isSequenced) {
+        if (this.drawIndex >= 2) {
+          this.drawIndex = 0;
+        } else {
+          this.drawIndex++;
+        }
+        if (sprite3) {
+          switch (this.drawIndex) {
+            case 0:
+              this.spriteToDraw = sprite1;
+              break;
+            case 1:
+              this.spriteToDraw = sprite2;
+              break;
+            case 2:
+              this.spriteToDraw = sprite3;
+              break;
+          }
+        } else {
+          if (this.drawIndex >= 2)
+            this.drawIndex = 0;
+          switch (this.drawIndex) {
+            case 0:
+              this.spriteToDraw = sprite1;
+              break;
+            case 1:
+              this.spriteToDraw = sprite2;
+              break;
+          }
+        }
       } else {
-        this.drawIndex++;
-      }
-      if (sprite3) {
         switch (this.drawIndex) {
           case 0:
             this.spriteToDraw = sprite1;
@@ -519,20 +545,38 @@ class Mario {
             this.spriteToDraw = sprite2;
             break;
           case 2:
+            this.spriteToDraw = sprite1;
+            break;
+          case 3:
+            this.spriteToDraw = sprite2;
+            break;
+          case 4:
+            this.spriteToDraw = sprite1;
+            break;
+          case 5:
+            this.spriteToDraw = sprite2;
+            break;
+          case 6:
+            this.spriteToDraw = sprite3;
+            break;
+          case 7:
+            this.spriteToDraw = sprite1;
+            break;
+          case 8:
+            this.spriteToDraw = sprite2;
+            break;
+          case 9:
+            this.spriteToDraw = sprite3;
+            break;
+          case 10:
+            this.spriteToDraw = sprite1;
+            break;
+          case 11:
             this.spriteToDraw = sprite3;
             break;
         }
-      } else {
-        if (this.drawIndex == 2)
-          this.drawIndex = 0;
-        switch (this.drawIndex) {
-          case 0:
-            this.spriteToDraw = sprite1;
-            break;
-          case 1:
-            this.spriteToDraw = sprite2;
-            break;
-        }
+        if (this.drawIndex != 11)
+          this.drawIndex++;
       }
     } else {
       this.frameCount++;
@@ -543,6 +587,7 @@ class Mario {
   PowerupTo(targetState) {
     this.isTransforming = true;
     this.framesToKeepTransforming = this.framesToKeepTransformingDefault;
+    this.drawIndex = 0;
     switch (targetState) {
       case this.marioState.mario:
         this.nextPowerupState = this.marioState.mario;
@@ -620,7 +665,7 @@ class Mario {
     //return if isTransforming
     if (this.isTransforming) {
 
-      this.Animate(this.transformSprite_1, this.transformSprite_2, this.transformFrameRate);
+      this.Animate(this.mario_stand_still, this.mario_getting_bigger, this.transformFrameRate, this.big_mario_stand_still, true);
 
       if (this.framesToKeepTransforming == 0) {
         this.isTransforming = false;
