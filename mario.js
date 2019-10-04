@@ -134,6 +134,8 @@ class Mario {
     this.drawIndex = 0;
 
     this.isJumping = false;
+    this.isJumpPast = false;
+
     this.isSkidding = false;
     this.isTransforming = false;
 
@@ -155,7 +157,7 @@ class Mario {
     text("speedY : " + this.speedY, 10, 140);
     text("currentGravity : " + this.currentGravity, 10, 100);
     text("isJumping : " + this.isJumping, 10, 120);
-    text("isPastJump : " + this.isJumping, 10, 160);
+    text("isJumpPast : " + this.isJumping, 10, 160);
     text("potentialHold : " + this.potentialHoldGravity, 10, 180);
     text("isTransforming : " + this.isTransforming, 10, 200);
     text("powerupState : " + this.powerupState, 10, 220);
@@ -167,7 +169,8 @@ class Mario {
   Update() {
 
     this.Debug();
-    this.Move();
+    if (!this.isTransforming)
+      this.Move();
 
     //Temporary makeshift anti-fall-through-screen-border logic. 
     if (this.y > 100) {
@@ -211,12 +214,13 @@ class Mario {
         this.currentGravity = 0;
 
         //Start Jump, gets called only once
-        if (!isPastJump) {
+        if (!this.isJumpPast) {
 
-          isPastJump = true;
+          this.isJumpPast = true;
           this.isJumping = true;
+
+          this.jumpKeyReleased = false;
           this.topReached = false;
-          this.initialX = this.speedX;
 
           this.initialX = this.speedX;
 
@@ -491,11 +495,10 @@ class Mario {
     if (this.speedY > this.maxFallSpeed)
       this.speedY = this.maxFallSpeed;
 
-    if (!this.isTransforming) {
-      this.x += this.speedX;
-      this.y += this.speedY;
-      this.previousY = this.y;
-    }
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    this.previousY = this.y;
 
   }
 
@@ -588,6 +591,7 @@ class Mario {
     this.isTransforming = true;
     this.framesToKeepTransforming = this.framesToKeepTransformingDefault;
     this.drawIndex = 0;
+    this.jumpKeyReleased = true;
     switch (targetState) {
       case this.marioState.mario:
         this.nextPowerupState = this.marioState.mario;

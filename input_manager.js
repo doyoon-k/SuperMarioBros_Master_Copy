@@ -25,7 +25,7 @@ let isStart = false;
 let isDash = false;
 let isJump = false;
 
-let isPastJump = false;
+let isJumpPast = false;
 
 function keyPressed() {
     switch (keyCode) {
@@ -56,7 +56,8 @@ function keyPressed() {
             break;
         case 75:  //K
             isJump = true;
-            isPastJump = false;
+            if (!objMario.isJumping)
+                objMario.isJumpPast = false;
             break;
     }
 }
@@ -86,6 +87,7 @@ function keyReleased() {
             break;
         case 75:
             isJump = false;
+            objMario.jumpKeyReleased = true;
             break;
     }
 }
