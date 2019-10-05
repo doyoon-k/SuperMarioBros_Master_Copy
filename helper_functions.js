@@ -15,7 +15,7 @@
 
 
 //Translates & flips & draws sprites (16x16 system onto 32x32 system if pixelmultiplier is 2)
-function DrawSprite(sprite, x, y, isLeft = false, isUpsideDown = false) {
+function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertically = false) {
 
   xMultiplier = 1;
   yMultiplier = 1;
@@ -27,13 +27,13 @@ function DrawSprite(sprite, x, y, isLeft = false, isUpsideDown = false) {
   //base position
   ellipse(x * pixelMutliplier, y * pixelMutliplier, 25);
 
-  if (isUpsideDown) {
+  if (isFlippedVertically) {
     baseHeight = sprite.height;
     yMultiplier = -1;
   } else {
     yMultiplier = 1;
   }
-  if (isLeft) {
+  if (isFlippedHorizontally) {
     xMultiplier = -1;
   } else {
     xMultiplier = 1;

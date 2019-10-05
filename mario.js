@@ -5,7 +5,7 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang's HexFloatToDec() was used to initialize variables inside the class constructor
+  JoonHo Hwang found lots of bugs in Mario's movement QA-ing constantly, and Wrote the stompCombo related codes.
   DoYoon Kim did ---
   SeungGeon Kim Arranged the class properties, and Wrote the main animation & movement logic. About 99% of this entire script.
   
@@ -145,6 +145,10 @@ class Mario {
     this.jumpKeyReleased = false;
     this.topReached = false;
 
+
+    this.stompCombo = 0;
+
+    this.RefreshSpritePool();
   }
 
 
@@ -724,8 +728,26 @@ class Mario {
     Mario will call ScoreManager.score() twice on him, 
     while Goombas will call this.kill() once on them each.
   */
-  OnCollisionWith(collider) {
-
+  OnCollisionWith(collider, direction)
+  {
+      if (collider instanceof ActiveBlock)
+      {
+          switch (direction)
+          {
+              case "DOWN":
+                  this.stompCombo = 0;
+                  break;
+          }
+      }
+      else if (collider instanceof InactiveBlock)
+      {
+          switch (direction)
+          {
+              case "DOWN":
+                  this.stompCombo = 0;
+                  break;
+          }
+      }
   }
-
+  // ※거북이 등껍질 밟으면 튀어오르지 않음
 }

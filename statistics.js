@@ -48,6 +48,12 @@ class Statistics
 
     AddScore(amount)
     {
+        if (amount == "1UP")
+        {
+            // 1-up
+            return;
+        }
+        
         this.score += amount;
     }
 
@@ -91,7 +97,7 @@ class Statistics
         DrawText(this.isPlayerMario ? "MARIO" : "LUIGI", 24, 24, 8);
         DrawText(this.score.toString().padStart(6, '0'), 24, 32, 8);
 
-        DrawSprite(this.coinSpriteToDraw, 92, 28);
+        DrawSprite(this.coinSpriteToDraw, 92, 32);
         DrawText("*" + this.coin.toString().padStart(2, '0'), 96, 32, 8);
 
         DrawText("WORLD", 144, 24, 8);

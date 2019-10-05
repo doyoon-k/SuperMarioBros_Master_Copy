@@ -13,8 +13,6 @@
 */
 
 
-
-let objMario;  // temporary
 let game;
 let physics;
 let font;
@@ -81,43 +79,32 @@ function preload() {
   };
 }
 
-function setup() {
-
+function setup()
+{
   createCanvas(16 * 16 * pixelMutliplier, 16 * 16 * pixelMutliplier);
 
   //Essential to stop image functions blurring the iamge all up
   noSmooth();
-
   imageMode(CORNER);
 
   game = new Game();
   physics = new Physics();
-  mapLoader = new MapLoader();
+  mapLoader = new MapLoader();  // temporary
 
   mapLoader.LoadMap("Stages/stage1.json");
 
   // All below is temporary
-  objMario = new Mario();
   tempGoomba = new Goomba(50, 100);
-  objMario.RefreshSpritePool();
-  game.objectsToUpdate.push(objMario);
-  game.objectsToUpdate.push(tempGoomba);
+  game.Enroll(tempGoomba);
 
   // frameRate() is not working well
   setInterval(Draw, 1 / 60 * 1000);
 }
 
-function Draw() {
-
+function Draw()
+{
   background(119, 181, 254);
 
   game.Update();
   game.Draw();
-}
-
-
-function mouseClicked()
-{
-  tempGoomba.InstaKilled("LEFT");
-  tempGoomba.temp = true;
 }

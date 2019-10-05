@@ -16,10 +16,13 @@ class Game
 {
     constructor()
     {
+        this.mario = new Mario();
         this.backgroundObjects = [];
         this.gameObjects = [];
         this.objectsToUpdate = [];
         this.statistics = new Statistics();
+
+        this.Enroll(this.mario);
     }
 
     Enroll(object)

@@ -20,19 +20,17 @@ class Goomba extends BaseEnemy
         this.isStomped = false;
 
         this.spriteToDraw = sprites.goomba_1;
-
-        this.temp = false;
     }
 
     Move()
     {
-        if (!this.temp) return;
         if (this.isStomped)
         {
             return;
         }
 
-        this.x += (this.isInstaKilled ? this.instaKilledWalkingSpeed : this.walkingSpeed) * (this.isGoingLeft ? -1 : 1);
+        this.speedX = (this.isInstaKilled ? this.instaKilledWalkingSpeed : this.walkingSpeed) * (this.isGoingLeft ? -1 : 1);
+        this.x += speedX;
     }
 
     Stomped()
@@ -129,6 +127,12 @@ class Goomba extends BaseEnemy
         }
         else if (collider instanceof BaseEnemy)
         {
+            if (collider instanceof KoopaTroopa && collider.isSliding)
+            {
+                this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
+                return;
+            }
+
             this.isGoingLeft = !this.isGoingLeft;
         }
         else if (collider instanceof Mario)

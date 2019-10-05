@@ -30,8 +30,8 @@ let isJumpPast = false;
 function keyPressed() {
     switch (keyCode) {
         case 32:  //Space
-            if (!objMario.isTransforming)
-                objMario.PowerupTo(1);
+            if (!game.mario.isTransforming)
+                game.mario.PowerupTo(1);
             break;
         case 87:  //W
             isDPadUp = true;
@@ -56,8 +56,8 @@ function keyPressed() {
             break;
         case 75:  //K
             isJump = true;
-            if (!objMario.isJumping)
-                objMario.isJumpPast = false;
+            if (!game.mario.isJumping)
+                game.mario.isJumpPast = false;
             break;
     }
 }
