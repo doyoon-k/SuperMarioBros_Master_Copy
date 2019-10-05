@@ -12,6 +12,8 @@
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
 
+const bucketMap_how_many_vertical_cell = 70;
+const bucketMap_how_many_horizontal_cell = 5;
 const bucketMap_one_cell_width = 3584/70;
 const bucketMap_one_cell_height = 240/5;
 
@@ -20,11 +22,11 @@ class Physics {
         this.bucketMap = [];
         this.movingObjects = [];
 
-        for(let row = 0; row<6;row++)
+        for(let row = 0; row<bucketMap_how_many_horizontal_cell+1;row++)
         {
           //push the row arrays
           this.bucketMap.push([]);
-          for(let column = 0;column<70;column++)
+          for(let column = 0;column<bucketMap_how_many_vertical_cell;column++)
           {
             //push the buckets in.
             this.bucketMap[row].push([]);
@@ -35,16 +37,16 @@ class Physics {
     {
       for(let obj of this.movingObjects)
       {
-          //후보 1obj.pos + obj.velocity 해서 bucket맵 인덱싱 하고 bucket 안의 오브젝트들이랑 충돌체크 후 충돌하면 object.collisionWith() 호출해줌.
-          let i = floor(obj.x/bucketMap_one_cell_width);
-          let j = floor(obj.y/bucketMap_one_cell_height);
-          let bucket = this.bucketMap[j][i];
-          for(let collidableObject of bucket)
-          {
-            //if collision, collidableObject.OnCollisionWith();
-            // let p1 = 
-          }
+
       }
+    }
+
+    //calculate the bucketMap index by passed x,y coordinate and return a bucket at the index. 
+    getBucket(x,y)
+    {
+      let i = floor(x/bucketMap_one_cell_width);
+      let j = floor(y/bucketMap_one_cell_height);
+      return this.bucketMap[j][i];
     }
 
     RegisterToBucketMap(object)
