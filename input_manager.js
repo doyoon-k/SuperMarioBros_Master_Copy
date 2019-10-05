@@ -87,7 +87,7 @@ function keyReleased() {
             break;
         case 75:
             isJump = false;
-            objMario.jumpKeyReleased = true;
+            game.mario.jumpKeyReleased = true;
             break;
     }
 }
