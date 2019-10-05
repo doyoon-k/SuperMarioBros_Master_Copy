@@ -684,9 +684,9 @@ class Mario {
       }
 
       if (!this.isJumping) {
-        DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft);
+        DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, true);
       } else {
-        DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft);
+        DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, true);
       }
 
       return;
@@ -709,11 +709,11 @@ class Mario {
       } else {
         this.spriteToDraw = this.turnAround;
       }
-      DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft);
+      DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, true);
       //isJumping -> draw jump
     } else {
       this.spriteToDraw = this.jump;
-      DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft);
+      DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, true);
     }
 
   }
@@ -728,26 +728,21 @@ class Mario {
     Mario will call ScoreManager.score() twice on him, 
     while Goombas will call this.kill() once on them each.
   */
-  OnCollisionWith(collider, direction)
-  {
-      if (collider instanceof ActiveBlock)
-      {
-          switch (direction)
-          {
-              case "DOWN":
-                  this.stompCombo = 0;
-                  break;
-          }
+  OnCollisionWith(collider, direction) {
+    if (collider instanceof ActiveBlock) {
+      switch (direction) {
+        case "DOWN":
+          this.stompCombo = 0;
+          break;
       }
-      else if (collider instanceof InactiveBlock)
-      {
-          switch (direction)
-          {
-              case "DOWN":
-                  this.stompCombo = 0;
-                  break;
-          }
+    }
+    else if (collider instanceof InactiveBlock) {
+      switch (direction) {
+        case "DOWN":
+          this.stompCombo = 0;
+          break;
       }
+    }
   }
   // ※거북이 등껍질 밟으면 튀어오르지 않음
 }

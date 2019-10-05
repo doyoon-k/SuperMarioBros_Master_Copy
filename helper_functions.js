@@ -15,7 +15,13 @@
 
 
 //Translates & flips & draws sprites (16x16 system onto 32x32 system if pixelmultiplier is 2)
-function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertically = false) {
+function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertically = false, isMario = false) {
+
+  if (!isMario) {
+    x += game.camera.relativeWorldX;
+  } else {
+    x = 128;
+  }
 
   xMultiplier = 1;
   yMultiplier = 1;

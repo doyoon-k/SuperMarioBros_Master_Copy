@@ -12,11 +12,11 @@
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
 
-class Game
-{
-    constructor()
+class Game {
+    constructor() 
     {
         this.mario = new Mario();
+        this.camera = new Camera();
         this.backgroundObjects = [];
         this.gameObjects = [];
         this.objectsToUpdate = [];
@@ -25,23 +25,24 @@ class Game
         this.Enroll(this.mario);
     }
 
-    Enroll(object)
+    Enroll(object) 
     {
         this.objectsToUpdate.push(object);
     }
 
-    Expel(object)
+    Expel(object) 
     {
         this.objectsToUpdate.splice(this.objectsToUpdate.indexOf(object), 1);
     }
 
-    Update()
+    Update() 
     {
         this.objectsToUpdate.forEach(object => object.Update());
         this.statistics.Update();
+        this.camera.Update();
     }
 
-    Draw()
+    Draw() 
     {
         this.backgroundObjects.forEach(object => object.Draw());
         this.statistics.DrawStatistics();
