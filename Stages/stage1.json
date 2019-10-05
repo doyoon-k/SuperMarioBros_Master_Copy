@@ -15,31 +15,24 @@
             }
         },
         {
-            "backgroundType": "Cloud1",
+            "backgroundType": "Mountain",
             "position": {
-                "x": 327,
-                "y": 56
+                "x": 280,
+                "y": 224
             }
         },
         {
             "backgroundType": "Bush3",
             "position": {
-                "x": 215,
+                "x": 216,
                 "y": 208
             }
         },
         {
-            "backgroundType": "Mountain",
+            "backgroundType": "Cloud1",
             "position": {
-                "x": 279,
-                "y": 223
-            }
-        },
-        {
-            "backgroundType": "Bush1",
-            "position": {
-                "x": 392,
-                "y": 208
+                "x": 328,
+                "y": 56
             }
         },
         {
@@ -47,6 +40,13 @@
             "position": {
                 "x": 472,
                 "y": 72
+            }
+        },
+        {
+            "backgroundType": "Bush1",
+            "position": {
+                "x": 392,
+                "y": 208
             }
         },
         {
@@ -59,7 +59,7 @@
         {
             "backgroundType": "Bush2",
             "position": {
-                "x": 687,
+                "x": 688,
                 "y": 208
             }
         },
@@ -73,21 +73,14 @@
         {
             "backgroundType": "Bush3",
             "position": {
-                "x": 983,
+                "x": 984,
                 "y": 208
-            }
-        },
-        {
-            "backgroundType": "Mountain",
-            "position": {
-                "x": 1048,
-                "y": 223
             }
         },
         {
             "backgroundType": "Cloud1",
             "position": {
-                "x": 919,
+                "x": 920,
                 "y": 72
             }
         },
@@ -99,10 +92,10 @@
             }
         },
         {
-            "backgroundType": "Cloud3",
+            "backgroundType": "Mountain",
             "position": {
-                "x": 1239,
-                "y": 72
+                "x": 1048,
+                "y": 224
             }
         },
         {
@@ -113,9 +106,16 @@
             }
         },
         {
+            "backgroundType": "Cloud3",
+            "position": {
+                "x": 1240,
+                "y": 72
+            }
+        },
+        {
             "backgroundType": "Cloud2",
             "position": {
-                "x": 1375,
+                "x": 1376,
                 "y": 56
             }
         },
@@ -136,22 +136,22 @@
         {
             "backgroundType": "Cloud1",
             "position": {
-                "x": 1687,
+                "x": 1688,
                 "y": 72
             }
         },
         {
             "backgroundType": "Bush3",
             "position": {
-                "x": 1751,
+                "x": 1752,
                 "y": 208
             }
         },
         {
             "backgroundType": "Mountain",
             "position": {
-                "x": 1815,
-                "y": 223
+                "x": 1816,
+                "y": 224
             }
         },
         {
@@ -164,22 +164,22 @@
         {
             "backgroundType": "Cloud3",
             "position": {
-                "x": 2007,
+                "x": 2016,
                 "y": 72
-            }
-        },
-        {
-            "backgroundType": "Cloud2",
-            "position": {
-                "x": 2143,
-                "y": 56
             }
         },
         {
             "backgroundType": "Bush1",
             "position": {
-                "x": 1927,
+                "x": 1928,
                 "y": 208
+            }
+        },
+        {
+            "backgroundType": "Cloud2",
+            "position": {
+                "x": 2144,
+                "y": 56
             }
         },
         {
@@ -192,43 +192,36 @@
         {
             "backgroundType": "Mountain",
             "position": {
-                "x": 2343,
+                "x": 2344,
                 "y": 208
+            }
+        },
+        {
+            "backgroundType": "Cloud1",
+            "position": {
+                "x": 2456,
+                "y": 72
             }
         },
         {
             "backgroundType": "Bush1",
             "position": {
-                "x": 2535,
-                "y": 207
+                "x": 2536,
+                "y": 208
             }
         },
         {
             "backgroundType": "Mountain",
             "position": {
-                "x": 2583,
-                "y": 223
-            }
-        },
-        {
-            "backgroundType": "Bush1",
-            "position": {
-                "x": 2695,
-                "y": 207
+                "x": 2584,
+                "y": 224
             }
         },
         {
             "backgroundType": "Cloud1",
             "position": {
-                "x": 2455,
-                "y": 72
-            }
-        },
-        {
-            "backgroundType": "Cloud1",
-            "position": {
-                "x": 2631,
-                "y": 55
+                "x": 2632,
+                "y": 56
             }
         },
         {
@@ -239,52 +232,59 @@
             }
         },
         {
+            "backgroundType": "Bush1",
+            "position": {
+                "x": 2696,
+                "y": 208
+            }
+        },
+        {
             "backgroundType": "Cloud2",
             "position": {
                 "x": 2912,
-                "y": 55
+                "y": 56
             }
         },
         {
             "backgroundType": "Mountain",
             "position": {
-                "x": 3111,
+                "x": 3112,
                 "y": 208
-            }
-        },
-        {
-            "backgroundType": "Cloud1",
-            "position": {
-                "x": 3223,
-                "y": 72
             }
         },
         {
             "backgroundType": "Bush1",
             "position": {
-                "x": 3303,
-                "y": 207
+                "x": 3304,
+                "y": 208
             }
         },
         {
             "backgroundType": "Mountain",
             "position": {
                 "x": 3352,
-                "y": 223
+                "y": 224
             }
         },
         {
             "backgroundType": "Bush1",
             "position": {
                 "x": 3464,
-                "y": 207
+                "y": 208
             }
         },
         {
             "backgroundType": "Cloud1",
             "position": {
-                "x": 3399,
-                "y": 55
+                "x": 3224,
+                "y": 72
+            }
+        },
+        {
+            "backgroundType": "Cloud1",
+            "position": {
+                "x": 3400,
+                "y": 56
             }
         },
         {
@@ -302,7 +302,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 8,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -310,8 +310,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 23,
-                "y": 223
+                "x": 24,
+                "y": 224
             }
         },
         {
@@ -319,8 +319,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 39,
-                "y": 223
+                "x": 40,
+                "y": 224
             }
         },
         {
@@ -329,7 +329,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 56,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -337,8 +337,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 71,
-                "y": 223
+                "x": 72,
+                "y": 224
             }
         },
         {
@@ -346,8 +346,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 87,
-                "y": 223
+                "x": 88,
+                "y": 224
             }
         },
         {
@@ -356,7 +356,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 104,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -365,7 +365,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 120,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -374,7 +374,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 136,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -383,7 +383,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 152,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -391,8 +391,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 167,
-                "y": 223
+                "x": 168,
+                "y": 224
             }
         },
         {
@@ -400,8 +400,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 183,
-                "y": 223
+                "x": 184,
+                "y": 224
             }
         },
         {
@@ -409,8 +409,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 199,
-                "y": 223
+                "x": 200,
+                "y": 224
             }
         },
         {
@@ -418,8 +418,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 215,
-                "y": 223
+                "x": 216,
+                "y": 224
             }
         },
         {
@@ -427,8 +427,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 231,
-                "y": 223
+                "x": 232,
+                "y": 224
             }
         },
         {
@@ -436,8 +436,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 247,
-                "y": 223
+                "x": 248,
+                "y": 224
             }
         },
         {
@@ -445,8 +445,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 263,
-                "y": 223
+                "x": 264,
+                "y": 224
             }
         },
         {
@@ -454,8 +454,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 279,
-                "y": 223
+                "x": 280,
+                "y": 224
             }
         },
         {
@@ -463,8 +463,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 295,
-                "y": 223
+                "x": 296,
+                "y": 224
             }
         },
         {
@@ -472,8 +472,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 311,
-                "y": 223
+                "x": 312,
+                "y": 224
             }
         },
         {
@@ -481,8 +481,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 327,
-                "y": 223
+                "x": 328,
+                "y": 224
             }
         },
         {
@@ -490,8 +490,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 343,
-                "y": 223
+                "x": 344,
+                "y": 224
             }
         },
         {
@@ -499,8 +499,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 359,
-                "y": 223
+                "x": 360,
+                "y": 224
             }
         },
         {
@@ -508,8 +508,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 375,
-                "y": 223
+                "x": 376,
+                "y": 224
             }
         },
         {
@@ -517,8 +517,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 391,
-                "y": 223
+                "x": 392,
+                "y": 224
             }
         },
         {
@@ -526,8 +526,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 407,
-                "y": 223
+                "x": 408,
+                "y": 224
             }
         },
         {
@@ -535,8 +535,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 423,
-                "y": 223
+                "x": 424,
+                "y": 224
             }
         },
         {
@@ -544,8 +544,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 439,
-                "y": 223
+                "x": 440,
+                "y": 224
             }
         },
         {
@@ -553,8 +553,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 455,
-                "y": 223
+                "x": 456,
+                "y": 224
             }
         },
         {
@@ -562,8 +562,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 471,
-                "y": 223
+                "x": 472,
+                "y": 224
             }
         },
         {
@@ -571,8 +571,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 487,
-                "y": 223
+                "x": 488,
+                "y": 224
             }
         },
         {
@@ -580,8 +580,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 503,
-                "y": 223
+                "x": 504,
+                "y": 224
             }
         },
         {
@@ -589,8 +589,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 519,
-                "y": 223
+                "x": 520,
+                "y": 224
             }
         },
         {
@@ -598,8 +598,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 535,
-                "y": 223
+                "x": 536,
+                "y": 224
             }
         },
         {
@@ -607,8 +607,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 551,
-                "y": 223
+                "x": 552,
+                "y": 224
             }
         },
         {
@@ -616,8 +616,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 567,
-                "y": 223
+                "x": 568,
+                "y": 224
             }
         },
         {
@@ -625,8 +625,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 583,
-                "y": 223
+                "x": 584,
+                "y": 224
             }
         },
         {
@@ -634,8 +634,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 599,
-                "y": 223
+                "x": 600,
+                "y": 224
             }
         },
         {
@@ -643,8 +643,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 615,
-                "y": 223
+                "x": 616,
+                "y": 224
             }
         },
         {
@@ -652,8 +652,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 631,
-                "y": 223
+                "x": 632,
+                "y": 224
             }
         },
         {
@@ -661,8 +661,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 647,
-                "y": 223
+                "x": 648,
+                "y": 224
             }
         },
         {
@@ -670,8 +670,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 663,
-                "y": 223
+                "x": 664,
+                "y": 224
             }
         },
         {
@@ -679,8 +679,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 679,
-                "y": 223
+                "x": 680,
+                "y": 224
             }
         },
         {
@@ -688,8 +688,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 695,
-                "y": 223
+                "x": 696,
+                "y": 224
             }
         },
         {
@@ -697,8 +697,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 711,
-                "y": 223
+                "x": 712,
+                "y": 224
             }
         },
         {
@@ -706,8 +706,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 727,
-                "y": 223
+                "x": 728,
+                "y": 224
             }
         },
         {
@@ -715,8 +715,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 743,
-                "y": 223
+                "x": 744,
+                "y": 224
             }
         },
         {
@@ -724,8 +724,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 759,
-                "y": 223
+                "x": 760,
+                "y": 224
             }
         },
         {
@@ -733,8 +733,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 775,
-                "y": 223
+                "x": 776,
+                "y": 224
             }
         },
         {
@@ -742,8 +742,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 791,
-                "y": 223
+                "x": 792,
+                "y": 224
             }
         },
         {
@@ -751,8 +751,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 807,
-                "y": 223
+                "x": 808,
+                "y": 224
             }
         },
         {
@@ -760,8 +760,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 823,
-                "y": 223
+                "x": 824,
+                "y": 224
             }
         },
         {
@@ -769,8 +769,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 839,
-                "y": 223
+                "x": 840,
+                "y": 224
             }
         },
         {
@@ -778,8 +778,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 855,
-                "y": 223
+                "x": 856,
+                "y": 224
             }
         },
         {
@@ -787,8 +787,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 871,
-                "y": 223
+                "x": 872,
+                "y": 224
             }
         },
         {
@@ -796,8 +796,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 887,
-                "y": 223
+                "x": 888,
+                "y": 224
             }
         },
         {
@@ -805,8 +805,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 903,
-                "y": 223
+                "x": 904,
+                "y": 224
             }
         },
         {
@@ -814,8 +814,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 919,
-                "y": 223
+                "x": 920,
+                "y": 224
             }
         },
         {
@@ -823,8 +823,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 935,
-                "y": 223
+                "x": 936,
+                "y": 224
             }
         },
         {
@@ -832,8 +832,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 951,
-                "y": 223
+                "x": 952,
+                "y": 224
             }
         },
         {
@@ -841,8 +841,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 967,
-                "y": 223
+                "x": 968,
+                "y": 224
             }
         },
         {
@@ -850,8 +850,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 983,
-                "y": 223
+                "x": 984,
+                "y": 224
             }
         },
         {
@@ -859,8 +859,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 999,
-                "y": 223
+                "x": 1000,
+                "y": 224
             }
         },
         {
@@ -868,8 +868,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1015,
-                "y": 223
+                "x": 1016,
+                "y": 224
             }
         },
         {
@@ -877,8 +877,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1031,
-                "y": 223
+                "x": 1032,
+                "y": 224
             }
         },
         {
@@ -886,8 +886,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1047,
-                "y": 223
+                "x": 1048,
+                "y": 224
             }
         },
         {
@@ -895,8 +895,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1063,
-                "y": 223
+                "x": 1064,
+                "y": 224
             }
         },
         {
@@ -904,8 +904,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1079,
-                "y": 223
+                "x": 1080,
+                "y": 224
             }
         },
         {
@@ -913,8 +913,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1095,
-                "y": 223
+                "x": 1096,
+                "y": 224
             }
         },
         {
@@ -923,7 +923,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 8,
-                "y": 239
+                "y": 240
             }
         },
         {
@@ -931,8 +931,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 23,
-                "y": 239
+                "x": 24,
+                "y": 240
             }
         },
         {
@@ -940,8 +940,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 39,
-                "y": 239
+                "x": 40,
+                "y": 240
             }
         },
         {
@@ -950,7 +950,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 56,
-                "y": 239
+                "y": 240
             }
         },
         {
@@ -958,8 +958,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 71,
-                "y": 239
+                "x": 72,
+                "y": 240
             }
         },
         {
@@ -967,8 +967,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 87,
-                "y": 239
+                "x": 88,
+                "y": 240
             }
         },
         {
@@ -977,7 +977,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 104,
-                "y": 239
+                "y": 240
             }
         },
         {
@@ -986,7 +986,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 120,
-                "y": 239
+                "y": 240
             }
         },
         {
@@ -995,7 +995,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 136,
-                "y": 239
+                "y": 240
             }
         },
         {
@@ -1004,7 +1004,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 152,
-                "y": 239
+                "y": 240
             }
         },
         {
@@ -1012,8 +1012,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 167,
-                "y": 239
+                "x": 168,
+                "y": 240
             }
         },
         {
@@ -1021,8 +1021,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 183,
-                "y": 239
+                "x": 184,
+                "y": 240
             }
         },
         {
@@ -1030,8 +1030,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 199,
-                "y": 239
+                "x": 200,
+                "y": 240
             }
         },
         {
@@ -1039,8 +1039,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 215,
-                "y": 239
+                "x": 216,
+                "y": 240
             }
         },
         {
@@ -1048,8 +1048,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 231,
-                "y": 239
+                "x": 232,
+                "y": 240
             }
         },
         {
@@ -1057,8 +1057,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 247,
-                "y": 239
+                "x": 248,
+                "y": 240
             }
         },
         {
@@ -1066,8 +1066,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 263,
-                "y": 239
+                "x": 264,
+                "y": 240
             }
         },
         {
@@ -1075,8 +1075,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 279,
-                "y": 239
+                "x": 280,
+                "y": 240
             }
         },
         {
@@ -1084,8 +1084,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 295,
-                "y": 239
+                "x": 296,
+                "y": 240
             }
         },
         {
@@ -1093,8 +1093,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 311,
-                "y": 239
+                "x": 312,
+                "y": 240
             }
         },
         {
@@ -1102,8 +1102,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 327,
-                "y": 239
+                "x": 328,
+                "y": 240
             }
         },
         {
@@ -1111,8 +1111,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 343,
-                "y": 239
+                "x": 344,
+                "y": 240
             }
         },
         {
@@ -1120,8 +1120,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 359,
-                "y": 239
+                "x": 360,
+                "y": 240
             }
         },
         {
@@ -1129,8 +1129,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 375,
-                "y": 239
+                "x": 376,
+                "y": 240
             }
         },
         {
@@ -1138,8 +1138,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 391,
-                "y": 239
+                "x": 392,
+                "y": 240
             }
         },
         {
@@ -1147,8 +1147,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 407,
-                "y": 239
+                "x": 408,
+                "y": 240
             }
         },
         {
@@ -1156,8 +1156,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 423,
-                "y": 239
+                "x": 424,
+                "y": 240
             }
         },
         {
@@ -1165,8 +1165,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 439,
-                "y": 239
+                "x": 440,
+                "y": 240
             }
         },
         {
@@ -1174,8 +1174,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 455,
-                "y": 239
+                "x": 456,
+                "y": 240
             }
         },
         {
@@ -1183,8 +1183,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 471,
-                "y": 239
+                "x": 472,
+                "y": 240
             }
         },
         {
@@ -1192,8 +1192,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 487,
-                "y": 239
+                "x": 488,
+                "y": 240
             }
         },
         {
@@ -1201,8 +1201,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 503,
-                "y": 239
+                "x": 504,
+                "y": 240
             }
         },
         {
@@ -1210,8 +1210,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 519,
-                "y": 239
+                "x": 520,
+                "y": 240
             }
         },
         {
@@ -1219,8 +1219,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 535,
-                "y": 239
+                "x": 536,
+                "y": 240
             }
         },
         {
@@ -1228,8 +1228,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 551,
-                "y": 239
+                "x": 552,
+                "y": 240
             }
         },
         {
@@ -1237,8 +1237,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 567,
-                "y": 239
+                "x": 568,
+                "y": 240
             }
         },
         {
@@ -1246,8 +1246,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 583,
-                "y": 239
+                "x": 584,
+                "y": 240
             }
         },
         {
@@ -1255,8 +1255,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 599,
-                "y": 239
+                "x": 600,
+                "y": 240
             }
         },
         {
@@ -1264,8 +1264,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 615,
-                "y": 239
+                "x": 616,
+                "y": 240
             }
         },
         {
@@ -1273,8 +1273,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 631,
-                "y": 239
+                "x": 632,
+                "y": 240
             }
         },
         {
@@ -1282,8 +1282,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 647,
-                "y": 239
+                "x": 648,
+                "y": 240
             }
         },
         {
@@ -1291,8 +1291,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 663,
-                "y": 239
+                "x": 664,
+                "y": 240
             }
         },
         {
@@ -1300,8 +1300,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 679,
-                "y": 239
+                "x": 680,
+                "y": 240
             }
         },
         {
@@ -1309,8 +1309,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 695,
-                "y": 239
+                "x": 696,
+                "y": 240
             }
         },
         {
@@ -1318,8 +1318,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 711,
-                "y": 239
+                "x": 712,
+                "y": 240
             }
         },
         {
@@ -1327,8 +1327,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 727,
-                "y": 239
+                "x": 728,
+                "y": 240
             }
         },
         {
@@ -1336,8 +1336,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 743,
-                "y": 239
+                "x": 744,
+                "y": 240
             }
         },
         {
@@ -1345,8 +1345,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 759,
-                "y": 239
+                "x": 760,
+                "y": 240
             }
         },
         {
@@ -1354,8 +1354,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 775,
-                "y": 239
+                "x": 776,
+                "y": 240
             }
         },
         {
@@ -1363,8 +1363,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 791,
-                "y": 239
+                "x": 792,
+                "y": 240
             }
         },
         {
@@ -1372,8 +1372,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 807,
-                "y": 239
+                "x": 808,
+                "y": 240
             }
         },
         {
@@ -1381,8 +1381,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 823,
-                "y": 239
+                "x": 824,
+                "y": 240
             }
         },
         {
@@ -1390,8 +1390,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 839,
-                "y": 239
+                "x": 840,
+                "y": 240
             }
         },
         {
@@ -1399,8 +1399,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 855,
-                "y": 239
+                "x": 856,
+                "y": 240
             }
         },
         {
@@ -1408,8 +1408,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 871,
-                "y": 239
+                "x": 872,
+                "y": 240
             }
         },
         {
@@ -1417,8 +1417,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 887,
-                "y": 239
+                "x": 888,
+                "y": 240
             }
         },
         {
@@ -1426,8 +1426,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 903,
-                "y": 239
+                "x": 904,
+                "y": 240
             }
         },
         {
@@ -1435,8 +1435,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 919,
-                "y": 239
+                "x": 920,
+                "y": 240
             }
         },
         {
@@ -1444,8 +1444,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 935,
-                "y": 239
+                "x": 936,
+                "y": 240
             }
         },
         {
@@ -1453,8 +1453,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 951,
-                "y": 239
+                "x": 952,
+                "y": 240
             }
         },
         {
@@ -1462,8 +1462,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 967,
-                "y": 239
+                "x": 968,
+                "y": 240
             }
         },
         {
@@ -1471,8 +1471,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 983,
-                "y": 239
+                "x": 984,
+                "y": 240
             }
         },
         {
@@ -1480,8 +1480,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 999,
-                "y": 239
+                "x": 1000,
+                "y": 240
             }
         },
         {
@@ -1489,8 +1489,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1015,
-                "y": 239
+                "x": 1016,
+                "y": 240
             }
         },
         {
@@ -1498,8 +1498,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1031,
-                "y": 239
+                "x": 1032,
+                "y": 240
             }
         },
         {
@@ -1507,8 +1507,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1047,
-                "y": 239
+                "x": 1048,
+                "y": 240
             }
         },
         {
@@ -1516,8 +1516,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1063,
-                "y": 239
+                "x": 1064,
+                "y": 240
             }
         },
         {
@@ -1525,8 +1525,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1079,
-                "y": 239
+                "x": 1080,
+                "y": 240
             }
         },
         {
@@ -1534,8 +1534,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1095,
-                "y": 239
+                "x": 1096,
+                "y": 240
             }
         },
         {
@@ -1544,7 +1544,16 @@
             "isContainingItem": true,
             "position": {
                 "x": 264,
-                "y": 159
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "Coin",
+            "blockType": "Questionmark Coin",
+            "isContainingItem": true,
+            "position": {
+                "x": 360,
+                "y": 96
             }
         },
         {
@@ -1553,16 +1562,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 328,
-                "y": 159
-            }
-        },
-        {
-            "ItemType": "Coin",
-            "blockType": "Questionmark Coin",
-            "isContainingItem": true,
-            "position": {
-                "x": 359,
-                "y": 96
+                "y": 160
             }
         },
         {
@@ -1570,8 +1570,8 @@
             "blockType": "Questionmark PowerUp",
             "isContainingItem": true,
             "position": {
-                "x": 343,
-                "y": 159
+                "x": 344,
+                "y": 160
             }
         },
         {
@@ -1579,8 +1579,8 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 359,
-                "y": 159
+                "x": 360,
+                "y": 160
             }
         },
         {
@@ -1588,8 +1588,8 @@
             "blockType": "Questionmark Coin",
             "isContainingItem": true,
             "position": {
-                "x": 375,
-                "y": 159
+                "x": 376,
+                "y": 160
             }
         },
         {
@@ -1598,7 +1598,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 392,
-                "y": 159
+                "y": 160
             }
         },
         {
@@ -1615,8 +1615,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1143,
-                "y": 223
+                "x": 1144,
+                "y": 224
             }
         },
         {
@@ -1624,8 +1624,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1159,
-                "y": 223
+                "x": 1160,
+                "y": 224
             }
         },
         {
@@ -1634,7 +1634,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1176,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -1643,7 +1643,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1192,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -1652,7 +1652,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1208,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -1661,7 +1661,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1224,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -1670,7 +1670,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1240,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -1678,8 +1678,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1255,
-                "y": 223
+                "x": 1256,
+                "y": 224
             }
         },
         {
@@ -1688,7 +1688,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1272,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -1697,7 +1697,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1288,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -1706,7 +1706,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1304,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -1715,7 +1715,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1320,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -1724,7 +1724,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1336,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -1733,7 +1733,133 @@
             "isContainingItem": false,
             "position": {
                 "x": 1352,
-                "y": 223
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1144,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1160,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1176,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1192,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1208,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1224,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1240,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1256,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1272,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1288,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1304,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1320,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1336,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1352,
+                "y": 240
             }
         },
         {
@@ -1742,133 +1868,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1368,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1143,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1159,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1176,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1192,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1208,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1224,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1240,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1255,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1272,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1288,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1304,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1320,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1336,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1352,
-                "y": 240
+                "y": 224
             }
         },
         {
@@ -1885,8 +1885,17 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1239,
-                "y": 159
+                "x": 1240,
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1272,
+                "y": 160
             }
         },
         {
@@ -1894,17 +1903,8 @@
             "blockType": "Questionmark PowerUp",
             "isContainingItem": true,
             "position": {
-                "x": 1255,
-                "y": 159
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1271,
-                "y": 159
+                "x": 1256,
+                "y": 160
             }
         },
         {
@@ -1939,7 +1939,7 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1335,
+                "x": 1336,
                 "y": 96
             }
         },
@@ -1948,7 +1948,7 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1351,
+                "x": 1352,
                 "y": 96
             }
         },
@@ -1981,10 +1981,1162 @@
         },
         {
             "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1432,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1448,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1464,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1480,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1496,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1512,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1528,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1544,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1560,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1576,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1592,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1608,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1624,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1640,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1656,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1672,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1688,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1704,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1720,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1736,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1752,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1768,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1784,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1800,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1816,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1832,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1848,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1864,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1880,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1896,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1912,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1928,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1944,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1960,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1976,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1992,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2008,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2024,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2040,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2056,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2072,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2088,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2104,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2120,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2136,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2152,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2168,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2184,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2200,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2216,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2232,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2248,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2264,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2280,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2296,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2312,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2328,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2344,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2360,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2376,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2392,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2408,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2424,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2440,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1432,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1448,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1464,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1480,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1496,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1512,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1528,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1544,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1560,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1576,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1592,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1608,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1624,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1640,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1656,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1672,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1688,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1704,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1720,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1736,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1752,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1768,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1784,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1800,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1816,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1832,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1848,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1864,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1880,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1896,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1912,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1928,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1944,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1960,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1976,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 1992,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2008,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2024,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2040,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2056,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2072,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2088,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2104,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2120,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2136,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2152,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2168,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2184,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2200,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2216,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2232,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2248,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2264,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2280,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2296,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2312,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2328,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2344,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2360,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2376,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2392,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2408,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2424,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2440,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1463,
+                "x": 1464,
                 "y": 96
             }
         },
@@ -1993,7 +3145,7 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1479,
+                "x": 1480,
                 "y": 96
             }
         },
@@ -2016,1164 +3168,12 @@
             }
         },
         {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1432,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1448,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1463,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1479,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1496,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1512,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1527,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1544,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1559,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1576,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1592,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1608,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1623,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1639,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1655,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1672,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1687,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1704,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1719,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1735,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1752,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1767,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1783,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1800,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1816,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1832,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1848,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1863,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1879,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1896,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1911,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1928,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1944,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1959,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1975,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1991,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2007,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2023,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2040,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2056,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2072,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2088,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2104,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2120,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2135,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2152,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2168,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2184,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2200,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2215,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2232,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2248,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2263,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2279,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2295,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2312,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2328,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2344,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2360,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2376,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2392,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2407,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2424,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2440,
-                "y": 223
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1432,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1448,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1463,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1479,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1496,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1512,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1527,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1544,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1559,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1576,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1592,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1608,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1623,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1639,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1655,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1672,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1687,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1704,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1719,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1735,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1752,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1767,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1783,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1800,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1816,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1832,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1848,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1863,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1879,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1896,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1911,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1928,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1944,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1959,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1975,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 1991,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2007,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2023,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2040,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2056,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2072,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2088,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2104,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2120,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2135,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2152,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2168,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2184,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2200,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2215,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2232,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2248,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2263,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2279,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2295,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2312,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2328,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2344,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2360,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2376,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2392,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2407,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2424,
-                "y": 240
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2440,
-                "y": 240
-            }
-        },
-        {
             "ItemType": "Coin",
             "blockType": "Coin Brick",
             "isContainingItem": true,
             "position": {
                 "x": 1512,
-                "y": 159
+                "y": 160
             }
         },
         {
@@ -3182,7 +3182,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 1608,
-                "y": 159
+                "y": 160
             }
         },
         {
@@ -3190,8 +3190,35 @@
             "blockType": "Star Brick",
             "isContainingItem": true,
             "position": {
-                "x": 1623,
-                "y": 159
+                "x": 1624,
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "Coin",
+            "blockType": "Questionmark Coin",
+            "isContainingItem": true,
+            "position": {
+                "x": 1704,
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "Coin",
+            "blockType": "Questionmark Coin",
+            "isContainingItem": true,
+            "position": {
+                "x": 1752,
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "Coin",
+            "blockType": "Questionmark Coin",
+            "isContainingItem": true,
+            "position": {
+                "x": 1800,
+                "y": 160
             }
         },
         {
@@ -3204,39 +3231,12 @@
             }
         },
         {
-            "ItemType": "Coin",
-            "blockType": "Questionmark Coin",
-            "isContainingItem": true,
-            "position": {
-                "x": 1704,
-                "y": 159
-            }
-        },
-        {
-            "ItemType": "Coin",
-            "blockType": "Questionmark Coin",
-            "isContainingItem": true,
-            "position": {
-                "x": 1752,
-                "y": 159
-            }
-        },
-        {
-            "ItemType": "Coin",
-            "blockType": "Questionmark Coin",
-            "isContainingItem": true,
-            "position": {
-                "x": 1800,
-                "y": 159
-            }
-        },
-        {
             "ItemType": "No Item",
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
                 "x": 1896,
-                "y": 159
+                "y": 160
             }
         },
         {
@@ -3253,7 +3253,7 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1959,
+                "x": 1960,
                 "y": 96
             }
         },
@@ -3262,7 +3262,7 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 1975,
+                "x": 1976,
                 "y": 96
             }
         },
@@ -3289,7 +3289,7 @@
             "blockType": "Questionmark Coin",
             "isContainingItem": true,
             "position": {
-                "x": 2087,
+                "x": 2088,
                 "y": 96
             }
         },
@@ -3308,7 +3308,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2072,
-                "y": 159
+                "y": 160
             }
         },
         {
@@ -3316,8 +3316,17 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2087,
-                "y": 159
+                "x": 2088,
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2168,
+                "y": 192
             }
         },
         {
@@ -3326,7 +3335,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2184,
-                "y": 176
+                "y": 192
             }
         },
         {
@@ -3335,7 +3344,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2200,
-                "y": 176
+                "y": 192
             }
         },
         {
@@ -3343,17 +3352,8 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2184,
-                "y": 191
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2200,
-                "y": 191
+                "x": 2168,
+                "y": 208
             }
         },
         {
@@ -3371,33 +3371,6 @@
             "isContainingItem": false,
             "position": {
                 "x": 2200,
-                "y": 208
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2200,
-                "y": 159
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2168,
-                "y": 191
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2168,
                 "y": 208
             }
         },
@@ -3415,6 +3388,42 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
+                "x": 2184,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2200,
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2200,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2248,
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
                 "x": 2248,
                 "y": 176
             }
@@ -3424,7 +3433,7 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2263,
+                "x": 2264,
                 "y": 176
             }
         },
@@ -3434,7 +3443,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2248,
-                "y": 191
+                "y": 192
             }
         },
         {
@@ -3442,8 +3451,8 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2263,
-                "y": 191
+                "x": 2264,
+                "y": 192
             }
         },
         {
@@ -3460,7 +3469,7 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2263,
+                "x": 2264,
                 "y": 208
             }
         },
@@ -3469,8 +3478,8 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2248,
-                "y": 159
+                "x": 2280,
+                "y": 192
             }
         },
         {
@@ -3478,16 +3487,7 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2279,
-                "y": 191
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2279,
+                "x": 2280,
                 "y": 208
             }
         },
@@ -3505,105 +3505,6 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2408,
-                "y": 176
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2424,
-                "y": 176
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2440,
-                "y": 176
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2408,
-                "y": 191
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2424,
-                "y": 191
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2440,
-                "y": 191
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2408,
-                "y": 208
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2424,
-                "y": 208
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2440,
-                "y": 208
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2424,
-                "y": 159
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2440,
-                "y": 159
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
                 "x": 2376,
                 "y": 208
             }
@@ -3614,7 +3515,34 @@
             "isContainingItem": false,
             "position": {
                 "x": 2392,
-                "y": 191
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2408,
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2424,
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2440,
+                "y": 208
             }
         },
         {
@@ -3623,33 +3551,6 @@
             "isContainingItem": false,
             "position": {
                 "x": 2392,
-                "y": 207
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2487,
-                "y": 159
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2487,
-                "y": 175
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2487,
                 "y": 192
             }
         },
@@ -3658,7 +3559,106 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2487,
+                "x": 2408,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2424,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2440,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2408,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2424,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2440,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2424,
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2440,
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2488,
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2488,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2488,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2488,
                 "y": 208
             }
         },
@@ -3677,7 +3677,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2504,
-                "y": 191
+                "y": 192
             }
         },
         {
@@ -3695,7 +3695,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2520,
-                "y": 191
+                "y": 192
             }
         },
         {
@@ -3704,7 +3704,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2520,
-                "y": 207
+                "y": 208
             }
         },
         {
@@ -3721,8 +3721,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2487,
-                "y": 223
+                "x": 2488,
+                "y": 224
             }
         },
         {
@@ -3731,7 +3731,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2504,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3740,7 +3740,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2520,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3749,7 +3749,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2536,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3757,8 +3757,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2551,
-                "y": 223
+                "x": 2552,
+                "y": 224
             }
         },
         {
@@ -3767,7 +3767,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2568,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3776,7 +3776,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2584,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3785,7 +3785,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2600,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3794,7 +3794,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2616,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3803,7 +3803,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2632,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3812,7 +3812,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2648,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3820,8 +3820,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2663,
-                "y": 223
+                "x": 2664,
+                "y": 224
             }
         },
         {
@@ -3830,7 +3830,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2680,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3838,8 +3838,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2695,
-                "y": 223
+                "x": 2696,
+                "y": 224
             }
         },
         {
@@ -3848,7 +3848,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2712,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3857,7 +3857,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2728,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3866,7 +3866,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2744,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3875,7 +3875,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2760,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3884,7 +3884,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2776,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3893,7 +3893,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2792,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3902,7 +3902,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2808,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3910,8 +3910,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2823,
-                "y": 223
+                "x": 2824,
+                "y": 224
             }
         },
         {
@@ -3920,7 +3920,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2840,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3929,7 +3929,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2856,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3938,7 +3938,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2872,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3947,7 +3947,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2888,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3956,7 +3956,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2904,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3965,7 +3965,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2920,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3974,7 +3974,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2936,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3983,7 +3983,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2952,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -3992,7 +3992,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2968,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4001,7 +4001,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2984,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4010,7 +4010,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3000,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4019,7 +4019,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3016,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4028,7 +4028,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3032,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4037,7 +4037,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3048,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4046,7 +4046,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3064,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4055,7 +4055,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3080,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4064,7 +4064,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3096,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4073,7 +4073,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3112,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4081,8 +4081,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3127,
-                "y": 223
+                "x": 3128,
+                "y": 224
             }
         },
         {
@@ -4091,7 +4091,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3144,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4100,7 +4100,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3160,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4109,7 +4109,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3176,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4118,7 +4118,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3192,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4127,7 +4127,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3208,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4135,8 +4135,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3223,
-                "y": 223
+                "x": 3224,
+                "y": 224
             }
         },
         {
@@ -4145,7 +4145,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3240,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4154,7 +4154,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3256,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4163,7 +4163,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3272,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4171,8 +4171,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3287,
-                "y": 223
+                "x": 3288,
+                "y": 224
             }
         },
         {
@@ -4181,7 +4181,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3304,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4190,7 +4190,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3320,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4198,8 +4198,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3335,
-                "y": 223
+                "x": 3336,
+                "y": 224
             }
         },
         {
@@ -4208,7 +4208,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3352,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4216,8 +4216,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3367,
-                "y": 223
+                "x": 3368,
+                "y": 224
             }
         },
         {
@@ -4226,7 +4226,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3384,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4235,7 +4235,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3400,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4244,7 +4244,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3416,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4252,8 +4252,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3431,
-                "y": 223
+                "x": 3432,
+                "y": 224
             }
         },
         {
@@ -4262,7 +4262,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3448,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4271,7 +4271,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3464,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4280,7 +4280,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3480,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4289,7 +4289,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3496,
-                "y": 223
+                "y": 224
             }
         },
         {
@@ -4297,8 +4297,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3511,
-                "y": 223
+                "x": 3512,
+                "y": 224
             }
         },
         {
@@ -4306,8 +4306,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3527,
-                "y": 223
+                "x": 3528,
+                "y": 224
             }
         },
         {
@@ -4315,8 +4315,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3543,
-                "y": 223
+                "x": 3544,
+                "y": 224
             }
         },
         {
@@ -4324,8 +4324,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3559,
-                "y": 223
+                "x": 3560,
+                "y": 224
             }
         },
         {
@@ -4333,8 +4333,8 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3575,
-                "y": 223
+                "x": 3576,
+                "y": 224
             }
         },
         {
@@ -4342,7 +4342,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2487,
+                "x": 2488,
                 "y": 240
             }
         },
@@ -4378,7 +4378,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2551,
+                "x": 2552,
                 "y": 240
             }
         },
@@ -4441,7 +4441,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2663,
+                "x": 2664,
                 "y": 240
             }
         },
@@ -4459,7 +4459,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2695,
+                "x": 2696,
                 "y": 240
             }
         },
@@ -4531,7 +4531,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2823,
+                "x": 2824,
                 "y": 240
             }
         },
@@ -4702,7 +4702,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3127,
+                "x": 3128,
                 "y": 240
             }
         },
@@ -4756,7 +4756,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3223,
+                "x": 3224,
                 "y": 240
             }
         },
@@ -4792,7 +4792,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3287,
+                "x": 3288,
                 "y": 240
             }
         },
@@ -4819,7 +4819,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3335,
+                "x": 3336,
                 "y": 240
             }
         },
@@ -4837,7 +4837,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3367,
+                "x": 3368,
                 "y": 240
             }
         },
@@ -4873,7 +4873,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3431,
+                "x": 3432,
                 "y": 240
             }
         },
@@ -4918,7 +4918,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3511,
+                "x": 3512,
                 "y": 240
             }
         },
@@ -4927,7 +4927,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3527,
+                "x": 3528,
                 "y": 240
             }
         },
@@ -4936,7 +4936,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3543,
+                "x": 3544,
                 "y": 240
             }
         },
@@ -4945,7 +4945,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3559,
+                "x": 3560,
                 "y": 240
             }
         },
@@ -4954,7 +4954,7 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3575,
+                "x": 3576,
                 "y": 240
             }
         },
@@ -4963,8 +4963,8 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2695,
-                "y": 159
+                "x": 2696,
+                "y": 160
             }
         },
         {
@@ -4972,8 +4972,8 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2711,
-                "y": 159
+                "x": 2712,
+                "y": 160
             }
         },
         {
@@ -4982,7 +4982,7 @@
             "isContainingItem": true,
             "position": {
                 "x": 2728,
-                "y": 159
+                "y": 160
             }
         },
         {
@@ -4991,7 +4991,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2744,
-                "y": 159
+                "y": 160
             }
         },
         {
@@ -5090,7 +5090,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2968,
-                "y": 175
+                "y": 176
             }
         },
         {
@@ -5099,7 +5099,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2984,
-                "y": 175
+                "y": 176
             }
         },
         {
@@ -5108,7 +5108,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3000,
-                "y": 175
+                "y": 176
             }
         },
         {
@@ -5117,7 +5117,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3016,
-                "y": 175
+                "y": 176
             }
         },
         {
@@ -5126,7 +5126,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3032,
-                "y": 175
+                "y": 176
             }
         },
         {
@@ -5135,7 +5135,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2968,
-                "y": 191
+                "y": 192
             }
         },
         {
@@ -5144,7 +5144,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2984,
-                "y": 191
+                "y": 192
             }
         },
         {
@@ -5153,7 +5153,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3000,
-                "y": 191
+                "y": 192
             }
         },
         {
@@ -5162,7 +5162,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3016,
-                "y": 191
+                "y": 192
             }
         },
         {
@@ -5171,7 +5171,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3032,
-                "y": 191
+                "y": 192
             }
         },
         {
@@ -5180,7 +5180,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2968,
-                "y": 207
+                "y": 208
             }
         },
         {
@@ -5189,7 +5189,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 2984,
-                "y": 207
+                "y": 208
             }
         },
         {
@@ -5198,7 +5198,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3000,
-                "y": 207
+                "y": 208
             }
         },
         {
@@ -5207,7 +5207,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3016,
-                "y": 207
+                "y": 208
             }
         },
         {
@@ -5216,7 +5216,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 3032,
-                "y": 207
+                "y": 208
             }
         },
         {
@@ -5224,17 +5224,8 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3016,
-                "y": 96
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 3032,
-                "y": 96
+                "x": 3000,
+                "y": 112
             }
         },
         {
@@ -5260,8 +5251,17 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
+                "x": 3000,
+                "y": 128
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
                 "x": 3016,
-                "y": 127
+                "y": 128
             }
         },
         {
@@ -5270,24 +5270,6 @@
             "isContainingItem": false,
             "position": {
                 "x": 3032,
-                "y": 127
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2999,
-                "y": 111
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2999,
                 "y": 128
             }
         },
@@ -5305,8 +5287,8 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2936,
-                "y": 176
+                "x": 3016,
+                "y": 96
             }
         },
         {
@@ -5314,53 +5296,8 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2952,
-                "y": 176
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2936,
-                "y": 191
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2952,
-                "y": 191
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2936,
-                "y": 207
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2952,
-                "y": 207
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "HardBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 2952,
-                "y": 159
+                "x": 3032,
+                "y": 96
             }
         },
         {
@@ -5369,7 +5306,25 @@
             "isContainingItem": false,
             "position": {
                 "x": 2920,
-                "y": 191
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2936,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2952,
+                "y": 192
             }
         },
         {
@@ -5386,8 +5341,8 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 2904,
-                "y": 207
+                "x": 2936,
+                "y": 208
             }
         },
         {
@@ -5395,8 +5350,53 @@
             "blockType": "HardBlock",
             "isContainingItem": false,
             "position": {
-                "x": 3175,
-                "y": 207
+                "x": 2952,
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2952,
+                "y": 160
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2952,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2936,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 2904,
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "HardBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 3176,
+                "y": 208
             }
         }
     ],
@@ -5411,7 +5411,7 @@
         {
             "characterType": "Goomba",
             "position": {
-                "x": 359,
+                "x": 360,
                 "y": 208
             }
         },
@@ -5425,14 +5425,14 @@
         {
             "characterType": "Goomba",
             "position": {
-                "x": 823,
+                "x": 824,
                 "y": 208
             }
         },
         {
             "characterType": "Goomba",
             "position": {
-                "x": 847,
+                "x": 848,
                 "y": 208
             }
         },
@@ -5453,7 +5453,7 @@
         {
             "characterType": "Goomba",
             "position": {
-                "x": 1559,
+                "x": 1560,
                 "y": 208
             }
         },
@@ -5467,8 +5467,8 @@
         {
             "characterType": "Green Koopa Troopa",
             "position": {
-                "x": 1719,
-                "y": 207
+                "x": 1720,
+                "y": 208
             }
         },
         {
@@ -5488,14 +5488,14 @@
         {
             "characterType": "Goomba",
             "position": {
-                "x": 1991,
+                "x": 1992,
                 "y": 208
             }
         },
         {
             "characterType": "Goomba",
             "position": {
-                "x": 2015,
+                "x": 2016,
                 "y": 208
             }
         },
@@ -5509,7 +5509,7 @@
         {
             "characterType": "Goomba",
             "position": {
-                "x": 2079,
+                "x": 2080,
                 "y": 208
             }
         },
@@ -5517,14 +5517,14 @@
             "characterType": "Goomba",
             "position": {
                 "x": 2792,
-                "y": 207
+                "y": 208
             }
         },
         {
             "characterType": "Goomba",
             "position": {
-                "x": 2815,
-                "y": 207
+                "x": 2816,
+                "y": 208
             }
         }
     ],
@@ -5533,9 +5533,9 @@
             "environmentType": "Pipe Head Horizontal",
             "position": {
                 "x": 464,
-                "y": 191
+                "y": 192
             }
-            },
+        },
         {
             "environmentType": "Pipe Body Horizontal",
             "position": {
@@ -5554,7 +5554,7 @@
             "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 624,
-                "y": 191
+                "y": 192
             }
         },
         {
@@ -5567,28 +5567,28 @@
         {
             "environmentType": "Pipe Head Horizontal",
             "position": {
-                "x": 751,
-                "y": 159
+                "x": 752,
+                "y": 160
             }
         },
         {
             "environmentType": "Pipe Body Horizontal",
             "position": {
-                "x": 751,
+                "x": 752,
                 "y": 176
             }
         },
         {
             "environmentType": "Pipe Body Horizontal",
             "position": {
-                "x": 751,
-                "y": 191
+                "x": 752,
+                "y": 192
             }
         },
         {
             "environmentType": "Pipe Body Horizontal",
             "position": {
-                "x": 751,
+                "x": 752,
                 "y": 208
             }
         },
@@ -5596,7 +5596,7 @@
             "environmentType": "Pipe Head Horizontal",
             "position": {
                 "x": 928,
-                "y": 159
+                "y": 160
             }
         },
         {
@@ -5610,7 +5610,7 @@
             "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 928,
-                "y": 191
+                "y": 192
             }
         },
         {
@@ -5623,29 +5623,29 @@
         {
             "environmentType": "Pipe Head Horizontal",
             "position": {
-                "x": 2623,
-                "y": 191
+                "x": 2624,
+                "y": 192
             }
         },
         {
             "environmentType": "Pipe Body Horizontal",
             "position": {
-                "x": 2623,
-                "y": 207
+                "x": 2624,
+                "y": 208
             }
         },
         {
             "environmentType": "Pipe Head Horizontal",
             "position": {
-                "x": 2879,
-                "y": 191
+                "x": 2880,
+                "y": 192
             }
         },
         {
             "environmentType": "Pipe Body Horizontal",
             "position": {
-                "x": 2879,
-                "y": 207
+                "x": 2880,
+                "y": 208
             }
         },
         {
