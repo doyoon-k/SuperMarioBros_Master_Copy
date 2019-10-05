@@ -1,5 +1,5 @@
 /*
-  goomba.js
+  inactive_block.js
   Super Mario Bros.
 
   GAM100 
@@ -38,11 +38,6 @@ class InactiveBlock
     }
 
     Update() {}
-
-    Destroy()
-    {
-        game.Expel(this);
-    }
 }
 
 

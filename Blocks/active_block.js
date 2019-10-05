@@ -1,5 +1,5 @@
 /*
-  goomba.js
+  active_block.js
   Super Mario Bros.
 
   GAM100 
@@ -14,38 +14,30 @@
 
 class ActiveBlock
 {
-    constructor(x, y, isQuestion, containingItem)
+    constructor(x, y, containingItem)
     {
         this.x = x;
         this.y = y;
-        this.isQuestion = isQuestion;  // else Brick
         this.containingItem = containingItem;  // EContainingItemType; See below
 
         this.isBouncing = false;
         
-        this.speedX = this.speedY = 0;  // very ugly variables for collision detection, never get changed
+        this.speedX = 0;  // only for collision detection, never get changed
+        this.speedY = 0;  // while this can be changed, when bouncing
+
+        this.spriteToDraw = undefined;
     }
 
-    Draw()
-    {
+    Draw() {}
 
-    }
-
-    Update()
-    {
-        
-    }
+    Update() {}
 
     Destroy()
     {
+        let newBlock = new InactiveBlock(this.x, this.y, EInactiveBlockType.Empty);
+        game.gameObjects.push(newBlock);
+        game.Enroll(newBlock);
         game.Expel(this);
-    }
-
-    Hit()
-    {
-        this.isBouncing = true;
-        physics.RegisterToMovingObjectsArray(this);
-        setTimeout(() => {physics.RemoveFromMovingObjectsArray(this); this.isBouncing = false;}, BLOCK_BOUNCING_SECONDS * 1000);
     }
 
     OnCollisionWith(collider, direction)

@@ -1,5 +1,5 @@
 /*
-  statistics.js
+  game.js
   Super Mario Bros.
 
   GAM100 
