@@ -5,7 +5,7 @@
   GAM100
   Fall 2019
 
-  JoonHo Hwang Searched and arranged the hitbox coords data (hitboxes)
+  JoonHo Hwang Arranged the hitbox coords data (hitboxes)
   DoYoon Kim Wrote the class
   SeungGeon Kim did ---
 
@@ -40,5 +40,5 @@ hitboxes = {
     koopa_troopa : new Hitbox(0, -3, 12, 12),
 
     fireball : new Hitbox(0, 0, 8, 8),
-    powerup : new Hitbox(0, -3, 12, 12)
+    powerup : new Hitbox(0, -3, 12, 12)  // including the coins
 };

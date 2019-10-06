@@ -49,7 +49,6 @@ function preload() {
     goomba_underground_2: loadImage("Sprites/Enemy/enemy_goomba_underground_2.png"),
     goomba_stomped_underground: loadImage("Sprites/Enemy/enemy_goomba_stomped_underground.png"),
 
-
     turtle_1: loadImage("Sprites/Enemy/enemy_turtle_1.png"),
     turtle_2: loadImage("Sprites/Enemy/enemy_turtle_2.png"),
     turtle_shell: loadImage("Sprites/Enemy/enemy_turtle_shell.png"),
@@ -65,17 +64,51 @@ function preload() {
     turtle_shell_red: loadImage("Sprites/Enemy/enemy_turtle_shell_red.png"),
     turtle_awakening_red: loadImage("Sprites/Enemy/enemy_turtle_awakening_red.png"),
 
-    bush_single: loadImage("Sprites/background/bg_bush_single.png"),
-    bush_double: loadImage("Sprites/background/bg_bush_double.png"),
-    bush_triple: loadImage("Sprites/background/bg_bush_triple.png"),
 
-    cloud_single: loadImage("Sprites/background/bg_cloud_single.png"),
-    cloud_double: loadImage("Sprites/background/bg_cloud_double.png"),
-    cloud_triple: loadImage("Sprites/background/bg_cloud_triple.png"),
+    bush_single: loadImage("Sprites/Background/bg_bush_single.png"),
+    bush_double: loadImage("Sprites/Background/bg_bush_double.png"),
+    bush_triple: loadImage("Sprites/Background/bg_bush_triple.png"),
 
-    mountain: loadImage("Sprites/background/bg_mountain.png"),
+    cloud_single: loadImage("Sprites/Background/bg_cloud_single.png"),
+    cloud_double: loadImage("Sprites/Background/bg_cloud_double.png"),
+    cloud_triple: loadImage("Sprites/Background/bg_cloud_triple.png"),
 
-    castle: loadImage("Sprites/background/bg_castle.png")
+    mountain: loadImage("Sprites/Background/bg_mountain.png"),
+
+    castle: loadImage("Sprites/Background/bg_castle.png"),
+
+
+    coin_1: loadImage("Sprites/Item/item_coin_1.png"),
+    coin_2: loadImage("Sprites/Item/item_coin_2.png"),
+    coin_3: loadImage("Sprites/Item/item_coin_3.png"),
+
+    coin_underground_1: loadImage("Sprites/Item/item_coin_underground_1.png"),
+    coin_underground_2: loadImage("Sprites/Item/item_coin_underground_2.png"),
+    coin_underground_3: loadImage("Sprites/Item/item_coin_underground_3.png"),
+
+    flower_1: loadImage("Sprites/Item/item_flower_1.png"),
+    flower_2: loadImage("Sprites/Item/item_flower_2.png"),
+    flower_3: loadImage("Sprites/Item/item_flower_3.png"),
+    flower_4: loadImage("Sprites/Item/item_flower_4.png"),
+    
+    flower_underground_1: loadImage("Sprites/Item/item_flower_underground_1.png"),
+    flower_underground_2: loadImage("Sprites/Item/item_flower_underground_2.png"),
+    flower_underground_3: loadImage("Sprites/Item/item_flower_underground_3.png"),
+    flower_underground_4: loadImage("Sprites/Item/item_flower_underground_4.png"),
+
+    mushroom: loadImage("Sprites/Item/item_mushroom.png"),
+
+    mushroom_1up: loadImage("Sprites/Item/item_mushroom_1-up.png"),
+
+    mushroom_1up_underground: loadImage("Sprites/Item/item_mushroom_1-up_underground.png"),
+
+    star_1: loadImage("Sprites/Item/item_star_1.png"),
+    star_2: loadImage("Sprites/Item/item_star_2.png"),
+    star_3: loadImage("Sprites/Item/item_star_3.png"),
+    star_4: loadImage("Sprites/Item/item_star_4.png"),
+    
+    star_underground_2: loadImage("Sprites/Item/item_star_underground_2.png"),
+    star_underground_4: loadImage("Sprites/Item/item_star_underground_4.png"),
   };
 }
 

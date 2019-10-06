@@ -108,7 +108,7 @@ class KoopaTroopa extends BaseEnemy
         this.spriteToDraw = sprites.turtle_shell;
         
         this.speedY = this.instaKilledInitialSpeed;
-        this.isGoingLeft = direction == "RIGHT";
+        this.isGoingLeft = direction == DIRECTION.Right;
         
         physics.RemoveFromMovingObjectsArray(this);
         physics.RemoveFromBucketMap(this);
@@ -173,11 +173,13 @@ class KoopaTroopa extends BaseEnemy
         {
             switch (direction)
             {
-                case "SIDE":
+                case DIRECTION.Left:
+                case DIRECTION.Right:
                     this.isGoingLeft = !this.isGoingLeft;
                     break;
 
-                case "DOWN":
+                case DIRECTION.Down:
+                    this.speedY = 0;
                     this.y = collider.y - BLOCK_SIZE;
                     break;
             }
@@ -186,17 +188,19 @@ class KoopaTroopa extends BaseEnemy
         {
             switch (direction)
             {
-                case "SIDE":
+                case DIRECTION.Left:
+                case DIRECTION.Right:
                     this.isGoingLeft = !this.isGoingLeft;
                     break;
 
-                case "DOWN":
+                case DIRECTION.Down:
                     if (collider.isBouncing)
                     {
-                        this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
+                        this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
                     }
                     else
                     {
+                        this.speedY = 0;
                         this.y = collider.y - BLOCK_SIZE;
                     }
                     break;
@@ -206,7 +210,7 @@ class KoopaTroopa extends BaseEnemy
         {
             if (collider instanceof KoopaTroopa && collider.isSliding)
             {
-                this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
+                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
                 return;
             }
 
@@ -216,13 +220,13 @@ class KoopaTroopa extends BaseEnemy
         {
             if (collider.isInvincible)
             {
-                this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
+                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
                 return;
             }
 
             switch (direction)
             {
-                case "UP":
+                case DIRECTION.Up:
                     if (this.isInShell || this.isAwakening)
                     {
                         this.ShellPushed(direction);
@@ -233,8 +237,8 @@ class KoopaTroopa extends BaseEnemy
                     }
                     break;
                 
-                case "LEFT":
-                case "RIGHT":
+                case DIRECTION.Left:
+                case DIRECTION.Right:
                     if (this.isInShell || this.isAwakening)
                     {
                         this.ShellPushed(direction);
@@ -244,7 +248,7 @@ class KoopaTroopa extends BaseEnemy
         }
         else if (collider instanceof Fireball)
         {
-            this.InstaKilled(this.x >= collider.x ? "LEFT" : "RIGHT");
+            this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
         }
     }
 }

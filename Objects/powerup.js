@@ -1,0 +1,237 @@
+/*
+  powerup.js
+  Super Mario Bros.
+
+  GAM100 
+  Fall 2019
+
+  JoonHo Hwang Wrote all of this
+  DoYoon Kim
+  SeungGeon Kim 
+  
+  All content © 2019 DigiPen (USA) Corporation, all rights reserved.
+*/
+
+// 스타 튀어오르는 거
+// 바운싱
+class Powerup 
+{
+    constructor(x, y, type)
+    {
+        this.x = x;
+        this.y = y;
+        this.originalY = y;
+        this.type = type;  // EPowerupType; See below
+        
+        this.isGoingLeft = false;
+        this.isPoppingUp = true;
+        this.isBouncing = false;
+
+        // all these values should be tested (except bouncing)
+        this.slidingSpeed = HexFloatToDec("1.000");
+        this.poppingSpeed = -HexFloatToDec("0.500");
+
+        this.fallingAcceleration = HexFloatToDec("0.900");
+        this.maxFallSpeed = HexFloatToDec("4.800");
+        
+        this.bouncingSlidingSpeed = HexFloatToDec("1.200");
+        this.bouncingInitialSpeed = -HexFloatToDec("4.000");
+        this.bouncingMaxFallSpeed = HexFloatToDec("3.000");
+        this.bouncingFallingAcceleration = HexFloatToDec("0.500");
+
+        this.speedX = 0;
+        this.speedY = 0;
+
+        this.spriteToDraw = undefined;
+        switch (this.type)
+        {
+            case EPowerupType.Mushroom:
+                this.spriteToDraw = sprites.mushroom;
+                break;
+
+            case EPowerupType.OneUp:
+                this.spriteToDraw = sprites.mushroom_1up;
+                break;
+            
+            case EPowerupType.FireFlower:
+                this.spriteToDraw = sprites.flower_1;
+                break;
+            
+            case EPowerupType.Star:
+                this.spriteToDraw = sprites.star_1;
+                break;
+        }
+        this.animationFrameCount = 0;
+        this.animationFrameRate = 3;  // should be tested
+        this.animator = this.ChangeSprite();
+
+        physics.ResistorToMovingObjectsArray(this);
+    }
+
+    Move()
+    {
+        this.speedX = (this.isBouncing ? this.bouncingSlidingSpeed : this.slidingSpeed) * (this.isGoingLeft ? -1 : 1);
+        this.x += this.speedX;
+    }
+
+    Gravitate()
+    {
+        this.speedY += (this.isBouncing ? this.bouncingFallingAcceleration : this.fallingAcceleration);
+        if (this.isBouncing && this.speedY > this.bouncingMaxFallSpeed)
+        {
+            this.speedY = this.bouncingMaxFallSpeed;
+        }
+        else if (this.speedY > this.maxFallSpeed)
+        {
+            this.speedY = this.maxFallSpeed;
+        }
+        
+        this.y += this.speedY;
+    }
+
+    Update()
+    {
+        if (this.isPoppingUp)
+        {
+            this.y += this.poppingSpeed;
+            
+            if (this.y <= this.originalY + BLOCK_SIZE / 2)
+            {
+                this.y = this.originalY + BLOCK_SIZE / 2;
+                this.isPoppingUp = false;
+            }
+
+            return;
+        }
+
+        if (this.type != EPowerupType.FireFlower)
+        {
+            this.Move();
+        }
+        if (this.type == EPowerupType.Mushroom || this.type == EPowerupType.OneUp)
+        {
+            this.Gravitate();
+        }
+    }
+
+    *ChangeSprite()
+    {
+        if (this.type == EPowerupType.FireFlower)
+        {
+            while (true)
+            {
+                this.spriteToDraw = sprites.flower_1;
+                yield;
+                this.spriteToDraw = sprites.flower_2;
+                yield;
+                this.spriteToDraw = sprites.flower_3;
+                yield;
+                this.spriteToDraw = sprites.flower_4;
+                yield;
+            }
+        }
+        else if (this.type == EPowerupType.Star)
+        {
+            while (true)
+            {
+                this.spriteToDraw = sprites.star_1;
+                yield;
+                this.spriteToDraw = sprites.star_2;
+                yield;
+                this.spriteToDraw = sprites.star_3;
+                yield;
+                this.spriteToDraw = sprites.star_4;
+                yield;
+            }
+        }
+    }
+
+    Animate()
+    {
+        if (this.type != EPowerupType.FireFlower && this.type != EPowerupType.Star)
+        {
+            return;
+        }
+
+        if (this.animationFrameRate < this.animationFrameCount)
+        {
+            this.animationFrameCount = 0;
+            this.animator.next();
+        }
+        else
+        {
+            this.animationFrameCount++;
+        }
+    }
+
+    Draw()
+    {
+        this.Animate();
+        DrawSprite(this.spriteToDraw, this.x, this.y);
+    }
+
+    Bounce(direction)
+    {
+        this.isBouncing = true;
+    }
+
+    OnCollisionWith(collider, direction)
+    {
+        if (collider instanceof Mario)
+        {
+            this.Destroy();
+        }
+        else if (collider instanceof ActiveBlock)
+        {
+            switch (direction)
+            {
+                case DIRECTION.Left:
+                case DIRECTION.Right:
+                    this.isGoingLeft = !this.isGoingLeft;
+                    break;
+
+                case DIRECTION.Down:
+                    if (collider.isBouncing)
+                    {
+                        this.Bounce(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+                    }
+                    else
+                    {
+                        this.speedY = 0;
+                        this.y = collider.y - BLOCK_SIZE;
+                        this.isBouncing = false;
+                    }
+                    break;
+            }
+        }
+        else if (collider instanceof InactiveBlock)
+        {
+            switch (direction)
+            {
+                case DIRECTION.Left:
+                case DIRECTION.Right:
+                    this.isGoingLeft = !this.isGoingLeft;
+                    break;
+
+                case DIRECTION.Down:
+                    this.speedY = 0;
+                    this.y = collider.y - BLOCK_SIZE;
+                    this.isBouncing = false;
+                    break;
+            }
+        }
+    }
+
+    Destroy()
+    {
+        game.Expel(this);
+    }
+}
+
+
+const EPowerupType = {
+    Mushroom : 0,
+    OneUp : 1,
+    FireFlower : 2,
+    Star : 3
+};

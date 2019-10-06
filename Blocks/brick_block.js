@@ -42,7 +42,7 @@ class BrickBlock extends ActiveBlock
             }
             else
             {
-                setTimeout(() => physics.RemoveFromMovingObjectsArray(this), BLOCK_BOUNCING_SECONDS * 1000);
+                this.BouncingEndCallBack = () => physics.RemoveFromMovingObjectsArray(this);
             }
 
             return;
@@ -55,7 +55,8 @@ class BrickBlock extends ActiveBlock
                 game.statistics.incrementCoin();
                 
                 this.spriteToDraw = sprites.block_empty;
-                setTimeout(this.Emptied, BLOCK_BOUNCING_SECONDS * 1000);
+
+                this.BouncingEndCallBack = this.Emptied;
                 return;
             }
 
@@ -84,12 +85,15 @@ class BrickBlock extends ActiveBlock
                 break;
         } 
 
-        newPowerup = new Powerup(this.x, this.y, powerUpType);
-        game.gameObjects.push(newPowerup);
-        game.Enroll(newPowerup);
+        this.BouncingEndCallBack = () => {
+            newPowerup = new Powerup(this.x, this.y - BLOCK_SIZE / 2, powerUpType);
+            game.gameObjects.push(newPowerup);
+            game.Enroll(newPowerup);
+
+            this.Emptied();
+        };
         
         this.spriteToDraw = sprites.block_empty;
-        setTimeout(this.Emptied, BLOCK_BOUNCING_SECONDS * 1000);
     }
 
     Break()
