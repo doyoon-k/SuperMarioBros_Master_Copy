@@ -19,7 +19,7 @@ class Mario {
   constructor() {
 
     this.x = 16;
-    this.y = 200;
+    this.y = 400;
 
     this.speedX = 0;
     this.speedY = 0;
@@ -177,10 +177,10 @@ class Mario {
       this.Move();
 
     //Temporary makeshift anti-fall-through-screen-border logic. 
-    if (this.y > 100) {
+    if (this.y > 200) {
       this.isJumping = false;
       this.speedY = 0;
-      this.y = 100;
+      this.y = 200;
     }
 
   }
@@ -745,4 +745,5 @@ class Mario {
     }
   }
   // ※거북이 등껍질 밟으면 튀어오르지 않음
+  // ※soft ceiling hit이랑 hard ceiling hit 중력 값 다른 거 주의
 }

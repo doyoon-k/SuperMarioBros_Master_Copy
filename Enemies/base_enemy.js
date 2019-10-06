@@ -71,8 +71,6 @@ class BaseEnemy
 
     Destroy()
     {
-        physics.RemoveFromMovingObjectsArray(this);
-        physics.RemoveFromBucketMap(this);
         game.Expel(this);
     }
 

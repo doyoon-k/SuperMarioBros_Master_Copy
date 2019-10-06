@@ -27,12 +27,25 @@ class Game {
 
     Enroll(object) 
     {
-        this.objectsToUpdate.push(object);
+        if (this.objectsToUpdate.indexOf(object) == -1)
+        {
+            this.objectsToUpdate.push(object);
+        }
     }
 
     Expel(object) 
     {
-        this.objectsToUpdate.splice(this.objectsToUpdate.indexOf(object), 1);
+        physics.RemoveFromMovingObjectsArray(this);
+        physics.RemoveFromBucketMap(this);
+
+        if (this.objectsToUpdate.indexOf(object) != -1)
+        {
+            this.objectsToUpdate.splice(this.objectsToUpdate.indexOf(object), 1);
+        }
+        if (this.gameObjects.indexOf(object) != -1)
+        {
+            this.gameObjects.splice(this.gameObjects.indexOf(object), 1);
+        }
     }
 
     Update() 

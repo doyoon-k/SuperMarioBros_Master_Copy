@@ -1,12 +1,12 @@
 /*
-  helper_functions.js
+  hitbox.js
   Super Mario Bros.
 
   GAM100
   Fall 2019
 
-  JoonHo Hwang did ---
-  DoYoon Kim did wrote this file
+  JoonHo Hwang Searched and arranged the hitbox coords data (hitboxes)
+  DoYoon Kim Wrote the class
   SeungGeon Kim did ---
 
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
@@ -30,8 +30,8 @@ hitboxes = {
     big_mario_duck : new Hitbox(0, 0, 12, 12),
 
     goomba : new Hitbox(0, 4, 10, 6),
-    turtle : new Hitbox(0, 3, 12, 12),
+    koopa_troopa : new Hitbox(0, 3, 12, 12),
 
     fireball : new Hitbox(0, 0, 8, 8),
-    power_up : new Hitbox(0, 3, 12, 12)
+    powerup : new Hitbox(0, 3, 12, 12)
 };

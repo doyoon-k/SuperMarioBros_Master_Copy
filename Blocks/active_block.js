@@ -18,25 +18,54 @@ class ActiveBlock
     {
         this.x = x;
         this.y = y;
+        this.originalY = y;
         this.containingItem = containingItem;  // EContainingItemType; See below
 
         this.isBouncing = false;
+        this.hasReachedMaxHeight = false;
+
+        this.bouncingSpeed = HexFloatToDec("1.000");  // should be tested
         
         this.speedX = 0;  // only for collision detection, never get changed
-        this.speedY = 0;  // while this can be changed, when bouncing
+        this.speedY = 0;  // while this can be changed when bouncing
 
         this.spriteToDraw = undefined;
     }
 
     Draw() {}
 
-    Update() {}
+    Update()
+    {
+        if (this.y < this.originalY)  // putting this here since the block goes down by one pixel before recovering to normal
+        {
+            this.isBouncing = false;
+            this.hasReachedMaxHeight = false;
+            this.y = this.originalY;
+            this.speedY = 0;
+        }
 
-    Destroy()
+        if (this.isBouncing)
+        {
+            if (this.y >= this.originalY + BLOCK_SIZE / 2)
+            {
+                this.hasReachedMaxHeight = true;
+            }
+            this.speedY = this.bouncingSpeed * (this.hasReachedMaxHeight ? 1 : -1);
+            this.y += this.speedY;
+        }
+    }
+
+    Emptied()
     {
         let newBlock = new InactiveBlock(this.x, this.y, EInactiveBlockType.Empty);
         game.gameObjects.push(newBlock);
         game.Enroll(newBlock);
+
+        this.Destroy();
+    }
+
+    Destroy()
+    {
         game.Expel(this);
     }
 
