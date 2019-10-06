@@ -36,7 +36,8 @@ class Game {
     Expel(object) 
     {
         physics.RemoveFromMovingObjectsArray(this);
-        physics.RemoveFromBucketMap(this);
+        //This line is causing an error, probably a range error, commented out temporarily
+        //physics.RemoveFromBucketMap(this);
 
         if (this.objectsToUpdate.indexOf(object) != -1)
         {

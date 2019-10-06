@@ -15,12 +15,9 @@
 
 
 //Translates & flips & draws sprites (16x16 system onto 32x32 system if pixelmultiplier is 2)
-function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertically = false, isMario = false) {
-  if (!isMario) {
-    x += game.camera.relativeWorldX;
-  } else {
-    x = 128;
-  }
+function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertically = false, initialX = 0) {
+
+  x -= (game.camera.x - initialX);
 
   xMultiplier = 1;
   yMultiplier = 1;
@@ -30,7 +27,7 @@ function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertic
   push();
 
   //base position
-  ellipse(x * pixelMutliplier, y * pixelMutliplier, 25);
+  ellipse(x * pixelMultiplier, y * pixelMultiplier, 25);
 
   if (isFlippedVertically) {
     baseHeight = sprite.height;
@@ -44,7 +41,7 @@ function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertic
     xMultiplier = 1;
   }
 
-  translate((x - xMultiplier * sprite.width / 2) * pixelMutliplier, (y - yMultiplier * sprite.height) * pixelMutliplier);
+  translate((x - xMultiplier * sprite.width / 2) * pixelMultiplier, (y - yMultiplier * sprite.height) * pixelMultiplier);
 
   //Drawing position
   ellipse(0, 0, 5);
@@ -52,7 +49,7 @@ function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertic
   scale(xMultiplier, yMultiplier);
 
   //x and y coordinate of an object is center-bottom.
-  image(sprite, 0, baseHeight * pixelMutliplier, sprite.width * pixelMutliplier, sprite.height * pixelMutliplier);
+  image(sprite, 0, baseHeight * pixelMultiplier, sprite.width * pixelMultiplier, sprite.height * pixelMultiplier);
 
   pop();
 
@@ -62,8 +59,8 @@ function DrawText(string, x, y, size) {
   push();
   fill(255);
   textFont(font);
-  textSize(size * pixelMutliplier);
-  text(string, x * pixelMutliplier, y * pixelMutliplier);
+  textSize(size * pixelMultiplier);
+  text(string, x * pixelMultiplier, y * pixelMultiplier);
   pop();
 }
 

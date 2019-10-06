@@ -5,7 +5,7 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang found lots of bugs in Mario's movement QA-ing constantly, and Wrote the stompCombo related codes.
+  JoonHo Hwang found lots and lots of bugs in Mario's movement QA-ing constantly, and Wrote the stompCombo related codes.
   DoYoon Kim did ---
   SeungGeon Kim Arranged the class properties, and Wrote the main animation & movement logic. About 99% of this entire script.
   
@@ -18,8 +18,10 @@ class Mario {
 
   constructor() {
 
-    this.x = 16;
-    this.y = 400;
+    this.x = 32;
+    this.y = 208;
+
+    this.initialX = 100;
 
     this.speedX = 0;
     this.speedY = 0;
@@ -45,7 +47,7 @@ class Mario {
     this.speedXStandard_1 = HexFloatToDec("1.000");
     this.speedXStandard_2 = HexFloatToDec("2.4FF");
 
-    this.initialXStandard = HexFloatToDec("1.D00");
+    this.initialJumpXStandard = HexFloatToDec("1.D00");
 
     this.initialJumpSpeed_1 = HexFloatToDec("4.000");
     this.initialJumpSpeed_2 = HexFloatToDec("5.000");
@@ -67,7 +69,9 @@ class Mario {
 
     this.previousY = 0;
 
-    this.initialX = 0;
+    this.initialJumpX = 0;
+
+    this.isDashJump = false;
 
 
 
@@ -98,13 +102,13 @@ class Mario {
     this.running_2 = 0;
     this.running_3 = 0;
 
-    this.mario_running_1 = loadImage('Sprites/Mario/mario_running_1.png');
+    this.mario_running_1 = loadImage('Sprites/Mario/mario_running_3.png');
     this.mario_running_2 = loadImage('Sprites/Mario/mario_running_2.png');
-    this.mario_running_3 = loadImage('Sprites/Mario/mario_running_3.png');
+    this.mario_running_3 = loadImage('Sprites/Mario/mario_running_1.png');
 
-    this.big_mario_running_1 = loadImage('Sprites/Mario/big_mario_running_1.png');
+    this.big_mario_running_1 = loadImage('Sprites/Mario/big_mario_running_3.png');
     this.big_mario_running_2 = loadImage('Sprites/Mario/big_mario_running_2.png');
-    this.big_mario_running_3 = loadImage('Sprites/Mario/big_mario_running_3.png');
+    this.big_mario_running_3 = loadImage('Sprites/Mario/big_mario_running_1.png');
 
     this.turnAround = 0;
 
@@ -125,8 +129,8 @@ class Mario {
 
     this.animationFrameRate = 10;
 
-    this.walkFrameRateSlow = 10;
-    this.walkFrameRateFast = 4;
+    this.walkFrameRateSlow = 8;
+    this.walkFrameRateFast = 2;
     this.runFrameRate = 1;
     this.transformFrameRate = 3;
 
@@ -162,6 +166,7 @@ class Mario {
     text("currentGravity : " + this.currentGravity, 10, 100);
     text("isJumping : " + this.isJumping, 10, 120);
     text("isJumpPast : " + this.isJumping, 10, 160);
+    text("isDashJump : " + this.isDashJump, 10, 240);
     text("potentialHold : " + this.potentialHoldGravity, 10, 180);
     text("isTransforming : " + this.isTransforming, 10, 200);
     text("powerupState : " + this.powerupState, 10, 220);
@@ -177,10 +182,10 @@ class Mario {
       this.Move();
 
     //Temporary makeshift anti-fall-through-screen-border logic. 
-    if (this.y > 200) {
+    if (this.y > 208) {
       this.isJumping = false;
       this.speedY = 0;
-      this.y = 200;
+      this.y = 208;
     }
 
   }
@@ -208,6 +213,9 @@ class Mario {
 
     }
 
+    if (this.isDashJump)
+      this.potentialHoldGravity = this.holdGravity_3;
+
     // --- --- ---
 
     //Go for the Jump key
@@ -216,6 +224,8 @@ class Mario {
       if (!this.isJumping) {
 
         this.currentGravity = 0;
+
+        this.isDashJump = false;
 
         //Start Jump, gets called only once
         if (!this.isJumpPast) {
@@ -226,7 +236,7 @@ class Mario {
           this.jumpKeyReleased = false;
           this.topReached = false;
 
-          this.initialX = this.speedX;
+          this.initialJumpX = this.speedX;
 
           if (this.isLookingLeft) {
             this.isJumpingLeft = true;
@@ -237,6 +247,7 @@ class Mario {
           if (abs(this.speedX) < this.speedXStandard_2) {
             this.speedY = -this.initialJumpSpeed_1;
           } else {
+            this.isDashJump = true;
             this.speedY = -this.initialJumpSpeed_2;
           }
 
@@ -313,6 +324,10 @@ class Mario {
                 this.speedX < -this.maxSpeedWalkX + -this.releaseDeacceleration)
                 this.speedX += this.releaseDeacceleration;
 
+              //Assign max walk speed
+              if (this.speedX > -this.maxSpeedWalkX + -this.releaseDeacceleration)
+                this.speedX = -this.maxSpeedWalkX;
+
             }
 
           }
@@ -327,9 +342,9 @@ class Mario {
           if (abs(this.speedX) <= this.maxSpeedWalkX) {
             this.speedX += -this.walkingAcceleration;
 
-            //Assign max run speed
-            if (this.speedX < -this.maxSpeedRunX)
-              this.speedX = -this.maxSpeedRunX;
+            //Assign max walk speed
+            if (this.speedX < -this.maxSpeedWalkX)
+              this.speedX = -this.maxSpeedWalkX;
           } else {
             this.speedX += -this.runningAcceleration;
 
@@ -343,7 +358,7 @@ class Mario {
 
           if (abs(this.speedX) < this.maxSpeedWalkX) {
 
-            if (abs(this.initialX) < this.initialXStandard) {
+            if (abs(this.initialJumpX) < this.initialJumpXStandard) {
               this.speedX += -this.walkingAcceleration;
             } else {
               this.speedX += -this.releaseDeacceleration;
@@ -404,6 +419,10 @@ class Mario {
                 this.speedX > this.maxSpeedWalkX + this.releaseDeacceleration)
                 this.speedX += -this.releaseDeacceleration;
 
+              //Assign max walk speed
+              if (this.speedX < this.maxSpeedWalkX + this.releaseDeacceleration)
+                this.speedX = this.maxSpeedWalkX;
+
             }
 
           }
@@ -418,9 +437,9 @@ class Mario {
           if (abs(this.speedX) <= this.maxSpeedWalkX) {
             this.speedX += this.walkingAcceleration;
 
-            //Assign max run speed
-            if (this.speedX > this.maxSpeedRunX)
-              this.speedX = this.maxSpeedRunX;
+            //Assign max walk speed
+            if (this.speedX > this.maxSpeedWalkX)
+              this.speedX = this.maxSpeedWalkX;
           } else {
             this.speedX += this.runningAcceleration;
 
@@ -434,7 +453,7 @@ class Mario {
 
           if (abs(this.speedX) < this.maxSpeedWalkX) {
 
-            if (abs(this.initialX) < this.initialXStandard) {
+            if (abs(this.initialJumpX) < this.initialJumpXStandard) {
               this.speedX += this.walkingAcceleration;
             } else {
               this.speedX += this.releaseDeacceleration;
@@ -500,6 +519,10 @@ class Mario {
       this.speedY = this.maxFallSpeed;
 
     this.x += this.speedX;
+
+    if (this.x < game.camera.x - this.initialX + 8)
+    this.x = game.camera.x - this.initialX + 8;
+
     this.y += this.speedY;
 
     this.previousY = this.y;
@@ -684,9 +707,9 @@ class Mario {
       }
 
       if (!this.isJumping) {
-        DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, true);
+        DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
       } else {
-        DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, true);
+        DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, this.initialX);
       }
 
       return;
@@ -709,11 +732,11 @@ class Mario {
       } else {
         this.spriteToDraw = this.turnAround;
       }
-      DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, true);
+      DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
       //isJumping -> draw jump
     } else {
       this.spriteToDraw = this.jump;
-      DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, true);
+      DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, this.initialX);
     }
 
   }

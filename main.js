@@ -20,7 +20,7 @@ let sprites;
 let mapLoader; // temporary
 
 //Should be 2 By default, but feel free to change it
-let pixelMutliplier = 3.5;
+let pixelMultiplier = 3.5;
 
 function preload() {
   font = loadFont("Font/font.ttf");
@@ -81,7 +81,7 @@ function preload() {
 
 function setup()
 {
-  createCanvas(16 * 16 * pixelMutliplier, 16 * 16 * pixelMutliplier);
+  createCanvas(16 * 16 * pixelMultiplier, 16 * 16 * pixelMultiplier);
 
   //Essential to stop image functions blurring the iamge all up
   noSmooth();

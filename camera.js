@@ -15,12 +15,31 @@
 class Camera {
 
     constructor() {
-        this.relativeWorldX = 0;
+        this.x = 100;
+        this.activationRange = 500;
+        this.d = 28;
     }
 
     Update() {
 
-        this.relativeWorldX = -game.mario.x;
+        if (game.mario.x > this.x + this.d)
+            this.x = game.mario.x - this.d;
+
+        game.gameObjects.sort((a, b) => (a.x > b.x) ? 1 : -1);
+
+        for (let i = 0; i < game.gameObjects.length; i++) {
+
+            if (game.gameObjects[i].x < this.x - this.activationRange)
+                //It seems like that Destroy() doesn't exist for some objects
+                game.Expel(game.gameObjects[i]);
+
+            if (game.gameObjects[i].x < this.x + this.activationRange) {
+                game.Enroll(game.gameObjects[i]);
+            } else {
+                break;
+            }
+
+        }
 
     }
 
