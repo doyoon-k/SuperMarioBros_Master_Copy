@@ -37,12 +37,38 @@ class Physics {
     {
       for(let obj of this.movingObjects)
       {
+         if(obj instanceof ActiveBlock)
+         {
+           let left_X = obj.x-BLOCK_SIZE/2;
+           let right_X = obj.x+BLOCK_SIZE/2;
+           let top_Y = obj.y-BLOCK_SIZE;
+           let speedY = obj.speedY;
+           //going down
+           let buckets = this.GetBucket(left_X,top_Y+speedY);
+           buckets.concat(this.GetBucket(right_X,top_Y+speedY));
 
+           for(let collidableObj of buckets)
+           {
+             if(collidableObj.hitbox != undefined)
+             {
+               let isColliding = collidableObj.hitbox.IsHit(left_X,top_Y+speedY,collidableObj)||
+                                 collidableObj.hitbox.IsHit(right_X,top_Y+speedY,collidableObj);
+               if(isColliding)
+               {
+                 collidableObj.OnCollisionWith(obj,DIRECTION.Down);
+               }
+             }
+           }
+         }
+         else
+         {
+            //need to find a way how to get the colliding direction.
+         }
       }
     }
 
     //calculate the bucketMap index by passed x,y coordinate and return a bucket at the index. 
-    getBucket(x,y)
+    GetBucket(x,y)
     {
       let i = floor(x/bucketMap_one_cell_width);
       let j = floor(y/bucketMap_one_cell_height);

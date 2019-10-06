@@ -67,11 +67,11 @@ class QuestionBlock extends ActiveBlock
 
         this.spriteToDraw = sprites.block_empty;
 
-        setTimeout(this.Emptied, BLOCK_BOUNCING_SECONDS * 1000);
-
         if (this.containingItem == EContainingItemType.Coin)
         {
             game.statistics.IncrementCoin();
+
+            this.BouncingEndCallBack = this.Emptied;
             return;
         }
         
@@ -91,8 +91,12 @@ class QuestionBlock extends ActiveBlock
                 break;
         } 
 
-        newPowerup = new Powerup(this.x, this.y, powerUpType);
-        game.gameObjects.push(newPowerup);
-        game.Enroll(newPowerup);
+        this.BouncingEndCallBack = () => {
+            newPowerup = new Powerup(this.x, this.y - BLOCK_SIZE / 2, powerUpType);
+            game.gameObjects.push(newPowerup);
+            game.Enroll(newPowerup);
+
+            this.Emptied();
+        };
     }
 }

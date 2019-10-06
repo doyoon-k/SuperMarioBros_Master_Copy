@@ -5,9 +5,9 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang Wrote all of this
-  DoYoon Kim 
+  DoYoon Kim Wrote DIRECTION
   SeungGeon Kim 
+  JoonHo Hwang Wrote the rest
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -20,7 +20,6 @@ const GOOMBA_REMAINS_STOMPED_SECONDS = 0.5;
 const KOOPA_TROOPA_AWAKENING_SECONDS = 4;
 const KOOPA_TROOPA_RECOVER_SECONDS = 1;
 
-const BLOCK_BOUNCING_SECONDS = ONE_FRAME_SECONDS * (BLOCK_SIZE + 1); // 0.2? Should be tested
 const BRICK_COIN_SPIT_SECONDS = 4;
 
 const SCORES = {
@@ -37,4 +36,11 @@ const SCORES = {
     Flagpole : [100, 400, 800, 2000, 5000],
     Stomp : [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000, "1UP"],  // Should use map() and set withinBounds true
     InstaKillWithShell : [500, 800, 1000, 2000, 4000, 5000, 8000, "1UP"]  // Should use map() and set withinBounds true
+};
+
+const DIRECTION = {
+    Right : 0,
+    Left : 1,
+    Up : 2,
+    Down : 3
 };

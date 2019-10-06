@@ -754,14 +754,14 @@ class Mario {
   OnCollisionWith(collider, direction) {
     if (collider instanceof ActiveBlock) {
       switch (direction) {
-        case "DOWN":
+        case DIRECTION.Down:
           this.stompCombo = 0;
           break;
       }
     }
     else if (collider instanceof InactiveBlock) {
       switch (direction) {
-        case "DOWN":
+        case DIRECTION.Down:
           this.stompCombo = 0;
           break;
       }

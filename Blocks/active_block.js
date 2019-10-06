@@ -24,7 +24,7 @@ class ActiveBlock
         this.isBouncing = false;
         this.hasReachedMaxHeight = false;
 
-        this.bouncingSpeed = HexFloatToDec("1.000");  // should be tested
+        this.bouncingSpeed = HexFloatToDec("0.500");  // should be tested
         
         this.speedX = 0;  // only for collision detection, never get changed
         this.speedY = 0;  // while this can be changed when bouncing
@@ -42,11 +42,13 @@ class ActiveBlock
             this.hasReachedMaxHeight = false;
             this.y = this.originalY;
             this.speedY = 0;
+
+            this.BouncingEndCallBack();
         }
 
         if (this.isBouncing)
         {
-            if (this.y >= this.originalY + BLOCK_SIZE / 2)
+            if (this.y <= this.originalY + BLOCK_SIZE / 2)
             {
                 this.hasReachedMaxHeight = true;
             }
@@ -54,6 +56,8 @@ class ActiveBlock
             this.y += this.speedY;
         }
     }
+
+    BouncingEndCallBack() {}
 
     Emptied()
     {
@@ -63,6 +67,8 @@ class ActiveBlock
 
         this.Destroy();
     }
+
+    Hit() {}
 
     Destroy()
     {
@@ -75,7 +81,7 @@ class ActiveBlock
         {
             switch (direction)
             {
-                case "DOWN":
+                case DIRECTION.Down:
                     this.Hit();
                     break;
             }

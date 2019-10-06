@@ -1,3 +1,17 @@
+/*
+  background_object.js
+  Super Mario Bros.
+
+  GAM100 
+  Fall 2019
+
+  JoonHo Hwang
+  DoYoon Kim Wrote all of this
+  SeungGeon Kim 
+  
+  All content © 2019 DigiPen (USA) Corporation, all rights reserved.
+*/
+
 class BackgroundObject
 {
     constructor(x,y,type)
