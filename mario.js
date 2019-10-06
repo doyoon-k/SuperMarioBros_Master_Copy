@@ -19,7 +19,7 @@ class Mario {
   constructor() {
 
     this.x = 16;
-    this.y = 200;
+    this.y = 400;
 
     this.speedX = 0;
     this.speedY = 0;
@@ -177,10 +177,10 @@ class Mario {
       this.Move();
 
     //Temporary makeshift anti-fall-through-screen-border logic. 
-    if (this.y > 100) {
+    if (this.y > 200) {
       this.isJumping = false;
       this.speedY = 0;
-      this.y = 100;
+      this.y = 200;
     }
 
   }
