@@ -41,27 +41,26 @@ class MapLoader
         let blockType = block.blockType;
         let isContainingItem = block.isContainingItem;
         let itemType;
-        if(block.ItemType == "Power Up")
-        {
-          itemType = EContainingItemType.PowerUp;
-        }
-        else if(block.ItemType == "1-Up Mushroom")
-        {
-          itemType = EContainingItemType.OneUp;
-        }
-        else if(block.ItemType == "Star")
-        {
-          itemType = EContainingItemType.Star;
-        }
-        else if(block.ItemType == "Coin")
-        {
-          itemType = EContainingItemType.Coin;
-        }
-        else if(block.ItemType == "None")
-        {
-          itemType = EContainingItemType.None;
-        }
 
+        switch(block.ItemType)
+        {
+          case "Power Up":
+              itemType = EContainingItemType.PowerUp;
+              break;
+          case "1-Up Mushroom":
+              itemType = EContainingItemType.OneUp;
+              break;
+          case "Star":
+              itemType = EContainingItemType.Star;
+              break;
+          case "Coin":
+              itemType = EContainingItemType.Coin;
+              break;
+          case "None":
+              itemType = EContainingItemType.None;
+              break;
+
+        }
 
         let isQuestionMarkBlock = blockType.indexOf("Questionmark");
         let isBrickBlock = blockType.indexOf("Brick");
@@ -104,42 +103,37 @@ class MapLoader
          let y = backgroundObj.position.y;
          let backgroundType = backgroundObj.backgroundType;
 
-         if(backgroundType == "Mountain")
+         switch(backgroundType)
          {
-           let mountain = new BackgroundObject(x,y,EBackgroundObjectType.Mountain);
-           game.backgroundObjects.push(mountain);
+            case "Mountain":
+              let mountain = new BackgroundObject(x,y,EBackgroundObjectType.Mountain);
+              game.backgroundObjects.push(mountain);
+              break;
+            case "Cloud1":
+                let cloud1 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud1);
+                game.backgroundObjects.push(cloud1);
+                break;
+            case "Cloud2":
+                let cloud2 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud2);
+                game.backgroundObjects.push(cloud2);
+                break;
+            case "Cloud3":
+                let cloud3 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud3);
+                game.backgroundObjects.push(cloud3);
+                break;
+            case "Bush1":
+                let bush1 = new BackgroundObject(x,y,EBackgroundObjectType.Bush1);
+                game.backgroundObjects.push(bush1);
+                break;
+            case "Bush2":
+                let bush2 = new BackgroundObject(x,y,EBackgroundObjectType.Bush2);
+                game.backgroundObjects.push(bush2);
+                break;
+            case "Bush3":
+                let bush3 = new BackgroundObject(x,y,EBackgroundObjectType.Bush3);
+                game.backgroundObjects.push(bush3);
+                break;
          }
-         else if(backgroundType == "Cloud1")
-         {
-           let cloud1 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud1);
-           game.backgroundObjects.push(cloud1);
-         }
-         else if(backgroundType == "Cloud2")
-         {
-           let cloud2 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud2);
-           game.backgroundObjects.push(cloud2);
-         }
-         else if(backgroundType == "Cloud3")
-         {
-           let cloud3 = new BackgroundObject(x,y,EBackgroundObjectType.Cloud3);
-           game.backgroundObjects.push(cloud3);
-         }
-         else if(backgroundType == "Bush1")
-         {
-           let bush1 = new BackgroundObject(x,y,EBackgroundObjectType.Bush1);
-           game.backgroundObjects.push(bush1);
-         }
-         else if(backgroundType == "Bush2")
-         {
-           let bush2 = new BackgroundObject(x,y,EBackgroundObjectType.Bush2);
-           game.backgroundObjects.push(bush2);
-         }
-         else if(backgroundType == "Bush3")
-         {
-          let bush3 = new BackgroundObject(x,y,EBackgroundObjectType.Bush3);
-          game.backgroundObjects.push(bush3);
-         }
-
        }
     }
 
@@ -150,17 +144,19 @@ class MapLoader
          let x = character.position.x;
          let y = character.position.y;
          let characterType = character.characterType;
-         if(characterType == "Goomba")
+
+         switch(characterType)
          {
-           let goomba = new Goomba(x,y);
-           game.gameObjects.push(goomba);
-           physics.RegisterToBucketMap(goomba);
-         }
-         else if(characterType == "Green Koopa Troopa")
-         {
-           let greenKoopaTroopa = new KoopaTroopa(x,y,false);
-           game.gameObjects.push(greenKoopaTroopa);
-           physics.RegisterToBucketMap(greenKoopaTroopa);
+            case "Goomba":
+              let goomba = new Goomba(x,y);
+              game.gameObjects.push(goomba);
+              physics.RegisterToBucketMap(goomba);
+              break;
+            case "Green Koopa Troopa":
+              let greenKoopaTroopa = new KoopaTroopa(x,y,false);
+              game.gameObjects.push(greenKoopaTroopa);
+              physics.RegisterToBucketMap(greenKoopaTroopa);
+              break;
          }
          //going to add as soon as the rest of the character classes are made.
        }

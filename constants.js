@@ -37,3 +37,10 @@ const SCORES = {
     Stomp : [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000, "1UP"],  // Should use map() and set withinBounds true
     InstaKillWithShell : [500, 800, 1000, 2000, 4000, 5000, 8000, "1UP"]  // Should use map() and set withinBounds true
 };
+
+const DIRECTION = {
+  Right : 0,
+  Left : 1,
+  Up : 2,
+  Down : 3
+};
