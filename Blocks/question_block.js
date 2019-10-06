@@ -67,22 +67,32 @@ class QuestionBlock extends ActiveBlock
 
         this.spriteToDraw = sprites.block_empty;
 
-        switch (this.containingItem)
+        setTimeout(this.Emptied, BLOCK_BOUNCING_SECONDS * 1000);
+
+        if (this.containingItem == EContainingItemType.Coin)
         {
-            case EContainingItemType.Coin:
-                game.statistics.IncrementCoin();
-                break;
-            
-            default:
-                // spawn powerup
-                break;
+            game.statistics.IncrementCoin();
+            return;
         }
         
-        setTimeout(() => {physics.RemoveFromMovingObjectsArray(this); this.isBouncing = false;}, BLOCK_BOUNCING_SECONDS * 1000);
-    }
-    
-    Update()
-    {
-        
+        let powerUpType = NaN;
+        switch (this.containingItem)
+        {
+            case EContainingItemType.PowerUp:
+                powerUpType = game.mario.powerUpState == game.mario.marioState.mario ? EPowerupType.Mushroom : EPowerupType.FireFlower;
+                break;
+            
+            case EContainingItemType.OneUp:
+                powerUpType = EPowerupType.OneUp;
+                break;
+            
+            case EContainingItemType.Star:
+                powerUpType = EPowerupType.Star;
+                break;
+        } 
+
+        newPowerup = new Powerup(this.x, this.y, powerUpType);
+        game.gameObjects.push(newPowerup);
+        game.Enroll(newPowerup);
     }
 }
