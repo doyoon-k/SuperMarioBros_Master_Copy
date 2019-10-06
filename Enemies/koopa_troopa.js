@@ -24,7 +24,7 @@ class KoopaTroopa extends BaseEnemy
         this._isAwakening = false;
         this.isSliding = false;
 
-        this.slidingSpeed = HexFloatToDec("3.000");
+        this.slidingSpeed = HexFloatToDec("3.000");  // should be tested
 
         this.awakeningTimer = undefined;
 
@@ -39,7 +39,7 @@ class KoopaTroopa extends BaseEnemy
     set isAwakening(value)
     {
         this._isAwakening = value;
-        this.animator = this.ChangeSprite();
+        this.animator = this.ChangeSprite();  // see *ChangeSprite() for explanation
     }
 
     Move()
@@ -106,10 +106,18 @@ class KoopaTroopa extends BaseEnemy
         this.isInstaKilled = true;
 
         this.spriteToDraw = sprites.turtle_shell;
+        
+        this.speedY = this.instaKilledInitialSpeed;
+        this.isGoingLeft = direction == "RIGHT";
+        
+        physics.RemoveFromMovingObjectsArray(this);
+        physics.RemoveFromBucketMap(this);
     }
 
     *ChangeSprite()
     {
+        // every time its iterator is made, it'll check whether isAwakening and will be trapped in that loop
+        // so, we should make a new iterator when isAwakening's value is changed
         if (this.isAwakening)
         {
             while (true)

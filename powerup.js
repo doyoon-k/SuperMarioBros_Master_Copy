@@ -20,6 +20,7 @@ class Powerup
         this.y = y;
         this.type = type;  // EPowerupType; See below
     }
+    // 블럭에서 올라오는 모션까지 여기에서 처리
 }
 
 

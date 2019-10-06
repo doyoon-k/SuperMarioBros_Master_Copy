@@ -745,4 +745,5 @@ class Mario {
     }
   }
   // ※거북이 등껍질 밟으면 튀어오르지 않음
+  // ※soft ceiling hit이랑 hard ceiling hit 중력 값 다른 거 주의
 }
