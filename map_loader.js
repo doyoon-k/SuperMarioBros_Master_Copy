@@ -68,15 +68,15 @@ class MapLoader
 
         if(isQuestionMarkBlock != -1)
         {
-           let QuestionMarkBlock = new ActiveBlock(x,y,true,itemType);
-           game.gameObjects.push(QuestionMarkBlock);
-           physics.RegisterToBucketMap(QuestionMarkBlock);
+           let questionMarkBlock = new QuestionBlock(x,y,itemType);
+           game.gameObjects.push(questionMarkBlock);
+           physics.RegisterToBucketMap(questionMarkBlock);
         }
         else if(isBrickBlock != -1)
         {
-           let BrickBlock = new ActiveBlock(x,y,false,itemType);
-           game.gameObjects.push(BrickBlock);
-           physics.RegisterToBucketMap(BrickBlock);
+           let brickBlock = new BrickBlock(x,y,itemType);
+           game.gameObjects.push(brickBlock);
+           physics.RegisterToBucketMap(brickBlock);
         }
         else
         {

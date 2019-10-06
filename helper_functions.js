@@ -6,7 +6,7 @@
   Fall 2019
 
   JoonHo Hwang Wrote HexFloatToDec() and DrawText().
-  DoYoon Kim improved DrawSprite().
+  DoYoon Kim improved DrawSprite() and wrote CheckIsRectContainsThisPoint
   SeungGeon Kim Wrote DrawSprite() and ReturnAbsoluteAcceleration().
 
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
@@ -16,7 +16,6 @@
 
 //Translates & flips & draws sprites (16x16 system onto 32x32 system if pixelmultiplier is 2)
 function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertically = false, isMario = false) {
-
   if (!isMario) {
     x += game.camera.relativeWorldX;
   } else {
@@ -84,4 +83,9 @@ function HexFloatToDec(hexStr) {
 function ReturnAbsoluteAcceleration(speed, acceleration) {
   speed += acceleration * speed / abs(speed);
   return speed;
+}
+
+function CheckIsRectContainsThisPoint(x,y,topLeftX,topLeftY,bottomRightX,bottomRightY)
+{
+  return (topLeftX<x<bottomRightX)?((topLeftY<y<bottomRightY)?true:false):false;
 }
