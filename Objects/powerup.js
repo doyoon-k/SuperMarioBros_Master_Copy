@@ -75,6 +75,8 @@ class Powerup
                 break;
         }
 
+        this.hitbox = hitboxes.powerup;
+
         physics.ResistorToMovingObjectsArray(this);
     }
 

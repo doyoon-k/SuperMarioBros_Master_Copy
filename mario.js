@@ -40,7 +40,9 @@ class Mario {
     this.skidTurnaroundSpeed = HexFloatToDec("0.900");
 
     this.maxSpeedWalkX = HexFloatToDec("1.900");
-    this.maxSpeedRunX = HexFloatToDec("2.900");
+      this.maxSpeedRunX = HexFloatToDec("2.900");
+      
+      this.hitbox = hitboxes.mario;
 
 
 

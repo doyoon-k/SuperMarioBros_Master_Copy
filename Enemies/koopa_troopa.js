@@ -30,6 +30,8 @@ class KoopaTroopa extends BaseEnemy
 
         this.instaKillCombo = 0;
 
+        this.hitbox = hitboxes.koopa_troopa;
+
         this.spriteToDraw = sprites.turtle_1;
     }
 

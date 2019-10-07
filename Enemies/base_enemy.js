@@ -39,6 +39,8 @@ class BaseEnemy
         this.animationFrameRate = 6;
         this.animator = this.ChangeSprite();
 
+        this.hitbox = undefined;
+
         physics.RegisterToMovingObjectsArray(this);
     }
 

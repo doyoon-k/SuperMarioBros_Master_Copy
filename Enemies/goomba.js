@@ -19,6 +19,8 @@ class Goomba extends BaseEnemy
         super(x, y);
         this.isStomped = false;
 
+        this.hitbox = hitboxes.goomba;
+
         this.spriteToDraw = sprites.goomba_1;
     }
 

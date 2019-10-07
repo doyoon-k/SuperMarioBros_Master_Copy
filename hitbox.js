@@ -46,7 +46,7 @@ class Hitbox
     }
 }
 
-hitboxes = {
+const hitboxes = {
     mario : new Hitbox(0, 0, 10, 12),
     big_mario : new Hitbox(0, 0, 12, 24),
     big_mario_duck : new Hitbox(0, 0, 12, 12),
