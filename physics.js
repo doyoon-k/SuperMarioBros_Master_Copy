@@ -77,7 +77,12 @@ class Physics
         let is_rightX_overlapping = collidableObjHitbox.IsXcoodInBetween(right_X, collidableObj);
         let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(top_Y, collidableObj);
         let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(bottom_Y, collidableObj);
+        let buckets = this.GetBucket(left_X + speedX, top_Y + speedY);
+        buckets.concat(this.GetBucket(right_X + speedX, top_Y + speedY));
+        buckets.concat(this.GetBucket(left_X + speedX, bottom_Y + speedY));
+        buckets.concat(this.GetBucket(right_X + speedX, bottom_Y + speedY));
 
+        print(buckets);
         for (let collidableObj of buckets)
         {
           if (obj.speedX > 0)
