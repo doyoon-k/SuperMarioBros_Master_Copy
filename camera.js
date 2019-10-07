@@ -16,7 +16,7 @@ class Camera {
 
     constructor() {
         this.x = 100;
-        this.activationRange = 500;
+        this.activationRange = 100;
         this.d = 16;
     }
 
@@ -34,7 +34,7 @@ class Camera {
                 game.gameObjects[i].Destroy();
             }
 
-            else if (game.gameObjects[i].x < this.x + this.activationRange) {
+            else if (game.gameObjects[i].x < this.x + this.activationRange + 56) {
                 game.Enroll(game.gameObjects[i]);
             } else {
                 break;

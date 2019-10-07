@@ -41,7 +41,7 @@ class InactiveBlock
 
     Destroy()
     {
-        Game.Expel(this);
+        game.Expel(this);
     }
 }
 

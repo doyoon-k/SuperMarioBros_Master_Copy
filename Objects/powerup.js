@@ -12,8 +12,6 @@
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
 
-// 스타 튀어오르는 거
-// 바운싱
 class Powerup 
 {
     constructor(x, y, type)
@@ -38,6 +36,8 @@ class Powerup
         this.bouncingInitialSpeed = -HexFloatToDec("4.000");
         this.bouncingMaxFallSpeed = HexFloatToDec("3.000");
         this.bouncingFallingAcceleration = HexFloatToDec("0.500");
+
+        this.soarInitialSpeed = -HexFloatToDec("6.000");  // should be tested
 
         this.speedX = 0;
         this.speedY = 0;
@@ -117,9 +117,6 @@ class Powerup
         if (this.type != EPowerupType.FireFlower)
         {
             this.Move();
-        }
-        if (this.type == EPowerupType.Mushroom || this.type == EPowerupType.OneUp)
-        {
             this.Gravitate();
         }
     }
@@ -181,6 +178,13 @@ class Powerup
     Bounce(direction)
     {
         this.isBouncing = true;
+        this.isGoingLeft = direction != DIRECTION.Left;
+        this.speedY = this.bouncingInitialSpeed;
+    }
+
+    Soar()
+    {
+        this.speedY = this.soarInitialSpeed;
     }
 
     OnCollisionWith(collider, direction)
@@ -199,6 +203,12 @@ class Powerup
                     break;
 
                 case DIRECTION.Down:
+                    if (this.type == EPowerupType.Star)
+                    {
+                        this.Soar();
+                        return;
+                    }
+
                     if (collider.isBouncing)
                     {
                         this.Bounce(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
@@ -222,6 +232,12 @@ class Powerup
                     break;
 
                 case DIRECTION.Down:
+                    if (this.type == EPowerupType.Star)
+                    {
+                        this.Soar();
+                        return;
+                    }
+
                     this.speedY = 0;
                     this.y = collider.y - BLOCK_SIZE;
                     this.isBouncing = false;
