@@ -88,7 +88,7 @@ class BrickBlock extends ActiveBlock
         } 
 
         this.BouncingEndCallBack = () => {
-            newPowerup = new Powerup(this.x, this.y - BLOCK_SIZE / 2, powerUpType);
+            let newPowerup = new Powerup(this.x, this.y - BLOCK_SIZE / 2, powerUpType);
             game.gameObjects.push(newPowerup);
             game.Enroll(newPowerup);
 

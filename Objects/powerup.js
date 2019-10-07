@@ -61,6 +61,7 @@ class Powerup
                 this.spriteToDraw = sprites.star_1;
                 break;
         }
+
         this.animationFrameCount = 0;
         this.animationFrameRate = 3;  // should be tested
         this.animator = undefined;
@@ -77,7 +78,7 @@ class Powerup
 
         this.hitbox = hitboxes.powerup;
 
-        game.physics.ResistorToMovingObjectsArray(this);
+        game.physics.RegisterToMovingObjectsArray(this);
     }
 
     Move()

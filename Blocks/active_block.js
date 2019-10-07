@@ -26,7 +26,7 @@ class ActiveBlock
         this.isBouncing = false;
         this.hasReachedMaxHeight = false;
 
-        this.bouncingSpeed = HexFloatToDec("0.500");  // should be tested
+        this.bouncingSpeed = HexFloatToDec("1.000");  // should be tested
         
         this.speedX = 0;  // only for collision detection, never get changed
         this.speedY = 0;  // while this can be changed when bouncing
@@ -38,7 +38,7 @@ class ActiveBlock
 
     Update()
     {
-        if (this.y < this.originalY)  // putting this here since the block goes down by one pixel before recovering to normal
+        if (this.y > this.originalY)  // putting this here since the block goes down by one pixel before recovering to normal
         {
             this.isBouncing = false;
             this.hasReachedMaxHeight = false;
@@ -50,7 +50,7 @@ class ActiveBlock
 
         if (this.isBouncing)
         {
-            if (this.y <= this.originalY + BLOCK_SIZE / 2)
+            if (this.y <= this.originalY - BLOCK_SIZE / 2)
             {
                 this.hasReachedMaxHeight = true;
             }
@@ -85,7 +85,6 @@ class ActiveBlock
             {
                 case DIRECTION.Down:
                     this.Hit();
-                    rect
                     break;
             }
         }

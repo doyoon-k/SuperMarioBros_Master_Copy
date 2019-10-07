@@ -47,7 +47,7 @@ class QuestionBlock extends ActiveBlock
         switch (this.containingItem)
         {
             case EContainingItemType.PowerUp:
-                powerUpType = game.mario.powerUpState == game.mario.marioState.mario ? EPowerupType.Mushroom : EPowerupType.FireFlower;
+                powerUpType = game.mario.powerupState == game.mario.marioState.mario ? EPowerupType.Mushroom : EPowerupType.FireFlower;
                 break;
             
             case EContainingItemType.OneUp:
@@ -57,10 +57,10 @@ class QuestionBlock extends ActiveBlock
             case EContainingItemType.Star:
                 powerUpType = EPowerupType.Star;
                 break;
-        } 
+        }
 
         this.BouncingEndCallBack = () => {
-            newPowerup = new Powerup(this.x, this.y - BLOCK_SIZE / 2, powerUpType);
+            let newPowerup = new Powerup(this.x, this.y - BLOCK_SIZE / 2, powerUpType);
             game.gameObjects.push(newPowerup);
             game.Enroll(newPowerup);
 
