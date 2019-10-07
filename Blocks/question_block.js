@@ -18,46 +18,13 @@ class QuestionBlock extends ActiveBlock
     {
         super(x, y, containingItem);
 
-        this.animationFrameCount = 0;
-        this.animationFrameRate = 6;
-
-        this.animator = this.ChangeSprite();
-
-        this.spriteToDraw = sprites.block_question_1;
+        this.sprites = [sprites.block_question_1, sprites.block_question_1, sprites.block_question_2, sprites.block_question_3];
+        this.spriteToDraw = undefined;
     }
 
     Draw()
     {
-        this.Animate();
-        DrawSprite(this.spriteToDraw, this.x, this.y);
-    }
-
-    Animate()
-    {
-        if (this.animationFrameRate < this.animationFrameCount)
-        {
-            this.animationFrameCount = 0;
-            this.animator.next();
-        }
-        else
-        {
-            this.animationFrameCount++;
-        }
-    }
-
-    *ChangeSprite()
-    {
-        while (true)
-        {
-            this.spriteToDraw = sprites.block_question_1;
-            yield;
-            this.spriteToDraw = sprites.block_question_1;
-            yield;
-            this.spriteToDraw = sprites.block_question_2;
-            yield;
-            this.spriteToDraw = sprites.block_question_3;
-            yield;
-        }
+        DrawSprite(this.spriteToDraw ? this.spriteToDraw : this.sprites[game.twinkleIndex], this.x, this.y);
     }
 
     Hit()

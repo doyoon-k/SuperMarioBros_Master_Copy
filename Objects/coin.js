@@ -21,43 +21,12 @@ class Coin
 
         this.speedX = this.speedY = 0;  // ugly variables for collision checking
 
-        this.animationFrameCount = 0;
-        this.animationFrameRate = 10;
-
-        this.spriteToDraw = sprites.coin_1;
-    }
-
-    *ChangeSprite()
-    {
-        while (true)
-        {
-            this.spriteToDraw = sprites.coin_1;
-            yield;
-            this.spriteToDraw = sprites.coin_1;
-            yield;
-            this.spriteToDraw = sprites.coin_2;
-            yield;
-            this.spriteToDraw = sprites.coin_3;
-            yield;
-        }
-    }
-
-    Animate()
-    {
-        if (this.animationFrameRate < this.animationFrameCount)
-        {
-            this.animationFrameCount = 0;
-            this.animator.next();
-        }
-        else
-        {
-            this.animationFrameCount++;
-        }
+        this.sprites = [sprites.coin_1, sprites.coin_1, sprites.coin_2, sprites.coin_3];
     }
 
     Draw()
     {
-        DrawSprite(this.x, this.y, this.spriteToDraw);
+        DrawSprite(this.x, this.y, this.sprites[game.twinkleIndex]);
     }
 
     Destroy()

@@ -159,6 +159,7 @@ class KoopaTroopa extends BaseEnemy
     Update()
     {
         this.Move();
+        // this.Gravitate();
     }
 
     Draw()

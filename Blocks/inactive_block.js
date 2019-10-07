@@ -38,6 +38,11 @@ class InactiveBlock
     }
 
     Update() {}
+
+    Destroy()
+    {
+        Game.Expel(this);
+    }
 }
 
 

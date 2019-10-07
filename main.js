@@ -114,7 +114,7 @@ function preload() {
 
 function setup()
 {
-  createCanvas(16 * 16 * pixelMultiplier, 16 * 16 * pixelMultiplier);
+  createCanvas(16 * 16 * pixelMultiplier, 15 * 16 * pixelMultiplier);
 
   //Essential to stop image functions blurring the iamge all up
   noSmooth();
@@ -125,10 +125,6 @@ function setup()
   mapLoader = new MapLoader();  // temporary
 
   mapLoader.LoadMap("Stages/stage1.json");
-
-  // All below is temporary
-  tempGoomba = new Goomba(50, 100);
-  game.Enroll(tempGoomba);
 
   // frameRate() is not working well
   setInterval(Draw, 1 / 60 * 1000);

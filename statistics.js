@@ -40,10 +40,7 @@ class Statistics
             coin_underground_3 : loadImage("Sprites/Misc/misc_hud_coin_underground_3.png"),
         };
 
-        this.coinSpriteToDraw = this.sprites.coin_1;
-        this.animationFrameCount = 0;
-        this.animationFrameRate = 10;
-        this.animator = this.ChangeSprite();
+        this.coinSprites = [this.sprites.coin_1, this.sprites.coin_1, this.sprites.coin_2, this.sprites.coin_3];
     }
 
     AddScore(amount)
@@ -92,12 +89,10 @@ class Statistics
 
     DrawStatistics()
     {
-        this.Animate();
-
         DrawText(this.isPlayerMario ? "MARIO" : "LUIGI", 24, 24, 8);
         DrawText(this.score.toString().padStart(6, '0'), 24, 32, 8);
 
-        DrawSprite(this.coinSpriteToDraw, 92, 32);
+        image(this.coinSprites[game.twinkleIndex], 88 * pixelMultiplier, 24 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
         DrawText("*" + this.coin.toString().padStart(2, '0'), 96, 32, 8);
 
         DrawText("WORLD", 144, 24, 8);
@@ -107,34 +102,6 @@ class Statistics
         if (!isNaN(this.time))
         {
             DrawText(Math.floor(this.time / 24).toString().padStart(3, '0'), 208, 32, 8);
-        }
-    }
-
-    *ChangeSprite()
-    {
-        while (true)
-        {
-            this.coinSpriteToDraw = this.sprites["coin" + (this.isUnderground ? "_underground_" : "_") + "1"];
-            yield;
-            this.coinSpriteToDraw = this.sprites["coin" + (this.isUnderground ? "_underground_" : "_") + "1"];
-            yield;
-            this.coinSpriteToDraw = this.sprites["coin" + (this.isUnderground ? "_underground_" : "_") + "2"];
-            yield;
-            this.coinSpriteToDraw = this.sprites["coin" + (this.isUnderground ? "_underground_" : "_") + "3"];
-            yield;
-        }
-    }
-
-    Animate()
-    {
-        if (this.animationFrameRate < this.animationFrameCount)
-        {
-            this.animationFrameCount = 0;
-            this.animator.next();
-        }
-        else
-        {
-            this.animationFrameCount++;
         }
     }
 }

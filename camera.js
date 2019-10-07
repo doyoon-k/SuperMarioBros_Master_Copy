@@ -17,7 +17,7 @@ class Camera {
     constructor() {
         this.x = 100;
         this.activationRange = 500;
-        this.d = 28;
+        this.d = 16;
     }
 
     Update() {
@@ -30,10 +30,11 @@ class Camera {
         for (let i = 0; i < game.gameObjects.length; i++) {
 
             if (game.gameObjects[i].x < this.x - this.activationRange)
-                //It seems like that Destroy() doesn't exist for some objects
-                game.Expel(game.gameObjects[i]);
+            {
+                game.gameObjects[i].Destroy();
+            }
 
-            if (game.gameObjects[i].x < this.x + this.activationRange) {
+            else if (game.gameObjects[i].x < this.x + this.activationRange) {
                 game.Enroll(game.gameObjects[i]);
             } else {
                 break;

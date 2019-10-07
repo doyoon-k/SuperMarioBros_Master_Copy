@@ -22,6 +22,10 @@ class Game {
         this.objectsToUpdate = [];
         this.statistics = new Statistics();
 
+        this.twinkleFrameCount = 0;
+        this.twinkleFrameRate = 10;
+        this.twinkleIndex = 0;
+
         this.Enroll(this.mario);
     }
 
@@ -35,17 +39,19 @@ class Game {
 
     Expel(object) 
     {
-        physics.RemoveFromMovingObjectsArray(this);
-        //This line is causing an error, probably a range error, commented out temporarily
-        //physics.RemoveFromBucketMap(this);
+        physics.RemoveFromMovingObjectsArray(object);
+        physics.RemoveFromBucketMap(object);
 
-        if (this.objectsToUpdate.indexOf(object) != -1)
+        let index = this.objectsToUpdate.indexOf(object);
+        if (index != -1)
         {
-            this.objectsToUpdate.splice(this.objectsToUpdate.indexOf(object), 1);
+            this.objectsToUpdate.splice(index, 1);
         }
-        if (this.gameObjects.indexOf(object) != -1)
+
+        index = this.gameObjects.indexOf(object);
+        if (index != -1)
         {
-            this.gameObjects.splice(this.gameObjects.indexOf(object), 1);
+            this.gameObjects.splice(index, 1);
         }
     }
 
@@ -56,8 +62,23 @@ class Game {
         this.camera.Update();
     }
 
+    TwinkleAnimate()
+    {
+        if (this.twinkleFrameRate < this.twinkleFrameCount)
+        {
+            this.twinkleFrameCount = 0;
+            this.twinkleIndex = ++this.twinkleIndex % 4;
+        }
+        else
+        {
+            this.twinkleFrameCount++;
+        }
+    }
+
     Draw() 
     {
+        this.TwinkleAnimate();
+        
         this.backgroundObjects.forEach(object => object.Draw());
         this.statistics.DrawStatistics();
         this.objectsToUpdate.forEach(object => object.Draw());

@@ -92,9 +92,11 @@ class Physics {
       let i = floor(object.x/bucketMap_one_cell_width);
       let j = floor(object.y/bucketMap_one_cell_height);
       let bucket = this.bucketMap[j][i];
-      if (bucket.indexOf(object) != -1)
+
+      let index = bucket.indexOf(object);
+      if (index != -1)
       {
-        bucket.splice(bucket.indexOf(object), 1);
+        bucket.splice(index, 1);
       }
     }
 

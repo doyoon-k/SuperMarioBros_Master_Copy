@@ -63,7 +63,17 @@ class Powerup
         }
         this.animationFrameCount = 0;
         this.animationFrameRate = 3;  // should be tested
-        this.animator = this.ChangeSprite();
+        this.animator = undefined;
+        switch (this.type)
+        {
+            case EPowerupType.FireFlower:
+                this.animator = this.ChangeFireFlowerSprite();
+                break;
+            
+            case EPowerupType.Star:
+                this.animator = this.ChangeStarSprite();
+                break;
+        }
 
         physics.ResistorToMovingObjectsArray(this);
     }
@@ -114,35 +124,33 @@ class Powerup
         }
     }
 
-    *ChangeSprite()
+    *ChangeFireFlowerSprite()
     {
-        if (this.type == EPowerupType.FireFlower)
+        while (true)
         {
-            while (true)
-            {
-                this.spriteToDraw = sprites.flower_1;
-                yield;
-                this.spriteToDraw = sprites.flower_2;
-                yield;
-                this.spriteToDraw = sprites.flower_3;
-                yield;
-                this.spriteToDraw = sprites.flower_4;
-                yield;
-            }
+            this.spriteToDraw = sprites.flower_1;
+            yield;
+            this.spriteToDraw = sprites.flower_2;
+            yield;
+            this.spriteToDraw = sprites.flower_3;
+            yield;
+            this.spriteToDraw = sprites.flower_4;
+            yield;
         }
-        else if (this.type == EPowerupType.Star)
+    }
+
+    *ChangeStarSprite()
+    {
+        while (true)
         {
-            while (true)
-            {
-                this.spriteToDraw = sprites.star_1;
-                yield;
-                this.spriteToDraw = sprites.star_2;
-                yield;
-                this.spriteToDraw = sprites.star_3;
-                yield;
-                this.spriteToDraw = sprites.star_4;
-                yield;
-            }
+            this.spriteToDraw = sprites.star_1;
+            yield;
+            this.spriteToDraw = sprites.star_2;
+            yield;
+            this.spriteToDraw = sprites.star_3;
+            yield;
+            this.spriteToDraw = sprites.star_4;
+            yield;
         }
     }
 
