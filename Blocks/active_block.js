@@ -84,7 +84,7 @@ class ActiveBlock
             switch (direction)
             {
                 case DIRECTION.Down:
-                    // this.Hit();
+                    this.Hit();
                     rect
                     break;
             }

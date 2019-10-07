@@ -39,7 +39,6 @@ class Physics
   {
     for (let obj of this.movingObjects)
     {
-      //need to find a way how to get the colliding direction.
       let objHitbox = obj.hitbox;
       //temporary
       objHitbox.DebugDraw(obj);
@@ -47,10 +46,10 @@ class Physics
       let objHitbox_rect = objHitbox.GetRect(obj);
       let speedX = obj.speedX;
       let speedY = obj.speedY;
-      let buckets = this.GetBucket(objHitbox_rect.left_X, objHitbox_rect.top_Y);
-      buckets.concat(this.GetBucket(objHitbox_rect.right_X, objHitbox_rect.top_Y));
-      buckets.concat(this.GetBucket(objHitbox_rect.left_X, objHitbox_rect.bottom_Y ));
-      buckets.concat(this.GetBucket(objHitbox_rect.right_X, objHitbox_rect.bottom_Y));
+      let buckets = this.GetBucket(objHitbox_rect.left_X+speedX, objHitbox_rect.top_Y+speedY);
+      buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX, objHitbox_rect.top_Y+speedY));
+      buckets.concat(this.GetBucket(objHitbox_rect.left_X+speedX, objHitbox_rect.bottom_Y+speedY));
+      buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX, objHitbox_rect.bottom_Y+speedY));
      
       for (let collidableObj of buckets)
       {
@@ -59,74 +58,74 @@ class Physics
         collidableObjHitbox.DebugDraw(collidableObj);
         let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
  
-        let is_right_X_overlapping = collidableObjHitbox.IsXcoordInBetween(objHitbox_rect.right_X, collidableObj);
-        let is_left_X_overlapping = collidableObjHitbox.IsXcoordInBetween(objHitbox_rect.left_X, collidableObj);
         let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y, collidableObj);
         let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y, collidableObj);
 
-        let isColliding = collidableObjHitbox.IsHit(objHitbox_rect.left_X, objHitbox_rect.top_Y, collidableObj) ||
-        collidableObjHitbox.IsHit(objHitbox_rect.left_X, objHitbox_rect.bottom_Y, collidableObj) ||
-        collidableObjHitbox.IsHit(objHitbox_rect.right_X , objHitbox_rect.top_Y, collidableObj) ||
-        collidableObjHitbox.IsHit(objHitbox_rect.right_X , objHitbox_rect.bottom_Y , collidableObj);
+        let willCollide = collidableObjHitbox.IsHit(objHitbox_rect.left_X+speedX, objHitbox_rect.top_Y+speedY, collidableObj) ||
+        collidableObjHitbox.IsHit(objHitbox_rect.left_X+speedX, objHitbox_rect.bottom_Y+speedY, collidableObj) ||
+        collidableObjHitbox.IsHit(objHitbox_rect.right_X+speedX , objHitbox_rect.top_Y+speedY, collidableObj) ||
+        collidableObjHitbox.IsHit(objHitbox_rect.right_X+speedX , objHitbox_rect.bottom_Y+speedY, collidableObj);
         
-        //temporary
-        if (collidableObj instanceof InactiveBlock)
-          return;
+        // //temporary
+        // if (collidableObj instanceof InactiveBlock)
+        //   return;
 
-        if (isColliding)
+        if (willCollide)
         {
+          text("colliding!",width - 50, height / 2);
           if (speedX > 0 && speedY > 0) //1)
           {
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.top_Y) //1) a)
             {
-              // collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              text("Up", 10, height - 30);
+              collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              text("Up", width - 50, height/2 + 30);
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //1) b)
             {
-              // collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              collidableObj.OnCollisionWith(obj, DIRECTION.Left);
               push();
-              text("Left", 10, height - 30);
+              text("Left", width - 50, height/2 + 30);
             }
           }
           else if (speedX <= 0 && speedY > 0)
           {
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.top_Y) //2) a)
             {
-              // collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              text("Up", 10, height - 30);
+              collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              text("Up", width - 50, height/2 + 30);
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //2) b)
             {
-              // collidableObj.OnCollisionWith(obj, DIRECTION.Right);
-              text("Right", 10, height - 30);
+              collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              text("Right", width - 50, height/2 + 30);
             }
           }
-          else if (speedX > 0 && speedY <= 0)
+          else if (speedX >= 0 && speedY <= 0)
           {
             if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
-              // collidableObj.OnCollisionWith(obj, DIRECTION.Down);    
-              text("Down", 10, height - 30);
+              collidableObj.OnCollisionWith(obj, DIRECTION.Down);    
+              text("Down", width - 50, height/2 + 30);
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)//3) b)
             {
-              // collidableObj.OnCollisionWith(obj, DIRECTION.Left);
-              text("Left", 10, height - 30);
+              collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              text("Left", width - 50, height/2 + 30);
             }
           }
           else if (speedX <= 0 && speedY <= 0)
           {
             if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
-              // collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-              text("Down", 10, height - 30);
+              collidableObj.OnCollisionWith(obj, DIRECTION.Down);
+              text("Down", width - 50, height/2 + 30);
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)
             {
-              // collidableObj.OnCollisionWith(obj, DIRECTION.Right);
-              text("Right", 10, height - 30);
+              collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              text("Right", width - 50, height/2 + 30);
             }
+          
           }
         }
       }

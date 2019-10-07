@@ -43,14 +43,14 @@ class Hitbox
     
     GetRect(parent)
     {
-        return { left_X: parent.x - this.width / 2, right_X: parent.x + this.width / 2, top_Y: parent.y - this.height, bottom_Y: parent.y };
+        return { left_X: parent.x + this.x - this.width / 2, right_X: parent.x + this.x + this.width / 2, top_Y: parent.y + this.y - this.height, bottom_Y: parent.y + this.y };
     }
 
     DebugDraw(parent)
     {
         push();
         rectMode(CENTER);
-        rect((parent.x + this.x)*pixelMultiplier, (parent.y + this.y - this.height / 2)*pixelMultiplier, (this.width * 1.2)*pixelMultiplier, (this.height * 1.2)*pixelMultiplier);
+        rect((parent.x + this.x - (game.camera.x - 100))*pixelMultiplier, (parent.y + this.y - this.height / 2)*pixelMultiplier, (this.width * 1.2)*pixelMultiplier, (this.height * 1.2)*pixelMultiplier);
         pop();
     }
 }
