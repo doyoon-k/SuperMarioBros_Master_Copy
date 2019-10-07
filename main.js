@@ -109,6 +109,13 @@ function preload() {
     
     star_underground_2: loadImage("Sprites/Item/item_star_underground_2.png"),
     star_underground_4: loadImage("Sprites/Item/item_star_underground_4.png"),
+
+
+    fireball_1: loadImage("Sprites/Object/object_fireball_1.png"),
+    fireball_2: loadImage("Sprites/Object/object_fireball_2.png"),
+    fireball_3: loadImage("Sprites/Object/object_fireball_3.png"),
+    fireball_4: loadImage("Sprites/Object/object_fireball_4.png"),
+    
   };
 }
 

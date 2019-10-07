@@ -38,6 +38,8 @@ class Goomba extends BaseEnemy
         this.isStomped = true;
         this.spriteToDraw = sprites.goomba_stomped;
         setTimeout(this.Destroy, GOOMBA_REMAINS_STOMPED_SECONDS * 1000);
+
+        game.statistics.AddScore(SCORES.Stomp[map(++game.mario.stompCombo, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1, true)]);
     }
 
     InstaKilled(direction)
@@ -48,6 +50,8 @@ class Goomba extends BaseEnemy
         
         physics.RemoveFromMovingObjectsArray(this);
         physics.RemoveFromBucketMap(this);
+
+        game.statistics.AddScore(SCORES.InstaKillGoomba);
     }
 
     *ChangeSprite()

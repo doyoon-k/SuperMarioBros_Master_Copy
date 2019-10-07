@@ -53,6 +53,7 @@ class BrickBlock extends ActiveBlock
             if (this.isCoinTimedOut)
             {
                 game.statistics.incrementCoin();
+                game.statistics.AddScore(SCORES.Coin);
                 
                 this.spriteToDraw = sprites.block_empty;
 
@@ -66,6 +67,7 @@ class BrickBlock extends ActiveBlock
             }
 
             game.statistics.incrementCoin();
+            game.statistics.AddScore(SCORES.Coin);
             return;
         }
         
@@ -100,5 +102,7 @@ class BrickBlock extends ActiveBlock
     {
         // particle here
         this.Destroy();
+
+        game.statistics.AddScore(SCORES.BreakBrickBlock);
     }
 }

@@ -37,6 +37,7 @@ class QuestionBlock extends ActiveBlock
         if (this.containingItem == EContainingItemType.Coin)
         {
             game.statistics.IncrementCoin();
+            game.statistics.AddScore(SCORES.Coin);
 
             this.BouncingEndCallBack = this.Emptied;
             return;

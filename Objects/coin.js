@@ -19,8 +19,6 @@ class Coin
         this.x = x;
         this.y = y;
 
-        this.speedX = this.speedY = 0;  // ugly variables for collision checking
-
         this.sprites = [sprites.coin_1, sprites.coin_1, sprites.coin_2, sprites.coin_3];
     }
 
@@ -39,6 +37,7 @@ class Coin
         if (collider instanceof Mario)
         {
             game.statistics.IncrementCoin();
+            game.statistics.AddScore(SCORES.Coin);
             this.Destroy();
         }
         else if (collider instanceof ActiveBlock)
@@ -47,6 +46,7 @@ class Coin
             {
                 case DIRECTION.Down:
                     game.statistics.IncrementCoin();
+                    game.statistics.AddScore(SCORES.Coin);
                     this.Destroy();
                     break;
             }

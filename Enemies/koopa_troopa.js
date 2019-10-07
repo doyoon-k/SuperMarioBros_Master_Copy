@@ -28,6 +28,8 @@ class KoopaTroopa extends BaseEnemy
 
         this.awakeningTimer = undefined;
 
+        this.instaKillCombo = 0;
+
         this.spriteToDraw = sprites.turtle_1;
     }
 
@@ -63,6 +65,8 @@ class KoopaTroopa extends BaseEnemy
         this.awakeningTimer = setTimeout(this.Awakening, KOOPA_TROOPA_AWAKENING_SECONDS * 1000);
 
         this.spriteToDraw = sprites.turtle_shell;
+
+        game.statistics.AddScore(SCORES.Stomp[map(++game.mario.stompCombo, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1, true)]);
     }
 
     Awakening()
@@ -112,6 +116,8 @@ class KoopaTroopa extends BaseEnemy
         
         physics.RemoveFromMovingObjectsArray(this);
         physics.RemoveFromBucketMap(this);
+
+        game.statistics.AddScore(SCORES.InstaKillKoopaTroopa);
     }
 
     *ChangeSprite()
@@ -215,6 +221,12 @@ class KoopaTroopa extends BaseEnemy
                 return;
             }
 
+            if (this.isSliding)
+            {
+                game.statistics.AddScore(SCORES.InstaKillWithShell[map(++this.instaKillCombo, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
+                return;
+            }
+
             this.isGoingLeft = !this.isGoingLeft;
         }
         else if (collider instanceof Mario)
@@ -231,6 +243,7 @@ class KoopaTroopa extends BaseEnemy
                     if (this.isInShell || this.isAwakening)
                     {
                         this.ShellPushed(direction);
+                        game.statistics.AddScore(SCORES.StompShell);
                     }
                     else
                     {
@@ -243,6 +256,7 @@ class KoopaTroopa extends BaseEnemy
                     if (this.isInShell || this.isAwakening)
                     {
                         this.ShellPushed(direction);
+                        game.statistics.AddScore(SCORES.PushShell);
                     }
                     break;
             }

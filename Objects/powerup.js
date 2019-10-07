@@ -192,6 +192,7 @@ class Powerup
         if (collider instanceof Mario)
         {
             this.Destroy();
+            game.statistics.AddScore(SCORES.PowerUp);
         }
         else if (collider instanceof ActiveBlock)
         {
