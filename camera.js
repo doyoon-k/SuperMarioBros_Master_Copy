@@ -17,7 +17,7 @@ class Camera {
     constructor() {
         this.x = 100;
         this.activationRange = 100;
-        this.d = 16;
+        this.d = 0;
     }
 
     Update() {
@@ -29,8 +29,7 @@ class Camera {
 
         for (let i = 0; i < game.gameObjects.length; i++) {
 
-            if (game.gameObjects[i].x < this.x - this.activationRange)
-            {
+            if (game.gameObjects[i].x < this.x - this.activationRange) {
                 game.gameObjects[i].Destroy();
             }
 
