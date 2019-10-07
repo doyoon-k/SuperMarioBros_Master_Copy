@@ -14,7 +14,6 @@
 
 
 let game;
-let physics;
 let font;
 let sprites;
 let mapLoader; // temporary
@@ -128,7 +127,6 @@ function setup()
   imageMode(CORNER);
 
   game = new Game();
-  physics = new Physics();
   mapLoader = new MapLoader();  // temporary
 
   mapLoader.LoadMap("Stages/stage1.json");
@@ -140,7 +138,6 @@ function setup()
 function Draw()
 {
   background(119, 181, 254);
-  physics.CheckCollision()
   game.Update();
   game.Draw();
 }

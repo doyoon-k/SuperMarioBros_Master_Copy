@@ -116,8 +116,8 @@ class KoopaTroopa extends BaseEnemy
         this.speedY = this.instaKilledInitialSpeed;
         this.isGoingLeft = direction == DIRECTION.Right;
         
-        physics.RemoveFromMovingObjectsArray(this);
-        physics.RemoveFromBucketMap(this);
+        game.physics.RemoveFromMovingObjectsArray(this);
+        game.physics.RemoveFromBucketMap(this);
 
         game.statistics.AddScore(SCORES.InstaKillKoopaTroopa);
     }

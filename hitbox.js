@@ -55,5 +55,8 @@ const hitboxes = {
     koopa_troopa : new Hitbox(0, -3, 12, 12),
 
     fireball : new Hitbox(0, 0, 8, 8),
-    powerup : new Hitbox(0, -3, 12, 12)  // including the coins
+    powerup: new Hitbox(0, -3, 12, 12),  // including the coins
+    
+    active_block: new Hitbox(0, 0, 16, 16),
+    inactive_block: new Hitbox(0, 0, 16, 16)
 };

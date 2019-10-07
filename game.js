@@ -16,6 +16,7 @@ class Game {
     constructor() 
     {
         this.mario = new Mario();
+        this.physics = new Physics();
         this.camera = new Camera();
         this.backgroundObjects = [];
         this.gameObjects = [];
@@ -27,6 +28,8 @@ class Game {
         this.twinkleIndex = 0;
 
         this.Enroll(this.mario);
+        this.physics.RegisterToMovingObjectsArray(this.mario);
+        this.physics.RegisterToBucketMap(this.mario);
     }
 
     Enroll(object) 
@@ -39,8 +42,8 @@ class Game {
 
     Expel(object) 
     {
-        physics.RemoveFromMovingObjectsArray(object);
-        physics.RemoveFromBucketMap(object);
+        this.physics.RemoveFromMovingObjectsArray(object);
+        this.physics.RemoveFromBucketMap(object);
 
         let index = this.objectsToUpdate.indexOf(object);
         if (index != -1)
@@ -57,6 +60,7 @@ class Game {
 
     Update() 
     {
+        this.physics.CheckCollision();
         this.objectsToUpdate.forEach(object => object.Update());
         this.statistics.Update();
         this.camera.Update();

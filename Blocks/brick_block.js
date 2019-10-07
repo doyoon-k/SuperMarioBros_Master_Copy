@@ -32,7 +32,7 @@ class BrickBlock extends ActiveBlock
     Hit()
     {
         this.isBouncing = true;
-        physics.RegisterToMovingObjectsArray(this);
+        game.physics.RegisterToMovingObjectsArray(this);
 
         if (this.containingItem == EContainingItemType.None)
         {
@@ -42,7 +42,7 @@ class BrickBlock extends ActiveBlock
             }
             else
             {
-                this.BouncingEndCallBack = () => physics.RemoveFromMovingObjectsArray(this);
+                this.BouncingEndCallBack = () => game.physics.RemoveFromMovingObjectsArray(this);
             }
 
             return;

@@ -30,7 +30,7 @@ class QuestionBlock extends ActiveBlock
     Hit()
     {
         this.isBouncing = true;
-        physics.RegisterToMovingObjectsArray(this);
+        game.physics.RegisterToMovingObjectsArray(this);
 
         this.spriteToDraw = sprites.block_empty;
 

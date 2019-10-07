@@ -21,6 +21,8 @@ class ActiveBlock
         this.originalY = y;
         this.containingItem = containingItem;  // EContainingItemType; See below
 
+        this.hitbox = hitboxes.active_block;
+
         this.isBouncing = false;
         this.hasReachedMaxHeight = false;
 

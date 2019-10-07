@@ -19,6 +19,7 @@ class InactiveBlock
         this.x = x;
         this.y = y;
         this.type = type;  // EInactiveBlockType; See below
+        this.hitbox = hitboxes.inactive_block;
     }
 
     Draw()
@@ -43,6 +44,8 @@ class InactiveBlock
     {
         game.Expel(this);
     }
+
+    OnCollisionWith(collider, direction) {}
 }
 
 

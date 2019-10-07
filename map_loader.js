@@ -69,13 +69,13 @@ class MapLoader
         {
            let questionMarkBlock = new QuestionBlock(x,y,itemType);
            game.gameObjects.push(questionMarkBlock);
-           physics.RegisterToBucketMap(questionMarkBlock);
+           game.physics.RegisterToBucketMap(questionMarkBlock);
         }
         else if(isBrickBlock != -1)
         {
            let brickBlock = new BrickBlock(x,y,itemType);
            game.gameObjects.push(brickBlock);
-           physics.RegisterToBucketMap(brickBlock);
+           game.physics.RegisterToBucketMap(brickBlock);
         }
         else
         {
@@ -90,7 +90,7 @@ class MapLoader
           }
            let inactiveBlock = new InactiveBlock(x,y,inactiveBlockType);
            game.gameObjects.push(inactiveBlock);
-           physics.RegisterToBucketMap(inactiveBlock);
+           game.physics.RegisterToBucketMap(inactiveBlock);
         }
       }
     }
@@ -150,12 +150,12 @@ class MapLoader
             case "Goomba":
               let goomba = new Goomba(x,y);
               game.gameObjects.push(goomba);
-              physics.RegisterToBucketMap(goomba);
+              game.physics.RegisterToBucketMap(goomba);
               break;
             case "Green Koopa Troopa":
               let greenKoopaTroopa = new KoopaTroopa(x,y,false);
               game.gameObjects.push(greenKoopaTroopa);
-              physics.RegisterToBucketMap(greenKoopaTroopa);
+              game.physics.RegisterToBucketMap(greenKoopaTroopa);
               break;
          }
          //going to add as soon as the rest of the character classes are made.

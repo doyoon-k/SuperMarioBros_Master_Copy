@@ -39,56 +39,30 @@ class Physics
   {
     for (let obj of this.movingObjects)
     {
-      if (obj instanceof ActiveBlock)
-      {
-        let left_X = obj.x - BLOCK_SIZE / 2;
-        let right_X = obj.x + BLOCK_SIZE / 2;
-        let top_Y = obj.y - BLOCK_SIZE;
-        let speedY = obj.speedY;
-        //going down
-        let buckets = this.GetBucket(left_X, top_Y + speedY);
-        buckets.concat(this.GetBucket(right_X, top_Y + speedY));
-
-        for (let collidableObj of buckets)
-        {
-          if (collidableObj.hitbox != undefined)
-          {
-            let isColliding = collidableObj.hitbox.IsHit(left_X, top_Y + speedY, collidableObj) ||
-              collidableObj.hitbox.IsHit(right_X, top_Y + speedY, collidableObj);
-            if (isColliding)
-            {
-              collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-            }
-          }
-        }
-      }
-      else
-      {
         //need to find a way how to get the colliding direction.
         let left_X = obj.x + obj.hitbox.x - obj.hitbox.width / 2;
         let right_X = obj.x + obj.hitbox.x + obj.hitbox.width / 2;
         let top_Y = obj.y + obj.hitbox.y - obj.hitbox.height;
         let bottom_Y = obj.y + obj.hitbox.y;
-        let collidableObjHitbox = collidableObj.hitbox;
-        let collidableObjHitbox_rect = collidableObjHitbox.GerRect();
         let speedX = obj.speedX;
         let speedY = obj.speedY;
-        let is_leftX_overlapping = collidableObjHitbox.IsXcoodInBetween(left_X, collidableObj);
-        let is_rightX_overlapping = collidableObjHitbox.IsXcoodInBetween(right_X, collidableObj);
-        let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(top_Y, collidableObj);
-        let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(bottom_Y, collidableObj);
         let buckets = this.GetBucket(left_X + speedX, top_Y + speedY);
         buckets.concat(this.GetBucket(right_X + speedX, top_Y + speedY));
         buckets.concat(this.GetBucket(left_X + speedX, bottom_Y + speedY));
         buckets.concat(this.GetBucket(right_X + speedX, bottom_Y + speedY));
 
-        print(buckets);
         for (let collidableObj of buckets)
         {
+          let collidableObjHitbox = collidableObj.hitbox;
+          let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
+          let is_leftX_overlapping = collidableObjHitbox.IsXcoodInBetween(left_X, collidableObj);
+          let is_rightX_overlapping = collidableObjHitbox.IsXcoodInBetween(right_X, collidableObj);
+          let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(top_Y, collidableObj);
+          let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(bottom_Y, collidableObj);
           if (obj.speedX > 0)
           {
             let willCollide = collidableObjHitbox.IsHit(right_X + speedX, bottom_Y + speedY, collidableObj) || collidableObjHitbox.IsHit(right_X + speedX, top_Y + speedY, collidableObj);
-            if (!is_rightX_overlapping)
+            if ((!is_rightX_overlapping)&&(!is_leftX_overlapping))
             {
               if (bottom_Y < collidableObjHitbox_rect.top_Y)
               { 
@@ -134,7 +108,7 @@ class Physics
           else//speedX <= 0
           {
             let willCollide = collidableObjHitbox.IsHit(left_X + speedX, bottom_Y + speedY, collidableObj)||collidableObjHitbox.IsHit(left_X + speedX, top_Y + speedY, collidableObj);
-            if (!is_leftX_overlapping)
+            if ((!is_leftX_overlapping)&&(!is_rightX_overlapping))
             {
               if (bottom_Y < collidableObjHitbox_rect.top_Y)
               {
@@ -177,7 +151,6 @@ class Physics
             }
           }
         }
-      }
     }
   }
 

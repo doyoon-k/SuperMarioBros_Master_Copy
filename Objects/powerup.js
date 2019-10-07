@@ -77,7 +77,7 @@ class Powerup
 
         this.hitbox = hitboxes.powerup;
 
-        physics.ResistorToMovingObjectsArray(this);
+        game.physics.ResistorToMovingObjectsArray(this);
     }
 
     Move()

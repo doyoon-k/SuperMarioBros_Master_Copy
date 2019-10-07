@@ -34,7 +34,7 @@ class Fireball
         this.speedX = this.movingSpeed * (isGoingLeft ? -1 : 1);
         this.speedY = 0;
         
-        physics.RegisterToMovingObjectsArray(this);
+        game.physics.RegisterToMovingObjectsArray(this);
     }
 
     Move()
