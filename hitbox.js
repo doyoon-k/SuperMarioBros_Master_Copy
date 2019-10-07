@@ -48,10 +48,20 @@ class Hitbox
 
     DebugDraw(parent)
     {
-        push();
-        rectMode(CENTER);
-        rect((parent.x + this.x - (game.camera.x - 100))*pixelMultiplier, (parent.y + this.y - this.height / 2)*pixelMultiplier, (this.width * 1.2)*pixelMultiplier, (this.height * 1.2)*pixelMultiplier);
-        pop();
+        if (parent instanceof Mario)
+        {
+            push();
+            rectMode(CENTER);
+            rect((parent.x + this.x - (game.camera.x - 116)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
+            pop();
+        }
+        else
+        {
+            push();
+            rectMode(CENTER);
+            rect((parent.x + this.x - (game.camera.x - 100)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
+            pop();
+        }
     }
 }
 
