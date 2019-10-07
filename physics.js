@@ -39,120 +39,100 @@ class Physics
   {
     for (let obj of this.movingObjects)
     {
-        //need to find a way how to get the colliding direction.
-        let left_X = obj.x + obj.hitbox.x - obj.hitbox.width / 2;
-        let right_X = obj.x + obj.hitbox.x + obj.hitbox.width / 2;
-        let top_Y = obj.y + obj.hitbox.y - obj.hitbox.height;
-        let bottom_Y = obj.y + obj.hitbox.y;
-        let speedX = obj.speedX;
-        let speedY = obj.speedY;
-        let buckets = this.GetBucket(left_X + speedX, top_Y + speedY);
-        buckets.concat(this.GetBucket(right_X + speedX, top_Y + speedY));
-        buckets.concat(this.GetBucket(left_X + speedX, bottom_Y + speedY));
-        buckets.concat(this.GetBucket(right_X + speedX, bottom_Y + speedY));
+      //need to find a way how to get the colliding direction.
+      let objHitbox = obj.hitbox;
+      //temporary
+      objHitbox.DebugDraw(obj);
 
-        for (let collidableObj of buckets)
+      let objHitbox_rect = objHitbox.GetRect(obj);
+      let speedX = obj.speedX;
+      let speedY = obj.speedY;
+      let buckets = this.GetBucket(objHitbox_rect.left_X, objHitbox_rect.top_Y);
+      buckets.concat(this.GetBucket(objHitbox_rect.right_X, objHitbox_rect.top_Y));
+      buckets.concat(this.GetBucket(objHitbox_rect.left_X, objHitbox_rect.bottom_Y ));
+      buckets.concat(this.GetBucket(objHitbox_rect.right_X, objHitbox_rect.bottom_Y));
+     
+      for (let collidableObj of buckets)
+      {
+        let collidableObjHitbox = collidableObj.hitbox;
+        //temporary
+        collidableObjHitbox.DebugDraw(collidableObj);
+        let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
+ 
+        let is_right_X_overlapping = collidableObjHitbox.IsXcoordInBetween(objHitbox_rect.right_X, collidableObj);
+        let is_left_X_overlapping = collidableObjHitbox.IsXcoordInBetween(objHitbox_rect.left_X, collidableObj);
+        let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y, collidableObj);
+        let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y, collidableObj);
+
+        let isColliding = collidableObjHitbox.IsHit(objHitbox_rect.left_X, objHitbox_rect.top_Y, collidableObj) ||
+        collidableObjHitbox.IsHit(objHitbox_rect.left_X, objHitbox_rect.bottom_Y, collidableObj) ||
+        collidableObjHitbox.IsHit(objHitbox_rect.right_X , objHitbox_rect.top_Y, collidableObj) ||
+        collidableObjHitbox.IsHit(objHitbox_rect.right_X , objHitbox_rect.bottom_Y , collidableObj);
+        
+        //temporary
+        if (collidableObj instanceof InactiveBlock)
+          return;
+
+        if (isColliding)
         {
-          let collidableObjHitbox = collidableObj.hitbox;
-          let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
-          let is_leftX_overlapping = collidableObjHitbox.IsXcoodInBetween(left_X, collidableObj);
-          let is_rightX_overlapping = collidableObjHitbox.IsXcoodInBetween(right_X, collidableObj);
-          let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(top_Y, collidableObj);
-          let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(bottom_Y, collidableObj);
-          if (obj.speedX > 0)
+          if (speedX > 0 && speedY > 0) //1)
           {
-            let willCollide = collidableObjHitbox.IsHit(right_X + speedX, bottom_Y + speedY, collidableObj) || collidableObjHitbox.IsHit(right_X + speedX, top_Y + speedY, collidableObj);
-            if ((!is_rightX_overlapping)&&(!is_leftX_overlapping))
+            if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.top_Y) //1) a)
             {
-              if (bottom_Y < collidableObjHitbox_rect.top_Y)
-              { 
-                if (willCollide)
-                {
-                  collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-                }
-              }
-              else if(is_bottom_Y_overlapping||is_top_Y_overlapping)
-              {
-
-                if (willCollide)
-                {
-                  collidableObj.OnCollisionWith(obj, DIRECTION.Left);
-                }
-              }
-              if (top_Y > collidableObjHitbox_rect.bottom_Y)
-              {
-                if (willCollide)
-                {
-                  collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-                }
-              }
+              // collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              text("Up", 10, height - 30);
             }
-            else
+            else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //1) b)
             {
-              if (bottom_Y < collidableObjHitbox_rect.top_Y)
-              {
-                if (willCollide)
-                {
-                  collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-                }  
-              }
-              else if (top_Y > collidableObjHitbox_rect.top_Y)
-              {
-                if (willCollide)
-                {
-                  collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-                  }
-              }
+              // collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              push();
+              text("Left", 10, height - 30);
             }
           }
-          else//speedX <= 0
+          else if (speedX <= 0 && speedY > 0)
           {
-            let willCollide = collidableObjHitbox.IsHit(left_X + speedX, bottom_Y + speedY, collidableObj)||collidableObjHitbox.IsHit(left_X + speedX, top_Y + speedY, collidableObj);
-            if ((!is_leftX_overlapping)&&(!is_rightX_overlapping))
+            if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.top_Y) //2) a)
             {
-              if (bottom_Y < collidableObjHitbox_rect.top_Y)
-              {
-                if (willCollide)
-                {
-                  collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-                }
-              }
-              else if(is_bottom_Y_overlapping||is_top_Y_overlapping)
-              {
-                if (willCollide)
-                {
-                  collidableObj.OnCollisionWith(obj, DIRECTION.Right);
-                }
-              }
-              if (top_Y > collidableObjHitbox_rect.bottom_Y)
-              {
-                if (willCollide)
-                {
-                  collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-                }
-              }
+              // collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              text("Up", 10, height - 30);
             }
-            else
+            else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //2) b)
             {
-              if (bottom_Y < collidableObjHitbox_rect.top_Y)
-              {
-                if (willCollide)
-                {
-                  collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-                }  
-              }
-              else if (top_Y > collidableObjHitbox_rect.top_Y)
-              {
-                if (willCollide)
-                {
-                  collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-                  }
-              }
+              // collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              text("Right", 10, height - 30);
+            }
+          }
+          else if (speedX > 0 && speedY <= 0)
+          {
+            if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
+            {
+              // collidableObj.OnCollisionWith(obj, DIRECTION.Down);    
+              text("Down", 10, height - 30);
+            }
+            else if (is_top_Y_overlapping || is_bottom_Y_overlapping)//3) b)
+            {
+              // collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              text("Left", 10, height - 30);
+            }
+          }
+          else if (speedX <= 0 && speedY <= 0)
+          {
+            if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
+            {
+              // collidableObj.OnCollisionWith(obj, DIRECTION.Down);
+              text("Down", 10, height - 30);
+            }
+            else if (is_top_Y_overlapping || is_bottom_Y_overlapping)
+            {
+              // collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              text("Right", 10, height - 30);
             }
           }
         }
+      }
     }
   }
+  
 
   //calculate the bucketMap index by passed x,y coordinate and return a bucket at the index. 
   GetBucket(x, y)
