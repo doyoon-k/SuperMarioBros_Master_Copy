@@ -29,6 +29,21 @@ class Hitbox
        let posY = parent.y+this.y;
        return CheckIsRectContainsThisPoint(x,y,posX-this.width/2,posY-this.height,posX+this.width/2,posY);
     }
+
+    IsXcoodInBetween(x,parent)
+    {
+        return (parent.x + this.x-this.width/2 <= x <= parent.x + this.x + this.width/2);
+    }
+
+    IsYcoordInBetween(y,parent)
+    {
+        return (parent.y + this.y - this.height <= y <= parent.y + this.y);
+    }
+    
+    GetRect(parent)
+    {
+        return { left_X: parent.x - this.width / 2, right_X: parent.x + this.width / 2, top_Y: parent.y - this.height, bottom_Y: parent.y };
+    }
 }
 
 hitboxes = {

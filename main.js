@@ -140,7 +140,7 @@ function setup()
 function Draw()
 {
   background(119, 181, 254);
-
+  physics.CheckCollision()
   game.Update();
   game.Draw();
 }
