@@ -18,6 +18,12 @@ class Mario {
 
   constructor() {
 
+
+
+    this.hitbox = hitboxes.mario;
+
+
+
     this.x = 32;
     this.y = 208;
 
@@ -29,8 +35,6 @@ class Mario {
     //needed to do the 10-frame speed conservation thing
     this.framesToKeepRunning = 0;
     this.framesToKeepRunningDefault = 10;
-    this.framesToKeepTransforming = 0;
-    this.framesToKeepTransformingDefault = 60;
 
     this.walkingAcceleration = HexFloatToDec("0.098");
     this.runningAcceleration = HexFloatToDec("0.0E4");
@@ -40,11 +44,7 @@ class Mario {
     this.skidTurnaroundSpeed = HexFloatToDec("0.900");
 
     this.maxSpeedWalkX = HexFloatToDec("1.900");
-      this.maxSpeedRunX = HexFloatToDec("2.900");
-      
-      this.hitbox = hitboxes.mario;
-
-
+    this.maxSpeedRunX = HexFloatToDec("2.900");
 
     this.speedXStandard_1 = HexFloatToDec("1.000");
     this.speedXStandard_2 = HexFloatToDec("2.4FF");
@@ -79,6 +79,8 @@ class Mario {
 
     this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
     this.big_mario_climbing_2 = loadImage('Sprites/Mario/big_mario_climbing_2.png');
+    this.mario_swimming = loadImage('Sprites/Mario/mario_swimming.png');
+    this.big_mario_swimming = loadImage('Sprites/Mario/big_mario_swimming.png');
 
     //And so on... 
 
@@ -92,6 +94,12 @@ class Mario {
 
     this.powerupState = 0;
     this.nextPowerupState = 0;
+
+    this.isInvincible = false;
+    this.tickFlash = false;
+    this.tickCount = 0;
+
+    this.isDead = false;
 
 
     this.stand_still = 0;
@@ -152,9 +160,13 @@ class Mario {
     this.topReached = false;
 
 
+
     this.stompCombo = 0;
 
+
+
     this.RefreshSpritePool();
+
   }
 
 
@@ -523,7 +535,7 @@ class Mario {
     this.x += this.speedX;
 
     if (this.x < game.camera.x - this.initialX + 8)
-    this.x = game.camera.x - this.initialX + 8;
+      this.x = game.camera.x - this.initialX + 8;
 
     this.y += this.speedY;
 
@@ -534,11 +546,11 @@ class Mario {
 
 
   //Manage the animations
-  Animate(sprite1, sprite2, newFrameRate, sprite3, isSequenced) {
+  Animate(sprite1, sprite2, newFrameRate, sprite3, isTransform) {
     this.animationFrameRate = newFrameRate;
     if (this.frameCount > this.animationFrameRate) {
       this.frameCount = 0;
-      if (!isSequenced) {
+      if (!isTransform) {
         if (this.drawIndex >= 2) {
           this.drawIndex = 0;
         } else {
@@ -569,46 +581,105 @@ class Mario {
           }
         }
       } else {
-        switch (this.drawIndex) {
-          case 0:
-            this.spriteToDraw = sprite1;
+        switch (this.nextPowerupState) {
+          case this.marioState.mario:
+            switch (this.drawIndex) {
+              case 0:
+                this.spriteToDraw = sprite1;
+                break;
+              case 1:
+                this.spriteToDraw = sprite1;
+                break;
+              case 2:
+                this.spriteToDraw = sprite1;
+                break;
+              case 3:
+                this.spriteToDraw = sprite2;
+                break;
+              case 4:
+                this.spriteToDraw = sprite3;
+                break;
+              case 5:
+                this.spriteToDraw = sprite2;
+                break;
+              case 6:
+                this.spriteToDraw = sprite3;
+                break;
+              case 7:
+                this.spriteToDraw = sprite2;
+                break;
+              case 8:
+                this.spriteToDraw = sprite3;
+                break;
+              case 9:
+                this.spriteToDraw = sprite2;
+                break;
+              case 10:
+                this.spriteToDraw = sprite3;
+                break;
+              case 11:
+                this.spriteToDraw = sprite2;
+                break;
+            }
+            if (this.drawIndex < 4) {
+              this.tickFlash = true;
+            }
+            if (this.drawIndex != 11) {
+              this.drawIndex++;
+            } else {
+              this.isTransforming = false;
+              this.powerupState = this.nextPowerupState;
+              this.RefreshSpritePool();
+            }
             break;
-          case 1:
-            this.spriteToDraw = sprite2;
-            break;
-          case 2:
-            this.spriteToDraw = sprite1;
-            break;
-          case 3:
-            this.spriteToDraw = sprite2;
-            break;
-          case 4:
-            this.spriteToDraw = sprite1;
-            break;
-          case 5:
-            this.spriteToDraw = sprite2;
-            break;
-          case 6:
-            this.spriteToDraw = sprite3;
-            break;
-          case 7:
-            this.spriteToDraw = sprite1;
-            break;
-          case 8:
-            this.spriteToDraw = sprite2;
-            break;
-          case 9:
-            this.spriteToDraw = sprite3;
-            break;
-          case 10:
-            this.spriteToDraw = sprite1;
-            break;
-          case 11:
-            this.spriteToDraw = sprite3;
+          case this.marioState.bigMario:
+            switch (this.drawIndex) {
+              case 0:
+                this.spriteToDraw = sprite1;
+                break;
+              case 1:
+                this.spriteToDraw = sprite2;
+                break;
+              case 2:
+                this.spriteToDraw = sprite1;
+                break;
+              case 3:
+                this.spriteToDraw = sprite2;
+                break;
+              case 4:
+                this.spriteToDraw = sprite1;
+                break;
+              case 5:
+                this.spriteToDraw = sprite2;
+                break;
+              case 6:
+                this.spriteToDraw = sprite3;
+                break;
+              case 7:
+                this.spriteToDraw = sprite1;
+                break;
+              case 8:
+                this.spriteToDraw = sprite2;
+                break;
+              case 9:
+                this.spriteToDraw = sprite3;
+                break;
+              case 10:
+                this.spriteToDraw = sprite1;
+                break;
+              case 11:
+                this.spriteToDraw = sprite3;
+                break;
+            }
+            if (this.drawIndex != 11) {
+              this.drawIndex++;
+            } else {
+              this.isTransforming = false;
+              this.powerupState = this.nextPowerupState;
+              this.RefreshSpritePool();
+            }
             break;
         }
-        if (this.drawIndex != 11)
-          this.drawIndex++;
       }
     } else {
       this.frameCount++;
@@ -618,75 +689,59 @@ class Mario {
   //Called once on Powerup
   PowerupTo(targetState) {
     this.isTransforming = true;
-    this.framesToKeepTransforming = this.framesToKeepTransformingDefault;
     this.drawIndex = 0;
     this.jumpKeyReleased = true;
     switch (targetState) {
       case this.marioState.mario:
         this.nextPowerupState = this.marioState.mario;
-        switch (this.powerupState) {
-          case this.marioState.bigMario:
 
-            break;
-
-          case this.marioState.fireMario:
-
-            break;
-        }
         break;
       case this.marioState.bigMario:
         this.nextPowerupState = this.marioState.bigMario;
-        switch (this.powerupState) {
-          case this.marioState.mario:
-            this.isTransforming = true;
-            this.transformSprite_1 = this.spriteToDraw;
-            if (this.isJumping) {
-              this.transformSprite_2 = this.big_mario_jump;
-            } else {
-              this.transformSprite_2 = this.big_mario_stand_still;
-            }
-            break;
-          case this.marioState.fireMario:
-
-            break;
+        this.transformSprite_1 = this.spriteToDraw;
+        if (this.isJumping) {
+          this.transformSprite_2 = this.big_mario_jump;
+        } else {
+          this.transformSprite_2 = this.big_mario_stand_still;
         }
         break;
       case this.marioState.fireMario:
         this.nextPowerupState = this.marioState.fireMario;
-        switch (this.powerupState) {
-          case this.marioState.mario:
 
-            break;
-
-          case this.marioState.bigMario:
-
-            break;
-        }
         break;
     }
   }
 
   RefreshSpritePool() {
-    switch (this.powerupState) {
-      case this.marioState.mario:
-        this.stand_still = this.mario_stand_still;
-        this.running_1 = this.mario_running_1;
-        this.running_2 = this.mario_running_2;
-        this.running_3 = this.mario_running_3;
-        this.turnAround = this.mario_turnaround;
-        this.jump = this.mario_jump;
-        break;
-      case this.marioState.bigMario:
-        this.stand_still = this.big_mario_stand_still;
-        this.running_1 = this.big_mario_running_1;
-        this.running_2 = this.big_mario_running_2;
-        this.running_3 = this.big_mario_running_3;
-        this.turnAround = this.big_mario_turnaround;
-        this.jump = this.big_mario_jump;
-        break;
-      case this.marioState.fireMario:
-
-        break;
+    if (this.isInvincible) {
+      if (this.powerupState == this.marioState.mario) {
+        //mario invincible
+      } else {
+        //Big mario invincible
+      }
+      this.tickFlash = !this.tickFlash;
+    } else {
+      switch (this.powerupState) {
+        case this.marioState.mario:
+          this.stand_still = this.mario_stand_still;
+          this.running_1 = this.mario_running_1;
+          this.running_2 = this.mario_running_2;
+          this.running_3 = this.mario_running_3;
+          this.turnAround = this.mario_turnaround;
+          this.jump = this.mario_jump;
+          break;
+        case this.marioState.bigMario:
+          this.stand_still = this.big_mario_stand_still;
+          this.running_1 = this.big_mario_running_1;
+          this.running_2 = this.big_mario_running_2;
+          this.running_3 = this.big_mario_running_3;
+          this.turnAround = this.big_mario_turnaround;
+          this.jump = this.big_mario_jump;
+          break;
+        case this.marioState.fireMario:
+          //Fire mario 
+          break;
+      }
     }
   }
 
@@ -698,20 +753,35 @@ class Mario {
     //return if isTransforming
     if (this.isTransforming) {
 
-      this.Animate(this.mario_stand_still, this.mario_getting_bigger, this.transformFrameRate, this.big_mario_stand_still, true);
+      switch (this.nextPowerupState) {
 
-      if (this.framesToKeepTransforming == 0) {
-        this.isTransforming = false;
-        this.powerupState = this.nextPowerupState;
-        this.RefreshSpritePool();
-      } else {
-        this.framesToKeepTransforming--;
-      }
+        case this.marioState.bigMario:
 
-      if (!this.isJumping) {
-        DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
-      } else {
-        DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, this.initialX);
+          this.Animate(this.mario_stand_still, this.mario_getting_bigger, this.transformFrameRate, this.big_mario_stand_still, true);
+
+          if (!this.isJumping) {
+            DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
+          } else {
+            DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, this.initialX);
+          }
+
+          break;
+
+        case this.marioState.mario:
+
+          this.Animate(this.big_mario_jump, this.mario_swimming, this.transformFrameRate + 3, this.big_mario_swimming, true);
+
+          if (this.tickCount > 2) {
+            this.tickFlash = !this.tickFlash;
+            this.tickCount = 0;
+          }
+          this.tickCount++;
+
+          if (this.tickFlash)
+            DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
+
+          break;
+
       }
 
       return;

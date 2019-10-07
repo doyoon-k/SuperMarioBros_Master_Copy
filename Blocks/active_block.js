@@ -85,6 +85,7 @@ class ActiveBlock
             {
                 case DIRECTION.Down:
                     this.Hit();
+                    rect
                     break;
             }
         }

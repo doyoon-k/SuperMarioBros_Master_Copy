@@ -26,23 +26,42 @@ class Hitbox
     IsHit(x,y,parent)
     {
        let posX = parent.x+this.x;
-       let posY = parent.y+this.y;
+       let posY = parent.y + this.y;
+        //깊이체크로 방식 변경하기
        return CheckIsRectContainsThisPoint(x,y,posX-this.width/2,posY-this.height,posX+this.width/2,posY);
     }
 
-    IsXcoodInBetween(x,parent)
+    IsXcoordInBetween(x,parent)
     {
-        return (parent.x + this.x-this.width/2 <= x <= parent.x + this.x + this.width/2);
+        return ((parent.x + this.x-this.width/2 <= x) && (x <= parent.x + this.x + this.width/2));
     }
 
     IsYcoordInBetween(y,parent)
     {
-        return (parent.y + this.y - this.height <= y <= parent.y + this.y);
+        return ((parent.y + this.y - this.height <= y) && (y <= parent.y + this.y));
     }
     
     GetRect(parent)
     {
-        return { left_X: parent.x - this.width / 2, right_X: parent.x + this.width / 2, top_Y: parent.y - this.height, bottom_Y: parent.y };
+        return { left_X: parent.x + this.x - this.width / 2, right_X: parent.x + this.x + this.width / 2, top_Y: parent.y + this.y - this.height, bottom_Y: parent.y + this.y };
+    }
+
+    DebugDraw(parent)
+    {
+        if (parent instanceof Mario)
+        {
+            push();
+            rectMode(CENTER);
+            rect((parent.x + this.x - (game.camera.x - 116)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
+            pop();
+        }
+        else
+        {
+            push();
+            rectMode(CENTER);
+            rect((parent.x + this.x - (game.camera.x - 100)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
+            pop();
+        }
     }
 }
 

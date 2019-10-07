@@ -82,7 +82,7 @@ function ReturnAbsoluteAcceleration(speed, acceleration) {
   return speed;
 }
 
-function CheckIsRectContainsThisPoint(x,y,topLeftX,topLeftY,bottomRightX,bottomRightY)
+function CheckIsRectContainsThisPoint(x,y,LeftX,topY,RightX,bottomY)
 {
-  return (topLeftX<x<bottomRightX)?((topLeftY<y<bottomRightY)?true:false):false;
+  return ((LeftX<x)&&(x<RightX))?(((topY<y)&&(y<bottomY))?true:false):false;
 }
