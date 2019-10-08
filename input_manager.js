@@ -30,13 +30,13 @@ let isJumpPast = false;
 function keyPressed() {
     switch (keyCode) {
         case 32:  //Space
-        //game.mario.isInvincible = !game.mario.isInvincible;
-            if (!game.mario.isTransforming) 
-            if (game.mario.powerupState == 1) {
-                game.mario.PowerupTo(0);
-            } else {
-                game.mario.PowerupTo(1);
-            }
+            game.mario.isInvincible = !game.mario.isInvincible;
+            if (!game.mario.isTransforming)
+                if (game.mario.powerupState == 1) {
+                    game.mario.PowerupTo(0);
+                } else {
+                    game.mario.PowerupTo(1);
+                }
             break;
         case 87:  //W
             isDPadUp = true;
