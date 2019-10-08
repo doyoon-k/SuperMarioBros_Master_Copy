@@ -48,6 +48,7 @@ class Hitbox
 
     DebugDraw(parent)
     {
+<<<<<<< HEAD
         if (parent instanceof Mario)
         {
             push();
@@ -57,13 +58,24 @@ class Hitbox
         }
         else
         {
+=======
+        // if (parent instanceof Mario)
+        // {
+        //     push();
+        //     rectMode(CENTER);
+        //     rect((parent.x + this.x - (game.camera.x - 116)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
+        //     pop();
+        // }
+        // else
+        // {
+>>>>>>> 6c966441b5afd562d67f30ce0e92ca0b67280679
             push();
             rectMode(CENTER);
             
             rect((parent.x + this.x - (game.camera.x - 100)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
             pop();
         }
-    }
+    // }
 }
 
 const hitboxes = {
@@ -78,5 +90,8 @@ const hitboxes = {
     powerup: new Hitbox(0, -3, 12, 12),  // including the coins
     
     active_block: new Hitbox(0, 0, 16, 16),
-    inactive_block: new Hitbox(0, 0, 16, 16)
+    inactive_block: new Hitbox(0, 0, 16, 16),
+
+    pipe_horizontal: new Hitbox(0, 0, 32, 16),
+    pipe_vertical: new Hitbox(0, 0, 16, 32)
 };

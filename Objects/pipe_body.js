@@ -1,5 +1,5 @@
 /*
-  flagpole.js
+  pipe_body.js
   Super Mario Bros.
 
   GAM100 
@@ -12,14 +12,17 @@
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
 
-class Flagpole
+class PipeBody
 {
-    constructor(x, y)
+    constructor(x, y, isHorizontal)
     {
         this.x = x;
         this.y = y;
+        this.isHorizontal = isHorizontal;
 
-        this.spriteToDraw = sprites.flag;
+        this.spriteToDraw = isHorizontal ? sprites.pipe_body_hor : sprites.pipe_body_ver;
+
+        this.hitbox = isHorizontal ? hitboxes.pipe_horizontal : hitboxes.pipe_vertical;
     }
 
     Update() {}
@@ -34,8 +37,5 @@ class Flagpole
         game.Expel(this);
     }
 
-    OnCollisionWith(collider, direction)
-    {
-
-    }
+    OnCollisionWith(collider, direction) {}
 }

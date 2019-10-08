@@ -293,6 +293,13 @@
                 "x": 3544,
                 "y": 72
             }
+        },
+        {
+            "backgroundType": "Castle",
+            "position": {
+                "x": 3272,
+                "y": 208
+            }
         }
     ],
     "blocks": [
@@ -5653,13 +5660,6 @@
             "position": {
                 "x": 3176,
                 "y": 192
-            }
-        },
-        {
-            "environmentType": "Castle",
-            "position": {
-                "x": 3272,
-                "y": 208
             }
         }
     ],

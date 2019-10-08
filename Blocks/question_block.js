@@ -14,9 +14,10 @@
 
 class QuestionBlock extends ActiveBlock
 {
-    constructor(x, y, containingItem)
+    constructor(x, y, containingItem, isHidden)
     {
         super(x, y, containingItem);
+        this.isHidden = isHidden;
 
         this.sprites = [sprites.block_question_1, sprites.block_question_1, sprites.block_question_2, sprites.block_question_3];
         this.spriteToDraw = undefined;
@@ -24,6 +25,11 @@ class QuestionBlock extends ActiveBlock
 
     Draw()
     {
+        if (this.isHidden)
+        {
+            return;
+        }
+        
         DrawSprite(this.spriteToDraw ? this.spriteToDraw : this.sprites[game.twinkleIndex], this.x, this.y);
     }
 
@@ -32,6 +38,8 @@ class QuestionBlock extends ActiveBlock
         this.isBouncing = true;
         game.physics.RegisterToMovingObjectsArray(this);
 
+        this.isHidden = false;
+
         this.spriteToDraw = sprites.block_empty;
 
         if (this.containingItem == EContainingItemType.Coin)
@@ -39,7 +47,7 @@ class QuestionBlock extends ActiveBlock
             game.statistics.IncrementCoin();
             game.statistics.AddScore(SCORES.Coin);
 
-            this.BouncingEndCallBack = this.Emptied;
+            this.BouncingEndCallBack = () => this.Emptied();
             return;
         }
         
@@ -47,7 +55,7 @@ class QuestionBlock extends ActiveBlock
         switch (this.containingItem)
         {
             case EContainingItemType.PowerUp:
-                powerUpType = game.mario.powerUpState == game.mario.marioState.mario ? EPowerupType.Mushroom : EPowerupType.FireFlower;
+                powerUpType = game.mario.powerupState == game.mario.marioState.mario ? EPowerupType.Mushroom : EPowerupType.FireFlower;
                 break;
             
             case EContainingItemType.OneUp:
@@ -57,10 +65,10 @@ class QuestionBlock extends ActiveBlock
             case EContainingItemType.Star:
                 powerUpType = EPowerupType.Star;
                 break;
-        } 
+        }
 
         this.BouncingEndCallBack = () => {
-            newPowerup = new Powerup(this.x, this.y - BLOCK_SIZE / 2, powerUpType);
+            let newPowerup = new Powerup(this.x, this.y - BLOCK_SIZE / 2, powerUpType);
             game.gameObjects.push(newPowerup);
             game.Enroll(newPowerup);
 

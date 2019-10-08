@@ -26,18 +26,18 @@ class Powerup
         this.isBouncing = false;
 
         // all these values should be tested (except bouncing)
-        this.slidingSpeed = HexFloatToDec("1.000");
-        this.poppingSpeed = -HexFloatToDec("0.500");
+        this.slidingSpeed = HexFloatToDec("1.200");
+        this.poppingSpeed = -HexFloatToDec("0.300");
 
         this.fallingAcceleration = HexFloatToDec("0.900");
         this.maxFallSpeed = HexFloatToDec("4.800");
         
-        this.bouncingSlidingSpeed = HexFloatToDec("1.200");
+        this.bouncingSlidingSpeed = HexFloatToDec("1.400");
         this.bouncingInitialSpeed = -HexFloatToDec("4.000");
         this.bouncingMaxFallSpeed = HexFloatToDec("3.000");
         this.bouncingFallingAcceleration = HexFloatToDec("0.500");
 
-        this.soarInitialSpeed = -HexFloatToDec("6.000");  // should be tested
+        this.soarInitialSpeed = -HexFloatToDec("7.000");  // should be tested
 
         this.speedX = 0;
         this.speedY = 0;
@@ -61,8 +61,9 @@ class Powerup
                 this.spriteToDraw = sprites.star_1;
                 break;
         }
+
         this.animationFrameCount = 0;
-        this.animationFrameRate = 3;  // should be tested
+        this.animationFrameRate = 1;  // should be tested
         this.animator = undefined;
         switch (this.type)
         {
@@ -77,7 +78,8 @@ class Powerup
 
         this.hitbox = hitboxes.powerup;
 
-        game.physics.ResistorToMovingObjectsArray(this);
+        game.physics.RegisterToMovingObjectsArray(this);
+        game.physics.RegisterToBucketMap(this);
     }
 
     Move()
@@ -107,9 +109,9 @@ class Powerup
         {
             this.y += this.poppingSpeed;
             
-            if (this.y <= this.originalY + BLOCK_SIZE / 2)
+            if (this.y < this.originalY - BLOCK_SIZE / 2)
             {
-                this.y = this.originalY + BLOCK_SIZE / 2;
+                this.y = this.originalY - BLOCK_SIZE / 2;
                 this.isPoppingUp = false;
             }
 
@@ -119,7 +121,7 @@ class Powerup
         if (this.type != EPowerupType.FireFlower)
         {
             this.Move();
-            this.Gravitate();
+            // this.Gravitate();
         }
     }
 
