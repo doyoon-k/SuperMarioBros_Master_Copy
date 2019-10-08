@@ -158,6 +158,7 @@ class Goomba extends BaseEnemy
             switch (direction)
             {
                 case DIRECTION.Up:
+                    print("!");
                     this.Stomped();
                     break;
             }

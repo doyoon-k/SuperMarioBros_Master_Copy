@@ -41,15 +41,21 @@ class Physics
     {
       let objHitbox = obj.hitbox;
       //temporary
-      objHitbox.DebugDraw(obj);
+      // objHitbox.DebugDraw(obj);
 
       let objHitbox_rect = objHitbox.GetRect(obj);
       let speedX = obj.speedX;
       let speedY = obj.speedY;
-      let buckets = this.GetBucket(objHitbox_rect.left_X+speedX, objHitbox_rect.top_Y+speedY);
-      buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX, objHitbox_rect.top_Y+speedY));
-      buckets.concat(this.GetBucket(objHitbox_rect.left_X+speedX, objHitbox_rect.bottom_Y+speedY));
-      buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX, objHitbox_rect.bottom_Y+speedY));
+      let buckets = this.GetBucket(objHitbox_rect.left_X + speedX, objHitbox_rect.top_Y + speedY);
+      buckets = buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX, objHitbox_rect.top_Y+speedY));
+      buckets = buckets.concat(this.GetBucket(objHitbox_rect.left_X+speedX, objHitbox_rect.bottom_Y+speedY));
+      buckets = buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX, objHitbox_rect.bottom_Y+speedY));
+
+      // if (obj instanceof Mario)
+      // {
+        // line((objHitbox_rect.left_X- (game.camera.x - 100)) * pixelMultiplier, 0, (objHitbox_rect.left_X- (game.camera.x - 100)) * pixelMultiplier, height);
+        // line((objHitbox_rect.right_X- (game.camera.x - 100)) * pixelMultiplier, 0, (objHitbox_rect.right_X- (game.camera.x - 100)) * pixelMultiplier, height);
+      // }                   
      
       // push();
       // strokeWeight(30);
@@ -60,9 +66,15 @@ class Physics
       {
         let collidableObjHitbox = collidableObj.hitbox;
         //temporary
-        collidableObjHitbox.DebugDraw(collidableObj);
+        // collidableObjHitbox.DebugDraw(collidableObj);
         let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
- 
+
+        // if (collidableObj instanceof ActiveBlock)
+        // {
+        //   line((collidableObjHitbox_rect.left_X- (game.camera.x - 100)) * pixelMultiplier, 0, (collidableObjHitbox_rect.left_X- (game.camera.x - 100)) * pixelMultiplier, height);
+        //   line((collidableObjHitbox_rect.right_X- (game.camera.x - 100)) * pixelMultiplier, 0, (collidableObjHitbox_rect.right_X- (game.camera.x - 100)) * pixelMultiplier, height);
+        // }
+
         let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y, collidableObj);
         let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y, collidableObj);
 
@@ -71,12 +83,13 @@ class Physics
 
         if (willCollide)
         {
-          if (speedX > 0 && speedY >= 0) //1)
+          if (speedX > 0 && speedY > 0) //1)
           {
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.top_Y) //1) a)
             {
+              if (obj instanceof Mario && collidableObj instanceof Goomba)
+                print("m-g");
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              obj.OnCollisionWith(collidableObj, DIRECTION.Down);
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //1) b)
             {
@@ -84,17 +97,15 @@ class Physics
               obj.OnCollisionWith(collidableObj, DIRECTION.Right);
             }
           }
-          else if (speedX <= 0 && speedY >= 0)
+          else if (speedX <= 0 && speedY > 0)
           {
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.top_Y) //2) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              obj.OnCollisionWith(collidableObj, DIRECTION.Down);
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //2) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
-              obj.OnCollisionWith(collidableObj, DIRECTION.Left);
             }
           }
           else if (speedX > 0 && speedY <= 0)
@@ -102,12 +113,10 @@ class Physics
             if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-              obj.OnCollisionWith(collidableObj, DIRECTION.Up);
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)//3) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
-              obj.OnCollisionWith(collidableObj, DIRECTION.Right);
             }
           }
           else if (speedX <= 0 && speedY <= 0)
@@ -115,12 +124,10 @@ class Physics
             if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-              obj.OnCollisionWith(collidableObj, DIRECTION.Up);
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
-              obj.OnCollisionWith(collidableObj, DIRECTION.Left);
             }
           
           }
@@ -141,6 +148,10 @@ class Physics
   RegisterToBucketMap(object)
   {
     let object_hitbox_rect = object.hitbox.GetRect(object);
+    if (object instanceof Mario)
+    {
+      text("l_x : "+object_hitbox_rect.left_X+ "r_x : "+object_hitbox_rect.right_X,width/2,height/2);  
+    }
 
     let i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
     let j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
