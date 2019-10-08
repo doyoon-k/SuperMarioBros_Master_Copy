@@ -256,11 +256,11 @@ class Mario {
       this.Move();
 
     //Temporary makeshift anti-fall-through-screen-border logic. 
-    if (this.y > 208) {
-      this.isJumping = false;
-      this.speedY = 0;
-      this.y = 208;
-    }
+    // if (this.y > 208) {
+    //   this.isJumping = false;
+    //   this.speedY = 0;
+    //   this.y = 208;
+    // }
 
   }
 

@@ -61,9 +61,8 @@ class Game {
     Update()
     {
         this.physics.Update();
-        
-        this.objectsToUpdate.forEach(object => object.Update());
         this.physics.CheckCollision();
+        this.objectsToUpdate.forEach(object => object.Update());
         this.statistics.Update();
         this.camera.Update();
     }

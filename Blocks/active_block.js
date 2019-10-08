@@ -90,7 +90,8 @@ class ActiveBlock
                     break;
                 case DIRECTION.Up:
                     collider.speedY = 0;
-                    collider.y = this.y - this.hitbox.height - 1;
+                    collider.isJumping = 0;
+                    collider.y = this.y - this.hitbox.height;
                     break;
                 case DIRECTION.Right:
                     collider.speedX = 0;

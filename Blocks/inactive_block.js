@@ -45,7 +45,51 @@ class InactiveBlock
         game.Expel(this);
     }
 
-    OnCollisionWith(collider, direction) {}
+    OnCollisionWith(collider, direction)
+    {
+        if (collider instanceof Mario)
+        {
+            switch (direction)
+            {
+                case DIRECTION.Up:
+                    collider.speedY = 0;
+                    collider.isJumping = 0;
+                    collider.y = this.y - this.hitbox.height;
+                    break;
+                case DIRECTION.Down:
+
+                    break;
+                case DIRECTION.Right:
+
+                    break;
+                case DIRECTION.Left:
+
+                    break;
+
+            }
+        }
+        else if (collider instanceof BaseEnemy || collider instanceof Powerup)
+        {
+            switch (direction)
+            {
+                case DIRECTION.Up:
+                    collider.speedY = -HexFloatToDec("0.900");
+                    collider.y = this.y - this.hitbox.height - HexFloatToDec("0.900");
+                    break;
+                case DIRECTION.Down:
+
+                    break;
+                case DIRECTION.Right:
+
+                    break;
+                case DIRECTION.Left:
+
+                    break;
+
+            }
+        }
+
+    }
 }
 
 

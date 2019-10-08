@@ -88,7 +88,7 @@ class Goomba extends BaseEnemy
     Update()
     {
         this.Move();
-        // this.Gravitate();
+        this.Gravitate();
     }
 
     Draw()
@@ -111,7 +111,7 @@ class Goomba extends BaseEnemy
                 case DIRECTION.Down:
                     this.speedY = 0;
                     this.y = collider.y - BLOCK_SIZE;
-                    // print("!");
+                    print("!");
                     break;
             }
         }
