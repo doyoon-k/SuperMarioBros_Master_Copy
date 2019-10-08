@@ -67,9 +67,9 @@ class Hitbox
 }
 
  const hitboxes = {
-    mario : new Hitbox(0, 0, 10, 12),
-    big_mario : new Hitbox(0, 0, 12, 24),
-    big_mario_duck : new Hitbox(0, 0, 12, 12),
+    mario : new Hitbox(16, 0, 10, 12),
+    big_mario : new Hitbox(16, 0, 12, 24),
+    big_mario_duck : new Hitbox(16, 0, 12, 12),
 
     goomba : new Hitbox(0, -4, 10, 6),
     koopa_troopa : new Hitbox(0, -3, 12, 12),
@@ -81,5 +81,8 @@ class Hitbox
     inactive_block: new Hitbox(0, 0, 16, 16),
 
     pipe_horizontal: new Hitbox(0, 0, 32, 16),
-    pipe_vertical: new Hitbox(0, 0, 16, 32)
+    pipe_vertical: new Hitbox(0, 0, 16, 32),
+    
+    //correct value should be assigned. this is just temporary value only to test.
+    flagpole: new Hitbox(0, 0, 16, 64)
 };

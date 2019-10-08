@@ -85,6 +85,20 @@ class ActiveBlock
             {
                 case DIRECTION.Down:
                     this.Hit();
+                    collider.speedY = 0;
+                    collider.y = this.y + collider.hitbox.height;
+                    break;
+                case DIRECTION.Up:
+                    collider.speedY = 0;
+                    collider.y = this.y - this.hitbox.height - 1;
+                    break;
+                case DIRECTION.Right:
+                    collider.speedX = 0;
+                    collider.x = this.x + this.hitbox.width / 2 + collider.hitbox.width / 2 + 1;
+                    break;
+                case DIRECTION.Left:
+                    collider.speedX = 0;
+                    collider.x = this.x - this.hitbox.width / 2 - collider.hitbox.width / 2 - 1;
                     break;
             }
         }

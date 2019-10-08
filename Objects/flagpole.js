@@ -20,6 +20,7 @@ class Flagpole
         this.y = y;
 
         this.spriteToDraw = sprites.flag;
+        this.hitbox = hitboxes.flagpole;
     }
 
     Update() {}

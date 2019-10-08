@@ -111,6 +111,7 @@ class Goomba extends BaseEnemy
                 case DIRECTION.Down:
                     this.speedY = 0;
                     this.y = collider.y - BLOCK_SIZE;
+                    // print("!");
                     break;
             }
         }

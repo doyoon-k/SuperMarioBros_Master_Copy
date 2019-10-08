@@ -51,6 +51,11 @@ class Physics
       buckets.concat(this.GetBucket(objHitbox_rect.left_X+speedX, objHitbox_rect.bottom_Y+speedY));
       buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX, objHitbox_rect.bottom_Y+speedY));
      
+      // push();
+      // strokeWeight(30);
+      // text(buckets.length, width / 2, height / 2);
+      // pop();
+
       for (let collidableObj of buckets)
       {
         let collidableObjHitbox = collidableObj.hitbox;
@@ -66,45 +71,43 @@ class Physics
 
         if (willCollide)
         {
-          // text("colliding!",width - 200, height / 2);
-          if(collidableObj instanceof Mario)
-          text("Mario!",width - 200, height / 2);
-
-          if(collidableObj instanceof ActiveBlock)
-          text("ActiveBlock!",width - 200, height / 2+40);
-
-          if (speedX > 0 && speedY > 0) //1)
+          if (speedX > 0 && speedY >= 0) //1)
           {
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.top_Y) //1) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Down);
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //1) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Right);
             }
           }
-          else if (speedX <= 0 && speedY > 0)
+          else if (speedX <= 0 && speedY >= 0)
           {
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.top_Y) //2) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Down);
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //2) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Left);
             }
           }
           else if (speedX > 0 && speedY <= 0)
           {
             if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
-              collidableObj.OnCollisionWith(obj, DIRECTION.Down);    
-              text("Down", width - 50, height/2 + 30);
+              collidableObj.OnCollisionWith(obj, DIRECTION.Down);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Up);
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)//3) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Right);
             }
           }
           else if (speedX <= 0 && speedY <= 0)
@@ -112,11 +115,12 @@ class Physics
             if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-              text("Down", width - 50, height/2 + 30);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Up);
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Left);
             }
           
           }
