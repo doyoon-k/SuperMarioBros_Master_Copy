@@ -23,22 +23,22 @@ class Hitbox
         this.height = height;
     }
 
-    IsHit(x,y,parent)
+    IsColliding(hitbox1_rect,h_b_1_speedX,h_b_1_speedY,parent)
     {
-       let posX = parent.x+this.x;
-       let posY = parent.y + this.y;
-        //깊이체크로 방식 변경하기
-       return CheckIsRectContainsThisPoint(x,y,posX-this.width/2,posY-this.height,posX+this.width/2,posY);
+       let is_X_Colliding = this.IsXcoordInBetween(hitbox1_rect.right_X+h_b_1_speedX,parent)||this.IsXcoordInBetween(hitbox1_rect.left_X+h_b_1_speedX,parent);
+       let is_Y_Colliding = this.IsYcoordInBetween(hitbox1_rect.top_Y+h_b_1_speedY,parent)||this.IsYcoordInBetween(hitbox1_rect.bottom_Y+h_b_1_speedY,parent);
+       let isColliding = is_X_Colliding&&is_Y_Colliding;
+       return isColliding;
     }
 
     IsXcoordInBetween(x,parent)
     {
-        return ((parent.x + this.x-this.width/2 <= x) && (x <= parent.x + this.x + this.width/2));
+        return ((parent.x + this.x-this.width/2) < x) && (x < (parent.x + this.x + this.width/2));
     }
 
     IsYcoordInBetween(y,parent)
     {
-        return ((parent.y + this.y - this.height <= y) && (y <= parent.y + this.y));
+        return ((parent.y + this.y - this.height) < y) && (y < (parent.y + this.y));
     }
     
     GetRect(parent)
@@ -52,13 +52,14 @@ class Hitbox
         {
             push();
             rectMode(CENTER);
-            rect((parent.x + this.x - (game.camera.x - 116)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
+            rect((parent.x + this.x - (game.camera.x - 100)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, this.width * pixelMultiplier, this.height * pixelMultiplier);
             pop();
         }
         else
         {
             push();
             rectMode(CENTER);
+            
             rect((parent.x + this.x - (game.camera.x - 100)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
             pop();
         }

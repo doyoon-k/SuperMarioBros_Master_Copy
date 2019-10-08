@@ -12,8 +12,8 @@
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
 
-const bucketMap_how_many_vertical_cell = 70;
-const bucketMap_how_many_horizontal_cell = 5;
+const bucketMap_how_many_vertical_cell = 5;
+const bucketMap_how_many_horizontal_cell = 70;
 const bucketMap_one_cell_width = 3584 / 70;
 const bucketMap_one_cell_height = 240 / 5;
 
@@ -24,11 +24,11 @@ class Physics
     this.bucketMap = [];
     this.movingObjects = [];
 
-    for (let row = 0; row < bucketMap_how_many_horizontal_cell + 1; row++)
+    for (let row = 0; row < bucketMap_how_many_vertical_cell + 1; row++)
     {
       //push the row arrays
       this.bucketMap.push([]);
-      for (let column = 0; column < bucketMap_how_many_vertical_cell; column++)
+      for (let column = 0; column < bucketMap_how_many_horizontal_cell+1; column++)
       {
         //push the buckets in.
         this.bucketMap[row].push([]);
@@ -61,30 +61,27 @@ class Physics
         let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y, collidableObj);
         let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y, collidableObj);
 
-        let willCollide = collidableObjHitbox.IsHit(objHitbox_rect.left_X+speedX, objHitbox_rect.top_Y+speedY, collidableObj) ||
-        collidableObjHitbox.IsHit(objHitbox_rect.left_X+speedX, objHitbox_rect.bottom_Y+speedY, collidableObj) ||
-        collidableObjHitbox.IsHit(objHitbox_rect.right_X+speedX , objHitbox_rect.top_Y+speedY, collidableObj) ||
-        collidableObjHitbox.IsHit(objHitbox_rect.right_X+speedX , objHitbox_rect.bottom_Y+speedY, collidableObj);
-        
-        // //temporary
-        // if (collidableObj instanceof InactiveBlock)
-        //   return;
+        let willCollide = collidableObjHitbox.IsColliding(objHitbox_rect,speedX,speedY,collidableObj);
+        //temporary
 
         if (willCollide)
         {
-          text("colliding!",width - 50, height / 2);
+          // text("colliding!",width - 200, height / 2);
+          if(collidableObj instanceof Mario)
+          text("Mario!",width - 200, height / 2);
+
+          if(collidableObj instanceof ActiveBlock)
+          text("ActiveBlock!",width - 200, height / 2+40);
+
           if (speedX > 0 && speedY > 0) //1)
           {
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.top_Y) //1) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              text("Up", width - 50, height/2 + 30);
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //1) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
-              push();
-              text("Left", width - 50, height/2 + 30);
             }
           }
           else if (speedX <= 0 && speedY > 0)
@@ -92,15 +89,13 @@ class Physics
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.top_Y) //2) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              text("Up", width - 50, height/2 + 30);
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //2) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
-              text("Right", width - 50, height/2 + 30);
             }
           }
-          else if (speedX >= 0 && speedY <= 0)
+          else if (speedX > 0 && speedY <= 0)
           {
             if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
@@ -110,7 +105,6 @@ class Physics
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)//3) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
-              text("Left", width - 50, height/2 + 30);
             }
           }
           else if (speedX <= 0 && speedY <= 0)
@@ -123,7 +117,6 @@ class Physics
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
-              text("Right", width - 50, height/2 + 30);
             }
           
           }
@@ -143,8 +136,22 @@ class Physics
 
   RegisterToBucketMap(object)
   {
-    let i = floor(object.x / bucketMap_one_cell_width);
-    let j = floor(object.y / bucketMap_one_cell_height);
+    let object_hitbox_rect = object.hitbox.GetRect(object);
+
+    let i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
+    let j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
+    this.bucketMap[j][i].push(object);
+
+    i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
+    j = floor(object_hitbox_rect.bottom_Y / bucketMap_one_cell_height);
+    this.bucketMap[j][i].push(object);
+
+    i = floor(object_hitbox_rect.right_X / bucketMap_one_cell_width);
+    j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
+    this.bucketMap[j][i].push(object);
+
+    i = floor(object_hitbox_rect.right_X / bucketMap_one_cell_width);
+    j = floor(object_hitbox_rect.bottom_Y / bucketMap_one_cell_height);
     this.bucketMap[j][i].push(object);
   }
 
@@ -155,9 +162,36 @@ class Physics
 
   RemoveFromBucketMap(object)
   {
-    let i = floor(object.x / bucketMap_one_cell_width);
-    let j = floor(object.y / bucketMap_one_cell_height);
+    let object_hitbox_rect = object.hitbox.GetRect(object);
+    // if(object.prevX == undefined || object.prevY == undefined)
+    // return;
+    let i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
+    let j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
     let bucket = this.bucketMap[j][i];
+    if (bucket.indexOf(object) != -1)
+    {
+      bucket.splice(bucket.indexOf(object), 1);
+    }
+
+    i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
+    j = floor(object_hitbox_rect.bottom_Y / bucketMap_one_cell_height);
+    bucket = this.bucketMap[j][i];
+    if (bucket.indexOf(object) != -1)
+    {
+      bucket.splice(bucket.indexOf(object), 1);
+    }
+
+    i = floor(object_hitbox_rect.right_X / bucketMap_one_cell_width);
+    j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
+    bucket = this.bucketMap[j][i];
+    if (bucket.indexOf(object) != -1)
+    {
+      bucket.splice(bucket.indexOf(object), 1);
+    }
+
+    i = floor(object_hitbox_rect.right_X / bucketMap_one_cell_width);
+    j = floor(object_hitbox_rect.bottom_Y / bucketMap_one_cell_height);
+    bucket = this.bucketMap[j][i];
     if (bucket.indexOf(object) != -1)
     {
       bucket.splice(bucket.indexOf(object), 1);
@@ -177,7 +211,24 @@ class Physics
     for (let object of this.movingObjects)
     {
       this.RemoveFromBucketMap(object);
+      // object.prevX = object.x;
+      // object.prevy = object.y;
       this.RegisterToBucketMap(object);
+    }
+  }
+
+  BucketMapDebugDraw()
+  {
+    for(let i = 0; i<bucketMap_how_many_horizontal_cell; i++)
+    {
+      for(let j = 0; j<bucketMap_how_many_vertical_cell;j++)
+      {
+        push();
+        stroke(0,255,0);
+        line((bucketMap_one_cell_width*i-game.camera.x)*pixelMultiplier,0,(bucketMap_one_cell_width*i-game.camera.x)*pixelMultiplier,height);
+        line(0,bucketMap_one_cell_height*j*pixelMultiplier,width,bucketMap_one_cell_height*j*pixelMultiplier);
+        pop();
+      }
     }
   }
 }
