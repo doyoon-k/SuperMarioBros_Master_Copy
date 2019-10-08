@@ -14,9 +14,10 @@
 
 class QuestionBlock extends ActiveBlock
 {
-    constructor(x, y, containingItem)
+    constructor(x, y, containingItem, isHidden)
     {
         super(x, y, containingItem);
+        this.isHidden = isHidden;
 
         this.sprites = [sprites.block_question_1, sprites.block_question_1, sprites.block_question_2, sprites.block_question_3];
         this.spriteToDraw = undefined;
@@ -24,6 +25,11 @@ class QuestionBlock extends ActiveBlock
 
     Draw()
     {
+        if (this.isHidden)
+        {
+            return;
+        }
+        
         DrawSprite(this.spriteToDraw ? this.spriteToDraw : this.sprites[game.twinkleIndex], this.x, this.y);
     }
 
@@ -31,6 +37,8 @@ class QuestionBlock extends ActiveBlock
     {
         this.isBouncing = true;
         game.physics.RegisterToMovingObjectsArray(this);
+
+        this.isHidden = false;
 
         this.spriteToDraw = sprites.block_empty;
 

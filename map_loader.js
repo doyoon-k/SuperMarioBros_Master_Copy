@@ -1,12 +1,12 @@
 /*
-  helper_functions.js
+  map_loader.js
   Super Mario Bros.
 
   GAM100
   Fall 2019
 
-  JoonHo Hwang did ---
-  DoYoon Kim wrote all
+  JoonHo Hwang wrote CreateEnvironments based on the code DoYoon wrote
+  DoYoon Kim wrote the rest
   SeungGeon Kim did ---
 
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
@@ -29,6 +29,7 @@ class MapLoader
       mapLoader.CreateBackgrounds(mapLoader.mapData.backgrounds);
       mapLoader.CreateBlocks(mapLoader.mapData.blocks);
       mapLoader.CreateCharacters(mapLoader.mapData.characters);
+      mapLoader.CreateEnvironments(mapLoader.mapData.environments);
     }
 
     //determines the blocktype and create & add the block instance in gameObjects array and BucketMap.
@@ -62,16 +63,13 @@ class MapLoader
 
         }
 
-        let isQuestionMarkBlock = blockType.indexOf("Questionmark");
-        let isBrickBlock = blockType.indexOf("Brick");
-
-        if(isQuestionMarkBlock != -1)
+        if(blockType.includes("Question"))
         {
-           let questionMarkBlock = new QuestionBlock(x,y,itemType);
+           let questionMarkBlock = new QuestionBlock(x,y,itemType, blockType.includes("Hidden"));
            game.gameObjects.push(questionMarkBlock);
            game.physics.RegisterToBucketMap(questionMarkBlock);
         }
-        else if(isBrickBlock != -1)
+        else if(blockType.includes("Brick"))
         {
            let brickBlock = new BrickBlock(x,y,itemType);
            game.gameObjects.push(brickBlock);
@@ -133,6 +131,10 @@ class MapLoader
                 let bush3 = new BackgroundObject(x,y,EBackgroundObjectType.Bush3);
                 game.backgroundObjects.push(bush3);
                 break;
+            case "Castle":
+                let newCastle = new BackgroundObject(x, y, EBackgroundObjectType.Castle);
+                game.backgroundObjects.push(newCastle);
+                break;
          }
        }
     }
@@ -164,7 +166,38 @@ class MapLoader
 
     CreateEnvironments(environments)
     {
+        for (let environment of environments)
+        {
+            let x = environment.position.x;
+            let y = environment.position.y;
+            let environmentType = environment.environmentType;
 
+            let newObject;
+            switch (environmentType)
+            {
+                case "Pipe Head Horizontal":
+                    newObject = new PipeHead(x, y, true);
+                    break;
+
+                case "Pipe Head Vertical":
+                    newObject = new PipeHead(x, y, false);
+                    break;
+                
+                case "Pipe Body Horizontal":
+                    newObject = new PipeBody(x, y, true);
+                    break;
+                
+                case "Pipe Body Vertical":
+                    newObject = new PipeBody(x, y, false);
+                    break;
+                
+                case "Flag":
+                    newObject = new Flagpole(x, y);
+                    break;
+            }
+            game.gameObjects.push(newObject);
+            game.physics.RegisterToBucketMap(newObject);
+        }
     }
 
     CreateItems(items)

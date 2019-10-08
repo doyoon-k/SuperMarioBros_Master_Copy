@@ -95,7 +95,7 @@ class KoopaTroopa extends BaseEnemy
     ShellPushed(direction)
     {
         clearTimeout(this.awakeningTimer);
-        
+
         this.isInShell = false;
         this.isAwakening = false;
         this.isSliding = true;
@@ -171,11 +171,6 @@ class KoopaTroopa extends BaseEnemy
     {
         this.Move();
         // this.Gravitate();
-
-        if(isDPadUp)
-        this.Stomped();
-        if(isDPadDown)
-        this.ShellPushed()
     }
 
     Draw()

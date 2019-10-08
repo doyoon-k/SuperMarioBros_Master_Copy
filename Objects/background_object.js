@@ -43,6 +43,10 @@ class BackgroundObject
             case EBackgroundObjectType.Bush3:
                 this.spriteToDraw = sprites.bush_triple;
                 break;
+            
+            case EBackgroundObjectType.Castle:
+                this.spriteToDraw = sprites.castle;
+                break;
         }
     }
 
@@ -60,5 +64,6 @@ const EBackgroundObjectType = {
     Cloud3:3,
     Bush1:4,
     Bush2:5,
-    Bush3:6 
+    Bush3:6,
+    Castle: 7
 };

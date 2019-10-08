@@ -115,6 +115,20 @@ function preload() {
     fireball_3: loadImage("Sprites/Object/object_fireball_3.png"),
     fireball_4: loadImage("Sprites/Object/object_fireball_4.png"),
     
+    pipe_body_hor: loadImage("Sprites/Object/object_pipe_body_hor.png"),
+    pipe_body_ver: loadImage("Sprites/Object/object_pipe_body_ver.png"),
+    pipe_head_hor: loadImage("Sprites/Object/object_pipe_head_hor.png"),
+    pipe_head_ver: loadImage("Sprites/Object/object_pipe_head_ver.png"),
+    pipe_intersect: loadImage("Sprites/Object/object_pipe_intersect.png"),
+
+    pipe_body_hor_underground: loadImage("Sprites/Object/object_pipe_body_hor_underground.png"),
+    pipe_body_ver_underground: loadImage("Sprites/Object/object_pipe_body_ver_underground.png"),
+    pipe_head_hor_underground: loadImage("Sprites/Object/object_pipe_head_hor_underground.png"),
+    pipe_head_ver_underground: loadImage("Sprites/Object/object_pipe_head_ver_underground.png"),
+    pipe_intersect_underground: loadImage("Sprites/Object/object_pipe_intersect_underground.png"),
+  
+    flagpole_head: loadImage("Sprites/Object/object_flagpole_head.png"),
+    flag: loadImage("Sprites/Object/object_flag.png"),
   };
 }
 
