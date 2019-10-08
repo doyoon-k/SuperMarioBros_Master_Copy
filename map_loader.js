@@ -56,7 +56,7 @@ class MapLoader
           case "Coin":
               itemType = EContainingItemType.Coin;
               break;
-          case "None":
+          case "No Item":
               itemType = EContainingItemType.None;
               break;
 
