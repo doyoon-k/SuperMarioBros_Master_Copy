@@ -48,7 +48,6 @@ class Hitbox
 
     DebugDraw(parent)
     {
-<<<<<<< HEAD
         if (parent instanceof Mario)
         {
             push();
@@ -58,27 +57,16 @@ class Hitbox
         }
         else
         {
-=======
-        // if (parent instanceof Mario)
-        // {
-        //     push();
-        //     rectMode(CENTER);
-        //     rect((parent.x + this.x - (game.camera.x - 116)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
-        //     pop();
-        // }
-        // else
-        // {
->>>>>>> 6c966441b5afd562d67f30ce0e92ca0b67280679
             push();
             rectMode(CENTER);
             
             rect((parent.x + this.x - (game.camera.x - 100)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
             pop();
         }
-    // }
+    }
 }
 
-const hitboxes = {
+ const hitboxes = {
     mario : new Hitbox(0, 0, 10, 12),
     big_mario : new Hitbox(0, 0, 12, 24),
     big_mario_duck : new Hitbox(0, 0, 12, 12),
