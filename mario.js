@@ -75,8 +75,9 @@ class Mario {
 
 
 
-    this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
-    this.big_mario_climbing_2 = loadImage('Sprites/Mario/big_mario_climbing_2.png');
+    // this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
+    // this.big_mario_climbing_2 = loadImage('Sprites/Mario/big_mario_climbing_2.png');
+
     this.mario_swimming = loadImage('Sprites/Mario/mario_swimming.png');
     this.big_mario_swimming = loadImage('Sprites/Mario/big_mario_swimming.png');
 
@@ -124,6 +125,7 @@ class Mario {
     this.big_mario_stand_still_transform1 = loadImage('Sprites/Mario/big_mario_stand_still_transform1.png');
     this.big_mario_stand_still_transform2 = loadImage('Sprites/Mario/big_mario_stand_still_transform2.png');
     this.big_mario_stand_still_transform3 = loadImage('Sprites/Mario/big_mario_stand_still_transform3.png');
+    this.big_mario_stand_still_fire = loadImage('Sprites/Mario/big_mario_stand_still_fire.png');
 
     this.running_1 = 0;
     this.running_2 = 0;
@@ -155,6 +157,10 @@ class Mario {
     this.big_mario_running_transform3_2 = loadImage('Sprites/Mario/big_mario_running_transform3_2.png');
     this.big_mario_running_transform3_3 = loadImage('Sprites/Mario/big_mario_running_transform3_1.png');
 
+    this.big_mario_running_fire_1 = loadImage('Sprites/Mario/big_mario_running_fire_3.png');
+    this.big_mario_running_fire_2 = loadImage('Sprites/Mario/big_mario_running_fire_2.png');
+    this.big_mario_running_fire_3 = loadImage('Sprites/Mario/big_mario_running_fire_1.png');
+
     this.turnAround = 0;
 
     this.mario_turnaround = loadImage('Sprites/Mario/mario_turnaround.png');
@@ -167,6 +173,8 @@ class Mario {
     this.big_mario_turnaround_transform2 = loadImage('Sprites/Mario/big_mario_turnaround_transform2.png');
     this.big_mario_turnaround_transform3 = loadImage('Sprites/Mario/big_mario_turnaround_transform3.png');
 
+    this.big_mario_turnaround_fire = loadImage('Sprites/Mario/big_mario_turnaround_fire.png');
+
     this.jump = 0;
 
     this.mario_jump = loadImage('Sprites/Mario/mario_jump.png');
@@ -178,6 +186,8 @@ class Mario {
     this.big_mario_jump_transform1 = loadImage('Sprites/Mario/big_mario_jump_transform1.png');
     this.big_mario_jump_transform2 = loadImage('Sprites/Mario/big_mario_jump_transform2.png');
     this.big_mario_jump_transform3 = loadImage('Sprites/Mario/big_mario_jump_transform3.png');
+
+    this.big_mario_jump_fire = loadImage('Sprites/Mario/big_mario_jump_fire.png');
 
     this.spriteToDraw = this.mario_stand_still;
 
