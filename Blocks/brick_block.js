@@ -38,7 +38,7 @@ class BrickBlock extends ActiveBlock
         {
             if (game.mario.powerupState != game.mario.marioState.mario)
             {
-                setTimeout(this.Break, ONE_FRAME_SECONDS);
+                setTimeout(() => this.Break(), ONE_FRAME_SECONDS);
             }
             else
             {
@@ -57,7 +57,7 @@ class BrickBlock extends ActiveBlock
                 
                 this.spriteToDraw = sprites.block_empty;
 
-                this.BouncingEndCallBack = this.Emptied;
+                this.BouncingEndCallBack = () => this.Emptied();
                 return;
             }
 

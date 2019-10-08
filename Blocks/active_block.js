@@ -26,7 +26,7 @@ class ActiveBlock
         this.isBouncing = false;
         this.hasReachedMaxHeight = false;
 
-        this.bouncingSpeed = HexFloatToDec("1.000");  // should be tested
+        this.bouncingSpeed = HexFloatToDec("1.800");  // should be tested
         
         this.speedX = 0;  // only for collision detection, never get changed
         this.speedY = 0;  // while this can be changed when bouncing

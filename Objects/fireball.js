@@ -35,6 +35,7 @@ class Fireball
         this.speedY = 0;
         
         game.physics.RegisterToMovingObjectsArray(this);
+        game.physics.RegisterToBucketMap(this);
     }
 
     Move()

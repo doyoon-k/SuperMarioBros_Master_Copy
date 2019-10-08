@@ -39,7 +39,7 @@ class QuestionBlock extends ActiveBlock
             game.statistics.IncrementCoin();
             game.statistics.AddScore(SCORES.Coin);
 
-            this.BouncingEndCallBack = this.Emptied;
+            this.BouncingEndCallBack = () => this.Emptied();
             return;
         }
         

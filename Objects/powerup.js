@@ -27,7 +27,7 @@ class Powerup
 
         // all these values should be tested (except bouncing)
         this.slidingSpeed = HexFloatToDec("1.000");
-        this.poppingSpeed = -HexFloatToDec("0.500");
+        this.poppingSpeed = -HexFloatToDec("0.300");
 
         this.fallingAcceleration = HexFloatToDec("0.900");
         this.maxFallSpeed = HexFloatToDec("4.800");
@@ -79,6 +79,7 @@ class Powerup
         this.hitbox = hitboxes.powerup;
 
         game.physics.RegisterToMovingObjectsArray(this);
+        game.physics.RegisterToBucketMap(this);
     }
 
     Move()
@@ -108,9 +109,9 @@ class Powerup
         {
             this.y += this.poppingSpeed;
             
-            if (this.y <= this.originalY + BLOCK_SIZE / 2)
+            if (this.y < this.originalY - BLOCK_SIZE / 2)
             {
-                this.y = this.originalY + BLOCK_SIZE / 2;
+                this.y = this.originalY - BLOCK_SIZE / 2;
                 this.isPoppingUp = false;
             }
 

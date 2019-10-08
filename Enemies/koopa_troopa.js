@@ -24,7 +24,7 @@ class KoopaTroopa extends BaseEnemy
         this._isAwakening = false;
         this.isSliding = false;
 
-        this.slidingSpeed = HexFloatToDec("3.000");  // should be tested
+        this.slidingSpeed = HexFloatToDec("0.100");  // should be tested
 
         this.awakeningTimer = undefined;
 
@@ -64,7 +64,7 @@ class KoopaTroopa extends BaseEnemy
             this.isSliding = false;
         }
         this.isInShell = true;
-        this.awakeningTimer = setTimeout(this.Awakening, KOOPA_TROOPA_AWAKENING_SECONDS * 1000);
+        this.awakeningTimer = setTimeout(() => this.Awakening(), KOOPA_TROOPA_AWAKENING_SECONDS * 1000);
 
         this.spriteToDraw = sprites.turtle_shell;
 
@@ -76,7 +76,7 @@ class KoopaTroopa extends BaseEnemy
         this.isInShell = false;
         this.isAwakening = true;
 
-        this.awakeningTimer = setTimeout(this.Recover, KOOPA_TROOPA_RECOVER_SECONDS * 1000);
+        this.awakeningTimer = setTimeout(() => this.Recover(), KOOPA_TROOPA_RECOVER_SECONDS * 1000);
     }
 
     Recover()
@@ -92,12 +92,15 @@ class KoopaTroopa extends BaseEnemy
         }
     }
 
-    ShellPushed()
+    ShellPushed(direction)
     {
         clearTimeout(this.awakeningTimer);
+        
         this.isInShell = false;
         this.isAwakening = false;
         this.isSliding = true;
+
+        this.isGoingLeft = direction != DIRECTION.Left;
 
         this.spriteToDraw = sprites.turtle_shell;
     }
@@ -168,6 +171,11 @@ class KoopaTroopa extends BaseEnemy
     {
         this.Move();
         // this.Gravitate();
+
+        if(isDPadUp)
+        this.Stomped();
+        if(isDPadDown)
+        this.ShellPushed()
     }
 
     Draw()
