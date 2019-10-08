@@ -70,9 +70,7 @@ class Mario {
     this.maxFallSpeed = HexFloatToDec("4.800");
 
     this.previousY = 0;
-
     this.initialJumpX = 0;
-
     this.isDashJump = false;
 
 
@@ -868,11 +866,15 @@ class Mario {
 
     if (this.isInvincible) {
 
-      if (this.tickTriple > 2) {
-        this.tickTriple = 0;
-      } else {
-        this.tickTriple++;
+      if (this.tickCount > 1) {
+        if (this.tickTriple > 2) {
+          this.tickTriple = 0;
+        } else {
+          this.tickTriple++;
+        }
+        this.tickCount = 0;
       }
+      this.tickCount++;
 
       this.RefreshSpritePool();
 
