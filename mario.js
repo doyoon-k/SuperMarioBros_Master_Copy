@@ -690,13 +690,19 @@ class Mario {
             case 11:
               this.spriteToDraw = sprite2;
               break;
+            case 12:
+              this.spriteToDraw = sprite3;
+              break;
+            case 13:
+              this.spriteToDraw = sprite2;
+              break;
           }
 
           if (this.drawIndex <= 3) {
             this.tickFlash = true;
           }
 
-          if (this.drawIndex == 11) {
+          if (this.drawIndex == 13) {
             this.isTransforming = false;
             this.powerupState = this.nextPowerupState;
             this.RefreshSpritePool();
@@ -816,7 +822,6 @@ class Mario {
         //Big or Fire mario invincible
         switch (this.tickTriple) {
           case 0:
-            print(1)
             this.stand_still = this.big_mario_stand_still_transform1;
             this.running_1 = this.big_mario_running_transform1_1;
             this.running_2 = this.big_mario_running_transform1_2;
@@ -825,7 +830,6 @@ class Mario {
             this.jump = this.big_mario_jump_transform1;
             break;
           case 1:
-            print(2)
             this.stand_still = this.big_mario_stand_still_transform2;
             this.running_1 = this.big_mario_running_transform2_1;
             this.running_2 = this.big_mario_running_transform2_2;
@@ -834,7 +838,6 @@ class Mario {
             this.jump = this.big_mario_jump_transform2;
             break;
           case 2:
-            print(3)
             this.stand_still = this.big_mario_stand_still_transform3;
             this.running_1 = this.big_mario_running_transform3_1;
             this.running_2 = this.big_mario_running_transform3_2;
@@ -909,7 +912,7 @@ class Mario {
 
         case this.marioState.mario:
 
-          this.Animate(this.big_mario_jump, this.mario_swimming, this.transformFrameRate + 3, this.big_mario_swimming, true);
+          this.Animate(this.big_mario_jump, this.mario_swimming, this.transformFrameRate, this.big_mario_swimming, true);
 
           if (this.tickCount > 2) {
             this.tickFlash = !this.tickFlash;

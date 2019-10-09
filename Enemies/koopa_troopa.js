@@ -105,7 +105,7 @@ class KoopaTroopa extends BaseEnemy
         this.spriteToDraw = sprites.turtle_shell;
     }
 
-    InstaKilled()
+    InstaKilled(direction)
     {
         clearTimeout(this.awakeningTimer);
         this.isInShell = false;
