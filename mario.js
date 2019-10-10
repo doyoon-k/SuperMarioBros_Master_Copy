@@ -20,6 +20,7 @@ class Mario {
 
 
 
+    //Initial value
     this.hitbox = hitboxes.mario;
 
 
@@ -81,8 +82,6 @@ class Mario {
     this.mario_swimming = loadImage('Sprites/Mario/mario_swimming.png');
     this.big_mario_swimming = loadImage('Sprites/Mario/big_mario_swimming.png');
 
-    //And so on... 
-
 
 
     this.marioState = {
@@ -95,7 +94,8 @@ class Mario {
     this.nextPowerupState = 0;
 
     this.isInvincible = false;
-    this.tickTriple = 0;
+    this.isEmberRestored = false;
+    this.tickIndex = 0;
     this.tickFlash = false;
     this.tickCount = 0;
 
@@ -191,9 +191,6 @@ class Mario {
 
     this.spriteToDraw = this.mario_stand_still;
 
-    this.transformSprite_1 = 0;
-    this.transformSprite_2 = 0;
-
 
 
     this.animationFrameRate = 10;
@@ -242,7 +239,7 @@ class Mario {
     text("isDashJump : " + this.isDashJump, 10, 240);
     text("potentialHold : " + this.potentialHoldGravity, 10, 180);
     text("isTransforming : " + this.isTransforming, 10, 200);
-    text("tickTriple : " + this.tickTriple, 10, 260);
+    text("tickIndex : " + this.tickIndex, 10, 260);
     text("powerupState : " + this.powerupState, 10, 220);
   }
 
@@ -254,13 +251,6 @@ class Mario {
     this.Debug();
     if (!this.isTransforming)
       this.Move();
-
-    //Temporary makeshift anti-fall-through-screen-border logic. 
-    // if (this.y > 208) {
-    //   this.isJumping = false;
-    //   this.speedY = 0;
-    //   this.y = 208;
-    // }
 
   }
 
@@ -697,18 +687,16 @@ class Mario {
               this.spriteToDraw = sprite2;
               break;
           }
-
           if (this.drawIndex <= 3) {
             this.tickFlash = true;
           }
-
           if (this.drawIndex == 13) {
             this.isTransforming = false;
             this.powerupState = this.nextPowerupState;
             this.RefreshSpritePool();
           }
-
           break;
+
         case this.marioState.bigMario:
           switch (this.drawIndex) {
             case 0:
@@ -748,16 +736,23 @@ class Mario {
               this.spriteToDraw = sprite3;
               break;
           }
-
           if (this.drawIndex == 11) {
             this.isTransforming = false;
             this.powerupState = this.nextPowerupState;
             this.RefreshSpritePool();
           }
+          break;
 
+        case this.marioState.fireMario:
+
+          if (this.drawIndex == 11) {
+            this.isTransforming = false;
+            this.isEmberRestored = false;
+            this.powerupState = this.nextPowerupState;
+            this.RefreshSpritePool();
+          }
           break;
       }
-
     }
   }
 
@@ -769,31 +764,24 @@ class Mario {
     switch (targetState) {
       case this.marioState.mario:
         this.nextPowerupState = this.marioState.mario;
-
         break;
       case this.marioState.bigMario:
         this.nextPowerupState = this.marioState.bigMario;
-        this.transformSprite_1 = this.spriteToDraw;
-        if (this.isJumping) {
-          this.transformSprite_2 = this.big_mario_jump;
-        } else {
-          this.transformSprite_2 = this.big_mario_stand_still;
-        }
         break;
       case this.marioState.fireMario:
+        this.isEmberRestored = true;
         this.nextPowerupState = this.marioState.fireMario;
-
         break;
     }
   }
 
-  //Called once for powerupState, and then called constantly for invincibility
+  //Called once for powerupState, and called constantly for invincibility
   RefreshSpritePool() {
-    if (this.isInvincible) {
+    if (this.isInvincible || this.isEmberRestored) {
       if (this.powerupState == this.marioState.mario) {
-        //mario invincible
-        switch (this.tickTriple) {
-          case 0:
+        //mario (small) invincible
+        switch (this.tickIndex) {
+          case 2:
             this.stand_still = this.mario_stand_still_transform1;
             this.running_1 = this.mario_running_transform1_1;
             this.running_2 = this.mario_running_transform1_2;
@@ -801,7 +789,7 @@ class Mario {
             this.turnAround = this.mario_turnaround_transform1;
             this.jump = this.mario_jump_transform1;
             break;
-          case 1:
+          case 0:
             this.stand_still = this.mario_stand_still_transform2;
             this.running_1 = this.mario_running_transform2_1;
             this.running_2 = this.mario_running_transform2_2;
@@ -809,7 +797,7 @@ class Mario {
             this.turnAround = this.mario_turnaround_transform2;
             this.jump = this.mario_jump_transform2;
             break;
-          case 2:
+          case 1:
             this.stand_still = this.mario_stand_still_transform3;
             this.running_1 = this.mario_running_transform3_1;
             this.running_2 = this.mario_running_transform3_2;
@@ -820,8 +808,8 @@ class Mario {
         }
       } else {
         //Big or Fire mario invincible
-        switch (this.tickTriple) {
-          case 0:
+        switch (this.tickIndex) {
+          case 2:
             this.stand_still = this.big_mario_stand_still_transform1;
             this.running_1 = this.big_mario_running_transform1_1;
             this.running_2 = this.big_mario_running_transform1_2;
@@ -829,7 +817,7 @@ class Mario {
             this.turnAround = this.big_mario_turnaround_transform1;
             this.jump = this.big_mario_jump_transform1;
             break;
-          case 1:
+          case 0:
             this.stand_still = this.big_mario_stand_still_transform2;
             this.running_1 = this.big_mario_running_transform2_1;
             this.running_2 = this.big_mario_running_transform2_2;
@@ -837,7 +825,7 @@ class Mario {
             this.turnAround = this.big_mario_turnaround_transform2;
             this.jump = this.big_mario_jump_transform2;
             break;
-          case 2:
+          case 1:
             this.stand_still = this.big_mario_stand_still_transform3;
             this.running_1 = this.big_mario_running_transform3_1;
             this.running_2 = this.big_mario_running_transform3_2;
@@ -846,10 +834,19 @@ class Mario {
             this.jump = this.big_mario_jump_transform3;
             break;
         }
+        if (this.isEmberRestored && this.tickIndex == 3) {
+          this.stand_still = this.big_mario_stand_still_fire;
+          this.running_1 = this.big_mario_running_fire_1;
+          this.running_2 = this.big_mario_running_fire_2;
+          this.running_3 = this.big_mario_running_fire_3;
+          this.turnAround = this.big_mario_turnaround_fire;
+          this.jump = this.big_mario_jump_fire;
+        }
       }
     } else {
       switch (this.powerupState) {
         case this.marioState.mario:
+          this.hitbox = hitboxes.mario;
           this.stand_still = this.mario_stand_still;
           this.running_1 = this.mario_running_1;
           this.running_2 = this.mario_running_2;
@@ -858,6 +855,7 @@ class Mario {
           this.jump = this.mario_jump;
           break;
         case this.marioState.bigMario:
+          this.hitbox = hitboxes.big_mario;
           this.stand_still = this.big_mario_stand_still;
           this.running_1 = this.big_mario_running_1;
           this.running_2 = this.big_mario_running_2;
@@ -866,7 +864,13 @@ class Mario {
           this.jump = this.big_mario_jump;
           break;
         case this.marioState.fireMario:
-          //Fire mario 
+          this.hitbox = hitboxes.big_mario;
+          this.stand_still = this.big_mario_stand_still_fire;
+          this.running_1 = this.big_mario_running_fire_1;
+          this.running_2 = this.big_mario_running_fire_2;
+          this.running_3 = this.big_mario_running_fire_3;
+          this.turnAround = this.big_mario_turnaround_fire;
+          this.jump = this.big_mario_jump_fire;
           break;
       }
     }
@@ -880,10 +884,10 @@ class Mario {
     if (this.isInvincible) {
 
       if (this.tickCount > 1) {
-        if (this.tickTriple > 2) {
-          this.tickTriple = 0;
+        if (this.tickIndex > 1) {
+          this.tickIndex = 0;
         } else {
-          this.tickTriple++;
+          this.tickIndex++;
         }
         this.tickCount = 0;
       }
@@ -925,9 +929,31 @@ class Mario {
 
           break;
 
+        case this.marioState.fireMario:
+
+          //Animate almost does nothing here, just for the timed isTransforming tick 
+          this.Animate(this.big_mario_jump, this.mario_swimming, this.transformFrameRate, this.big_mario_swimming, true);
+
+          if (this.tickCount > 3) {
+            if (this.tickIndex > 2) {
+              this.tickIndex = 0;
+            } else {
+              this.tickIndex++;
+            }
+            this.tickCount = 0;
+          }
+          this.tickCount++;
+
+          this.RefreshSpritePool();
+
+          DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
+
+          break;
+
       }
 
-      return;
+      if (this.nextPowerupState != this.marioState.fireMario)
+        return;
 
     }
 
@@ -937,11 +963,24 @@ class Mario {
         if (this.speedX == 0) {
           this.spriteToDraw = this.stand_still;
         } else if (abs(this.speedX) < this.maxSpeedWalkX) {
-          this.Animate(this.running_1, this.running_2, this.walkFrameRateSlow, this.running_3);
+          if (!this.isTransforming) {
+            this.Animate(this.running_1, this.running_2, this.walkFrameRateSlow, this.running_3);
+          } else {
+            //Assigning this to running_1 is maybe not strictly accurate, but should work anyways
+            this.spriteToDraw = this.running_1;
+          }
         } else if (abs(this.speedX) <= this.maxSpeedWalkX + this.walkingAcceleration) {
-          this.Animate(this.running_1, this.running_2, this.walkFrameRateFast, this.running_3);
+          if (!this.isTransforming) {
+            this.Animate(this.running_1, this.running_2, this.walkFrameRateFast, this.running_3);
+          } else {
+            this.spriteToDraw = this.running_1;
+          }
         } else {
-          this.Animate(this.running_1, this.running_2, this.runFrameRate, this.running_3);
+          if (!this.isTransforming) {
+            this.Animate(this.running_1, this.running_2, this.runFrameRate, this.running_3);
+          } else {
+            this.spriteToDraw = this.running_1;
+          }
         }
         //isSkidding -> draw turnAround
       } else {
