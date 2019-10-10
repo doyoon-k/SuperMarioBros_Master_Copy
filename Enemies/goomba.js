@@ -114,10 +114,6 @@ class Goomba extends BaseEnemy
                     text("collisionwith", width/2, height/2);
                     this.speedY = 0;
                     this.y = collider.y - BLOCK_SIZE;
-<<<<<<< HEAD
-                    // print("!");
-=======
->>>>>>> ff3cffc76fbad41ca8337c0960d53427175e32be
                     break;
             }
         }

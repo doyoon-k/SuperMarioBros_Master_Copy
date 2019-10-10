@@ -26,13 +26,15 @@ class Fireball
         this.animator = this.ChangeSprite();
 
         // all these values should be tested
-        this.movingSpeed = HexToFloat("5.000");
+        this.movingSpeed = HexFloatToDec("5.000");
         this.bouncingInitialSpeed = -HexFloatToDec("0.600");
         this.fallingAcceleration = HexFloatToDec("1.500");
         this.maxFallSpeed = HexFloatToDec("4.800");
 
         this.speedX = this.movingSpeed * (isGoingLeft ? -1 : 1);
         this.speedY = 0;
+
+        this.hitbox = hitboxes.fireball;
         
         game.physics.RegisterToMovingObjectsArray(this);
         game.physics.RegisterToBucketMap(this);
