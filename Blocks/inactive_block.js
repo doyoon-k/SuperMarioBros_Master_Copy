@@ -78,11 +78,8 @@ class InactiveBlock
             switch (direction)
             {
                 case DIRECTION.Up:
-                    if (collider instanceof Goomba)
-                    {
                         collider.isOnGround = true;
                         collider.y = this.y - this.hitbox.height - collider.hitbox.y;
-                    }
 
                     break;
                 case DIRECTION.Down:

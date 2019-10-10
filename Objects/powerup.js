@@ -24,6 +24,7 @@ class Powerup
         this.isGoingLeft = false;
         this.isPoppingUp = true;
         this.isBouncing = false;
+        this.isOnGround = true;
 
         // all these values should be tested (except bouncing)
         this.slidingSpeed = HexFloatToDec("1.200");
@@ -90,6 +91,9 @@ class Powerup
 
     Gravitate()
     {
+        if (this.isOnGround)
+            return;
+
         this.speedY += (this.isBouncing ? this.bouncingFallingAcceleration : this.fallingAcceleration);
         if (this.isBouncing && this.speedY > this.bouncingMaxFallSpeed)
         {
@@ -121,7 +125,7 @@ class Powerup
         if (this.type != EPowerupType.FireFlower)
         {
             this.Move();
-            // this.Gravitate();
+            this.Gravitate();
         }
     }
 
