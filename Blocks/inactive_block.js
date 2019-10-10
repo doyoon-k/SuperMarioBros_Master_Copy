@@ -57,11 +57,14 @@ class InactiveBlock
                     collider.y = this.y - this.hitbox.height;
                     break;
                 case DIRECTION.Down:
-
+                    collider.speedY = 0;
+                    collider.y = this.y + collider.hitbox.height;
+                    print("!");
                     break;
                 case DIRECTION.Right:
                     collider.speedX = 0;
                     collider.x = this.x;
+                    print("!");
                     break;
                 case DIRECTION.Left:
                     collider.speedX = 0;
@@ -77,10 +80,10 @@ class InactiveBlock
                 case DIRECTION.Up:
                     if (collider instanceof Goomba)
                     {
-                        text("굼바가 벽돌 위에 충돌",width/2,height/2);    
+                        collider.isOnGround = true;
+                        collider.y = this.y - this.hitbox.height - collider.hitbox.y;
                     }
-                    collider.speedY = -HexFloatToDec("0.900");
-                    collider.y = this.y - this.hitbox.height -collider.hitbox.y-1;
+
                     break;
                 case DIRECTION.Down:
 

@@ -47,8 +47,8 @@ class Physics
     {
       let objHitbox = obj.hitbox;
       //temporary
-      if(obj instanceof Mario)
-      objHitbox.DebugDraw(obj);
+      // if(obj instanceof Mario)
+      // objHitbox.DebugDraw(obj);
 
       let objHitbox_rect = objHitbox.GetRect(obj);
       let speedX = obj.speedX;
@@ -59,6 +59,8 @@ class Physics
       buckets = buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX + 5, objHitbox_rect.bottom_Y+speedY + 5));
 
       let is_CollidedWithBlock = false;
+      let is_OnBlockSurface = false;
+      
       for (let collidableObj of buckets)
       {
         let collidableObjHitbox = collidableObj.hitbox;
@@ -70,7 +72,7 @@ class Physics
         
         let willCollide = collidableObjHitbox.IsColliding(objHitbox_rect, speedX, speedY, collidableObj);
 
-        if (is_CollidedWithBlock)
+        if (is_CollidedWithBlock && collidableObj instanceof ActiveBlock)
         continue;
         //temporary
 
@@ -83,6 +85,7 @@ class Physics
             if (objHitbox_rect.bottom_Y <= collidableObjHitbox_rect.top_Y) //1) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              is_OnBlockSurface = true;
               // if(obj instanceof Mario)
               // print("l-t-up");
             }
@@ -98,6 +101,8 @@ class Physics
             if (objHitbox_rect.bottom_Y <= collidableObjHitbox_rect.top_Y) //2) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              is_OnBlockSurface = true;
+              // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
               // if(obj instanceof Mario)
               // print("r-t-u");
             }
@@ -113,8 +118,8 @@ class Physics
             if (objHitbox_rect.top_Y >= collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-              if(obj instanceof Mario && collidableObj instanceof ActiveBlock)
-              print("l-b-d");
+              // if(obj instanceof Mario && collidableObj instanceof ActiveBlock)
+              // print("l-b-d");
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)//3) b)
             {
@@ -145,20 +150,34 @@ class Physics
           else if (speedX == 0 && speedY > 0)
           {
             collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+            is_OnBlockSurface = true;
           }
           else if (speedX > 0 && speedY == 0)
           {
-            // print("ADWADawd");
+            // if (obj instanceof Mario)
+            print("surface-l");
             collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+            is_OnBlockSurface = true;
           }
           else if (speedX < 0 && speedY == 0)
           {
             collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+            is_OnBlockSurface = true;
+            print("surface_r");
           }
           else // speedX == 0 && speedY == 0 
           {
             // obj.sp
           }
+        }
+
+        if (obj instanceof Mario&&!is_OnBlockSurface)
+        {
+          obj.IsJumping = false;
+        }
+        else if ((obj instanceof Goomba || obj instanceof Powerup) && !is_OnBlockSurface)
+        {
+          obj.isOnGround = false;
         }
       }
     }
@@ -223,6 +242,10 @@ class Physics
     let object_hitbox_rect = object.hitbox.GetRect(object);
     // if(object.prevX == undefined || object.prevY == undefined)
     // return;
+    if (object instanceof ActiveBlock)
+    {
+      // print("ActiveBlock Removed From Bucket Map!");  
+    }
     let i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
     let j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
     i = clamp(i,0,bucketMap_how_many_horizontal_cell);

@@ -23,6 +23,8 @@ class BaseEnemy
 
         this.isInstaKilled = false;
 
+        this.isOnGround = true;
+
         this.walkingSpeed = HexFloatToDec("0.900");
         this.speedX = -this.walkingSpeed;
         this.speedY = 0;
@@ -54,6 +56,9 @@ class BaseEnemy
 
     Gravitate()
     {
+        if (this.isOnGround)
+            return;
+        
         this.speedY += (this.isInstaKilled ? this.instaKilledFallingAcceleration : this.fallingAcceleration);
         if (this.isInstaKilled && this.speedY > this.instaKilledMaxFallSpeed)
         {
@@ -64,7 +69,7 @@ class BaseEnemy
             this.speedY = this.maxFallSpeed;
         }
         
-        this.y += this.speedY;
+        this.y += this.speedY;  
     }
 
     Stomped() {}

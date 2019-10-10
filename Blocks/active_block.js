@@ -87,6 +87,7 @@ class ActiveBlock
                     this.Hit();
                     collider.speedY = 0;
                     collider.y = this.y + collider.hitbox.height;
+                    print("!");
                     break;
                 case DIRECTION.Up:
                     collider.speedY = 0;
@@ -101,6 +102,26 @@ class ActiveBlock
                     collider.speedX = 0;
                     collider.x = this.x - this.hitbox.width-collider.hitbox.width*1.5;
                     break;
+            }
+        }
+        else if (collider instanceof BaseEnemy || collider instanceof Powerup)
+        {
+            switch (direction)
+            {
+                case DIRECTION.Up:
+                        collider.isOnGround = true;
+                        collider.y = this.y - this.hitbox.height - collider.hitbox.y;
+                    break;
+                case DIRECTION.Down:
+
+                    break;
+                case DIRECTION.Right:
+
+                    break;
+                case DIRECTION.Left:
+
+                    break;
+
             }
         }
     }

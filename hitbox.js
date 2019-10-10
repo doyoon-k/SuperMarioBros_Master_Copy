@@ -57,11 +57,22 @@ class Hitbox
         }
         else
         {
-            push();
-            rectMode(CENTER);
-            
-            rect((parent.x + this.x - (game.camera.x - 100)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
-            pop();
+            if (parent instanceof ActiveBlock)
+            {
+                push();
+                fill(0, 255, 0);
+                rectMode(CENTER);
+                rect((parent.x + this.x - (game.camera.x - 100)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
+                pop();
+            }
+            else if (parent instanceof InactiveBlock)
+            {
+                push();
+                fill(255, 0, 0);
+                rectMode(CENTER);
+                rect((parent.x + this.x - (game.camera.x - 100)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
+                pop(); 
+            }
         }
     }
 }

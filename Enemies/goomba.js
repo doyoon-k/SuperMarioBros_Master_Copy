@@ -110,10 +110,10 @@ class Goomba extends BaseEnemy
                     break;
 
                 case DIRECTION.Down:
-                    // text(++this.q, this.q * 15, height/2 + 10);
-                    // text("collisionwith", width/2, height/2);
+                    text(++this.q, this.q * 15, height/2 + 10);
+                    text("collisionwith", width/2, height/2);
                     this.speedY = 0;
-                    this.y = collider.y - BLOCK_SIZE;
+                    // this.y = collider.y - BLOCK_SIZE;
                     break;
             }
         }
@@ -133,8 +133,8 @@ class Goomba extends BaseEnemy
                     }
                     else
                     {
-                        this.speedY = 0;
-                        this.y = collider.y - BLOCK_SIZE;
+                        // this.speedY = 0;
+                        // this.y = collider.y - BLOCK_SIZE;
                     }
                     break;
             }
