@@ -171,9 +171,9 @@ class Physics
           }
         }
 
-        if (obj instanceof Mario&&!is_OnBlockSurface)
+        if (obj instanceof Mario && !is_OnBlockSurface)
         {
-          obj.IsJumping = false;
+          // obj.isJumping = true;
         }
         else if ((obj instanceof Goomba || obj instanceof Powerup) && !is_OnBlockSurface)
         {

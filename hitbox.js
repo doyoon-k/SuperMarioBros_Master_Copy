@@ -83,7 +83,7 @@ class Hitbox
     big_mario_duck : new Hitbox(16, 0, 12, 12),
 
     //-4
-    goomba : new Hitbox(0, -4, 10, 6),
+    goomba : new Hitbox(0, -1, 10, 9),
     koopa_troopa : new Hitbox(0, -3, 12, 12),
 
     fireball : new Hitbox(0, 0, 8, 8),
