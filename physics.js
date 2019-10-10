@@ -47,7 +47,8 @@ class Physics
     {
       let objHitbox = obj.hitbox;
       //temporary
-      // objHitbox.DebugDraw(obj);
+      if(obj instanceof Mario)
+      objHitbox.DebugDraw(obj);
 
       let objHitbox_rect = objHitbox.GetRect(obj);
       let speedX = obj.speedX;
@@ -57,83 +58,106 @@ class Physics
       buckets = buckets.concat(this.GetBucket(objHitbox_rect.left_X+speedX - 5, objHitbox_rect.bottom_Y+speedY + 5));
       buckets = buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX + 5, objHitbox_rect.bottom_Y+speedY + 5));
 
-      // if (obj instanceof Mario)
-      // {
-        // line((objHitbox_rect.left_X- (game.camera.x - 100)) * pixelMultiplier, 0, (objHitbox_rect.left_X- (game.camera.x - 100)) * pixelMultiplier, height);
-        // line((objHitbox_rect.right_X- (game.camera.x - 100)) * pixelMultiplier, 0, (objHitbox_rect.right_X- (game.camera.x - 100)) * pixelMultiplier, height);
-      // }                   
-     
-      // push();
-      // strokeWeight(30);
-      // text(buckets.length, width / 2, height / 2);
-      // pop();
-
+      let is_CollidedWithBlock = false;
       for (let collidableObj of buckets)
       {
         let collidableObjHitbox = collidableObj.hitbox;
         //temporary
         // collidableObjHitbox.DebugDraw(collidableObj);
         let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
-
-        // if (collidableObj instanceof ActiveBlock)
-        // {
-        //   line((collidableObjHitbox_rect.left_X- (game.camera.x - 100)) * pixelMultiplier, 0, (collidableObjHitbox_rect.left_X- (game.camera.x - 100)) * pixelMultiplier, height);
-        //   line((collidableObjHitbox_rect.right_X- (game.camera.x - 100)) * pixelMultiplier, 0, (collidableObjHitbox_rect.right_X- (game.camera.x - 100)) * pixelMultiplier, height);
-        // }
-
         let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y, collidableObj);
         let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y, collidableObj);
-
-        let willCollide = collidableObjHitbox.IsColliding(objHitbox_rect, speedX, speedY, collidableObj);
         
+        let willCollide = collidableObjHitbox.IsColliding(objHitbox_rect, speedX, speedY, collidableObj);
+
+        if (is_CollidedWithBlock)
+        continue;
         //temporary
 
         if (willCollide)
         {
+          if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+            is_CollidedWithBlock = true;
           if (speedX > 0 && speedY > 0) //1)
           {
             if (objHitbox_rect.bottom_Y <= collidableObjHitbox_rect.top_Y) //1) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              // if(obj instanceof Mario)
+              // print("l-t-up");
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //1) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
-              obj.OnCollisionWith(collidableObj, DIRECTION.Right);
+              // if(obj instanceof Mario)
+              // print("l-t-l");
             }
           }
-          else if (speedX <= 0 && speedY > 0)
+          else if (speedX < 0 && speedY > 0)
           {
             if (objHitbox_rect.bottom_Y <= collidableObjHitbox_rect.top_Y) //2) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              // if(obj instanceof Mario)
+              // print("r-t-u");
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //2) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              // if(obj instanceof Mario)
+              // print("r-t-r");
             }
           }
-          else if (speedX > 0 && speedY <= 0)
+          else if (speedX > 0 && speedY < 0)
           {
             if (objHitbox_rect.top_Y >= collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
+              if(obj instanceof Mario && collidableObj instanceof ActiveBlock)
+              print("l-b-d");
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)//3) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              if(obj instanceof Mario && collidableObj instanceof ActiveBlock)
+              print("l-b-l");
             }
           }
-          else if (speedX <= 0 && speedY <= 0)
+          else if (speedX < 0 && speedY < 0)
           {
             if (objHitbox_rect.top_Y >= collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
+              // if(obj instanceof Mario)
+              // print("r-b-d");
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              // if(obj instanceof Mario)
+              // print("r-b-r");
             }
+          }
+          else if (speedX == 0 && speedY < 0)
+          {
+            collidableObj.OnCollisionWith(obj, DIRECTION.Down);
+          }
+          else if (speedX == 0 && speedY > 0)
+          {
+            collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+          }
+          else if (speedX > 0 && speedY == 0)
+          {
+            // print("ADWADawd");
+            collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+          }
+          else if (speedX < 0 && speedY == 0)
+          {
+            collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+          }
+          else // speedX == 0 && speedY == 0 
+          {
+            // obj.sp
           }
         }
       }

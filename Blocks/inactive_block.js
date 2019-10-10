@@ -53,17 +53,19 @@ class InactiveBlock
             {
                 case DIRECTION.Up:
                     collider.speedY = 0;
-                    collider.isJumping = 0;
+                    collider.isJumping = false;
                     collider.y = this.y - this.hitbox.height;
                     break;
                 case DIRECTION.Down:
 
                     break;
                 case DIRECTION.Right:
-
+                    collider.speedX = 0;
+                    collider.x = this.x;
                     break;
                 case DIRECTION.Left:
-
+                    collider.speedX = 0;
+                    collider.x = this.x - this.hitbox.width-collider.hitbox.width*1.5;
                     break;
 
             }
@@ -73,8 +75,12 @@ class InactiveBlock
             switch (direction)
             {
                 case DIRECTION.Up:
-                    // collider.speedY = -HexFloatToDec("0.900");
-                    collider.OnCollisionWith(this, DIRECTION.Down);
+                    if (collider instanceof Goomba)
+                    {
+                        text("굼바가 벽돌 위에 충돌",width/2,height/2);    
+                    }
+                    collider.speedY = -HexFloatToDec("0.900");
+                    collider.y = this.y - this.hitbox.height -collider.hitbox.y-1;
                     break;
                 case DIRECTION.Down:
 
