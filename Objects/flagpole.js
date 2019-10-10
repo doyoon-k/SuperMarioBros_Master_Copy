@@ -19,15 +19,42 @@ class Flagpole
         this.x = x;
         this.y = y;
 
-        this.spriteToDraw = sprites.flag;
+        this.flagOffset = 0;
+        this.isDragging = false;
+
+        this.flagDraggingStep = 2.5;
+        this.maxFlagOffset = 8 * BLOCK_SIZE - BLOCK_SIZE * 1 / 3;
+
         this.hitbox = hitboxes.flagpole;
     }
 
-    Update() {}
+    Update()
+    {
+        if (this.isDragging)
+        {
+            this.flagOffset += this.flagDraggingStep;
+
+            if (this.flagOffset > this.maxFlagOffset)
+            {
+                this.flagOffset = this.maxFlagOffset;
+                this.isDragging = false;
+            }
+        }
+    }
 
     Draw()
     {
-        DrawSprite(this.spriteToDraw, this.x, this.y);
+        for (let i = 0; i < 9; ++i)
+        {
+            DrawSprite(sprites.flagpole, this.x, this.y - i * BLOCK_SIZE);
+        }
+        DrawSprite(sprites.flagpole_head, this.x, this.y - 9 * BLOCK_SIZE);
+        DrawSprite(sprites.flag, this.x - BLOCK_SIZE / 2, this.y - 8 * BLOCK_SIZE + this.flagOffset);
+    }
+
+    DragFlagDown()
+    {
+        this.isDragging = true;
     }
 
     Destroy()

@@ -73,8 +73,8 @@ class InactiveBlock
             switch (direction)
             {
                 case DIRECTION.Up:
-                    collider.speedY = -HexFloatToDec("0.900");
-                    collider.y = this.y - this.hitbox.height - HexFloatToDec("0.900");
+                    // collider.speedY = -HexFloatToDec("0.900");
+                    collider.OnCollisionWith(this, DIRECTION.Down);
                     break;
                 case DIRECTION.Down:
 
