@@ -52,7 +52,7 @@ class BrickBlock extends ActiveBlock
         {
             if (this.isCoinTimedOut)
             {
-                game.statistics.incrementCoin();
+                game.statistics.IncrementCoin();
                 game.statistics.AddScore(SCORES.Coin);
                 
                 this.spriteToDraw = sprites.block_empty;
@@ -66,7 +66,7 @@ class BrickBlock extends ActiveBlock
                 this.coinTimer = setTimeout(() => this.isCoinTimedOut = true, BRICK_COIN_SPIT_SECONDS * 1000);
             }
 
-            game.statistics.incrementCoin();
+            game.statistics.IncrementCoin();
             game.statistics.AddScore(SCORES.Coin);
             return;
         }

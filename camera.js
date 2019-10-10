@@ -29,6 +29,11 @@ class Camera {
 
         for (let i = 0; i < game.gameObjects.length; i++) {
 
+            if (game.gameObjects[i].y > 15 * 16) {
+                print (3)
+                game.gameObjects[i].Destroy();
+            }
+
             if (game.gameObjects[i].x < this.x - this.activationRange) {
                 game.gameObjects[i].Destroy();
             }

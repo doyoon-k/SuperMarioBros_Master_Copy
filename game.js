@@ -15,21 +15,20 @@
 class Game {
     constructor() 
     {
-        this.mario = new Mario();
         this.physics = new Physics();
+        this.mario = new Mario();
         this.camera = new Camera();
         this.backgroundObjects = [];
         this.gameObjects = [];
         this.objectsToUpdate = [];
         this.statistics = new Statistics();
+        this.soundManager = new SoundManager();
 
         this.twinkleFrameCount = 0;
         this.twinkleFrameRate = 10;
         this.twinkleIndex = 0;
 
-        this.Enroll(this.mario);
-        this.physics.RegisterToMovingObjectsArray(this.mario);
-        this.physics.RegisterToBucketMap(this.mario);
+        this.isPaused = false;
     }
 
     Enroll(object) 
@@ -78,6 +77,20 @@ class Game {
         {
             this.twinkleFrameCount++;
         }
+    }
+
+    LoadNewMap(mapFile)
+    {
+        this.backgroundObjects = [];
+        this.gameObjects = [];
+        this.objectsToUpdate = [];
+        this.physics.InitializeArrays();
+
+        this.mapLoader.LoadMap(mapFile);
+        
+        this.Enroll(this.mario);
+        this.physics.RegisterToMovingObjectsArray(this.mario);
+        this.physics.RegisterToBucketMap(this.mario);
     }
 
     Draw() 

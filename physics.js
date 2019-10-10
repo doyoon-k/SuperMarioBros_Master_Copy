@@ -24,6 +24,11 @@ class Physics
     this.bucketMap = [];
     this.movingObjects = [];
 
+    this.InitializeArrays();
+  }
+
+  InitializeArrays()
+  {
     for (let row = 0; row < bucketMap_how_many_vertical_cell + 1; row++)
     {
       //push the row arrays
@@ -35,6 +40,7 @@ class Physics
       }
     }
   }
+
   CheckCollision()
   {
     for (let obj of this.movingObjects)
@@ -140,6 +146,9 @@ class Physics
   {
     let i = floor(x / bucketMap_one_cell_width);
     let j = floor(y / bucketMap_one_cell_height);
+    i = clamp(i,0,bucketMap_how_many_horizontal_cell);
+    j = clamp(j,0,bucketMap_how_many_vertical_cell);
+
     return this.bucketMap[j][i];
   }
 
@@ -153,18 +162,30 @@ class Physics
 
     let i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
     let j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
+    i = clamp(i,0,bucketMap_how_many_horizontal_cell);
+    j = clamp(j,0,bucketMap_how_many_vertical_cell);
+
     this.bucketMap[j][i].push(object);
 
     i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
     j = floor(object_hitbox_rect.bottom_Y / bucketMap_one_cell_height);
+    i = clamp(i,0,bucketMap_how_many_horizontal_cell);
+    j = clamp(j,0,bucketMap_how_many_vertical_cell);
+
     this.bucketMap[j][i].push(object);
 
     i = floor(object_hitbox_rect.right_X / bucketMap_one_cell_width);
     j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
+    i = clamp(i,0,bucketMap_how_many_horizontal_cell);
+    j = clamp(j,0,bucketMap_how_many_vertical_cell);
+
     this.bucketMap[j][i].push(object);
 
     i = floor(object_hitbox_rect.right_X / bucketMap_one_cell_width);
     j = floor(object_hitbox_rect.bottom_Y / bucketMap_one_cell_height);
+    i = clamp(i,0,bucketMap_how_many_horizontal_cell);
+    j = clamp(j,0,bucketMap_how_many_vertical_cell);
+
     this.bucketMap[j][i].push(object);
   }
 
@@ -180,6 +201,9 @@ class Physics
     // return;
     let i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
     let j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
+    i = clamp(i,0,bucketMap_how_many_horizontal_cell);
+    j = clamp(j,0,bucketMap_how_many_vertical_cell);
+
     let bucket = this.bucketMap[j][i];
     if (bucket.indexOf(object) != -1)
     {
@@ -188,6 +212,9 @@ class Physics
 
     i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
     j = floor(object_hitbox_rect.bottom_Y / bucketMap_one_cell_height);
+    i = clamp(i,0,bucketMap_how_many_horizontal_cell);
+    j = clamp(j,0,bucketMap_how_many_vertical_cell);
+
     bucket = this.bucketMap[j][i];
     if (bucket.indexOf(object) != -1)
     {
@@ -196,6 +223,9 @@ class Physics
 
     i = floor(object_hitbox_rect.right_X / bucketMap_one_cell_width);
     j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
+    i = clamp(i,0,bucketMap_how_many_horizontal_cell);
+    j = clamp(j,0,bucketMap_how_many_vertical_cell);
+
     bucket = this.bucketMap[j][i];
     if (bucket.indexOf(object) != -1)
     {
@@ -204,6 +234,9 @@ class Physics
 
     i = floor(object_hitbox_rect.right_X / bucketMap_one_cell_width);
     j = floor(object_hitbox_rect.bottom_Y / bucketMap_one_cell_height);
+    i = clamp(i,0,bucketMap_how_many_horizontal_cell);
+    j = clamp(j,0,bucketMap_how_many_vertical_cell);
+
     bucket = this.bucketMap[j][i];
     if (bucket.indexOf(object) != -1)
     {
