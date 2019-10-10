@@ -24,16 +24,12 @@ class Physics
     this.bucketMap = [];
     this.movingObjects = [];
 
-<<<<<<< HEAD
     this.InitializeArrays();
   }
 
   InitializeArrays()
   {
     for (let row = 0; row < bucketMap_how_many_vertical_cell + 1; row++)
-=======
-    for (let row = 0; row < bucketMap_how_many_vertical_cell+1; row++)
->>>>>>> a73b2bd9a6f3c49da8fd83a7ca703c1b9e4a5289
     {
       //push the row arrays
       this.bucketMap.push([]);
