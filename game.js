@@ -15,8 +15,8 @@
 class Game {
     constructor() 
     {
-        this.mario = new Mario();
         this.physics = new Physics();
+        this.mario = new Mario();
         this.camera = new Camera();
         this.backgroundObjects = [];
         this.gameObjects = [];

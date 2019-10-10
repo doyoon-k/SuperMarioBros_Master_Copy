@@ -86,3 +86,19 @@ function CheckIsRectContainsThisPoint(x,y,LeftX,topY,RightX,bottomY)
 {
   return ((LeftX<x)&&(x<RightX))?(((topY<y)&&(y<bottomY))?true:false):false;
 }
+
+function clamp(value,min,max)
+{
+  if(value<min)
+  {
+    return min;
+  }
+  else if(value>max)
+  {
+    return max;
+  }
+  else 
+  {
+    return value;
+  }
+}
