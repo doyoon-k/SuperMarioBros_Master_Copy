@@ -16,7 +16,10 @@
 let game;
 let font;
 let sprites;
-let mapLoader; // temporary
+
+let FPS = 60;
+let a;
+let count = 0;
 
 //Should be 2 By default, but feel free to change it
 let pixelMultiplier = 3.5;
@@ -128,7 +131,39 @@ function preload() {
     pipe_intersect_underground: loadImage("Sprites/Object/object_pipe_intersect_underground.png"),
   
     flagpole_head: loadImage("Sprites/Object/object_flagpole_head.png"),
+    flagpole: loadImage("Sprites/Object/object_flagpole.png"),
     flag: loadImage("Sprites/Object/object_flag.png"),
+  };
+
+  sounds = {
+    overworld : loadSound("SFX/bgm_overworld.mp3"),
+    underground : loadSound("SFX/bgm_underground_melody.mp3"),
+    star : loadSound("SFX/bgm_star.mp3"),
+
+    hurry_up : loadSound("SFX/environmental_100_time_left.mp3"),
+    level_clear : loadSound("SFX/environmental_level_clear.mp3"),
+    life_lost : loadSound("SFX/environmental_life_lost.mp3"),
+    game_over : loadSound("SFX/environmental_game_over.mp3"),
+
+    mario_jump : loadSound("SFX/mario_jump.mp3"),
+    mario_power_up : loadSound("SFX/mario_powerup.mp3"),
+    mario_power_down : loadSound("SFX/mario_powerdown.mp3"),
+    mario_shoot : loadSound("SFX/mario_shoot.mp3"),
+    mario_1up : loadSound("SFX/mario_1up.mp3"),
+
+    block_hit : loadSound("SFX/block_hit.mp3"),
+    block_break : loadSound("SFX/block_brick_breaking.mp3"),
+
+    enemy_instakilled : loadSound("SFX/enemy_instakilled.mp3"),
+    enemy_stomped : loadSound("SFX/enemy_stomped.mp3"),
+
+    coin : loadSound("SFX/object_coin.mp3"),
+    powerup : loadSound("SFX/object_powerup_popup.mp3"),
+    flag_down : loadSound("SFX/object_flag_down.mp3"),
+    firework : loadSound("SFX/object_firework.mp3"),
+
+    // time_to_score : loadSound("SFX/environment_time_score.mp3"),
+    pause : loadSound("SFX/environment_pause.mp3")
   };
 }
 
@@ -141,12 +176,11 @@ function setup()
   imageMode(CORNER);
 
   game = new Game();
-  mapLoader = new MapLoader();  // temporary
-
-  mapLoader.LoadMap("Stages/stage1.json");
+  game.mapLoader = new MapLoader();
+  game.LoadNewMap("Stages/stage1.json");
 
   // frameRate() is not working well
-  setInterval(Draw, 1 / 60 * 1000);
+  a = setInterval(Draw, 1 / FPS * 1000);
 }
 
 function Draw()
@@ -154,4 +188,12 @@ function Draw()
   background(119, 181, 254);
   game.Update();
   game.Draw();
+  text(++count, width/2, height/2 - 50);
+}
+
+function mouseClicked()
+{
+  // FPS = FPS == 60 ? 1 : 60;
+  // clearInterval(a);
+  // a = setInterval(Draw, 1 / FPS * 1000);
 }

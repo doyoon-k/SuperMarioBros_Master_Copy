@@ -22,6 +22,7 @@ class Goomba extends BaseEnemy
         this.hitbox = hitboxes.goomba;
 
         this.spriteToDraw = sprites.goomba_1;
+        this.q = 0;
     }
 
     Move()
@@ -109,9 +110,14 @@ class Goomba extends BaseEnemy
                     break;
 
                 case DIRECTION.Down:
+                    text(++this.q, this.q * 15, height/2 + 10);
+                    text("collisionwith", width/2, height/2);
                     this.speedY = 0;
                     this.y = collider.y - BLOCK_SIZE;
-                    print("!");
+<<<<<<< HEAD
+                    // print("!");
+=======
+>>>>>>> ff3cffc76fbad41ca8337c0960d53427175e32be
                     break;
             }
         }

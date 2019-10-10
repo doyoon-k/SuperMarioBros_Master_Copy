@@ -26,10 +26,10 @@ class MapLoader
 
     Loaded()
     {
-      mapLoader.CreateBackgrounds(mapLoader.mapData.backgrounds);
-      mapLoader.CreateBlocks(mapLoader.mapData.blocks);
-      mapLoader.CreateCharacters(mapLoader.mapData.characters);
-      mapLoader.CreateEnvironments(mapLoader.mapData.environments);
+      game.mapLoader.CreateBackgrounds(game.mapLoader.mapData.backgrounds);
+      game.mapLoader.CreateBlocks(game.mapLoader.mapData.blocks);
+      game.mapLoader.CreateCharacters(game.mapLoader.mapData.characters);
+      game.mapLoader.CreateEnvironments(game.mapLoader.mapData.environments);
     }
 
     //determines the blocktype and create & add the block instance in gameObjects array and BucketMap.

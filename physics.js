@@ -24,7 +24,12 @@ class Physics
     this.bucketMap = [];
     this.movingObjects = [];
 
-    for (let row = 0; row < bucketMap_how_many_vertical_cell+1; row++)
+    this.InitializeArrays();
+  }
+
+  InitializeArrays()
+  {
+    for (let row = 0; row < bucketMap_how_many_vertical_cell + 1; row++)
     {
       //push the row arrays
       this.bucketMap.push([]);
@@ -35,6 +40,7 @@ class Physics
       }
     }
   }
+
   CheckCollision()
   {
     for (let obj of this.movingObjects)
