@@ -30,8 +30,8 @@ class Powerup
         this.slidingSpeed = HexFloatToDec("1.200");
         this.poppingSpeed = -HexFloatToDec("0.300");
 
-        this.fallingAcceleration = HexFloatToDec("0.900");
-        this.maxFallSpeed = HexFloatToDec("4.800");
+        this.fallingAcceleration = HexFloatToDec("0.800");
+        this.maxFallSpeed = HexFloatToDec("3.800");
         
         this.bouncingSlidingSpeed = HexFloatToDec("1.400");
         this.bouncingInitialSpeed = -HexFloatToDec("4.000");
@@ -113,9 +113,9 @@ class Powerup
         {
             this.y += this.poppingSpeed;
             
-            if (this.y < this.originalY - BLOCK_SIZE / 2)
+            if (this.y < this.originalY - BLOCK_SIZE / 2 - 1)
             {
-                this.y = this.originalY - BLOCK_SIZE / 2;
+                this.y = this.originalY - BLOCK_SIZE / 2 - 1;
                 this.isPoppingUp = false;
             }
 
