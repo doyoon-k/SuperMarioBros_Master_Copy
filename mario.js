@@ -7,7 +7,11 @@
 
   JoonHo Hwang found lots and lots of bugs in Mario's movement QA-ing constantly, and Wrote the stompCombo related codes.
   DoYoon Kim did ---
-  SeungGeon Kim Arranged the class properties, and Wrote the main animation & movement logic. About 99% of this entire script.
+  SeungGeon Kim Wrote about 99% of this entire script.
+
+  - Main Contributor Comment -
+
+
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -598,6 +602,9 @@ class Mario {
   //Manage the animations
   Animate(sprite1, sprite2, newFrameRate, sprite3, isTransform) {
 
+    if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause)
+      return;
+
     this.animationFrameRate = newFrameRate;
 
     if (this.frameCount > this.animationFrameRate) {
@@ -879,7 +886,6 @@ class Mario {
   // --- --- ---
 
   ThrowFireball() {
-    print(3)
     if (this.fireballCount < 2) {
       let deltaX = 0;
       if (this.isLookingLeft) {
@@ -951,11 +957,13 @@ class Mario {
 
           this.Animate(this.big_mario_jump, this.mario_swimming, this.transformFrameRate, this.big_mario_swimming, true);
 
-          if (this.tickCount > 2) {
-            this.tickFlash = !this.tickFlash;
-            this.tickCount = 0;
+          if (game.interfaceFlow.flowState != game.interfaceFlow.screenState.pause) {
+            if (this.tickCount > 2) {
+              this.tickFlash = !this.tickFlash;
+              this.tickCount = 0;
+            }
+            this.tickCount++;
           }
-          this.tickCount++;
 
           if (this.tickFlash)
             DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
@@ -977,7 +985,8 @@ class Mario {
           }
           this.tickCount++;
 
-          this.RefreshSpritePool();
+          if (game.interfaceFlow.flowState != game.interfaceFlow.screenState.pause)
+            this.RefreshSpritePool();
 
           DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
 

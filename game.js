@@ -23,12 +23,18 @@ class Game {
         this.objectsToUpdate = [];
         this.statistics = new Statistics();
         this.soundManager = new SoundManager();
+        this.interfaceFlow = new InterfaceFlow();
 
         this.twinkleFrameCount = 0;
         this.twinkleFrameRate = 10;
         this.twinkleIndex = 0;
 
         this.isPaused = false;
+
+        this.lives = 3;
+        this.isGameOver = true;
+        this.isSinglePlayer = true;
+
     }
 
     Enroll(object) 
@@ -59,11 +65,34 @@ class Game {
 
     Update()
     {
-        this.physics.Update();
-        this.physics.CheckCollision();
-        this.objectsToUpdate.forEach(object => object.Update());
-        this.statistics.Update();
-        this.camera.Update();
+
+        this.interfaceFlow.Update();
+
+        switch (game.interfaceFlow.flowState) 
+        {
+            case game.interfaceFlow.screenState.blackScreen:
+
+                break;
+            case game.interfaceFlow.screenState.pause:
+
+                break;
+            case game.interfaceFlow.screenState.menu:
+                this.camera.Update();
+                break; 
+            case game.interfaceFlow.screenState.preGame:
+
+                break;
+            case game.interfaceFlow.screenState.inGame:
+                this.objectsToUpdate.forEach(object => object.Update());
+                this.camera.Update();
+                this.physics.Update();
+                this.physics.CheckCollision();
+                this.statistics.Update();
+            break; 
+            case game.interfaceFlow.screenState.endGame:
+
+                break;
+        }
     }
 
     TwinkleAnimate()
@@ -95,10 +124,14 @@ class Game {
 
     Draw() 
     {
-        this.TwinkleAnimate();
-        
         this.backgroundObjects.forEach(object => object.Draw());
-        this.statistics.DrawStatistics();
         this.objectsToUpdate.forEach(object => object.Draw());
+        this.interfaceFlow.DrawInterface();
+
+        if (this.interfaceFlow.flowState > 1) 
+            this.TwinkleAnimate();
+
+        if (this.interfaceFlow.flowState > 0) 
+            this.statistics.DrawStatistics();
     }
 }

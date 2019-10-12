@@ -55,9 +55,9 @@ function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertic
 
 }
 
-function DrawText(string, x, y, size) {
+function DrawText(string, x, y, size, color = 255) {
   push();
-  fill(255);
+  fill(color);
   textFont(font);
   textSize(size * pixelMultiplier);
   text(string, x * pixelMultiplier, y * pixelMultiplier);
@@ -101,4 +101,10 @@ function clamp(value,min,max)
   {
     return value;
   }
+}
+
+function setFlowState(state) {
+  print(this.flowState)
+  game.interfaceFlow.flowState = state;
+  print(this.flowState)
 }

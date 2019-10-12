@@ -175,7 +175,9 @@ class KoopaTroopa extends BaseEnemy
 
     Draw()
     {
-        this.Animate();
+        if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame)
+            this.Animate();
+
         DrawSprite(this.spriteToDraw, this.x, this.y, !this.isGoingLeft, this.isInstaKilled);
     }
 

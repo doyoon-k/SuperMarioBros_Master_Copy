@@ -92,7 +92,11 @@ class Statistics
         DrawText(this.isPlayerMario ? "MARIO" : "LUIGI", 24, 24, 8);
         DrawText(this.score.toString().padStart(6, '0'), 24, 32, 8);
 
-        image(this.coinSprites[game.twinkleIndex], 88 * pixelMultiplier, 24 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
+        if (game.interfaceFlow.flowState < 4) {
+            image(this.coinSprites[game.twinkleIndex], 88 * pixelMultiplier, 24 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
+        } else {
+            image(this.sprites.coin_underground_1, 88 * pixelMultiplier, 24 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
+        }
         DrawText("*" + this.coin.toString().padStart(2, '0'), 96, 32, 8);
 
         DrawText("WORLD", 144, 24, 8);
