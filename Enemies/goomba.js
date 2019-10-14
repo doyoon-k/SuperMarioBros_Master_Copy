@@ -21,7 +21,7 @@ class Goomba extends BaseEnemy
 
         this.hitbox = hitboxes.goomba;
 
-        this.spriteToDraw = sprites.goomba_1;
+        this.spriteToDraw = sprites["goomba" + (game.IsUnderground() ? "_underground_1" : "_1")];
         this.q = 0;
     }
 
@@ -38,8 +38,12 @@ class Goomba extends BaseEnemy
 
     Stomped()
     {
+        if (this.isStomped)
+        {
+            return;
+        }
         this.isStomped = true;
-        this.spriteToDraw = sprites.goomba_stomped;
+        this.spriteToDraw = sprites["goomba_stomped" + (game.IsUnderground() ? "_underground" : "")];
         setTimeout(() => this.Destroy(), GOOMBA_REMAINS_STOMPED_SECONDS * 1000);
 
         game.statistics.AddScore(SCORES.Stomp[map(++game.mario.stompCombo, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1, true)]);
@@ -49,6 +53,10 @@ class Goomba extends BaseEnemy
 
     InstaKilled(direction)
     {
+        if (this.isInstaKilled)
+        {
+            return;
+        }
         this.isInstaKilled = true;
         this.speedY = this.instaKilledInitialSpeed;
         this.isGoingLeft = direction == DIRECTION.Right;
