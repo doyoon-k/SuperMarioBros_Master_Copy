@@ -20,7 +20,7 @@ let sprites;
 
 let FPS = 60;
 let a;
-let count = 0;
+let temp_frame_count = 0;
 
 //Should be 2 By default, but feel free to change it
 let pixelMultiplier = 3.5;
@@ -42,6 +42,8 @@ function preload() {
     block_question_underground_1: loadImage("Sprites/Block/block_question_underground_1.png"),
     block_question_underground_2: loadImage("Sprites/Block/block_question_underground_2.png"),
     block_question_underground_3: loadImage("Sprites/Block/block_question_underground_3.png"),
+    block_brick_underground: loadImage("Sprites/Block/block_brick.png"),
+    block_brick_hit_underground: loadImage("Sprites/Block/block_brick_hit_underground.png"),
 
 
     goomba_1: loadImage("Sprites/Enemy/enemy_goomba_1.png"),
@@ -169,7 +171,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(16 * 16 * pixelMultiplier, 15 * 16 * pixelMultiplier);
+  createCanvas(SCREEN_WIDTH_IN_BLOCK * BLOCK_SIZE * pixelMultiplier, SCREEN_HEIGHT_IN_BLOCK * BLOCK_SIZE * pixelMultiplier);
 
   //Essential to stop image functions blurring the iamge all up
   noSmooth();
@@ -187,7 +189,7 @@ function Draw() {
   background(146, 144, 255);
   game.Update();
   game.Draw();
-  text(++count, width / 2, height / 2 - 50);
+  text(++temp_frame_count, width / 2, height / 2 - 50);
 }
 
 function mouseClicked() {

@@ -69,6 +69,8 @@ class KoopaTroopa extends BaseEnemy
         this.spriteToDraw = sprites.turtle_shell;
 
         game.statistics.AddScore(SCORES.Stomp[map(++game.mario.stompCombo, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1, true)]);
+    
+        game.soundManager.Play("enemy_stomped");
     }
 
     Awakening()
@@ -103,6 +105,8 @@ class KoopaTroopa extends BaseEnemy
         this.isGoingLeft = direction != DIRECTION.Left;
 
         this.spriteToDraw = sprites.turtle_shell;
+
+        game.soundManager.Play("enemy_instakilled");
     }
 
     InstaKilled(direction)
@@ -123,6 +127,8 @@ class KoopaTroopa extends BaseEnemy
         game.physics.RemoveFromBucketMap(this);
 
         game.statistics.AddScore(SCORES.InstaKillKoopaTroopa);
+    
+        game.soundManager.Play("enemy_instakilled");
     }
 
     *ChangeSprite()

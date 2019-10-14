@@ -29,12 +29,12 @@ class Game {
         this.twinkleFrameRate = 10;
         this.twinkleIndex = 0;
 
-        this.isPaused = false;
-
         this.lives = 3;
         this.isGameOver = true;
         this.isSinglePlayer = true;
 
+        this.underworldMapList = [];
+        this.map = undefined;
     }
 
     Enroll(object) 
@@ -120,6 +120,17 @@ class Game {
         this.Enroll(this.mario);
         this.physics.RegisterToMovingObjectsArray(this.mario);
         this.physics.RegisterToBucketMap(this.mario);
+    }
+
+    IsUnderground()
+    {
+        return this.underworldMapList.includes(this.map);
+    }
+
+    OneUp()
+    {
+        this.lives++;
+        this.soundManager.Play("mario_1up");
     }
 
     Draw() 

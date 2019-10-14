@@ -21,7 +21,7 @@ class BrickBlock extends ActiveBlock
         this.coinTimer = undefined;
         this.isCoinTimedOut = false;
 
-        this.spriteToDraw = sprites.block_brick;
+        this.spriteToDraw = game.IsUnderground() ? sprites.block_brick_underground : sprites.block_brick;
     }
 
     Draw()
@@ -32,6 +32,10 @@ class BrickBlock extends ActiveBlock
     Hit()
     {
         this.isBouncing = true;
+        if (game.IsUnderground())
+        {
+            this.spriteToDraw = sprites.block_brick_hit_underground;
+        }
         game.physics.RegisterToMovingObjectsArray(this);
 
         if (this.containingItem == EContainingItemType.None)
@@ -42,7 +46,11 @@ class BrickBlock extends ActiveBlock
             }
             else
             {
-                this.BouncingEndCallBack = () => game.physics.RemoveFromMovingObjectsArray(this);
+                game.soundManager.Play("block_hit");
+                this.BouncingEndCallBack = () => {
+                    game.physics.RemoveFromMovingObjectsArray(this);
+                    this.spriteToDraw = game.IsUnderground() ? sprites.block_brick_underground : sprites.block_brick;
+                };
             }
 
             return;
@@ -54,6 +62,7 @@ class BrickBlock extends ActiveBlock
             {
                 game.statistics.IncrementCoin();
                 game.statistics.AddScore(SCORES.Coin);
+                game.soundManager.Play("coin");
                 
                 this.spriteToDraw = sprites.block_empty;
 
@@ -68,6 +77,9 @@ class BrickBlock extends ActiveBlock
 
             game.statistics.IncrementCoin();
             game.statistics.AddScore(SCORES.Coin);
+            game.soundManager.Play("coin");
+
+            this.BouncingEndCallBack = () => this.spriteToDraw = game.IsUnderground() ? sprites.block_brick_underground : sprites.block_brick;
             return;
         }
         
@@ -85,7 +97,7 @@ class BrickBlock extends ActiveBlock
             case EContainingItemType.Star:
                 powerUpType = EPowerupType.Star;
                 break;
-        } 
+        }
 
         this.BouncingEndCallBack = () => {
             let newPowerup = new Powerup(this.x, this.y - BLOCK_SIZE / 2, powerUpType);
@@ -101,6 +113,7 @@ class BrickBlock extends ActiveBlock
     Break()
     {
         // particle here
+        game.soundManager.Play("block_break");
         this.Destroy();
 
         game.statistics.AddScore(SCORES.BreakBrickBlock);

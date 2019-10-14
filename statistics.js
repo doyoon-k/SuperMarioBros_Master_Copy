@@ -27,7 +27,6 @@ class Statistics
          * 1 second == 2.5 TIME == 60 this.time *
          ****************************************/
 
-        this.isUnderground = false;  // we should get this value somewhere outside of this class in the future, it's temporary
         this.doTickTime = true;
 
         this.sprites = {
@@ -41,6 +40,7 @@ class Statistics
         };
 
         this.coinSprites = [this.sprites.coin_1, this.sprites.coin_1, this.sprites.coin_2, this.sprites.coin_3];
+        this.undergroundCoinSprites = [this.coin_underground_1, this.coin_underground_2, this.coin_underground_3];
     }
 
     AddScore(amount)
@@ -60,7 +60,7 @@ class Statistics
         if (this.coin == 100)
         {
             this.coin = 0;
-            // 1-up
+            game.OneUp();
         }
     }
 
@@ -77,7 +77,7 @@ class Statistics
             
             if (this.time == 2400)
             {
-                // call something that TIME left is 100
+                game.soundManager.Play("hurry_up");
             }
             else if (this.time == 0)
             {
@@ -93,7 +93,8 @@ class Statistics
         DrawText(this.score.toString().padStart(6, '0'), 24, 32, 8);
 
         if (game.interfaceFlow.flowState < 4) {
-            image(this.coinSprites[game.twinkleIndex], 88 * pixelMultiplier, 24 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
+            image(game.IsUnderground() ? this.undergroundCoinSprites[game.twinkleIndex] : this.coinSprites[game.twinkleIndex],
+                  88 * pixelMultiplier, 24 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
         } else {
             image(this.sprites.coin_underground_1, 88 * pixelMultiplier, 24 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
         }

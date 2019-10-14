@@ -21,6 +21,7 @@ class MapLoader
 
     LoadMap(jsonMap)
     {
+      game.map = jsonMap;
       this.mapData = loadJSON(jsonMap, this.Loaded);
     }
 

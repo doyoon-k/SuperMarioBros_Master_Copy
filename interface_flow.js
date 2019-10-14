@@ -45,13 +45,12 @@ class InterfaceFlow {
     }
 
     Update() {
-        print(this.flowState)
         switch (this.flowState) {
             case this.screenState.wallPaper:
                 if (!this.screenTick) {
                     if (this.isExit) {
                         if (!game.isGameOver) {
-                            setTimeout(function () { setFlowState(3); }, 100);
+                            setTimeout(function () { setFlowState(3); game.soundManager.Play("overworld");}, 100);
                             this.screenTick = true;
                         } else {
                             setTimeout(function () { setFlowState(5); }, 100);
@@ -105,9 +104,11 @@ class InterfaceFlow {
                 break;
             case this.screenState.inGame:
                 this.flowState = this.screenState.pause;
+                game.soundManager.PauseResume(true);
                 break;
             case this.screenState.pause:
                 this.flowState = this.screenState.inGame;
+                game.soundManager.PauseResume(false);
                 break;
         }
     }

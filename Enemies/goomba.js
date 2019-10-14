@@ -43,6 +43,8 @@ class Goomba extends BaseEnemy
         setTimeout(() => this.Destroy(), GOOMBA_REMAINS_STOMPED_SECONDS * 1000);
 
         game.statistics.AddScore(SCORES.Stomp[map(++game.mario.stompCombo, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1, true)]);
+    
+        game.soundManager.Play("enemy_stomped");
     }
 
     InstaKilled(direction)
@@ -55,15 +57,17 @@ class Goomba extends BaseEnemy
         game.physics.RemoveFromBucketMap(this);
 
         game.statistics.AddScore(SCORES.InstaKillGoomba);
+    
+        game.soundManager.Play("enemy_instakilled");
     }
 
     *ChangeSprite()
     {
         while (true)
         {
-            this.spriteToDraw = sprites.goomba_1;
+            this.spriteToDraw = sprites["goomba" + (game.IsUnderground() ? "_underground_1" : "_1")];
             yield;
-            this.spriteToDraw = sprites.goomba_2;
+            this.spriteToDraw = sprites["goomba" + (game.IsUnderground() ? "_underground_2" : "_2")];
             yield;
         }
     }
@@ -162,7 +166,6 @@ class Goomba extends BaseEnemy
             switch (direction)
             {
                 case DIRECTION.Up:
-                    // print("!");
                     this.Stomped();
                     break;
             }
