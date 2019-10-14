@@ -38,7 +38,7 @@ class Hitbox
 
     IsYcoordInBetween(y,parent)
     {
-        return ((parent.y + this.y - this.height) < y) && (y < (parent.y + this.y));
+        return ((parent.y + this.y - this.height) <= y) && (y <= (parent.y + this.y));
     }
     
     GetRect(parent)
@@ -83,11 +83,11 @@ class Hitbox
     big_mario_duck : new Hitbox(16, 0, 12, 12),
 
     //-4
-    goomba : new Hitbox(0, -1, 10, 9),
-    koopa_troopa : new Hitbox(0, -3, 12, 12),
+    goomba : new Hitbox(0, 0, 10, 9),
+    koopa_troopa : new Hitbox(0, 0, 12, 12),
 
     fireball : new Hitbox(0, 0, 8, 8),
-    powerup: new Hitbox(0, -1, 12, 10),  // including the coins
+    powerup: new Hitbox(0, 0, 12, 10),  // including the coins
     
     active_block: new Hitbox(0, 0, 16, 16),
     inactive_block: new Hitbox(0, 0, 16, 16),
