@@ -938,7 +938,7 @@ class Mario {
   Draw() {
 
     if (!this.isTransforming)
-    if (this.isDucking && !this.isJumping && !isDPadLeft && !isDPadRightii) {
+    if (this.isDucking && !this.isJumping && !isDPadLeft && !isDPadRight) {
       this.hitbox = hitboxes.big_mario_duck;
       DrawSprite(this.duck, this.x, this.y, this.isLookingLeft, false, this.initialX);
       return;
