@@ -43,12 +43,13 @@ class Physics
 
   CheckCollision()
   {
+    let tempMovingObjectsContainer = [];
     for (let obj of this.movingObjects)
     {
       let objHitbox = obj.hitbox;
       //temporary
       // if(obj instanceof Mario)
-      // objHitbox.DebugDraw(obj);
+      objHitbox.DebugDraw(obj);
 
       let objHitbox_rect = objHitbox.GetRect(obj);
       let speedX = obj.speedX;
@@ -58,14 +59,6 @@ class Physics
       buckets = buckets.concat(this.GetBucket(objHitbox_rect.left_X+speedX*1.2, objHitbox_rect.bottom_Y+speedY*1.2));
       buckets = buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX*1.2, objHitbox_rect.bottom_Y+speedY*1.2));
 
-      if (obj instanceof Mario)
-      {
-        push();
-        stroke(0, 255, 0);
-        line(0, objHitbox_rect.bottom_Y*pixelMultiplier, width, objHitbox_rect.bottom_Y*pixelMultiplier);  
-        pop();
-      }
-
       let is_CollidedWithBlock = false;
       let is_OnBlockSurface = false;
       
@@ -73,10 +66,10 @@ class Physics
       {
         let collidableObjHitbox = collidableObj.hitbox;
         // //temporary
-        // collidableObjHitbox.DebugDraw(collidableObj);
+        collidableObjHitbox.DebugDraw(collidableObj);
         let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
-        let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y+1, collidableObj);
-        let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y-1, collidableObj);
+        let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y + 1, collidableObj);
+        let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y - 1, collidableObj);
         
         let willCollide = collidableObjHitbox.IsColliding(objHitbox_rect, speedX, speedY, collidableObj);
 
@@ -96,14 +89,16 @@ class Physics
             if (objHitbox_rect.bottom_Y <= collidableObjHitbox_rect.top_Y) //1) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              if(collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-              is_OnBlockSurface = true;
+              obj.OnCollisionWith(collidableObj, DIRECTION.Down);
+              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+                is_OnBlockSurface = true;
               // if(obj instanceof Mario)
               // print("l-t-up");
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //1) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Right);
               // if(obj instanceof Mario)
               // print("l-t-l");
             }
@@ -113,8 +108,9 @@ class Physics
             if (objHitbox_rect.bottom_Y <= collidableObjHitbox_rect.top_Y) //2) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              if(collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-              is_OnBlockSurface = true;
+              obj.OnCollisionWith(collidableObj, DIRECTION.Down);
+              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+                is_OnBlockSurface = true;
               // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
               // if(obj instanceof Mario)
               // print("r-t-u");
@@ -122,6 +118,7 @@ class Physics
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //2) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Left);
               // if(obj instanceof Mario)
               // print("r-t-r");
             }
@@ -131,12 +128,14 @@ class Physics
             if (objHitbox_rect.top_Y >= collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Up);
               // if(obj instanceof Mario && collidableObj instanceof ActiveBlock)
               // print("l-b-d");
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)//3) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Right);
               // if(obj instanceof Mario && collidableObj instanceof ActiveBlock)
               // print("l-b-l");
             }
@@ -146,12 +145,14 @@ class Physics
             if (objHitbox_rect.top_Y >= collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Up);
               // if(obj instanceof Mario)
               // print("r-b-d");
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              obj.OnCollisionWith(collidableObj, DIRECTION.Left);
               // if(obj instanceof Mario)
               // print("r-b-r");
             }
@@ -159,26 +160,30 @@ class Physics
           else if (speedX == 0 && speedY < 0)
           {
             collidableObj.OnCollisionWith(obj, DIRECTION.Down);
+            obj.OnCollisionWith(collidableObj, DIRECTION.Up);
           }
           else if (speedX == 0 && speedY > 0)
           {
             collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-            if(collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+            obj.OnCollisionWith(collidableObj, DIRECTION.Down);
+            if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
               is_OnBlockSurface = true;
           }
           else if (speedX > 0 && speedY == 0)
-          {    
+          {
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.bottom_Y)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              if(collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-              is_OnBlockSurface = true;
+              obj.OnCollisionWith(collidableObj, DIRECTION.Down);
+              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+                is_OnBlockSurface = true;
             }
             else
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
-              if(collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-              is_OnBlockSurface = true;
+              obj.OnCollisionWith(collidableObj, DIRECTION.Right);
+              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+                is_OnBlockSurface = true;
             }
           }
           else if (speedX < 0 && speedY == 0)
@@ -186,22 +191,34 @@ class Physics
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.bottom_Y)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              if(collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-              is_OnBlockSurface = true;
+              obj.OnCollisionWith(collidableObj, DIRECTION.Down);
+              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+                is_OnBlockSurface = true;
             }
             else
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
-              if(collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-              is_OnBlockSurface = true;
+              obj.OnCollisionWith(collidableObj, DIRECTION.Left);
+              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+                is_OnBlockSurface = true;
             }
             // print("surface_r");
           }
           else // speedX == 0 && speedY == 0 
           {
-            if(collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+            if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
               is_OnBlockSurface = true;
             collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+            obj.OnCollisionWith(collidableObj, DIRECTION.Down);
+          }
+  
+          if (this.movingObjects.indexOf(collidableObj) != -1)
+          {
+            this.movingObjects.splice(this.movingObjects.indexOf(obj));
+            tempMovingObjectsContainer.push(obj);
+
+            this.movingObjects.splice(this.movingObjects.indexOf(collidableObj));
+            tempMovingObjectsContainer.push(collidableObj);
           }
         }
         if (obj instanceof Mario && is_OnBlockSurface == false)
@@ -216,6 +233,12 @@ class Physics
         }
       }
     }
+    for (let obj of tempMovingObjectsContainer)
+    {
+      this.movingObjects.push(obj);  
+    }
+
+    tempMovingObjectsContainer = null;
   }
   
 
@@ -274,15 +297,12 @@ class Physics
 
   RemoveFromBucketMap(object)
   {
-    let object_hitbox_rect = object.hitbox.GetRect(object);
+    let object_hitbox = object.hitbox;
     // if(object.prevX == undefined || object.prevY == undefined)
     // return;
-    if (object instanceof ActiveBlock)
-    {
-      // print("ActiveBlock Removed From Bucket Map!");  
-    }
-    let i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
-    let j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
+
+    let i = floor(object.prevX-object_hitbox.width/2 / bucketMap_one_cell_width);
+    let j = floor(object.prevY - object_hitbox.height / bucketMap_one_cell_height);
     i = clamp(i,0,bucketMap_how_many_horizontal_cell);
     j = clamp(j,0,bucketMap_how_many_vertical_cell);
 
@@ -292,8 +312,8 @@ class Physics
       bucket.splice(bucket.indexOf(object), 1);
     }
 
-    i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
-    j = floor(object_hitbox_rect.bottom_Y / bucketMap_one_cell_height);
+    i = floor(object.prevX-object_hitbox.width/2 / bucketMap_one_cell_width);
+    j = floor(object.prevY / bucketMap_one_cell_height);
     i = clamp(i,0,bucketMap_how_many_horizontal_cell);
     j = clamp(j,0,bucketMap_how_many_vertical_cell);
 
@@ -303,8 +323,8 @@ class Physics
       bucket.splice(bucket.indexOf(object), 1);
     }
 
-    i = floor(object_hitbox_rect.right_X / bucketMap_one_cell_width);
-    j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
+    i = floor(object.prevX+object_hitbox.width/2 / bucketMap_one_cell_width);
+    j = floor(object.prevY - object_hitbox.height / bucketMap_one_cell_height);
     i = clamp(i,0,bucketMap_how_many_horizontal_cell);
     j = clamp(j,0,bucketMap_how_many_vertical_cell);
 
@@ -314,8 +334,8 @@ class Physics
       bucket.splice(bucket.indexOf(object), 1);
     }
 
-    i = floor(object_hitbox_rect.right_X / bucketMap_one_cell_width);
-    j = floor(object_hitbox_rect.bottom_Y / bucketMap_one_cell_height);
+    i = floor(object.prevX+object_hitbox.width/2 / bucketMap_one_cell_width);
+    j = floor(object.prevY / bucketMap_one_cell_height);
     i = clamp(i,0,bucketMap_how_many_horizontal_cell);
     j = clamp(j,0,bucketMap_how_many_vertical_cell);
 
@@ -339,24 +359,7 @@ class Physics
     for (let object of this.movingObjects)
     {
       this.RemoveFromBucketMap(object);
-      // object.prevX = object.x;
-      // object.prevy = object.y;
       this.RegisterToBucketMap(object);
-
-      let nMario = 0;
-      // for (let row = 0; row < bucketMap_how_many_vertical_cell + 1; row++)
-      // {
-      //   //push the row arrays
-      //   for (let column = 0; column < bucketMap_how_many_horizontal_cell + 1; column++)
-      //   {
-      //     for (let x of this.bucketMap[row][column])
-      //       if (x instanceof Mario)
-      //       {
-      //         nMario++;
-      //         print("mario"+nMario+": ",x.speedY);
-      //       }
-      //   }
-      // }
     }
   }
 

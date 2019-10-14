@@ -32,6 +32,9 @@ class Mario {
     this.x = 32;
     this.y = 208;
 
+    this.prevX = this.x;
+    this.prevY = this.y;
+
     this.initialX = 116;
 
     this.speedX = 0;
@@ -584,6 +587,9 @@ class Mario {
 
     //Apply gravity
     this.speedY += this.currentGravity;
+
+    this.prevX = this.x;
+    this.prevY = this.y;
 
     //Limit gravity
     if (this.speedY > this.maxFallSpeed)

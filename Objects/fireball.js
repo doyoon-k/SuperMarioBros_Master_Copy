@@ -18,6 +18,8 @@ class Fireball
     {
         this.x = x;
         this.y = y;
+        this.prevX = this.x;
+        this.prevY = this.y;
         this.isGoingLeft = isGoingLeft;
 
         this.spriteToDraw = sprites.fireball_1;
@@ -42,6 +44,7 @@ class Fireball
 
     Move()
     {
+        this.prevX = this.x;
         this.x += this.speedX;
     }
 
@@ -54,6 +57,7 @@ class Fireball
             this.speedY = this.maxFallSpeed;
         }
         
+        this.prevY = this.y;
         this.y += this.speedY;
     }
 

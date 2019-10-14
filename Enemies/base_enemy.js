@@ -19,6 +19,9 @@ class BaseEnemy
         this.x = x;
         this.y = y;
 
+        this.prevX = this.x;
+        this.prevY = this.y;
+
         this.isGoingLeft = true;
 
         this.isInstaKilled = false;
@@ -69,6 +72,7 @@ class BaseEnemy
             this.speedY = this.maxFallSpeed;
         }
         
+        this.prevY = this.y;
         this.y += this.speedY;  
     }
 

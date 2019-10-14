@@ -18,6 +18,8 @@ class ActiveBlock
     {
         this.x = x;
         this.y = y;
+        this.prevX = this.x;
+        this.prevY = this.y;
         this.originalY = y;
         this.containingItem = containingItem;  // EContainingItemType; See below
 
@@ -55,6 +57,7 @@ class ActiveBlock
                 this.hasReachedMaxHeight = true;
             }
             this.speedY = this.bouncingSpeed * (this.hasReachedMaxHeight ? 1 : -1);
+            this.prevY = this.y;
             this.y += this.speedY;
         }
     }

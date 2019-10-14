@@ -53,7 +53,8 @@ class KoopaTroopa extends BaseEnemy
             return;
         }
 
-        this.speedX = (this.isInstaKilled ?  this.instaKilledWalkingSpeed : this.isSliding ? this.slidingSpeed : this.walkingSpeed) * (this.isGoingLeft ? -1 : 1);
+        this.speedX = (this.isInstaKilled ? this.instaKilledWalkingSpeed : this.isSliding ? this.slidingSpeed : this.walkingSpeed) * (this.isGoingLeft ? -1 : 1);
+        this.prevX = this.x;
         this.x += this.speedX;
     }
 
