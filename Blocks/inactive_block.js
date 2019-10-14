@@ -54,7 +54,7 @@ class InactiveBlock
                 case DIRECTION.Up:
                     collider.speedY = 0;
                     collider.isJumping = false;
-                    collider.y = this.y - this.hitbox.height - collider.hitbox.y+1;
+                    collider.y = this.y - this.hitbox.height - collider.hitbox.y;
                     break;
                 case DIRECTION.Down:
                     collider.speedY = 0;
