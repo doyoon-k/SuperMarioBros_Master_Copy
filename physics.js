@@ -75,8 +75,8 @@ class Physics
         // //temporary
         // collidableObjHitbox.DebugDraw(collidableObj);
         let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
-        let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y, collidableObj);
-        let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y, collidableObj);
+        let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y+1, collidableObj);
+        let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y-1, collidableObj);
         
         let willCollide = collidableObjHitbox.IsColliding(objHitbox_rect, speedX, speedY, collidableObj);
 

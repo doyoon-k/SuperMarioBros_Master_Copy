@@ -64,20 +64,12 @@ class InactiveBlock
                 case DIRECTION.Down:
                     collider.speedY = 0;
                     collider.y = this.y + collider.hitbox.height;
-<<<<<<< HEAD
-                    // print("!");
-=======
 
                     game.soundManager.Play("block_hit");
->>>>>>> a09a04a58a22ed5519beeb533cb22a0f52694959
                     break;
                 case DIRECTION.Right:
                     collider.speedX = 0;
                     collider.x = this.x;
-<<<<<<< HEAD
-                    // print("!");
-=======
->>>>>>> a09a04a58a22ed5519beeb533cb22a0f52694959
                     break;
                 case DIRECTION.Left:
                     collider.speedX = 0;
