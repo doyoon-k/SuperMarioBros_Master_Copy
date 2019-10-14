@@ -74,6 +74,7 @@ class Mario {
 
     this.maxFallSpeed = HexFloatToDec("4.800");
 
+    this.previousX = 0;
     this.previousY = 0;
     this.initialJumpX = 0;
     this.isDashJump = false;
@@ -227,6 +228,8 @@ class Mario {
     this.isLookingLeft = false;
     this.isJumpingLeft = false;
 
+    this.isMoonwalkingLeft = false;
+
     this.jumpKeyReleased = false;
     this.topReached = false;
 
@@ -250,6 +253,10 @@ class Mario {
     text("speedY : " + this.speedY, 10, 140);
     text("currentGravity : " + this.currentGravity, 10, 100);
     text("isJumping : " + this.isJumping, 10, 120);
+    text("isMoonwalkingLeft : " + this.isMoonwalkingLeft, 10, 340);
+    text("isJumpingLeft : " + this.isJumpingLeft, 10, 280);
+    text("isLookingLeft : " + this.isLookingLeft, 10, 300);
+    text("isDucking : " + this.isDucking, 10, 320);
     text("isJumpPast : " + this.isJumping, 10, 160);
     text("isDashJump : " + this.isDashJump, 10, 240);
     text("potentialHold : " + this.potentialHoldGravity, 10, 180);
@@ -312,7 +319,7 @@ class Mario {
           game.soundManager.Play("mario_jump");
 
           if (this.isDucking)
-          this.isDuckJump = true;
+            this.isDuckJump = true;
 
           this.isJumpPast = true;
           this.isJumping = true;
@@ -362,7 +369,8 @@ class Mario {
     // --- --- --- 
 
     //Duck
-    this.isDucking = (isDPadDown && (this.powerupState == this.marioState.bigMario || this.powerupState == this.marioState.fireMario));
+    this.isDucking = (isDPadDown && !isDPadLeft && !isDPadRight && !isDPadUp &&
+      (this.powerupState == this.marioState.bigMario || this.powerupState == this.marioState.fireMario));
 
     if (!isDPadDown || this.isJumping) {
 
@@ -426,7 +434,7 @@ class Mario {
         } else {
 
           //Jumping left, pressed left
-          if (this.isJumpingLeft) {
+          if (this.isMoonwalkingLeft) {
 
             if (abs(this.speedX) <= this.maxSpeedWalkX) {
               this.speedX += -this.walkingAcceleration;
@@ -521,7 +529,7 @@ class Mario {
         } else {
 
           //Jumping right, pressed right
-          if (!this.isJumpingLeft) {
+          if (!this.isMoonwalkingLeft) {
 
             if (abs(this.speedX) <= this.maxSpeedWalkX) {
               this.speedX += this.walkingAcceleration;
@@ -607,7 +615,10 @@ class Mario {
       this.x = game.camera.x - this.initialX + 8;
 
     this.y += this.speedY;
+    
+    this.isMoonwalkingLeft = (this.x < this.previousX); 
 
+    this.previousX = this.x;
     this.previousY = this.y;
 
   }
@@ -938,17 +949,17 @@ class Mario {
   Draw() {
 
     if (!this.isTransforming)
-    if (this.isDucking && !this.isJumping && !isDPadLeft && !isDPadRight) {
-      this.hitbox = hitboxes.big_mario_duck;
-      DrawSprite(this.duck, this.x, this.y, this.isLookingLeft, false, this.initialX);
-      return;
-    } else if (this.isDuckJump) {
-      this.hitbox = hitboxes.big_mario_duck;
-      DrawSprite(this.duck, this.x, this.y, this.isLookingLeft, false, this.initialX);
-      return;
-    } else {
-      this.RefreshSpritePool();
-    }
+      if (this.isDucking && !this.isJumping) {
+        this.hitbox = hitboxes.big_mario_duck;
+        DrawSprite(this.duck, this.x, this.y, this.isLookingLeft, false, this.initialX);
+        return;
+      } else if (this.isDuckJump) {
+        this.hitbox = hitboxes.big_mario_duck;
+        DrawSprite(this.duck, this.x, this.y, this.isLookingLeft, false, this.initialX);
+        return;
+      } else {
+        this.RefreshSpritePool();
+      }
 
     if (this.isInvincible) {
 
