@@ -17,15 +17,15 @@ class SoundManager
     constructor()
     {
         this.sounds = sounds;
+        this.BGMs = ["overworld", "underground", "star"];
 
         this.currentBGM = undefined;
-        this.SFXBeingPlayed = [];
 
         this.shouldHurry = false;
 
-        for (let sound of ["overworld", "underground", "star"])
+        for (let bgm of this.BGMs)
         {
-            this.sounds[sound].playMode("sustain");
+            this.sounds[bgm].playMode("sustain");
         }
 
         for (let sound in this.sounds)
@@ -36,7 +36,7 @@ class SoundManager
 
     Play(soundName)
     {
-        if (["overworld", "underground", "star"].includes(soundName))
+        if (this.BGMs.includes(soundName))
         {
             if (this.currentBGM)
             {
@@ -73,7 +73,6 @@ class SoundManager
             }
 
             this.sounds[soundName].play();
-            this.SFXBeingPlayed.push(this.sounds[soundName]);
         }
     }
 
@@ -87,7 +86,14 @@ class SoundManager
             {
                 this.currentBGM.pause();
             }
-            this.SFXBeingPlayed.forEach(sfx => sfx.pause());
+
+            for (let sound in this.sounds)
+            {
+                if (!this.BGMs.includes(sound))
+                {
+                    this.sounds[sound].stop();
+                }
+            }
         }
         else
         {
@@ -95,22 +101,20 @@ class SoundManager
             {
                 this.currentBGM.play();
             }
-            this.SFXBeingPlayed.forEach(sfx => sfx.play());
         }
     }
 
     GetOnSFXEnd(sound)
     {
-        return () => {
-            this.SFXBeingPlayed.splice(this.SFXBeingPlayed.indexOf(sound), 1);
-
-            switch (sound)
-            {
-                case "coin":
+        switch (sound)
+        {
+            case "coin":
+                return () => {
                     this.currentBGM.rate(this.shouldHurry ? 2 : 1);
-                    break;
+                };
 
-                case "hurry_up":
+            case "hurry_up":
+                return () => {
                     this.shouldHurry = true;
                     let BGMName;
                     for (let key in this.sounds)
@@ -121,12 +125,15 @@ class SoundManager
                         }
                     }
                     this.Play(BGMName);
-                    break;
+                };
 
-                case "star":
+            case "star":
+                return () => {
                     this.Play(game.IsUnderground() ? "underground" : "overworld");
-                    break;
-            }
-        };
+                };
+            
+            default:
+                return () => {};
+        }
     }
 }
