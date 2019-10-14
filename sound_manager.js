@@ -48,6 +48,10 @@ class SoundManager
             {
                 this.currentBGM.rate(2);
             }
+            else
+            {
+                this.currentBGM.rate(1);
+            }
         }
         else
         {
@@ -89,9 +93,12 @@ class SoundManager
 
             for (let sound in this.sounds)
             {
-                if (!this.BGMs.includes(sound))
+                if (!this.BGMs.includes(sound) && sound != "pause")
                 {
-                    this.sounds[sound].stop();
+                    if (this.sounds[sound].isPlaying())
+                    {
+                        this.sounds[sound].stop();
+                    }
                 }
             }
         }
