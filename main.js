@@ -5,9 +5,10 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang did ---
-  DoYoon Kim did ---
-  SeungGeon Kim did ---
+  JoonHo Hwang DoYoon Kim planned out the flow of the function calls together. 
+  Doyoon Kim Made the MapLoader AND the Map Creation Tool. 
+  JoonHo Hwang set the framerate utilizing the setInterval(), making the framerate adjustments to actually work, and managed all of the assets being loaded here.
+  SeungGeon Kim commited the initial main() script, came up with the pixelMultiplier concept and found the noSmooth() function and applied it.
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -19,7 +20,7 @@ let sprites;
 
 let FPS = 60;
 let a;
-let count = 0;
+let temp_frame_count = 0;
 
 //Should be 2 By default, but feel free to change it
 let pixelMultiplier = 3.5;
@@ -41,6 +42,8 @@ function preload() {
     block_question_underground_1: loadImage("Sprites/Block/block_question_underground_1.png"),
     block_question_underground_2: loadImage("Sprites/Block/block_question_underground_2.png"),
     block_question_underground_3: loadImage("Sprites/Block/block_question_underground_3.png"),
+    block_brick_underground: loadImage("Sprites/Block/block_brick.png"),
+    block_brick_hit_underground: loadImage("Sprites/Block/block_brick_hit_underground.png"),
 
 
     goomba_1: loadImage("Sprites/Enemy/enemy_goomba_1.png"),
@@ -92,7 +95,7 @@ function preload() {
     flower_2: loadImage("Sprites/Item/item_flower_2.png"),
     flower_3: loadImage("Sprites/Item/item_flower_3.png"),
     flower_4: loadImage("Sprites/Item/item_flower_4.png"),
-    
+
     flower_underground_1: loadImage("Sprites/Item/item_flower_underground_1.png"),
     flower_underground_2: loadImage("Sprites/Item/item_flower_underground_2.png"),
     flower_underground_3: loadImage("Sprites/Item/item_flower_underground_3.png"),
@@ -108,7 +111,7 @@ function preload() {
     star_2: loadImage("Sprites/Item/item_star_2.png"),
     star_3: loadImage("Sprites/Item/item_star_3.png"),
     star_4: loadImage("Sprites/Item/item_star_4.png"),
-    
+
     star_underground_2: loadImage("Sprites/Item/item_star_underground_2.png"),
     star_underground_4: loadImage("Sprites/Item/item_star_underground_4.png"),
 
@@ -117,7 +120,7 @@ function preload() {
     fireball_2: loadImage("Sprites/Object/object_fireball_2.png"),
     fireball_3: loadImage("Sprites/Object/object_fireball_3.png"),
     fireball_4: loadImage("Sprites/Object/object_fireball_4.png"),
-    
+
     pipe_body_hor: loadImage("Sprites/Object/object_pipe_body_hor.png"),
     pipe_body_ver: loadImage("Sprites/Object/object_pipe_body_ver.png"),
     pipe_head_hor: loadImage("Sprites/Object/object_pipe_head_hor.png"),
@@ -129,47 +132,46 @@ function preload() {
     pipe_head_hor_underground: loadImage("Sprites/Object/object_pipe_head_hor_underground.png"),
     pipe_head_ver_underground: loadImage("Sprites/Object/object_pipe_head_ver_underground.png"),
     pipe_intersect_underground: loadImage("Sprites/Object/object_pipe_intersect_underground.png"),
-  
+
     flagpole_head: loadImage("Sprites/Object/object_flagpole_head.png"),
     flagpole: loadImage("Sprites/Object/object_flagpole.png"),
     flag: loadImage("Sprites/Object/object_flag.png"),
   };
 
   sounds = {
-    overworld : loadSound("SFX/bgm_overworld.mp3"),
-    underground : loadSound("SFX/bgm_underground_melody.mp3"),
-    star : loadSound("SFX/bgm_star.mp3"),
+    overworld: loadSound("SFX/bgm_overworld.mp3"),
+    underground: loadSound("SFX/bgm_underground_melody.mp3"),
+    star: loadSound("SFX/bgm_star.mp3"),
 
-    hurry_up : loadSound("SFX/environmental_100_time_left.mp3"),
-    level_clear : loadSound("SFX/environmental_level_clear.mp3"),
-    life_lost : loadSound("SFX/environmental_life_lost.mp3"),
-    game_over : loadSound("SFX/environmental_game_over.mp3"),
+    hurry_up: loadSound("SFX/environmental_100_time_left.mp3"),
+    level_clear: loadSound("SFX/environmental_level_clear.mp3"),
+    life_lost: loadSound("SFX/environmental_life_lost.mp3"),
+    game_over: loadSound("SFX/environmental_game_over.mp3"),
 
-    mario_jump : loadSound("SFX/mario_jump.mp3"),
-    mario_power_up : loadSound("SFX/mario_powerup.mp3"),
-    mario_power_down : loadSound("SFX/mario_powerdown.mp3"),
-    mario_shoot : loadSound("SFX/mario_shoot.mp3"),
-    mario_1up : loadSound("SFX/mario_1up.mp3"),
+    mario_jump: loadSound("SFX/mario_jump.mp3"),
+    mario_power_up: loadSound("SFX/mario_powerup.mp3"),
+    mario_power_down: loadSound("SFX/mario_powerdown.mp3"),
+    mario_shoot: loadSound("SFX/mario_shoot.mp3"),
+    mario_1up: loadSound("SFX/mario_1up.mp3"),
 
-    block_hit : loadSound("SFX/block_hit.mp3"),
-    block_break : loadSound("SFX/block_brick_breaking.mp3"),
+    block_hit: loadSound("SFX/block_hit.mp3"),
+    block_break: loadSound("SFX/block_brick_breaking.mp3"),
 
-    enemy_instakilled : loadSound("SFX/enemy_instakilled.mp3"),
-    enemy_stomped : loadSound("SFX/enemy_stomped.mp3"),
+    enemy_instakilled: loadSound("SFX/enemy_instakilled.mp3"),
+    enemy_stomped: loadSound("SFX/enemy_stomped.mp3"),
 
-    coin : loadSound("SFX/object_coin.mp3"),
-    powerup : loadSound("SFX/object_powerup_popup.mp3"),
-    flag_down : loadSound("SFX/object_flag_down.mp3"),
-    firework : loadSound("SFX/object_firework.mp3"),
+    coin: loadSound("SFX/object_coin.mp3"),
+    powerup: loadSound("SFX/object_powerup_popup.mp3"),
+    flag_down: loadSound("SFX/object_flag_down.mp3"),
+    firework: loadSound("SFX/object_firework.mp3"),
 
     // time_to_score : loadSound("SFX/environment_time_score.mp3"),
-    pause : loadSound("SFX/environment_pause.mp3")
+    pause: loadSound("SFX/environment_pause.mp3")
   };
 }
 
-function setup()
-{
-  createCanvas(16 * 16 * pixelMultiplier, 15 * 16 * pixelMultiplier);
+function setup() {
+  createCanvas(SCREEN_WIDTH_IN_BLOCK * BLOCK_SIZE * pixelMultiplier, SCREEN_HEIGHT_IN_BLOCK * BLOCK_SIZE * pixelMultiplier);
 
   //Essential to stop image functions blurring the iamge all up
   noSmooth();
@@ -183,17 +185,15 @@ function setup()
   a = setInterval(Draw, 1 / FPS * 1000);
 }
 
-function Draw()
-{
-  background(119, 181, 254);
+function Draw() {
+  background(146, 144, 255);
   game.Update();
   game.Draw();
-  text(++count, width/2, height/2 - 50);
+  text(++temp_frame_count, width / 2, height / 2 - 50);
 }
 
-function mouseClicked()
-{
-  FPS = FPS == 60 ? 1 : 60;
-  clearInterval(a);
-  a = setInterval(Draw, 1 / FPS * 1000);
+function mouseClicked() {
+  //FPS = FPS == 60 ? 1 : 60;
+  //clearInterval(a);
+  //a = setInterval(Draw, 1 / FPS * 1000);
 }

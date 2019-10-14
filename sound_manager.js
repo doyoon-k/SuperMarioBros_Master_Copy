@@ -17,26 +17,26 @@ class SoundManager
     constructor()
     {
         this.sounds = sounds;
+        this.BGMs = ["overworld", "underground", "star"];
 
         this.currentBGM = undefined;
-        this.SFXBeingPlayed = [];
 
         this.shouldHurry = false;
 
-        for (let sound of ["overworld", "underground", "star"])
+        for (let bgm of this.BGMs)
         {
-            this.sounds[sound].playMode("sustain");
+            this.sounds[bgm].playMode("sustain");
         }
 
         for (let sound in this.sounds)
         {
-            this.sounds[sound].onended(this.GetOnSFXEnd(this.sounds[sound]));
+            this.sounds[sound].onended(this.GetOnSFXEnd(sound));
         }
     }
 
     Play(soundName)
     {
-        if (["overworld", "underground", "star"].includes(soundName))
+        if (this.BGMs.includes(soundName))
         {
             if (this.currentBGM)
             {
@@ -46,14 +46,11 @@ class SoundManager
             this.currentBGM.loop();
             if (this.shouldHurry)
             {
-                this.currentBGM.rate(1.5);
+                this.currentBGM.rate(2);
             }
         }
         else
         {
-            this.sounds[soundName].play();
-            this.SFXBeingPlayed.push(this.sounds[soundName]);
-
             switch (soundName)
             {
                 case "block_hit":
@@ -66,42 +63,77 @@ class SoundManager
                     break;
 
                 case "coin":
+                    this.sounds.coin.stop();
                     this.currentBGM.rate(0.5);
                     break;
 
                 case "hurry_up":
-                    this.shouldHurry = true;
+                    this.currentBGM.pause();
                     break;
             }
+
+            this.sounds[soundName].play();
         }
     }
 
-    Pause()
+    PauseResume(isPause)
     {
         this.sounds.pause.play();
-        if (this.currentBGM)
+
+        if (isPause)
         {
-            if (game.isPaused)
+            if (this.currentBGM)
             {
                 this.currentBGM.pause();
-                this.SFXBeingPlayed.forEach(sfx => sfx.pause());
             }
-            else
+
+            for (let sound in this.sounds)
+            {
+                if (!this.BGMs.includes(sound))
+                {
+                    this.sounds[sound].stop();
+                }
+            }
+        }
+        else
+        {
+            if (this.currentBGM)
             {
                 this.currentBGM.play();
-                this.SFXBeingPlayed.forEach(sfx => sfx.play());
             }
         }
     }
 
     GetOnSFXEnd(sound)
     {
-        return () => {
-            this.SFXBeingPlayed.splice(this.SFXBeingPlayed.indexOf(sound), 1);
-            if (sound == "coin")
-            {
-                this.currentBGM.rate(1);
-            }
-        };
+        switch (sound)
+        {
+            case "coin":
+                return () => {
+                    this.currentBGM.rate(this.shouldHurry ? 2 : 1);
+                };
+
+            case "hurry_up":
+                return () => {
+                    this.shouldHurry = true;
+                    let BGMName;
+                    for (let key in this.sounds)
+                    {
+                        if (this.sounds[key] == this.currentBGM)
+                        {
+                            BGMName = key;
+                        }
+                    }
+                    this.Play(BGMName);
+                };
+
+            case "star":
+                return () => {
+                    this.Play(game.IsUnderground() ? "underground" : "overworld");
+                };
+            
+            default:
+                return () => {};
+        }
     }
 }

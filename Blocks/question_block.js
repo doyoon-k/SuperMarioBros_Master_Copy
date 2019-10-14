@@ -46,6 +46,7 @@ class QuestionBlock extends ActiveBlock
         {
             game.statistics.IncrementCoin();
             game.statistics.AddScore(SCORES.Coin);
+            game.soundManager.Play("coin");
 
             this.BouncingEndCallBack = () => this.Emptied();
             return;

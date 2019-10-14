@@ -22,15 +22,19 @@ class Coin
         this.hitbox = hitboxes.powerup;
 
         this.sprites = [sprites.coin_1, sprites.coin_1, sprites.coin_2, sprites.coin_3];
+        this.undergroundSprites = [sprites.coin_underground_1, sprites.coin_underground_2, sprites.coin_underground_3];
     }
 
     Draw()
     {
-        DrawSprite(this.x, this.y, this.sprites[game.twinkleIndex]);
+        DrawSprite(this.x, this.y, game.IsUnderground() ? this.undergroundSprites[game.twinkleIndex] : this.sprites[game.twinkleIndex]);
     }
 
     Destroy()
     {
+        game.statistics.IncrementCoin();
+        game.statistics.AddScore(SCORES.Coin);
+        game.soundManager.Play("coin");
         game.Expel(this);
     }
 
@@ -38,8 +42,6 @@ class Coin
     {
         if (collider instanceof Mario)
         {
-            game.statistics.IncrementCoin();
-            game.statistics.AddScore(SCORES.Coin);
             this.Destroy();
         }
         else if (collider instanceof ActiveBlock)
@@ -47,8 +49,6 @@ class Coin
             switch (direction)
             {
                 case DIRECTION.Down:
-                    game.statistics.IncrementCoin();
-                    game.statistics.AddScore(SCORES.Coin);
                     this.Destroy();
                     break;
             }

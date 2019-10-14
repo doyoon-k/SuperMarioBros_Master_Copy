@@ -20,22 +20,27 @@ class InactiveBlock
         this.y = y;
         this.type = type;  // EInactiveBlockType; See below
         this.hitbox = hitboxes.inactive_block;
+
+        this.spriteToDraw = undefined;
+        switch (this.type)
+        {
+            case EInactiveBlockType.Ground:
+                this.spriteToDraw = sprites["block_ground" + (game.IsUnderground() ? "_underground" : "")];
+                break;
+
+            case EInactiveBlockType.Hard:
+                this.spriteToDraw = sprites["block_hard" + (game.IsUnderground() ? "_underground" : "")];
+                break;
+
+            case EInactiveBlockType.Empty:
+                this.spriteToDraw = sprites["block_empty" + (game.IsUnderground() ? "_underground" : "")];
+                break;
+        }
     }
 
     Draw()
     {
-        switch (this.type)
-        {
-            case EInactiveBlockType.Ground:
-                DrawSprite(sprites.block_ground, this.x, this.y);
-                break;
-            case EInactiveBlockType.Hard:
-                DrawSprite(sprites.block_hard, this.x, this.y);
-                break;
-            case EInactiveBlockType.Empty:
-                DrawSprite(sprites.block_empty, this.x, this.y);
-                break;
-        }
+        DrawSprite(this.spriteToDraw, this.x, this.y);
     }
 
     Update() {}
@@ -59,12 +64,20 @@ class InactiveBlock
                 case DIRECTION.Down:
                     collider.speedY = 0;
                     collider.y = this.y + collider.hitbox.height;
+<<<<<<< HEAD
                     // print("!");
+=======
+
+                    game.soundManager.Play("block_hit");
+>>>>>>> a09a04a58a22ed5519beeb533cb22a0f52694959
                     break;
                 case DIRECTION.Right:
                     collider.speedX = 0;
                     collider.x = this.x;
+<<<<<<< HEAD
                     // print("!");
+=======
+>>>>>>> a09a04a58a22ed5519beeb533cb22a0f52694959
                     break;
                 case DIRECTION.Left:
                     collider.speedX = 0;
