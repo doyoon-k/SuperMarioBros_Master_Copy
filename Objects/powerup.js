@@ -18,8 +18,6 @@ class Powerup
     {
         this.x = x;
         this.y = y;
-        this.prevX = this.x;
-        this.prevY = this.y;
 
         this.originalY = y;
         this.type = type;  // EPowerupType; See below
@@ -89,7 +87,6 @@ class Powerup
     Move()
     {
         this.speedX = (this.isBouncing ? this.bouncingSlidingSpeed : this.slidingSpeed) * (this.isGoingLeft ? -1 : 1);
-        this.prevX = this.x;
         this.x += this.speedX;
     }
 
@@ -108,7 +105,6 @@ class Powerup
             this.speedY = this.maxFallSpeed;
         }
         
-        this.prevY = this.y;
         this.y += this.speedY;
     }
 
@@ -116,12 +112,10 @@ class Powerup
     {
         if (this.isPoppingUp)
         {
-            this.prevY = this.y;
             this.y += this.poppingSpeed;
             
             if (this.y < this.originalY - BLOCK_SIZE / 2 - 1)
             {
-                this.prevY = this.y;
                 this.y = this.originalY - BLOCK_SIZE / 2 - 1;
                 this.isPoppingUp = false;
             }
@@ -232,7 +226,6 @@ class Powerup
                     else
                     {
                         this.speedY = 0;
-                        this.prevY = this.y;
                         this.y = collider.y - BLOCK_SIZE;
                         this.isBouncing = false;
                     }
@@ -256,7 +249,6 @@ class Powerup
                     }
 
                     this.speedY = 0;
-                    this.prevY = this.y;
                     this.y = collider.y - BLOCK_SIZE;
                     this.isBouncing = false;
                     break;

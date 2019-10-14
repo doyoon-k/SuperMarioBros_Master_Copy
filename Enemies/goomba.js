@@ -33,7 +33,6 @@ class Goomba extends BaseEnemy
         }
 
         this.speedX = (this.isInstaKilled ? this.instaKilledWalkingSpeed : this.walkingSpeed) * (this.isGoingLeft ? -1 : 1);
-        this.prevX = this.x;
         this.x += this.speedX;
     }
 
