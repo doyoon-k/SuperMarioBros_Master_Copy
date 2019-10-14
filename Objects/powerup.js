@@ -51,15 +51,15 @@ class Powerup
                 break;
 
             case EPowerupType.OneUp:
-                this.spriteToDraw = sprites["mushroom_1up" + game.IsUnderground() ? "_underground" : ""];
+                this.spriteToDraw = sprites["mushroom_1up" + (game.IsUnderground() ? "_underground" : "")];
                 break;
             
             case EPowerupType.FireFlower:
-                this.spriteToDraw = sprites["flower" + game.IsUnderground() ? "_underground_1" : "_1"];
+                this.spriteToDraw = sprites["flower" + (game.IsUnderground() ? "_underground_1" : "_1")];
                 break;
             
             case EPowerupType.Star:
-                this.spriteToDraw = sprites["star" + game.IsUnderground() ? "_underground_1" : "_1"];
+                this.spriteToDraw = sprites["star" + (game.IsUnderground() ? "_underground_1" : "_1")];
                 break;
         }
 
@@ -81,8 +81,6 @@ class Powerup
 
         game.physics.RegisterToMovingObjectsArray(this);
         game.physics.RegisterToBucketMap(this);
-
-        game.soundManager.Play("powerup");
     }
 
     Move()
@@ -135,13 +133,13 @@ class Powerup
     {
         while (true)
         {
-            this.spriteToDraw = sprites["flower" + game.IsUnderground() ? "_underground_1" : "_1"];
+            this.spriteToDraw = sprites["flower" + (game.IsUnderground() ? "_underground_1" : "_1")];
             yield;
-            this.spriteToDraw = sprites["flower" + game.IsUnderground() ? "_underground_2" : "_2"];
+            this.spriteToDraw = sprites["flower" + (game.IsUnderground() ? "_underground_2" : "_2")];
             yield;
-            this.spriteToDraw = sprites["flower" + game.IsUnderground() ? "_underground_3" : "_3"];
+            this.spriteToDraw = sprites["flower" + (game.IsUnderground() ? "_underground_3" : "_3")];
             yield;
-            this.spriteToDraw = sprites["flower" + game.IsUnderground() ? "_underground_4" : "_4"];
+            this.spriteToDraw = sprites["flower" + (game.IsUnderground() ? "_underground_4" : "_4")];
             yield;
         }
     }
@@ -152,11 +150,11 @@ class Powerup
         {
             this.spriteToDraw = sprites.star_1;
             yield;
-            this.spriteToDraw = sprites["star" + game.IsUnderground() ? "_underground_2" : "_2"];
+            this.spriteToDraw = sprites["star" + (game.IsUnderground() ? "_underground_2" : "_2")];
             yield;
             this.spriteToDraw = sprites.star_3;
             yield;
-            this.spriteToDraw = sprites["star" + game.IsUnderground() ? "_underground_4" : "_4"];
+            this.spriteToDraw = sprites["star" + (game.IsUnderground() ? "_underground_4" : "_4")];
             yield;
         }
     }

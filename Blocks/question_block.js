@@ -51,7 +51,9 @@ class QuestionBlock extends ActiveBlock
             this.BouncingEndCallBack = () => this.Emptied();
             return;
         }
-        
+
+        game.soundManager.Play("powerup");
+
         let powerUpType = NaN;
         switch (this.containingItem)
         {
