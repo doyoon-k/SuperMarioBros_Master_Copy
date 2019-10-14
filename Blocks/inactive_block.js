@@ -54,17 +54,17 @@ class InactiveBlock
                 case DIRECTION.Up:
                     collider.speedY = 0;
                     collider.isJumping = false;
-                    collider.y = this.y - this.hitbox.height;
+                    collider.y = this.y - this.hitbox.height - collider.hitbox.y+1;
                     break;
                 case DIRECTION.Down:
                     collider.speedY = 0;
                     collider.y = this.y + collider.hitbox.height;
-                    print("!");
+                    // print("!");
                     break;
                 case DIRECTION.Right:
                     collider.speedX = 0;
                     collider.x = this.x;
-                    print("!");
+                    // print("!");
                     break;
                 case DIRECTION.Left:
                     collider.speedX = 0;
@@ -78,9 +78,9 @@ class InactiveBlock
             switch (direction)
             {
                 case DIRECTION.Up:
-                        collider.isOnGround = true;
-                        collider.y = this.y - this.hitbox.height - collider.hitbox.y;
-
+                    collider.isOnGround = true;
+                    collider.y = this.y - this.hitbox.height - collider.hitbox.y;
+                    // print("!");
                     break;
                 case DIRECTION.Down:
 

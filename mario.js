@@ -312,7 +312,7 @@ class Mario {
             this.isJumpingLeft = false;
           }
 
-          if (abs(this.speedX) < this.speedXStandard_2) {
+          if ((abs(this.speedX) < this.speedXStandard_2)) {
             this.speedY = -this.initialJumpSpeed_1;
           } else {
             this.isDashJump = true;

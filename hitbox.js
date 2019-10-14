@@ -38,7 +38,7 @@ class Hitbox
 
     IsYcoordInBetween(y,parent)
     {
-        return ((parent.y + this.y - this.height) < y) && (y < (parent.y + this.y));
+        return ((parent.y + this.y - this.height) < y) && (y <= (parent.y + this.y));
     }
     
     GetRect(parent)
@@ -78,7 +78,7 @@ class Hitbox
 }
 
  const hitboxes = {
-    mario : new Hitbox(16, 0, 10, 12),
+    mario : new Hitbox(16, 1, 10, 12),
     big_mario : new Hitbox(16, 0, 12, 24),
     big_mario_duck : new Hitbox(16, 0, 12, 12),
 
