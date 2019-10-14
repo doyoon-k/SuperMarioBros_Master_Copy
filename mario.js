@@ -349,6 +349,9 @@ class Mario {
 
     // --- --- --- 
 
+    //Duck
+    this.isDucking = (isDPadDown && (this.powerupState == this.marioState.bigMario || this.powerupState == this.marioState.fireMario));
+
     if (!isDPadDown || this.isJumping) {
 
       //Go for the left key first 
@@ -919,6 +922,16 @@ class Mario {
 
   //Call Animate() & Draw Mario
   Draw() {
+
+    if (this.isDucking) {
+
+      this.RefreshSpritePool();
+
+      DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
+
+      return;
+
+    }
 
     if (this.isInvincible) {
 

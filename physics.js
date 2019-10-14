@@ -173,7 +173,7 @@ class Physics
 
         if (obj instanceof Mario && is_OnBlockSurface == false)
         {
-          // obj.isJumping = true;
+          //obj.isJumping = true;
         }
         else if ((obj instanceof Goomba || obj instanceof Powerup) && is_OnBlockSurface == false)
         {
