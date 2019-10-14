@@ -33,7 +33,6 @@ class InterfaceFlow {
         this.isScreenBlack = false;
 
         this.flowState = 0;
-        this.pauseState = 0;
 
         this.flowState = this.screenState.blackScreen;
 

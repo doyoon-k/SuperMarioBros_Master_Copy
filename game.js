@@ -29,8 +29,6 @@ class Game {
         this.twinkleFrameRate = 10;
         this.twinkleIndex = 0;
 
-        this.isPaused = false;
-
         this.lives = 3;
         this.isGameOver = true;
         this.isSinglePlayer = true;
