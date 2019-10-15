@@ -232,6 +232,9 @@ class Mario {
     this.isJumping = false;
     this.isJumpPast = false;
 
+    this.isRubbingRight = false;
+    this.isRubbingLeft = false;
+
     this.isSkidding = false;
     this.isTransforming = false;
 

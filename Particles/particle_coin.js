@@ -5,7 +5,11 @@ class ParticleCoin extends Particle
       super(x,y);
 
       this.spriteToDraw = sprites.particle_coin_1;
-      this.animationFrameRate = 3;
+      this.animationFrameRate = 1;
+      this.lifeSpan = 32;
+
+      this.speedY = -HexFloatToDec("0.900")*4;
+      this.fallingAcceleration = HexFloatToDec("0.900");
    }
 
    *ChangeSprite()
@@ -25,21 +29,37 @@ class ParticleCoin extends Particle
        {
            this.animationFrameCount = 0;
            this.animator.next();
+           this.speedY += this.fallingAcceleration;
        }
-       else{
+       else
+       {
            this.animationFrameCount++;
+           this.y += this.speedY;
        }
    }
 
    Draw()
    {
-        if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame)
-           this.Animate();
-
         DrawSprite(this.spriteToDraw,this.x,this.y,false,false);
    }
 
-   Destroy(){}
+   Destroy()
+   {
+       //particle 담아놓은 배열에서 this 객체 splice해버림.
+   }
 
-   Update(){}
+   Update()
+   {
+       if(this.lifeSpan == 0)
+       {
+           this.Destroy();
+           return;
+       }
+
+       if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame)
+       {
+           this.Animate();
+           this.lifeSpan--;
+       }
+    }
 }
