@@ -86,6 +86,7 @@ class ActiveBlock
             switch (direction)
             {
                 case DIRECTION.Down:
+                
                     this.Hit();
 
                     if (this.isBouncing) {

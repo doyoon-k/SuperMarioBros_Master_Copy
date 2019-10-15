@@ -71,8 +71,8 @@ class InactiveBlock
                     collider.isGravityAssigned = true;
                     collider.y = this.y + collider.hitbox.height;
                     collider.speedY = 0;
-
                     game.soundManager.Play("block_hit");
+                    
                     break;
                 case DIRECTION.Right:
                     collider.speedX = 0;

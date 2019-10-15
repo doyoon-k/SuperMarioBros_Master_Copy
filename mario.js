@@ -654,7 +654,9 @@ class Mario {
     if (this.speedY > this.maxFallSpeed)
       this.speedY = this.maxFallSpeed;
 
-    this.x += this.speedX;
+    if ((this.speedX > 0 && !this.isRubbingRight) || (this.speedX < 0 && !this.isRubbingLeft)) {
+      this.x += this.speedX;
+    }
 
     if (this.x < game.camera.x - this.initialX + 8)
       this.x = game.camera.x - this.initialX + 8;
