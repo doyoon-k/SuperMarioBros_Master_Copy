@@ -94,9 +94,9 @@ class Statistics
 
         if (game.interfaceFlow.flowState < 4) {
             image(game.IsUnderground() ? this.undergroundCoinSprites[game.twinkleIndex] : this.coinSprites[game.twinkleIndex],
-                  88 * pixelMultiplier, 24 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
+                  88 * pixelMultiplier, 25 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
         } else {
-            image(this.sprites.coin_underground_1, 88 * pixelMultiplier, 24 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
+            image(this.sprites.coin_underground_1, 88 * pixelMultiplier, 25 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
         }
         DrawText("*" + this.coin.toString().padStart(2, '0'), 96, 32, 8);
 

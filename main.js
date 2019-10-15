@@ -143,6 +143,19 @@ function preload() {
     underground: loadSound("SFX/bgm_underground_melody.mp3"),
     star: loadSound("SFX/bgm_star.mp3"),
 
+    overworld_tempo_up: loadSound("SFX/bgm_overworld_tempo_up.mp3"),
+    underground_tempo_up: loadSound("SFX/bgm_underground_melody_tempo_up.mp3"),
+    star_tempo_up: loadSound("SFX/bgm_star_tempo_up.mp3"),
+
+    overworld_volume_down: loadSound("SFX/bgm_overworld_volume_down.mp3"),
+    underground_volume_down: loadSound("SFX/bgm_underground_melody_volume_down.mp3"),
+    star_volume_down: loadSound("SFX/bgm_star_volume_down.mp3"),
+    
+    overworld_tempo_up_volume_down: loadSound("SFX/bgm_overworld_tempo_up_volume_down.mp3"),
+    underground_tempo_up_volume_down: loadSound("SFX/bgm_underground_melody_tempo_up_volume_down.mp3"),
+    star_tempo_up_volume_down: loadSound("SFX/bgm_star_tempo_up_volume_down.mp3"),
+
+
     hurry_up: loadSound("SFX/environmental_100_time_left.mp3"),
     level_clear: loadSound("SFX/environmental_level_clear.mp3"),
     life_lost: loadSound("SFX/environmental_life_lost.mp3"),
@@ -165,7 +178,7 @@ function preload() {
     flag_down: loadSound("SFX/object_flag_down.mp3"),
     firework: loadSound("SFX/object_firework.mp3"),
 
-    // time_to_score : loadSound("SFX/environment_time_score.mp3"),
+    time_to_score : loadSound("SFX/environment_time_score.mp3"),
     pause: loadSound("SFX/environment_pause.mp3")
   };
 }
@@ -193,7 +206,7 @@ function Draw() {
 }
 
 function mouseClicked() {
-  //FPS = FPS == 60 ? 1 : 60;
-  //clearInterval(a);
-  //a = setInterval(Draw, 1 / FPS * 1000);
+  // FPS = FPS == 60 ? 1 : 60;
+  // clearInterval(a);
+  // a = setInterval(Draw, 1 / FPS * 1000);
 }
