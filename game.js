@@ -5,9 +5,9 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang Wrote all of this
+  JoonHo Hwang Arranged & Wrote all of the main properties and functions
   DoYoon Kim 
-  SeungGeon Kim 
+  SeungGeon Kim Arranged the function calls afterwards to match the 'interfaceFlow scene' switch mechanism
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -91,7 +91,7 @@ class Game {
             case game.interfaceFlow.screenState.inGame:
                 this.camera.Update();
                 this.physics.Update();
-                
+
                 this.mario.Update();
                 this.objectsToUpdate.forEach(object => object.Update());
                 

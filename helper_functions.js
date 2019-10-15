@@ -7,7 +7,7 @@
 
   JoonHo Hwang Wrote HexFloatToDec() and DrawText().
   DoYoon Kim improved DrawSprite() and wrote CheckIsRectContainsThisPoint
-  SeungGeon Kim Wrote DrawSprite() and ReturnAbsoluteAcceleration().
+  SeungGeon Kim Wrote DrawSprite() and ReturnAbsoluteAcceleration() and HexClampTo()
 
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -78,6 +78,15 @@ function HexFloatToDec(hexStr) {
   }
 
   return result;
+}
+
+// Designed specifically for upward clamping 
+function HexClampTo(append, toClamp) {
+  while (toClamp <= -HexFloatToDec("1"))
+    toClamp += HexFloatToDec("1");
+
+  toClamp -= HexFloatToDec(append);
+  return toClamp;
 }
 
 function ReturnAbsoluteAcceleration(speed, acceleration) {

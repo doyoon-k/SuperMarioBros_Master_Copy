@@ -5,9 +5,9 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang Wrote all of this
+  JoonHo Hwang Arranged & Wrote all of the main properties and functions
   DoYoon Kim 
-  SeungGeon Kim 
+  SeungGeon Kim Made some adjustments to follow the scene switch mechanism
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */

@@ -5,9 +5,9 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang Wrote all of this
+  JoonHo Hwang Arranged & Wrote all of the main properties and functions
   DoYoon Kim 
-  SeungGeon Kim 
+  SeungGeon Kim Wrote the mario's collision handling part
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -60,11 +60,17 @@ class InactiveBlock
                     collider.speedY = 0;
                     collider.isJumping = false;
                     collider.isDuckJump = false;
+                    
+                    collider.isGravityAssigned = false;
                     collider.y = this.y - this.hitbox.height + collider.hitbox.y;
+                    
                     break;
                 case DIRECTION.Down:
-                    collider.speedY = 0;
+                    
+                    collider.gravityAssigned = HexFloatToDec("1.0");
+                    collider.isGravityAssigned = true;
                     collider.y = this.y + collider.hitbox.height;
+                    collider.speedY = 0;
 
                     game.soundManager.Play("block_hit");
                     break;
