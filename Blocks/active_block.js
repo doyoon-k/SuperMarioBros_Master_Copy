@@ -5,9 +5,9 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang Wrote all of this
+  JoonHo Hwang Arranged & Wrote all of the main properties and functions
   DoYoon Kim 
-  SeungGeon Kim 
+  SeungGeon Kim Wrote the mario's collision handling part
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -23,6 +23,7 @@ class ActiveBlock
 
         this.hitbox = hitboxes.active_block;
 
+        // If it is soft or not
         this.isBouncing = false;
         this.hasReachedMaxHeight = false;
 
@@ -79,20 +80,36 @@ class ActiveBlock
 
     OnCollisionWith(collider, direction)
     {
+        // Links to Mario
         if (collider instanceof Mario)
         {
             switch (direction)
             {
                 case DIRECTION.Down:
                     this.Hit();
-                    collider.speedY = 0;
-                    collider.y = this.y + collider.hitbox.height;
+
+                    if (this.isBouncing) {
+
+                        collider.gravityAssigned = HexFloatToDec("0.9");
+                        collider.isGravityAssigned = true;
+                        collider.y = this.y + collider.hitbox.height;
+                        collider.speedY = 0;
+
+                    } else {
+
+                        collider.gravityAssigned = HexFloatToDec("1");
+                        collider.isGravityAssigned = true;
+                        collider.y = this.y + collider.hitbox.height;
+                        collider.speedY = 0;
+
+                    }
             
                     break;
                 case DIRECTION.Up:
                     collider.speedY = 0;
                     collider.isJumping = false;
                     collider.isDuckJump = false;
+                    collider.isGravityAssigned = false;
                     collider.y = this.y - this.hitbox.height;
                     break;
                 case DIRECTION.Right:

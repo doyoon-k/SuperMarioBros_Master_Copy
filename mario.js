@@ -79,6 +79,9 @@ class Mario {
     this.initialJumpX = 0;
     this.isDashJump = false;
 
+    this.isGravityAssigned = false;
+    this.gravityAssigned = 0;
+
 
 
     // this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
@@ -631,7 +634,12 @@ class Mario {
     }
 
     //Apply gravity
-    this.speedY += this.currentGravity;
+    if (this.isGravityAssigned) {
+      this.speedY += this.gravityAssigned;
+      print(this.gravityAssigned);
+    } else {
+      this.speedY += this.currentGravity;
+    }
 
     //Limit gravity
     if (this.speedY > this.maxFallSpeed)
