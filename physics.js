@@ -73,7 +73,7 @@ class Physics
         
         let willCollide = collidableObjHitbox.IsColliding(objHitbox_rect, speedX, speedY, collidableObj);
 
-        if (is_CollidedWithBlock && collidableObj instanceof ActiveBlock)
+        if (is_CollidedWithBlock && (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock))
           continue;
         //temporary
 
@@ -125,9 +125,10 @@ class Physics
           }
           else if (speedX > 0 && speedY < 0)
           {
-            if (objHitbox_rect.top_Y >= collidableObjHitbox_rect.bottom_Y)//3) a) 
+            if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
+              print("!");
               // obj.OnCollisionWith(collidableObj, DIRECTION.Up);
               // if(obj instanceof Mario && collidableObj instanceof ActiveBlock)
               // print("l-b-d");
@@ -142,7 +143,7 @@ class Physics
           }
           else if (speedX < 0 && speedY < 0)
           {
-            if (objHitbox_rect.top_Y >= collidableObjHitbox_rect.bottom_Y)//3) a) 
+            if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
               // obj.OnCollisionWith(collidableObj, DIRECTION.Up);
@@ -159,6 +160,7 @@ class Physics
           }
           else if (speedX == 0 && speedY < 0)
           {
+            // print("!");
             collidableObj.OnCollisionWith(obj, DIRECTION.Down);
             // obj.OnCollisionWith(collidableObj, DIRECTION.Up);
           }
@@ -182,8 +184,8 @@ class Physics
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
               // obj.OnCollisionWith(collidableObj, DIRECTION.Right);
-              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-                is_OnBlockSurface = true;
+              // if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+              //   is_OnBlockSurface = true;
             }
           }
           else if (speedX < 0 && speedY == 0)
@@ -199,8 +201,8 @@ class Physics
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
               // obj.OnCollisionWith(collidableObj, DIRECTION.Left);
-              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-                is_OnBlockSurface = true;
+              // if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+              //   is_OnBlockSurface = true;
             }
             // print("surface_r");
           }

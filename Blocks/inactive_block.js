@@ -60,8 +60,10 @@ class InactiveBlock
                     collider.speedY = 0;
                     collider.isJumping = false;
                     collider.isDuckJump = false;
+                    
                     collider.isGravityAssigned = false;
-                    collider.y = this.y - this.hitbox.height - collider.hitbox.y;
+                    collider.y = this.y - this.hitbox.height + collider.hitbox.y;
+                    
                     break;
                 case DIRECTION.Down:
                     
@@ -75,10 +77,12 @@ class InactiveBlock
                 case DIRECTION.Right:
                     collider.speedX = 0;
                     collider.x = (this.x) + ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - 16;
+                    collider.isRubbingLeft = true;
                     break;
                 case DIRECTION.Left:
                     collider.speedX = 0;
                     collider.x = (this.x) - ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - 16;
+                    collider.isRubbingRight = true;
                     break;
 
             }
