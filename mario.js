@@ -36,7 +36,7 @@ class Mario {
 
     this.speedX = 0;
     this.speedY = 0;
-
+    
     //needed to do the 10-frame speed conservation thing
     this.framesToKeepRunning = 0;
     this.framesToKeepRunningDefault = 10;
@@ -994,6 +994,11 @@ class Mario {
 
   //Call Animate() & Draw Mario
   Draw() {
+
+    if (this.isDamaged){
+      if (this.tickFlash)
+      DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
+    }
 
     if (this.isDead) {
       DrawSprite(this.mario_dead, this.x, this.y, this.isLookingLeft, false, this.initialX);
