@@ -31,11 +31,8 @@ class ParticleCoin extends Particle
            this.animator.next();
            this.speedY += this.fallingAcceleration;
        }
-       else
-       {
-           this.animationFrameCount++;
-           this.y += this.speedY;
-       }
+
+        this.animationFrameCount++;
    }
 
    Draw()
@@ -59,6 +56,7 @@ class ParticleCoin extends Particle
        if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame)
        {
            this.Animate();
+           this.y += this.speedY;
            this.lifeSpan--;
        }
     }
