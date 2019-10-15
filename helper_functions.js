@@ -19,6 +19,7 @@ function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertic
   
   //Keep working on this here
 
+  // game.camera.x to left, initialX to right, REMEMBER THAT DEFAULT initalX is 1 0 0
   x -= (game.camera.x - initialX);
 
   xMultiplier = 1;
