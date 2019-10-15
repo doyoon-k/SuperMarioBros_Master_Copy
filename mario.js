@@ -31,7 +31,7 @@ class Mario {
 
     this.x = 32;
     this.y = 208;
-
+    
     this.initialX = 116;
 
     this.speedX = 0;

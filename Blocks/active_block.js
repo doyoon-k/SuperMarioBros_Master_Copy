@@ -97,11 +97,11 @@ class ActiveBlock
                     break;
                 case DIRECTION.Right:
                     collider.speedX = 0;
-                    //collider.x = this.x;
+                    collider.x = (this.x) + ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - 16;
                     break;
                 case DIRECTION.Left:
                     collider.speedX = 0;
-                    //collider.x = this.x - this.hitbox.width-collider.hitbox.width*1.5;
+                    collider.x = (this.x) - ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - 16;
                     break;
             }
         }
