@@ -202,6 +202,11 @@ class Powerup
         {
             this.Destroy();
             game.statistics.AddScore(SCORES.PowerUp);
+
+            if (this.EPowerupType == EPowerupType.Star)
+            {
+                game.soundManager.Play("star");
+            }
         }
         else if (collider instanceof ActiveBlock)
         {

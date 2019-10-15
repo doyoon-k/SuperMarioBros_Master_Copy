@@ -25,6 +25,8 @@ const KOOPA_TROOPA_RECOVER_SECONDS = 1;
 
 const BRICK_COIN_SPIT_SECONDS = 4;
 
+const STAR_BGM_LASTS_SECONDS = 11;
+
 const SCORES = {
     BreakBrickBlock : 50,
     TIME : 50,
