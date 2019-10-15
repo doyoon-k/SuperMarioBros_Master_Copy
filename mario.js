@@ -99,6 +99,7 @@ class Mario {
     this.nextPowerupState = 0;
 
     this.isInvincible = false;
+    this.isDamaged = false; 
     this.isEmberRestored = false;
 
     this.isDucking = false;
@@ -109,6 +110,7 @@ class Mario {
     this.tickCount = 0;
 
     this.isDead = false;
+    this.isFalling = false;
 
     this.fireballCount = 0;
 
@@ -205,6 +207,8 @@ class Mario {
     this.big_mario_duck = loadImage('Sprites/Mario/big_mario_duck.png');
     this.big_mario_duck_fire = loadImage('Sprites/Mario/big_mario_duck_fire.png');
 
+    this.mario_dead = loadImage('Sprites/Mario/mario_dead.png');
+
     this.spriteToDraw = this.mario_stand_still;
 
 
@@ -271,9 +275,33 @@ class Mario {
   Update() {
 
     this.Debug();
-    if (!this.isTransforming)
-      this.Move();
 
+    if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause && !game.isGameOver)
+    return; 
+
+    if (!this.isTransforming && !game.gameOver) {
+      this.Move();
+      return;
+    }
+
+    //Run once on gameover
+    if (game.isGameOver && !this.isDead) {
+      this.spriteToDraw = this.mario_dead;
+      game.interfaceFlow.flowState = game.interfaceFlow.screenState.pause;
+      setTimeout(() => this.Kill(), 500);
+      this.isDead = true;
+    }
+
+      if (this.isFalling) {
+      this.y += this.speedY;
+      this.speedY+=0.5;
+      }
+
+  }
+
+  Kill () { 
+    this.speedY = -6.5; 
+    this.isFalling = true;
   }
 
   // --- --- ---
@@ -947,6 +975,11 @@ class Mario {
 
   //Call Animate() & Draw Mario
   Draw() {
+
+    if (this.isDead) {
+      DrawSprite(this.mario_dead, this.x, this.y, this.isLookingLeft, false, this.initialX);
+      return;
+    }
 
     if (!this.isTransforming)
       if (this.isDucking && !this.isJumping) {

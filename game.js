@@ -39,6 +39,11 @@ class Game {
 
     Enroll(object) 
     {
+        //Safeguard to stop mario from being included in the objects list
+        if (object instanceof Mario)
+        {
+            return;
+        }
         if (this.objectsToUpdate.indexOf(object) == -1)
         {
             this.objectsToUpdate.push(object);
@@ -74,15 +79,17 @@ class Game {
 
                 break;
             case game.interfaceFlow.screenState.pause:
-
+                this.mario.Update();
                 break;
             case game.interfaceFlow.screenState.menu:
+                //this.mario.Update();
                 this.camera.Update();
                 break; 
             case game.interfaceFlow.screenState.preGame:
 
                 break;
             case game.interfaceFlow.screenState.inGame:
+                this.mario.Update();
                 this.objectsToUpdate.forEach(object => object.Update());
                 this.camera.Update();
                 this.physics.Update();
@@ -117,7 +124,6 @@ class Game {
 
         this.mapLoader.LoadMap(mapFile);
         
-        this.Enroll(this.mario);
         this.physics.RegisterToMovingObjectsArray(this.mario);
         this.physics.RegisterToBucketMap(this.mario);
     }
@@ -137,6 +143,10 @@ class Game {
     {
         this.backgroundObjects.forEach(object => object.Draw());
         this.objectsToUpdate.forEach(object => object.Draw());
+
+        if (4 > this.interfaceFlow.flowState > 0) 
+        this.mario.Draw();
+        
         this.interfaceFlow.DrawInterface();
 
         if (this.interfaceFlow.flowState > 1) 
