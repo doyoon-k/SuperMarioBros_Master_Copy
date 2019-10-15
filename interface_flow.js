@@ -89,6 +89,7 @@ class InterfaceFlow {
     }
 
     OnStartPressed() {
+        if (!game.mario.isDead)
         switch (this.flowState) {
             case this.screenState.menu:
 

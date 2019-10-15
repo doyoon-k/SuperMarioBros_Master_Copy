@@ -7,7 +7,7 @@
 
   JoonHo Hwang Wrote HexFloatToDec() and DrawText().
   DoYoon Kim improved DrawSprite() and wrote CheckIsRectContainsThisPoint
-  SeungGeon Kim Wrote DrawSprite() and ReturnAbsoluteAcceleration().
+  SeungGeon Kim Wrote DrawSprite() and ReturnAbsoluteAcceleration() and HexClampTo()
 
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -16,7 +16,10 @@
 
 //Translates & flips & draws sprites (16x16 system onto 32x32 system if pixelmultiplier is 2)
 function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertically = false, initialX = 100) {
+  
+  //Keep working on this here
 
+  // game.camera.x to left, initialX to right, REMEMBER THAT DEFAULT initalX is 1 0 0
   x -= (game.camera.x - initialX);
 
   xMultiplier = 1;
@@ -75,6 +78,15 @@ function HexFloatToDec(hexStr) {
   }
 
   return result;
+}
+
+// Designed specifically for upward clamping 
+function HexClampTo(append, toClamp) {
+  while (toClamp <= -HexFloatToDec("1"))
+    toClamp += HexFloatToDec("1");
+
+  toClamp -= HexFloatToDec(append);
+  return toClamp;
 }
 
 function ReturnAbsoluteAcceleration(speed, acceleration) {

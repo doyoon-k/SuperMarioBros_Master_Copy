@@ -86,12 +86,12 @@ class Hitbox
 }
 
  const hitboxes = {
-    mario : new Hitbox(16, 0, 10, 12),
-    big_mario : new Hitbox(16, 0, 12, 24),
-    big_mario_duck : new Hitbox(16, 0, 12, 12),
+    mario : new Hitbox(16, 1, 10, 12),
+    big_mario : new Hitbox(16, 1, 12, 24),
+    big_mario_duck : new Hitbox(16, 1, 12, 12),
 
     //-4
-    goomba : new Hitbox(0, 0, 10, 9),
+    goomba : new Hitbox(0, 0, 10, 8),
     koopa_troopa : new Hitbox(0, 0, 12, 12),
 
     fireball : new Hitbox(0, 0, 8, 8),

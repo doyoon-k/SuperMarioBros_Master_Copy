@@ -5,9 +5,9 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang Wrote all of this
+  JoonHo Hwang Arranged & Wrote all of the main properties and functions
   DoYoon Kim 
-  SeungGeon Kim 
+  SeungGeon Kim Made some adjustments to follow the scene switch mechanism
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -104,7 +104,7 @@ class Statistics
         DrawText(this.world + "-" + this.level, 152, 32, 8);
         
         DrawText("TIME", 200, 24, 8);
-        if (!isNaN(this.time) && game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame)
+        if (!isNaN(this.time) && (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame || game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause))
         {
             DrawText(Math.floor(this.time / 24).toString().padStart(3, '0'), 208, 32, 8);
         }

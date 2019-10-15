@@ -31,7 +31,7 @@ class Mario {
 
     this.x = 32;
     this.y = 208;
-
+    
     this.initialX = 116;
 
     this.speedX = 0;
@@ -79,6 +79,12 @@ class Mario {
     this.initialJumpX = 0;
     this.isDashJump = false;
 
+    this.isGravityAssigned = false;
+    this.gravityAssigned = 0;
+
+    this.isRubbingLeft = false;
+    this.isRubbingRight = false;
+
 
 
     // this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
@@ -99,6 +105,7 @@ class Mario {
     this.nextPowerupState = 0;
 
     this.isInvincible = false;
+    this.isDamaged = false; 
     this.isEmberRestored = false;
 
     this.isDucking = false;
@@ -109,6 +116,7 @@ class Mario {
     this.tickCount = 0;
 
     this.isDead = false;
+    this.isFalling = false;
 
     this.fireballCount = 0;
 
@@ -205,6 +213,8 @@ class Mario {
     this.big_mario_duck = loadImage('Sprites/Mario/big_mario_duck.png');
     this.big_mario_duck_fire = loadImage('Sprites/Mario/big_mario_duck_fire.png');
 
+    this.mario_dead = loadImage('Sprites/Mario/mario_dead.png');
+
     this.spriteToDraw = this.mario_stand_still;
 
 
@@ -221,6 +231,9 @@ class Mario {
 
     this.isJumping = false;
     this.isJumpPast = false;
+
+    this.isRubbingRight = false;
+    this.isRubbingLeft = false;
 
     this.isSkidding = false;
     this.isTransforming = false;
@@ -263,6 +276,8 @@ class Mario {
     text("isTransforming : " + this.isTransforming, 10, 200);
     text("tickIndex : " + this.tickIndex, 10, 260);
     text("powerupState : " + this.powerupState, 10, 220);
+    text("isRubbingLeft : " + this.isRubbingLeft, 10, 360);
+    text("isRubbingRight : " + this.isRubbingRight, 10, 380);
   }
 
   // --- --- ---
@@ -271,9 +286,35 @@ class Mario {
   Update() {
 
     this.Debug();
-    if (!this.isTransforming)
-      this.Move();
 
+    if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause && !game.isGameOver)
+    return; 
+
+    if (!this.isTransforming && !game.gameOver) {
+      this.Move();
+      this.isRubbingLeft = false;
+      this.isRubbingRight = false;
+      return;
+    }
+
+    //Run once on gameover
+    if (game.isGameOver && !this.isDead) {
+      this.spriteToDraw = this.mario_dead;
+      game.interfaceFlow.flowState = game.interfaceFlow.screenState.pause;
+      setTimeout(() => this.Kill(), 500);
+      this.isDead = true;
+    }
+
+      if (this.isFalling) {
+      this.y += this.speedY;
+      this.speedY+=0.5;
+      }
+
+  }
+
+  Kill () { 
+    this.speedY = -6.5; 
+    this.isFalling = true;
   }
 
   // --- --- ---
@@ -603,13 +644,19 @@ class Mario {
     }
 
     //Apply gravity
-    this.speedY += this.currentGravity;
+    if (this.isGravityAssigned) {
+      this.speedY += this.gravityAssigned;
+    } else {
+      this.speedY += this.currentGravity;
+    }
 
     //Limit gravity
     if (this.speedY > this.maxFallSpeed)
       this.speedY = this.maxFallSpeed;
 
-    this.x += this.speedX;
+    if ((this.speedX > 0 && !this.isRubbingRight) || (this.speedX < 0 && !this.isRubbingLeft)) {
+      this.x += this.speedX;
+    }
 
     if (this.x < game.camera.x - this.initialX + 8)
       this.x = game.camera.x - this.initialX + 8;
@@ -947,6 +994,11 @@ class Mario {
 
   //Call Animate() & Draw Mario
   Draw() {
+
+    if (this.isDead) {
+      DrawSprite(this.mario_dead, this.x, this.y, this.isLookingLeft, false, this.initialX);
+      return;
+    }
 
     if (!this.isTransforming)
       if (this.isDucking && !this.isJumping) {

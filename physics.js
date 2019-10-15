@@ -48,8 +48,8 @@ class Physics
     {
       let objHitbox = obj.hitbox;
       //temporary
-      // if(obj instanceof Mario)
-      // objHitbox.DebugDraw(obj);
+      if(obj instanceof Mario)
+      objHitbox.DebugDraw(obj);
 
       let objHitbox_rect = objHitbox.GetRect(obj);
       let speedX = obj.speedX;
@@ -61,6 +61,8 @@ class Physics
 
       let is_CollidedWithBlock = false;
       let is_OnBlockSurface = false;
+      let isMarioRubbingRight = false;
+      let isMarioRubbingLeft = false;
       
       for (let collidableObj of buckets)
       {
@@ -98,6 +100,10 @@ class Physics
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //1) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              if(obj instanceof Mario && (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock))
+              {
+                isMarioRubbingRight = true;
+              }
               // obj.OnCollisionWith(collidableObj, DIRECTION.Right);
               // if(obj instanceof Mario)
               // print("l-t-l");
@@ -118,6 +124,10 @@ class Physics
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //2) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              if(obj instanceof Mario && (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock))
+              {
+                isMarioRubbingLeft = true;
+              }
               // obj.OnCollisionWith(collidableObj, DIRECTION.Left);
               // if(obj instanceof Mario)
               // print("r-t-r");
@@ -125,9 +135,10 @@ class Physics
           }
           else if (speedX > 0 && speedY < 0)
           {
-            if (objHitbox_rect.top_Y >= collidableObjHitbox_rect.bottom_Y)//3) a) 
+            if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
+              print("!");
               // obj.OnCollisionWith(collidableObj, DIRECTION.Up);
               // if(obj instanceof Mario && collidableObj instanceof ActiveBlock)
               // print("l-b-d");
@@ -135,6 +146,10 @@ class Physics
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)//3) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              if(obj instanceof Mario && (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock))
+              {
+                isMarioRubbingRight = true;
+              }
               // obj.OnCollisionWith(collidableObj, DIRECTION.Right);
               // if(obj instanceof Mario && collidableObj instanceof ActiveBlock)
               // print("l-b-l");
@@ -142,7 +157,7 @@ class Physics
           }
           else if (speedX < 0 && speedY < 0)
           {
-            if (objHitbox_rect.top_Y >= collidableObjHitbox_rect.bottom_Y)//3) a) 
+            if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
               // obj.OnCollisionWith(collidableObj, DIRECTION.Up);
@@ -152,6 +167,10 @@ class Physics
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              if(obj instanceof Mario && (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock))
+              {
+                isMarioRubbingLeft = true;
+              }
               // obj.OnCollisionWith(collidableObj, DIRECTION.Left);
               // if(obj instanceof Mario)
               // print("r-b-r");
@@ -159,6 +178,7 @@ class Physics
           }
           else if (speedX == 0 && speedY < 0)
           {
+            // print("!");
             collidableObj.OnCollisionWith(obj, DIRECTION.Down);
             // obj.OnCollisionWith(collidableObj, DIRECTION.Up);
           }
@@ -181,9 +201,13 @@ class Physics
             else
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
+              if(obj instanceof Mario && (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock))
+              {
+                isMarioRubbingRight = true;
+              }
               // obj.OnCollisionWith(collidableObj, DIRECTION.Right);
-              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-                is_OnBlockSurface = true;
+              // if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+              //   is_OnBlockSurface = true;
             }
           }
           else if (speedX < 0 && speedY == 0)
@@ -198,17 +222,23 @@ class Physics
             else
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
+              if(obj instanceof Mario && (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock))
+              {
+                isMarioRubbingLeft = true;
+              }
               // obj.OnCollisionWith(collidableObj, DIRECTION.Left);
-              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-                is_OnBlockSurface = true;
+              // if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+              //   is_OnBlockSurface = true;
             }
             // print("surface_r");
           }
           else // speedX == 0 && speedY == 0 
           {
             if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+            {
               is_OnBlockSurface = true;
-            collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+            }
             // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
           }
   
@@ -230,6 +260,18 @@ class Physics
         else if ((obj instanceof Goomba || obj instanceof Powerup) && is_OnBlockSurface == false)
         {
           obj.isOnGround = false;
+        }
+
+        if(obj instanceof Mario)
+        {
+          if(!isMarioRubbingLeft)
+          {
+            obj.isRubbingLeft = false;
+          }
+          if(!isMarioRubbingRight)
+          {
+            obj.isRubbingLeft = false;
+          }
         }
       }
     }

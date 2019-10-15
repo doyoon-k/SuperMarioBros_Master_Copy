@@ -5,9 +5,9 @@
   GAM100 
   Fall 2019
 
-  JoonHo Hwang Wrote all of this
+  JoonHo Hwang Arranged & Wrote all of the main properties and functions
   DoYoon Kim wrote case InactiveBlock: of onCollisionWith() function.
-  SeungGeon Kim 
+  SeungGeon Kim did the Mario part
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -163,6 +163,7 @@ class Goomba extends BaseEnemy
 
             this.isGoingLeft = !this.isGoingLeft;
         }
+        // Links to Mario
         else if (collider instanceof Mario)
         {
             if (collider.isInvincible)
@@ -174,6 +175,9 @@ class Goomba extends BaseEnemy
             switch (direction)
             {
                 case DIRECTION.Up:
+
+                    collider.speedY = HexClampTo("4", collider.speedY);
+
                     this.Stomped();
                     break;
             }

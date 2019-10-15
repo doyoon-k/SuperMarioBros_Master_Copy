@@ -136,6 +136,18 @@ function preload() {
     flagpole_head: loadImage("Sprites/Object/object_flagpole_head.png"),
     flagpole: loadImage("Sprites/Object/object_flagpole.png"),
     flag: loadImage("Sprites/Object/object_flag.png"),
+
+    particle_coin_1: loadImage("Sprites/Particle/particle_coin_1.png"),
+    particle_coin_2: loadImage("Sprites/Particle/particle_coin_2.png"),
+    particle_coin_3: loadImage("Sprites/Particle/particle_coin_3.png"),
+    particle_coin_4: loadImage("Sprites/Particle/particle_coin_4.png"),
+
+    particle_firework_1: loadImage("Sprites/Particle/particle_firework_1.png"),
+    particle_firework_2: loadImage("Sprites/Particle/particle_firework_2.png"),
+    particle_firework_3: loadImage("Sprites/Particle/particle_firework_3.png"),
+
+    particle_brick: loadImage("Sprites/Particle/particle_brick.png"),
+    particle_brick_underground: loadImage("Sprites/Particle/particle_brick_underground.png")
   };
 
   sounds = {
