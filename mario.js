@@ -82,6 +82,9 @@ class Mario {
     this.isGravityAssigned = false;
     this.gravityAssigned = 0;
 
+    this.isRubbingLeft = false;
+    this.isRubbingRight = false;
+
 
 
     // this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
@@ -270,6 +273,8 @@ class Mario {
     text("isTransforming : " + this.isTransforming, 10, 200);
     text("tickIndex : " + this.tickIndex, 10, 260);
     text("powerupState : " + this.powerupState, 10, 220);
+    text("isRubbingLeft : " + this.isRubbingLeft, 10, 360);
+    text("isRubbingRight : " + this.isRubbingRight, 10, 380);
   }
 
   // --- --- ---
@@ -284,6 +289,8 @@ class Mario {
 
     if (!this.isTransforming && !game.gameOver) {
       this.Move();
+      this.isRubbingLeft = false;
+      this.isRubbingRight = false;
       return;
     }
 
@@ -636,7 +643,6 @@ class Mario {
     //Apply gravity
     if (this.isGravityAssigned) {
       this.speedY += this.gravityAssigned;
-      print(this.gravityAssigned);
     } else {
       this.speedY += this.currentGravity;
     }

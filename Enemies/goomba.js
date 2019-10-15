@@ -177,7 +177,6 @@ class Goomba extends BaseEnemy
                 case DIRECTION.Up:
 
                     collider.speedY = HexClampTo("4", collider.speedY);
-                    print (collider.speedY)
 
                     this.Stomped();
                     break;
