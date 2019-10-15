@@ -104,7 +104,7 @@ class Statistics
         DrawText(this.world + "-" + this.level, 152, 32, 8);
         
         DrawText("TIME", 200, 24, 8);
-        if (!isNaN(this.time) && game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame)
+        if (!isNaN(this.time) && (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame || game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause))
         {
             DrawText(Math.floor(this.time / 24).toString().padStart(3, '0'), 208, 32, 8);
         }

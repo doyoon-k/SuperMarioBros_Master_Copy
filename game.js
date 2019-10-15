@@ -89,11 +89,14 @@ class Game {
 
                 break;
             case game.interfaceFlow.screenState.inGame:
-                this.mario.Update();
-                this.objectsToUpdate.forEach(object => object.Update());
                 this.camera.Update();
                 this.physics.Update();
+                
+                this.mario.Update();
+                this.objectsToUpdate.forEach(object => object.Update());
+                
                 this.physics.CheckCollision();
+
                 this.statistics.Update();
             break; 
             case game.interfaceFlow.screenState.endGame:
