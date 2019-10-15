@@ -48,8 +48,8 @@ class Physics
     {
       let objHitbox = obj.hitbox;
       //temporary
-      // if(obj instanceof Mario)
-      // objHitbox.DebugDraw(obj);
+      if(obj instanceof Mario)
+      objHitbox.DebugDraw(obj);
 
       let objHitbox_rect = objHitbox.GetRect(obj);
       let speedX = obj.speedX;
@@ -207,8 +207,10 @@ class Physics
           else // speedX == 0 && speedY == 0 
           {
             if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
+            {
               is_OnBlockSurface = true;
-            collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+              collidableObj.OnCollisionWith(obj, DIRECTION.Up);
+            }
             // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
           }
   
