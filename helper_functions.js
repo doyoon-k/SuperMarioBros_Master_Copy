@@ -104,7 +104,5 @@ function clamp(value,min,max)
 }
 
 function setFlowState(state) {
-  print(this.flowState)
   game.interfaceFlow.flowState = state;
-  print(this.flowState)
 }
