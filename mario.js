@@ -43,6 +43,9 @@ class Mario {
     this.framesToKeepRunning = 0;
     this.framesToKeepRunningDefault = 10;
 
+    this.framesToKeepThrowing = 0;
+    this.framesToKeepThrowingDefault = 7;
+
     this.framesToStayInvincible = 150;
     this.framesToStayInvincibleDefault = 150;
 
@@ -212,6 +215,8 @@ class Mario {
     this.big_mario_jump_transform3 = loadImage('Sprites/Mario/big_mario_jump_transform3.png');
 
     this.big_mario_jump_fire = loadImage('Sprites/Mario/big_mario_jump_fire.png');
+
+    this.big_mario_shoot_fire = loadImage('Sprites/Mario/big_mario_shoot_fire.png');
 
     this.duck = 0;
 
@@ -1035,6 +1040,8 @@ class Mario {
   // --- --- ---
 
   ThrowFireball() {
+    if (this.framesToKeepThrowing < this.framesToKeepThrowingDefault)
+        this.framesToKeepThrowing = this.framesToKeepThrowingDefault;
     if (this.fireballCount < 2) {
       let deltaX = 0;
       if (this.isLookingLeft) {
@@ -1043,6 +1050,7 @@ class Mario {
         deltaX = 3;
       }
       game.Enroll(new Fireball(this.x + deltaX + 16, this.y - 16, this.isLookingLeft));
+      game.gameObjects.push(new Fireball(this.x + deltaX + 16, this.y - 16, this.isLookingLeft));
       this.fireballCount++;
     }
   }
@@ -1190,6 +1198,13 @@ class Mario {
       if (this.nextPowerupState != this.marioState.fireMario)
         return;
 
+    }
+
+    //Keep Throwing
+    if (this.framesToKeepThrowing > 0 && this.powerupState == this.marioState.fireMario) {
+      DrawSprite(this.big_mario_shoot_fire, this.x, this.y, this.isLookingLeft, false, this.initialX);
+      this.framesToKeepThrowing--;
+      return;
     }
 
     if (!this.isJumping) {
