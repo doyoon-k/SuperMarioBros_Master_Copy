@@ -38,6 +38,8 @@ class Game {
         this.underworldMapList = [];
         this.map = undefined;
 
+        this.hasPassedCheckpoint = false;
+
         this.TIMELastDigit = NaN;
     }
 
@@ -89,6 +91,11 @@ class Game {
 
     Update()
     {
+        if (!this.hasPassedCheckpoint && this.mario.x >= 87 * BLOCK_SIZE)
+        {
+            this.hasPassedCheckpoint = true;
+            //83 * BLOCK_SIZE에서 스폰
+        }
 
         this.interfaceFlow.Update();
 
