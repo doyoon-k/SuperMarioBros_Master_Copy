@@ -326,7 +326,7 @@ class Mario {
     if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause && !game.isGameOver)
       return;
 
-    if (!this.isTransforming && !game.gameOver && !this.isClimbing && !this.isEndGame) {
+    if (!this.isTransforming && !game.isGameOver && !this.isClimbing && !this.isEndGame) {
       this.Move();
       return;
     }
@@ -1052,8 +1052,9 @@ class Mario {
       } else {
         deltaX = 3;
       }
-      game.Enroll(new Fireball(this.x + deltaX + 16, this.y - 16, this.isLookingLeft));
-      game.gameObjects.push(new Fireball(this.x + deltaX + 16, this.y - 16, this.isLookingLeft));
+      let Fire = new Fireball(this.x + deltaX + 16, this.y - 16, this.isLookingLeft);
+      game.Enroll(Fire);
+      game.gameObjects.push(Fire);
       this.fireballCount++;
     }
   }
@@ -1284,15 +1285,31 @@ class Mario {
         } else {
           this.PowerupTo(this.marioState.fireMario);
         }
+
     } else if (collider instanceof BaseEnemy) {
       if (this.isInvincible) {
         collider.InstaKilled(collider.x >= this.x ? DIRECTION.Left : DIRECTION.Right);
         return;
       }
-
       switch (direction) {
         case DIRECTION.Right:
+          if (!this.isTransforming && !this.isDamaged)
+            if (this.powerupState != this.marioState.mario) {
+              this.PowerupTo(this.marioState.mario);
+              this.isDamaged = true;
+            } else {
+              game.isGameOver = true;
+            }
+          break;
         case DIRECTION.Left:
+          if (!this.isTransforming && !this.isDamaged)
+            if (this.powerupState != this.marioState.mario) {
+              this.PowerupTo(this.marioState.mario);
+              this.isDamaged = true;
+            } else {
+              game.isGameOver = true;
+            }
+          break;
         case DIRECTION.Up:
           if (!collider.isInShell && !collider.isAwakening) {
             // 대미지 입기

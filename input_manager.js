@@ -53,7 +53,6 @@ function keyPressed() {
             break;
         case 85:  //U
             isSelect = true;
-            game.mario.isDamaged = !game.mario.isDamaged;
             if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.menu)
                 game.isSinglePlayer = !game.isSinglePlayer;
             break;
