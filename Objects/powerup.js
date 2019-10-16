@@ -19,6 +19,8 @@ class Powerup
         this.x = x;
         this.y = y;
 
+        this.zWeight = 4;
+
         this.originalY = y;
         this.type = type;  // EPowerupType; See below
         

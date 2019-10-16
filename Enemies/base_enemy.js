@@ -19,6 +19,8 @@ class BaseEnemy
         this.x = x;
         this.y = y;
 
+        this.zWeight = 5;
+
         this.isGoingLeft = true;
 
         this.isInstaKilled = false;

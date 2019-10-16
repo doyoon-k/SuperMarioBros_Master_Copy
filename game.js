@@ -18,12 +18,14 @@ class Game {
         this.physics = new Physics();
         this.mario = new Mario();
         this.camera = new Camera();
-        this.backgroundObjects = [];
-        this.gameObjects = [];
-        this.objectsToUpdate = [];
         this.statistics = new Statistics();
         this.soundManager = new SoundManager();
         this.interfaceFlow = new InterfaceFlow();
+
+        this.backgroundObjects = [];
+        this.gameObjects = [];
+        this.objectsToUpdate = [];
+        this.objectsToDraw = {};
 
         this.twinkleFrameCount = 0;
         this.twinkleFrameRate = 10;
@@ -50,6 +52,15 @@ class Game {
         {
             this.objectsToUpdate.push(object);
         }
+
+        if (!this.objectsToDraw[object.zWeight])
+        {
+            this.objectsToDraw[object.zWeight] = [];
+        }
+        if (this.objectsToDraw[object.zWeight].indexOf(object) == -1)
+        {
+            this.objectsToDraw[object.zWeight].push(object);
+        }
     }
 
     Expel(object) 
@@ -61,6 +72,12 @@ class Game {
         if (index != -1)
         {
             this.objectsToUpdate.splice(index, 1);
+        }
+
+        index = this.objectsToDraw[object.zWeight].indexOf(object);
+        if (index != -1)
+        {
+            this.objectsToDraw[object.zWeight].splice(index, 1);
         }
 
         index = this.gameObjects.indexOf(object);
@@ -84,7 +101,6 @@ class Game {
                 this.mario.Update();
                 break;
             case game.interfaceFlow.screenState.menu:
-                //this.mario.Update();
                 this.camera.Update();
                 break; 
             case game.interfaceFlow.screenState.preGame:
@@ -148,12 +164,15 @@ class Game {
     {
         this.TIMELastDigit = Math.floor(this.statistics.time / 24) % 10;
         this.statistics.doTickTime = false;
+        this.mario.isClimbing = true;
         // 마리오 멈추기
         // 마리오 주욱 내려가기
     }
 
-    OnFlagEnd()
+    OnFlagDragEnd()
     {
+        setTimeout(() => this.mario.EndGame(), 400);
+        this.mario.isLookingLeft = true;
         // 마리오 턴
         // 마리오 걸어가고 성까지 가면 안 그리기
 
@@ -176,7 +195,10 @@ class Game {
     Draw() 
     {
         this.backgroundObjects.forEach(object => object.Draw());
-        this.objectsToUpdate.forEach(object => object.Draw());
+        for (let zWeight in this.objectsToDraw)
+        {
+            this.objectsToDraw[zWeight].forEach(object => object.Draw());
+        }
 
         if (4 > this.interfaceFlow.flowState > 0) 
         this.mario.Draw();

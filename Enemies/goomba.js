@@ -59,6 +59,8 @@ class Goomba extends BaseEnemy
         this.isInstaKilled = true;
         this.speedY = this.instaKilledInitialSpeed;
         this.isGoingLeft = direction == DIRECTION.Right;
+
+        this.isOnGround = false;
         
         game.physics.RemoveFromMovingObjectsArray(this);
         game.physics.RemoveFromBucketMap(this);

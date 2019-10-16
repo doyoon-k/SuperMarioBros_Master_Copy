@@ -21,6 +21,8 @@ class ActiveBlock
         this.originalY = y;
         this.containingItem = containingItem;  // EContainingItemType; See below
 
+        this.zWeight = 0;
+
         this.hitbox = hitboxes.active_block;
 
         // If it is soft or not

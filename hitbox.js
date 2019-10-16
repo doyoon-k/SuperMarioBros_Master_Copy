@@ -103,6 +103,10 @@ class Hitbox
     pipe_horizontal: new Hitbox(0, 0, 32, 16),
     pipe_vertical: new Hitbox(0, 0, 16, 32),
     
+<<<<<<< HEAD
     //correct value should be assigned. this is just temporary value only to test.
     flagpole: new Hitbox(0, 0, 16, 64)
+=======
+    flagpole: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE * 9)
+>>>>>>> f7ac7fe01d8da25605d05c8ff115203f1f044072
 };

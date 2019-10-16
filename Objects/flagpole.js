@@ -19,6 +19,8 @@ class Flagpole
         this.x = x;
         this.y = y;
 
+        this.zWeight = 0;
+
         this.flagOffset = 0;
         this.isDragging = false;
 
@@ -38,7 +40,7 @@ class Flagpole
             {
                 this.flagOffset = this.maxFlagOffset;
                 this.isDragging = false;
-                setTimeout(() => game.OnFlagDragEnd(), 0.5 * 1000);
+                game.OnFlagDragEnd();
             }
         }
     }
@@ -69,8 +71,9 @@ class Flagpole
         if (collider instanceof Mario)
         {
             game.LevelClear();
+            if (!game.mario.isEndGame)
+            game.mario.x = this.x - 16;
             this.DragFlagDown();
-            game.soundManager.Play("flag_down");
         }
     }
 }

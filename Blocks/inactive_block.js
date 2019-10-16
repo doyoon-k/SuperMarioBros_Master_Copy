@@ -19,6 +19,9 @@ class InactiveBlock
         this.x = x;
         this.y = y;
         this.type = type;  // EInactiveBlockType; See below
+
+        this.zWeight = 0;
+
         this.hitbox = hitboxes.inactive_block;
 
         this.spriteToDraw = undefined;
@@ -63,7 +66,15 @@ class InactiveBlock
                     
                     collider.isGravityAssigned = false;
                     collider.y = this.y - this.hitbox.height + collider.hitbox.y;
+<<<<<<< HEAD
                     
+=======
+
+                    if (game.mario.isClimbing)
+                        game.mario.isBottomReach = true;
+
+                    collider.stompCombo = 0;
+>>>>>>> f7ac7fe01d8da25605d05c8ff115203f1f044072
                     break;
                 case DIRECTION.Down:
                     
