@@ -437,7 +437,7 @@ class Mario {
                 this.speedX += -this.runningAcceleration;
 
                 //Assign max run speed
-                if (this.speedX < -this.maxSpeedRunX && !this.isRubbingLeft)
+                if (this.speedX < -this.maxSpeedRunX)
                   this.speedX = -this.maxSpeedRunX;
 
               }
@@ -454,7 +454,7 @@ class Mario {
                 this.speedX += -this.walkingAcceleration;
 
                 //Assign max walk speed
-                if (this.speedX < -this.maxSpeedWalkX && !this.isRubbingLeft)
+                if (this.speedX < -this.maxSpeedWalkX)
                   this.speedX = -this.maxSpeedWalkX;
 
               } else {
@@ -464,7 +464,7 @@ class Mario {
                   this.speedX += this.releaseDeacceleration;
 
                 //Assign max walk speed
-                if (this.speedX > -this.maxSpeedWalkX + -this.releaseDeacceleration && !this.isRubbingLeft)
+                if (this.speedX > -this.maxSpeedWalkX + -this.releaseDeacceleration)
                   this.speedX = -this.maxSpeedWalkX;
 
               }
@@ -482,13 +482,13 @@ class Mario {
               this.speedX += -this.walkingAcceleration;
 
               //Assign max walk speed
-              if (this.speedX < -this.maxSpeedWalkX && !this.isRubbingLeft)
+              if (this.speedX < -this.maxSpeedWalkX)
                 this.speedX = -this.maxSpeedWalkX;
             } else {
               this.speedX += -this.runningAcceleration;
 
               //Assign max run speed
-              if (this.speedX < -this.maxSpeedRunX && !this.isRubbingLeft)
+              if (this.speedX < -this.maxSpeedRunX)
                 this.speedX = -this.maxSpeedRunX;
             }
 
@@ -532,7 +532,7 @@ class Mario {
                 this.speedX += this.runningAcceleration;
 
                 //Assign max run speed
-                if (this.speedX > this.maxSpeedRunX && !this.isRubbingRight)
+                if (this.speedX > this.maxSpeedRunX)
                   this.speedX = this.maxSpeedRunX;
 
               }
@@ -549,7 +549,7 @@ class Mario {
                 this.speedX += this.walkingAcceleration;
 
                 //Assign max walk speed
-                if (this.speedX > this.maxSpeedWalkX && !this.isRubbingRight)
+                if (this.speedX > this.maxSpeedWalkX)
                   this.speedX = this.maxSpeedWalkX;
 
               } else {
@@ -559,7 +559,7 @@ class Mario {
                   this.speedX += -this.releaseDeacceleration;
 
                 //Assign max walk speed
-                if (this.speedX < this.maxSpeedWalkX + this.releaseDeacceleration && !this.isRubbingRight)
+                if (this.speedX < this.maxSpeedWalkX + this.releaseDeacceleration)
                   this.speedX = this.maxSpeedWalkX;
 
               }
@@ -577,13 +577,13 @@ class Mario {
               this.speedX += this.walkingAcceleration;
 
               //Assign max walk speed
-              if (this.speedX > this.maxSpeedWalkX && !this.isRubbingRight)
+              if (this.speedX > this.maxSpeedWalkX)
                 this.speedX = this.maxSpeedWalkX;
             } else {
               this.speedX += this.runningAcceleration;
 
               //Assign max run speed
-              if (this.speedX > this.maxSpeedRunX && !this.isRubbingRight)
+              if (this.speedX > this.maxSpeedRunX)
                 this.speedX = this.maxSpeedRunX;
             }
 
@@ -655,9 +655,14 @@ class Mario {
     if (this.speedY > this.maxFallSpeed)
       this.speedY = this.maxFallSpeed;
 
-    if ((this.speedX > 0 && !this.isRubbingRight) || (this.speedX < 0 && !this.isRubbingLeft)) {
+    if (this.isRubbingLeft && this.speedX < 0)
+    this.speedX = 0;
+
+    if (this.isRubbingRight && this.speedX > 0)
+    this.speedX = 0;
+
+    if (this.speedX != 0) 
       this.x += this.speedX;
-    }
 
     if (this.x < game.camera.x - this.initialX + 8)
       this.x = game.camera.x - this.initialX + 8;
