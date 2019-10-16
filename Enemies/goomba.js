@@ -22,6 +22,8 @@ class Goomba extends BaseEnemy
         this.hitbox = hitboxes.goomba;
 
         this.spriteToDraw = sprites["goomba" + (game.IsUnderground() ? "_underground_1" : "_1")];
+
+        game.physics.RegisterToMovingObjectsArray(this);
     }
 
     Move()

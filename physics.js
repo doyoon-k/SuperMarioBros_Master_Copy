@@ -23,6 +23,7 @@ class Physics
   {
     this.bucketMap = [];
     this.movingObjects = [];
+    this.movingObjectsPrevCoordsMap = new Map();
 
     this.InitializeArrays();
   }
@@ -358,11 +359,22 @@ class Physics
   RegisterToMovingObjectsArray(object)
   {
     this.movingObjects.push(object);
+    let object_hitbox_rect = object.hitbox.GetRect(object);
+    this.movingObjectsPrevCoordsMap.set(object,{ left_X: object_hitbox_rect.left_X, right_X: object_hitbox_rect.right_X,top_Y:object_hitbox_rect.top_Y,bottom_Y:object_hitbox_rect.bottom_Y});
   }
 
   RemoveFromBucketMap(object)
   {
-    let object_hitbox_rect = object.hitbox.GetRect(object);
+    let object_hitbox_rect;
+
+    if (this.movingObjects.indexOf(object) != -1)
+    {
+      object_hitbox_rect = this.movingObjectsPrevCoordsMap.get(object);  
+    }
+    else
+    {
+      object_hitbox_rect = object.hitbox.GetRect(object);
+    }
     // if(object.prevX == undefined || object.prevY == undefined)
     // return;
 
@@ -416,15 +428,29 @@ class Physics
     if (this.movingObjects.indexOf(object) != -1)
     {
       this.movingObjects.splice(this.movingObjects.indexOf(object), 1);
+      this.movingObjectsPrevCoordsMap.delete(object);
     }
   }
 
-  Update()
+  UpdateBucketMap()
   {
     for (let object of this.movingObjects)
     {
       this.RemoveFromBucketMap(object);
       this.RegisterToBucketMap(object);
+    }
+  }
+
+  UpdateMovingObjectsPrevCoords()
+  {
+    for (let obj of this.movingObjects)
+    {
+      let prevCoords = this.movingObjectsPrevCoordsMap.get(obj);
+      let object_hitbox_rect = obj.hitbox.GetRect(obj);
+      prevCoords.left_X = object_hitbox_rect.left_X;
+      prevCoords.right_X = object_hitbox_rect.right_X;
+      prevCoords.bottom_Y = object_hitbox_rect.bottom_Y;
+      prevCoords.top_Y = object_hitbox_rect.top_Y;
     }
   }
 

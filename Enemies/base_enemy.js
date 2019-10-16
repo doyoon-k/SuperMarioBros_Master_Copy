@@ -44,8 +44,6 @@ class BaseEnemy
         this.animator = this.ChangeSprite();
 
         this.hitbox = undefined;
-
-        game.physics.RegisterToMovingObjectsArray(this);
     }
 
     *ChangeSprite() {}

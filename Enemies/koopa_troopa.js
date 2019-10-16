@@ -33,6 +33,8 @@ class KoopaTroopa extends BaseEnemy
         this.hitbox = hitboxes.koopa_troopa;
 
         this.spriteToDraw = sprites.turtle_1;
+
+        game.physics.RegisterToMovingObjectsArray(this);
     }
 
     get isAwakening()
