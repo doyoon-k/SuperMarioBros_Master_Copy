@@ -1265,10 +1265,6 @@ class Mario {
   */
 
   OnCollisionWith(collider, direction) {
-    if (this.speedX != 0)
-    {
-        return;
-    }
 
     if (collider instanceof Powerup) {
       collider.Destroy();
@@ -1290,16 +1286,12 @@ class Mario {
       {
           return;
       }
+      if (collider instanceof KoopaTroopa && (collider.isInShell || collider.isAwakening))
+      {
+          return;
+      }
       switch (direction) {
         case DIRECTION.Right:
-          if (!this.isTransforming && !this.isDamaged)
-            if (this.powerupState != this.marioState.mario) {
-              this.PowerupTo(this.marioState.mario);
-              this.isDamaged = true;
-            } else {
-              game.isGameOver = true;
-            }
-          break;
         case DIRECTION.Left:
           if (!this.isTransforming && !this.isDamaged)
             if (this.powerupState != this.marioState.mario) {
