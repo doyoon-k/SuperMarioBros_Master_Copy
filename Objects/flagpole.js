@@ -16,7 +16,7 @@ class Flagpole
 {
     constructor(x, y)
     {
-        this.x = 100;
+        this.x = x;
         this.y = y;
 
         this.zWeight = 0;

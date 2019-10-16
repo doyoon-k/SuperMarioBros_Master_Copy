@@ -173,6 +173,7 @@ class Game {
     {
         setTimeout(() => this.mario.EndGame(), 400);
         this.mario.isLookingLeft = true;
+        this.mario.isJumping = false;
         // 마리오 턴
         // 마리오 걸어가고 성까지 가면 안 그리기
 
