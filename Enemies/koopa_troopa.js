@@ -188,7 +188,7 @@ class KoopaTroopa extends BaseEnemy
 
     Draw()
     {
-        if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame)
+        if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame && !game.mario.isTransforming)
             this.Animate();
 
         DrawSprite(this.spriteToDraw, this.x, this.y, !this.isGoingLeft, this.isInstaKilled);

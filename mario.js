@@ -1279,7 +1279,9 @@ class Mario {
       }
     } else if (collider instanceof Powerup) {
       collider.Destroy();
-      if (!this.isTransforming)
+      if (collider.type == EPowerupType.Star) {
+        this.isInvincible = true;
+      } else if (!this.isTransforming)
         if (this.powerupState == this.marioState.mario) {
           this.PowerupTo(this.marioState.bigMario);
         } else {

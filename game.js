@@ -107,15 +107,20 @@ class Game {
 
                 break;
             case game.interfaceFlow.screenState.inGame:
+
+
+                this.mario.Update();
+
+                if (!this.mario.isTransforming) {
                 this.camera.Update();
                 this.physics.Update();
 
-                this.mario.Update();
                 this.objectsToUpdate.forEach(object => object.Update());
                 
                 this.physics.CheckCollision();
 
                 this.statistics.Update();
+                }
             break; 
             case game.interfaceFlow.screenState.endGame:
 
@@ -200,7 +205,7 @@ class Game {
         
         this.interfaceFlow.DrawInterface();
 
-        if (this.interfaceFlow.flowState > 1) 
+        if (this.interfaceFlow.flowState > 1 && game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame && !game.mario.isTransforming)
             this.TwinkleAnimate();
 
         if (this.interfaceFlow.flowState > 0) 

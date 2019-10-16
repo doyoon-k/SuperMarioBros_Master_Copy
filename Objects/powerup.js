@@ -186,6 +186,7 @@ class Powerup
 
     Draw()
     {
+        if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame && !game.mario.isTransforming)
         this.Animate();
         DrawSprite(this.spriteToDraw, this.x, this.y);
     }
@@ -207,13 +208,14 @@ class Powerup
         if (collider instanceof Mario)
         {
             this.Destroy();
-
-            if (!this.isTransforming)
-            if (game.mario.powerupState == game.mario.marioState.mario) {
-                game.mario.PowerupTo(game.mario.marioState.bigMario);
-            } else {
-                game.mario.PowerupTo(game.mario.marioState.fireMario);
-            }
+            if (this.type == EPowerupType.Star) {
+                collider.isInvincible = true;
+            } else if (!collider.isTransforming)
+                if (collider.powerupState == collider.marioState.mario) {
+                    collider.PowerupTo(collider.marioState.bigMario);
+                } else {
+                    collider.PowerupTo(collider.marioState.fireMario);
+                }
         }
     }
 
