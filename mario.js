@@ -109,7 +109,7 @@ class Mario {
     this.nextPowerupState = 0;
 
     this.isInvincible = false;
-    this.isDamaged = false; 
+    this.isDamaged = false;
     this.isDamaged = false;
     this.isEmberRestored = false;
 
@@ -331,7 +331,7 @@ class Mario {
       return;
     }
 
-    if (this.isClimbing) 
+    if (this.isClimbing)
       this.y += 3;
 
     if (this.isEndGame) {
@@ -339,7 +339,7 @@ class Mario {
       this.isLookingLeft = false;
       this.x += this.maxSpeedWalkX;
     }
- 
+
     //Run once on gameover
     if (game.isGameOver && !this.isDead) {
       game.lives--;
@@ -1042,7 +1042,7 @@ class Mario {
 
   ThrowFireball() {
     if (this.framesToKeepThrowing < this.framesToKeepThrowingDefault)
-    this.framesToKeepThrowing = this.framesToKeepThrowingDefault;
+      this.framesToKeepThrowing = this.framesToKeepThrowingDefault;
     if (this.fireballCount < 2) {
       let deltaX = 0;
       if (this.isLookingLeft) {
@@ -1098,7 +1098,7 @@ class Mario {
     if (this.isClimbing) {
 
       if (!this.isBottomReach)
-      this.Animate(this.climbing_1, this.climbing_2, this.transformFrameRate);
+        this.Animate(this.climbing_1, this.climbing_2, this.transformFrameRate);
 
       DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
       return;
@@ -1276,29 +1276,27 @@ class Mario {
       }
     } else if (collider instanceof Powerup) {
       collider.Destroy();
-      if (this.powerupState == this.marioState.mario) {
-        this.PowerupTo(this.marioState.bigMario);
-      } else {
-        this.PowerupTo(this.marioState.fireMario);
-      } 
-    } else if (collider instanceof BaseEnemy) {
-            if (this.isInvincible)
-            {
-                collider.InstaKilled(collider.x >= this.x ? DIRECTION.Left : DIRECTION.Right);
-                return;
-            }
-
-            switch (direction)
-            {
-                case DIRECTION.Right:
-                case DIRECTION.Left:
-                case DIRECTION.Up:
-                    if (!collider.isInShell && !collider.isAwakening)
-                    {
-                        // 대미지 입기
-                    }
-                break;
-            }
+      if (!this.isTransforming)
+        if (this.powerupState == this.marioState.mario) {
+          this.PowerupTo(this.marioState.bigMario);
+        } else {
+          this.PowerupTo(this.marioState.fireMario);
         }
+    } else if (collider instanceof BaseEnemy) {
+      if (this.isInvincible) {
+        collider.InstaKilled(collider.x >= this.x ? DIRECTION.Left : DIRECTION.Right);
+        return;
+      }
+
+      switch (direction) {
+        case DIRECTION.Right:
+        case DIRECTION.Left:
+        case DIRECTION.Up:
+          if (!collider.isInShell && !collider.isAwakening) {
+            // 대미지 입기
+          }
+          break;
+      }
     }
+  }
 }
