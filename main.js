@@ -149,50 +149,6 @@ function preload() {
     particle_brick: loadImage("Sprites/Particle/particle_brick.png"),
     particle_brick_underground: loadImage("Sprites/Particle/particle_brick_underground.png")
   };
-
-  sounds = {
-    overworld: loadSound("SFX/bgm_overworld.mp3"),
-    underground: loadSound("SFX/bgm_underground_melody.mp3"),
-    star: loadSound("SFX/bgm_star.mp3"),
-
-    overworld_tempo_up: loadSound("SFX/bgm_overworld_tempo_up.mp3"),
-    underground_tempo_up: loadSound("SFX/bgm_underground_melody_tempo_up.mp3"),
-    star_tempo_up: loadSound("SFX/bgm_star_tempo_up.mp3"),
-
-    overworld_volume_down: loadSound("SFX/bgm_overworld_volume_down.mp3"),
-    underground_volume_down: loadSound("SFX/bgm_underground_melody_volume_down.mp3"),
-    star_volume_down: loadSound("SFX/bgm_star_volume_down.mp3"),
-    
-    overworld_tempo_up_volume_down: loadSound("SFX/bgm_overworld_tempo_up_volume_down.mp3"),
-    underground_tempo_up_volume_down: loadSound("SFX/bgm_underground_melody_tempo_up_volume_down.mp3"),
-    star_tempo_up_volume_down: loadSound("SFX/bgm_star_tempo_up_volume_down.mp3"),
-
-
-    hurry_up: loadSound("SFX/environmental_100_time_left.mp3"),
-    level_clear: loadSound("SFX/environmental_level_clear.mp3"),
-    life_lost: loadSound("SFX/environmental_life_lost.mp3"),
-    game_over: loadSound("SFX/environmental_game_over.mp3"),
-
-    mario_jump: loadSound("SFX/mario_jump.mp3"),
-    mario_power_up: loadSound("SFX/mario_powerup.mp3"),
-    mario_power_down: loadSound("SFX/mario_powerdown.mp3"),
-    mario_shoot: loadSound("SFX/mario_shoot.mp3"),
-    mario_1up: loadSound("SFX/mario_1up.mp3"),
-
-    block_hit: loadSound("SFX/block_hit.mp3"),
-    block_break: loadSound("SFX/block_brick_breaking.mp3"),
-
-    enemy_instakilled: loadSound("SFX/enemy_instakilled.mp3"),
-    enemy_stomped: loadSound("SFX/enemy_stomped.mp3"),
-
-    coin: loadSound("SFX/object_coin.mp3"),
-    powerup: loadSound("SFX/object_powerup_popup.mp3"),
-    flag_down: loadSound("SFX/object_flag_down.mp3"),
-    firework: loadSound("SFX/object_firework.mp3"),
-
-    time_to_score : loadSound("SFX/environment_time_score.mp3"),
-    pause: loadSound("SFX/environment_pause.mp3")
-  };
 }
 
 function setup() {

@@ -35,6 +35,8 @@ class Game {
 
         this.underworldMapList = [];
         this.map = undefined;
+
+        this.TIMELastDigit = NaN;
     }
 
     Enroll(object) 
@@ -140,6 +142,35 @@ class Game {
     {
         this.lives++;
         this.soundManager.Play("mario_1up");
+    }
+
+    LevelClear(nextLevel)
+    {
+        this.TIMELastDigit = Math.floor(this.statistics.time / 24) % 10;
+        this.statistics.doTickTime = false;
+        // 마리오 멈추기
+        // 마리오 주욱 내려가기
+    }
+
+    OnFlagEnd()
+    {
+        // 마리오 턴
+        // 마리오 걸어가고 성까지 가면 안 그리기
+
+        this.soundManager.Play("level_clear");
+
+        // 성 들어가는 거 끝나면
+        this.statistics.TimeToScore();
+    }
+
+    OnTimeToScoreEnd()
+    {
+        if (this.TIMELastDigit == 1 || this.TIMELastDigit == 3 || this.TIMELastDigit == 6)
+        {
+            // 폭죽
+        }
+        // 검정 화면
+        // 다음 레벨 로드
     }
 
     Draw() 
