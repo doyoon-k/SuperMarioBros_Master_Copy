@@ -72,7 +72,6 @@ class Flagpole
         {
             game.LevelClear();
             this.DragFlagDown();
-            game.soundManager.Play("flag_down");
         }
     }
 }
