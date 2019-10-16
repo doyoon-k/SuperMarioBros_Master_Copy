@@ -171,7 +171,7 @@ class ActiveBlock
                         return;
                     }
 
-                    if (collider.isBouncing)
+                    if (this.isBouncing)
                     {
                         collider.Bounce(collider.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
                         return;

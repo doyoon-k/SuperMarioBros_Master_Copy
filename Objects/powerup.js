@@ -41,7 +41,9 @@ class Powerup
         this.bouncingMaxFallSpeed = HexFloatToDec("3.000");
         this.bouncingFallingAcceleration = HexFloatToDec("0.500");
 
-        this.soarInitialSpeed = -HexFloatToDec("7.000");  // should be tested
+        this.starHorizontalSpeed = HexFloatToDec("1.800");
+        this.starMaxFallSpeed = HexFloatToDec("3.000");
+        this.soarInitialSpeed = -HexFloatToDec("6.400");  // should be tested
 
         this.speedX = 0;
         this.speedY = 0;
@@ -90,7 +92,7 @@ class Powerup
 
     Move()
     {
-        this.speedX = (this.isBouncing ? this.bouncingSlidingSpeed : this.slidingSpeed) * (this.isGoingLeft ? -1 : 1);
+        this.speedX = (this.isBouncing ? this.bouncingSlidingSpeed : (this.type == EPowerupType.Star ? this.starHorizontalSpeed : this.slidingSpeed)) * (this.isGoingLeft ? -1 : 1);
         this.x += this.speedX;
     }
 
@@ -104,9 +106,9 @@ class Powerup
         {
             this.speedY = this.bouncingMaxFallSpeed;
         }
-        else if (this.speedY > this.maxFallSpeed)
+        else if (this.speedY > (this.type == EPowerupType.Star ? this.starMaxFallSpeed : this.maxFallSpeed))
         {
-            this.speedY = this.maxFallSpeed;
+            this.speedY = (this.type == EPowerupType.Star ? this.starMaxFallSpeed : this.maxFallSpeed);
         }
         
         this.y += this.speedY;

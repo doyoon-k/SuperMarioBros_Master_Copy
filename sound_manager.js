@@ -166,6 +166,10 @@ class SoundManager
                 case "hurry_up":
                     this.currentBGM.pause();
                     break;
+                
+                case "flag_down":
+                    this.currentBGM.stop();
+                    break;
             }
 
             this.sounds[soundName].play();
