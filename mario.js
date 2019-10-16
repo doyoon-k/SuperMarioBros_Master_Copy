@@ -335,8 +335,10 @@ class Mario {
       this.y += 3;
 
     if (this.isEndGame) {
+      this.y += 1;
       this.isClimbing = false;
       this.isLookingLeft = false;
+      this.isJumping = false;
       this.x += this.maxSpeedWalkX;
     }
 
