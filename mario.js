@@ -33,12 +33,12 @@ class Mario {
 
     this.x = 32;
     this.y = 208;
-    
+
     this.initialX = 116;
 
     this.speedX = 0;
     this.speedY = 0;
-    
+
     //needed to do the 10-frame speed conservation thing
     this.framesToKeepRunning = 0;
     this.framesToKeepRunningDefault = 10;
@@ -110,6 +110,7 @@ class Mario {
 
     this.isInvincible = false;
     this.isDamaged = false; 
+    this.isDamaged = false;
     this.isEmberRestored = false;
 
     this.isDucking = false;
@@ -323,7 +324,7 @@ class Mario {
     this.Debug();
 
     if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause && !game.isGameOver)
-    return; 
+      return;
 
     if (!this.isTransforming && !game.gameOver && !this.isClimbing && !this.isEndGame) {
       this.Move();
@@ -331,7 +332,7 @@ class Mario {
     }
 
     if (this.isClimbing) 
-      this.y += 1;
+      this.y += 3;
 
     if (this.isEndGame) {
       this.isClimbing = false;
@@ -341,21 +342,23 @@ class Mario {
  
     //Run once on gameover
     if (game.isGameOver && !this.isDead) {
+      game.lives--;
+      game.soundManager.Play("life_lost");
       this.spriteToDraw = this.mario_dead;
       game.interfaceFlow.flowState = game.interfaceFlow.screenState.pause;
       setTimeout(() => this.Kill(), 500);
       this.isDead = true;
     }
 
-      if (this.isFalling) {
+    if (this.isFalling) {
       this.y += this.speedY;
-      this.speedY+=0.5;
-      }
+      this.speedY += 0.5;
+    }
 
   }
 
-  Kill () { 
-    this.speedY = -6.5; 
+  Kill() {
+    this.speedY = -6.5;
     this.isFalling = true;
   }
 
@@ -399,7 +402,11 @@ class Mario {
         //Start Jump, gets called only once
         if (!this.isJumpPast) {
 
-          game.soundManager.Play("mario_jump");
+          if (this.powerupState == this.marioState.mario) {
+            game.soundManager.Play("mario_jump");
+          } else {
+            game.soundManager.Play("big_mario_jump");
+          }
 
           if (this.isDucking)
             this.isDuckJump = true;
@@ -517,7 +524,7 @@ class Mario {
         } else {
 
           //Jumping left, pressed left
-          if (this.isMoonwalkingLeft) {
+          if (this.isMoonwalkingLeft && !this.isRubbingLeft) {
 
             if (abs(this.speedX) <= this.maxSpeedWalkX) {
               this.speedX += -this.walkingAcceleration;
@@ -612,7 +619,7 @@ class Mario {
         } else {
 
           //Jumping right, pressed right
-          if (!this.isMoonwalkingLeft) {
+          if (!this.isMoonwalkingLeft && !this.isRubbingLeft) {
 
             if (abs(this.speedX) <= this.maxSpeedWalkX) {
               this.speedX += this.walkingAcceleration;
@@ -697,20 +704,20 @@ class Mario {
       this.speedY = this.maxFallSpeed;
 
     if (this.isRubbingLeft && this.speedX < 0)
-    this.speedX = 0;
+      this.speedX = 0;
 
     if (this.isRubbingRight && this.speedX > 0)
-    this.speedX = 0;
+      this.speedX = 0;
 
-    if (this.speedX != 0) 
+    if (this.speedX != 0)
       this.x += this.speedX;
 
     if (this.x < game.camera.x - this.initialX + 8)
       this.x = game.camera.x - this.initialX + 8;
 
     this.y += this.speedY;
-    
-    this.isMoonwalkingLeft = (this.x < this.previousX); 
+
+    this.isMoonwalkingLeft = (this.x < this.previousX);
 
     this.previousX = this.x;
     this.previousY = this.y;
@@ -1035,7 +1042,7 @@ class Mario {
 
   ThrowFireball() {
     if (this.framesToKeepThrowing < this.framesToKeepThrowingDefault)
-        this.framesToKeepThrowing = this.framesToKeepThrowingDefault;
+    this.framesToKeepThrowing = this.framesToKeepThrowingDefault;
     if (this.fireballCount < 2) {
       let deltaX = 0;
       if (this.isLookingLeft) {
@@ -1071,7 +1078,7 @@ class Mario {
   //Call Animate() & Draw Mario
   Draw() {
 
-    if (this.isDamaged){
+    if (this.isDamaged) {
 
       //Flash every frame
       this.tickFlash = !this.tickFlash;
@@ -1232,13 +1239,13 @@ class Mario {
       }
 
       if (!this.isDamaged || this.tickFlash)
-      DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
+        DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
       //isJumping -> draw jump
     } else {
 
       this.spriteToDraw = this.jump;
       if (!this.isDamaged || this.tickFlash)
-      DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, this.initialX);
+        DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, this.initialX);
     }
 
   }
@@ -1253,6 +1260,7 @@ class Mario {
     Mario will call ScoreManager.score() twice on him, 
     while Goombas will call this.kill() once on them each.
   */
+
   OnCollisionWith(collider, direction) {
     if (collider instanceof ActiveBlock) {
       switch (direction) {
@@ -1272,9 +1280,25 @@ class Mario {
         this.PowerupTo(this.marioState.bigMario);
       } else {
         this.PowerupTo(this.marioState.fireMario);
-      }
+      } 
+    } else if (collider instanceof BaseEnemy) {
+            if (this.isInvincible)
+            {
+                collider.InstaKilled(collider.x >= this.x ? DIRECTION.Left : DIRECTION.Right);
+                return;
+            }
+
+            switch (direction)
+            {
+                case DIRECTION.Right:
+                case DIRECTION.Left:
+                case DIRECTION.Up:
+                    if (!collider.isInShell && !collider.isAwakening)
+                    {
+                        // 대미지 입기
+                    }
+                break;
+            }
+        }
     }
-  }
-  // ※거북이 등껍질 밟으면 튀어오르지 않음
-  // ※soft ceiling hit이랑 hard ceiling hit 중력 값 다른 거 주의
 }

@@ -33,7 +33,7 @@ class Hitbox
 
     IsXcoordInBetween(x,parent)
     {
-        return ((parent.x + this.x - this.width/2) < x) && (x < (parent.x + this.x + this.width/2));
+        return ((parent.x + this.x-this.width/2) < x) && (x < (parent.x + this.x + this.width/2));
     }
 
     IsYcoordInBetween(y,parent)
@@ -97,11 +97,11 @@ class Hitbox
     fireball : new Hitbox(0, 0, 8, 8),
     powerup: new Hitbox(0, 0, 12, 10),  // including the coins
     
-    active_block: new Hitbox(0, 0, 16, 16),
-    inactive_block: new Hitbox(0, 0, 16, 16),
+    active_block: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE),
+    inactive_block: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE),
 
-    pipe_horizontal: new Hitbox(0, 0, 32, 16),
-    pipe_vertical: new Hitbox(0, 0, 16, 32),
+    pipe_horizontal: new Hitbox(0, 0, BLOCK_SIZE * 2, BLOCK_SIZE),
+    pipe_vertical: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE * 2),
     
-    flagpole: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE * 9)
+    flagpole: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE * 8)
 };

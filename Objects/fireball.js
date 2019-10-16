@@ -29,10 +29,10 @@ class Fireball
         this.animator = this.ChangeSprite();
 
         // all these values should be tested
-        this.movingSpeed = HexFloatToDec("5.000");
-        this.bouncingInitialSpeed = -HexFloatToDec("0.600");
-        this.fallingAcceleration = HexFloatToDec("1.500");
-        this.maxFallSpeed = HexFloatToDec("4.800");
+        this.movingSpeed = HexFloatToDec("4.850");
+        this.bouncingInitialSpeed = -HexFloatToDec("4.000");
+        this.fallingAcceleration = HexFloatToDec("0.875");
+        this.maxFallSpeed = HexFloatToDec("3.500");
 
         this.speedX = this.movingSpeed * (isGoingLeft ? -1 : 1);
         this.speedY = 0;
