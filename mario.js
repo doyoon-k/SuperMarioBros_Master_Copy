@@ -31,12 +31,12 @@ class Mario {
 
     this.x = 32;
     this.y = 208;
-    
+
     this.initialX = 116;
 
     this.speedX = 0;
     this.speedY = 0;
-    
+
     //needed to do the 10-frame speed conservation thing
     this.framesToKeepRunning = 0;
     this.framesToKeepRunningDefault = 10;
@@ -108,7 +108,7 @@ class Mario {
     this.nextPowerupState = 0;
 
     this.isInvincible = false;
-    this.isDamaged = false; 
+    this.isDamaged = false;
     this.isEmberRestored = false;
 
     this.isDucking = false;
@@ -291,7 +291,7 @@ class Mario {
     this.Debug();
 
     if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause && !game.isGameOver)
-    return; 
+      return;
 
     if (!this.isTransforming && !game.gameOver) {
       this.Move();
@@ -300,21 +300,23 @@ class Mario {
 
     //Run once on gameover
     if (game.isGameOver && !this.isDead) {
+      game.lives--;
+      game.soundManager.Play("life_lost");
       this.spriteToDraw = this.mario_dead;
       game.interfaceFlow.flowState = game.interfaceFlow.screenState.pause;
       setTimeout(() => this.Kill(), 500);
       this.isDead = true;
     }
 
-      if (this.isFalling) {
+    if (this.isFalling) {
       this.y += this.speedY;
-      this.speedY+=0.5;
-      }
+      this.speedY += 0.5;
+    }
 
   }
 
-  Kill () { 
-    this.speedY = -6.5; 
+  Kill() {
+    this.speedY = -6.5;
     this.isFalling = true;
   }
 
@@ -358,7 +360,11 @@ class Mario {
         //Start Jump, gets called only once
         if (!this.isJumpPast) {
 
-          game.soundManager.Play("mario_jump");
+          if (this.powerupState == this.marioState.mario) {
+            game.soundManager.Play("mario_jump");
+          } else {
+            game.soundManager.Play("big_mario_jump");
+          }
 
           if (this.isDucking)
             this.isDuckJump = true;
@@ -656,20 +662,20 @@ class Mario {
       this.speedY = this.maxFallSpeed;
 
     if (this.isRubbingLeft && this.speedX < 0)
-    this.speedX = 0;
+      this.speedX = 0;
 
     if (this.isRubbingRight && this.speedX > 0)
-    this.speedX = 0;
+      this.speedX = 0;
 
-    if (this.speedX != 0) 
+    if (this.speedX != 0)
       this.x += this.speedX;
 
     if (this.x < game.camera.x - this.initialX + 8)
       this.x = game.camera.x - this.initialX + 8;
 
     this.y += this.speedY;
-    
-    this.isMoonwalkingLeft = (this.x < this.previousX); 
+
+    this.isMoonwalkingLeft = (this.x < this.previousX);
 
     this.previousX = this.x;
     this.previousY = this.y;
@@ -1003,7 +1009,7 @@ class Mario {
   //Call Animate() & Draw Mario
   Draw() {
 
-    if (this.isDamaged){
+    if (this.isDamaged) {
 
       //Flash every frame
       this.tickFlash = !this.tickFlash;
@@ -1148,13 +1154,13 @@ class Mario {
       }
 
       if (!this.isDamaged || this.tickFlash)
-      DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
+        DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
       //isJumping -> draw jump
     } else {
 
       this.spriteToDraw = this.jump;
       if (!this.isDamaged || this.tickFlash)
-      DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, this.initialX);
+        DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, this.initialX);
     }
 
   }

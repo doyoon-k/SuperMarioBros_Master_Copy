@@ -7,7 +7,7 @@
 
   JoonHo Hwang Arranged & Wrote all of the main properties and functions
   DoYoon Kim wrote case InactiveBlock: of onCollisionWith() function.
-  SeungGeon Kim did the Mario part
+  SeungGeon Kim 
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
