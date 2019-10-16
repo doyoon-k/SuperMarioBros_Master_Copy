@@ -97,8 +97,13 @@ class InactiveBlock
                     break;
 
                 case DIRECTION.Right:
+                    collider.isGoingLeft = false;
+                    collider.x = this.x + this.hitbox.width / 2 + collider.hitbox.width / 2;
+                    break;
+
                 case DIRECTION.Left:
-                    collider.isGoingLeft = !collider.isGoingLeft;
+                    collider.isGoingLeft = true;
+                    collider.x = this.x - this.hitbox.width / 2 - collider.hitbox.width / 2;
                     break;
             }
         }
@@ -119,8 +124,13 @@ class InactiveBlock
                     break;
                 
                 case DIRECTION.Right:
+                    collider.isGoingLeft = false;
+                    collider.x = this.x + this.hitbox.width / 2 + collider.hitbox.width / 2;
+                    break;
+
                 case DIRECTION.Left:
-                    collider.isGoingLeft = !collider.isGoingLeft;
+                    collider.isGoingLeft = true;
+                    collider.x = this.x - this.hitbox.width / 2 - collider.hitbox.width / 2;
                     break;
             }
         }

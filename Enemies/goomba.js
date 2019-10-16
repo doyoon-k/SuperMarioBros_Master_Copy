@@ -22,7 +22,6 @@ class Goomba extends BaseEnemy
         this.hitbox = hitboxes.goomba;
 
         this.spriteToDraw = sprites["goomba" + (game.IsUnderground() ? "_underground_1" : "_1")];
-        this.q = 0;
     }
 
     Move()
@@ -110,45 +109,5 @@ class Goomba extends BaseEnemy
             this.Animate();
             
         DrawSprite(this.spriteToDraw, this.x, this.y, false, this.isInstaKilled);
-    }
-
-    OnCollisionWith(collider, direction)
-    {
-        if (collider instanceof BaseEnemy)
-        {
-            if (collider instanceof KoopaTroopa && collider.isSliding)
-            {
-                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-                game.statistics.AddScore(SCORES.InstaKillWithShell[map(++this.instaKillCombo, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
-                return;
-            }
-
-            this.isGoingLeft = !this.isGoingLeft;
-        }
-        // Links to Mario
-        else if (collider instanceof Mario)
-        {
-            if (collider.isInvincible)
-            {
-                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-                return;
-            }
-
-            switch (direction)
-            {
-                case DIRECTION.Up:
-
-                    collider.speedY = HexClampTo("4", collider.speedY);
-
-                    this.Stomped();
-                    break;
-            }
-        }
-        else if (collider instanceof Fireball)
-        {
-            this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-            //particle here
-            collider.Destroy();
-        }
     }
 }
