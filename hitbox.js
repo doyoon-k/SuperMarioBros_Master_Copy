@@ -97,12 +97,12 @@ class Hitbox
     fireball : new Hitbox(0, 0, 8, 8),
     powerup: new Hitbox(0, 0, 12, 10),  // including the coins
     
-    active_block: new Hitbox(0, 0, 16, 16),
-    inactive_block: new Hitbox(0, 0, 16, 16),
+    active_block: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE),
+    inactive_block: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE),
 
-    pipe_horizontal: new Hitbox(0, 0, 32, 16),
-    pipe_vertical: new Hitbox(0, 0, 16, 32),
+    pipe_horizontal: new Hitbox(0, 0, BLOCK_SIZE * 2, BLOCK_SIZE),
+    pipe_vertical: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE * 2),
     
     //correct value should be assigned. this is just temporary value only to test.
-    flagpole: new Hitbox(0, 0, 16, 64)
+    flagpole: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE * 9)
 };

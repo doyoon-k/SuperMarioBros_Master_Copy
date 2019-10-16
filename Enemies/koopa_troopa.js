@@ -187,7 +187,6 @@ class KoopaTroopa extends BaseEnemy
         DrawSprite(this.spriteToDraw, this.x, this.y, !this.isGoingLeft, this.isInstaKilled);
     }
 
-    OnCollisionWith(collider, direction) {}
         // else if (collider instanceof Mario)
         // {
         //     if (collider.isInvincible)

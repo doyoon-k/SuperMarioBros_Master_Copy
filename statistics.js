@@ -28,6 +28,7 @@ class Statistics
          ****************************************/
 
         this.doTickTime = true;
+        this.isConvertingTimeToScore = false;
 
         this.sprites = {
             coin_1 : loadImage("Sprites/Misc/misc_hud_coin_1.png"),
@@ -64,9 +65,30 @@ class Statistics
         }
     }
 
+    TimeToScore()
+    {
+        this.isConvertingTimeToScore = true;
+    }
+
     Update()
     {
         this.TickTime();
+        
+        if (this.isConvertingTimeToScore)
+        {
+            game.soundManager.sounds.time_to_score.loop();
+            if (this.time >= 24)
+            {
+                this.time -= 24;
+                this.AddScore(SCORES.TIME);
+            }
+            else
+            {
+                game.soundManager.sounds.time_to_score.stop();
+                this.isConvertingTimeToScore = false;
+                setTimeout(() => game.OnTimeToScoreEnd(), 1000);
+            }
+        }
     }
 
     TickTime()
