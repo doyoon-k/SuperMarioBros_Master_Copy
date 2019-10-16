@@ -229,7 +229,7 @@ class Powerup
 
         game.statistics.AddScore(SCORES.PowerUp);
 
-        if (this.EPowerupType == EPowerupType.Star)
+        if (this.type == EPowerupType.Star)
         {
             game.soundManager.Play("star");
         }
