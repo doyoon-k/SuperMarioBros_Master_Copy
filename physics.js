@@ -375,6 +375,11 @@ class Physics
     {
       object_hitbox_rect = object.hitbox.GetRect(object);
     }
+
+    if (!object_hitbox_rect)
+    {
+        return;
+    }
     // if(object.prevX == undefined || object.prevY == undefined)
     // return;
 
@@ -446,6 +451,11 @@ class Physics
     for (let obj of this.movingObjects)
     {
       let prevCoords = this.movingObjectsPrevCoordsMap.get(obj);
+      if (!prevCoords)
+      {
+          return;
+      }
+      
       let object_hitbox_rect = obj.hitbox.GetRect(obj);
       prevCoords.left_X = object_hitbox_rect.left_X;
       prevCoords.right_X = object_hitbox_rect.right_X;

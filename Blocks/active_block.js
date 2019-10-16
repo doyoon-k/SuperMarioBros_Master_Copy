@@ -69,6 +69,7 @@ class ActiveBlock
         let newBlock = new InactiveBlock(this.x, this.y, EInactiveBlockType.Empty);
         game.gameObjects.push(newBlock);
         game.Enroll(newBlock);
+        game.physics.RegisterToBucketMap(newBlock);
 
         this.Destroy();
     }
