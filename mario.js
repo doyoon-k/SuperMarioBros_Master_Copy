@@ -292,8 +292,7 @@ class Mario {
 
     if (!this.isTransforming && !game.gameOver) {
       this.Move();
-      this.isRubbingLeft = false;
-      this.isRubbingRight = false;
+
       return;
     }
 
