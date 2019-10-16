@@ -222,7 +222,7 @@ class KoopaTroopa extends BaseEnemy
                     else
                     {
                         collider.y = this.y - this.hitbox.height - collider.hitbox.y;
-                        collider.speedY = HexClampTo("6", collider.speedY);
+                        collider.speedY = -HexClampTo("4", collider.speedY);
                         this.Stomped();
                     }
                     break;
