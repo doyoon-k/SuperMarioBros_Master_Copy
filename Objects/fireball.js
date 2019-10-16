@@ -101,6 +101,7 @@ class Fireball
     
     Draw()
     {
+        if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame && !game.mario.isTransforming)
         this.Animate();
         DrawSprite(this.spriteToDraw, this.x, this.y);
     }
