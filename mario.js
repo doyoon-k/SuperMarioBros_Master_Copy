@@ -681,7 +681,7 @@ class Mario {
     this.previousY = this.y;
 
 
-    print(this.speedX);
+    // print(this.speedX);
   }
 
   // --- --- ---

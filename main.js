@@ -174,7 +174,7 @@ function Draw() {
 }
 
 function mouseClicked() {
-  // FPS = FPS == 60 ? 1 : 60;
-  // clearInterval(a);
-  // a = setInterval(Draw, 1 / FPS * 1000);
+//   FPS = FPS == 60 ? 1 : 60;
+//   clearInterval(a);
+//   a = setInterval(Draw, 1 / FPS * 1000);
 }
