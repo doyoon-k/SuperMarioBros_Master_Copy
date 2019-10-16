@@ -114,50 +114,12 @@ class Goomba extends BaseEnemy
 
     OnCollisionWith(collider, direction)
     {
-        if (collider instanceof InactiveBlock)
-        {
-            switch (direction)
-            {
-                case DIRECTION.Left:
-                case DIRECTION.Right:
-                    this.isGoingLeft = !this.isGoingLeft;
-                    break;
-
-                case DIRECTION.Down:
-                    text(++this.q, this.q * 15, height/2 + 10);
-                    text("collisionwith", width/2, height/2);
-                    this.speedY = 0;
-                    // this.y = collider.y - BLOCK_SIZE;
-                    break;
-            }
-        }
-        else if (collider instanceof ActiveBlock)
-        {
-            switch (direction)
-            {
-                case DIRECTION.Left:
-                case DIRECTION.Right:
-                    this.isGoingLeft = !this.isGoingLeft;
-                    break;
-
-                case DIRECTION.Down:
-                    if (collider.isBouncing)
-                    {
-                        this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-                    }
-                    else
-                    {
-                        // this.speedY = 0;
-                        // this.y = collider.y - BLOCK_SIZE;
-                    }
-                    break;
-            }
-        }
-        else if (collider instanceof BaseEnemy)
+        if (collider instanceof BaseEnemy)
         {
             if (collider instanceof KoopaTroopa && collider.isSliding)
             {
                 this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+                game.statistics.AddScore(SCORES.InstaKillWithShell[map(++this.instaKillCombo, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
                 return;
             }
 
@@ -185,6 +147,8 @@ class Goomba extends BaseEnemy
         else if (collider instanceof Fireball)
         {
             this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+            //particle here
+            collider.Destroy();
         }
     }
 }

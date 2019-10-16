@@ -108,40 +108,5 @@ class Fireball
         game.Expel(this);
     }
 
-    OnCollisionWith(collider, direction)
-    {
-        if (collider instanceof BaseEnemy)
-        {
-            //particle here
-            this.Destroy();
-        }
-        else if (collider instanceof ActiveBlock)
-        {
-            switch (direction)
-            {
-                case DIRECTION.Down:
-                    this.Bounce();
-                    break;
-                
-                default:
-                    this.Destroy();
-                    // particle here
-                    break;
-            }
-        }
-        else if (collider instanceof InactiveBlock)
-        {
-            switch (direction)
-            {
-                case DIRECTION.Down:
-                    this.Bounce();
-                    break;
-                
-                default:
-                    this.Destroy();
-                    // particle here
-                    break;
-            }
-        }
-    }
+    OnCollisionWith(collider, direction) {}
 }

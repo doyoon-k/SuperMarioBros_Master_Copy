@@ -98,7 +98,7 @@ class ActiveBlock
 
                     } else {
 
-                        collider.gravityAssigned = HexFloatToDec("1");
+                        collider.gravityAssigned = HexFloatToDec("1.0");
                         collider.isGravityAssigned = true;
                         collider.y = this.y + collider.hitbox.height;
                         collider.speedY = 0;
@@ -117,34 +117,77 @@ class ActiveBlock
                     break;
                 case DIRECTION.Right:
                     collider.speedX = 0;
-                    collider.x = (this.x) + ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - 16;
+                    collider.x = (this.x) + ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - BLOCK_SIZE;
                     collider.isRubbingLeft = true;
                     break;
                 case DIRECTION.Left:
                     collider.speedX = 0;
-                    collider.x = (this.x) - ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - 16;
+                    collider.x = (this.x) - ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - BLOCK_SIZE;
                     collider.isRubbingRight = true;
                     break;
             }
         }
-        else if (collider instanceof BaseEnemy || collider instanceof Powerup)
+        else if (collider instanceof BaseEnemy)
         {
             switch (direction)
             {
                 case DIRECTION.Up:
-                        collider.isOnGround = true;
-                        collider.y = this.y - this.hitbox.height - collider.hitbox.y;
-                    break;
-                case DIRECTION.Down:
+                    if (this.isBouncing)
+                    {
+                        collider.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+                        return;
+                    }
 
+                    collider.isOnGround = true;
+                    collider.y = this.y - this.hitbox.height - collider.hitbox.y;
                     break;
+                    
                 case DIRECTION.Right:
-
-                    break;
                 case DIRECTION.Left:
-
+                    collider.isGoingLeft = !collider.isGoingLeft;
                     break;
-
+            }
+        }
+        else if (collider instanceof Powerup)
+        {
+            switch (direction)
+            {
+                case DIRECTION.Up:
+                    if (collider.type == EPowerupType.Star)
+                    {
+                        collider.Soar();
+                        return;
+                    }
+    
+                    if (collider.isBouncing)
+                    {
+                        collider.Bounce(collider.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+                        return;
+                    }
+                    
+                    collider.isOnGround = true;
+                    collider.y = this.y - this.hitbox.height - collider.hitbox.y;
+                    collider.isBouncing = false;
+                    break;
+                
+                case DIRECTION.Right:
+                case DIRECTION.Left:
+                    collider.isGoingLeft = !collider.isGoingLeft;
+                    break;
+            }
+        }
+        else if (collider instanceof Fireball)
+        {
+            switch (direction)
+            {
+                case DIRECTION.Up:
+                    collider.Bounce();
+                    break;
+                
+                default:
+                    collider.Destroy();
+                    // particle here
+                    break;
             }
         }
     }

@@ -208,57 +208,6 @@ class Powerup
                 game.soundManager.Play("star");
             }
         }
-        else if (collider instanceof ActiveBlock)
-        {
-            switch (direction)
-            {
-                case DIRECTION.Left:
-                case DIRECTION.Right:
-                    this.isGoingLeft = !this.isGoingLeft;
-                    break;
-
-                case DIRECTION.Down:
-                    if (this.type == EPowerupType.Star)
-                    {
-                        this.Soar();
-                        return;
-                    }
-
-                    if (collider.isBouncing)
-                    {
-                        this.Bounce(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-                    }
-                    else
-                    {
-                        this.speedY = 0;
-                        this.y = collider.y - BLOCK_SIZE;
-                        this.isBouncing = false;
-                    }
-                    break;
-            }
-        }
-        else if (collider instanceof InactiveBlock)
-        {
-            switch (direction)
-            {
-                case DIRECTION.Left:
-                case DIRECTION.Right:
-                    this.isGoingLeft = !this.isGoingLeft;
-                    break;
-
-                case DIRECTION.Down:
-                    if (this.type == EPowerupType.Star)
-                    {
-                        this.Soar();
-                        return;
-                    }
-
-                    this.speedY = 0;
-                    this.y = collider.y - BLOCK_SIZE;
-                    this.isBouncing = false;
-                    break;
-            }
-        }
     }
 
     Destroy()
