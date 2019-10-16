@@ -67,6 +67,9 @@ class InactiveBlock
                     collider.isGravityAssigned = false;
                     collider.y = this.y - this.hitbox.height + collider.hitbox.y;
 
+                    if (game.mario.isClimbing)
+                        game.mario.isBottomReach = true;
+
                     collider.stompCombo = 0;
                     break;
                 case DIRECTION.Down:

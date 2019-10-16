@@ -63,7 +63,7 @@ function keyPressed() {
             break;
         case 74:  //J
             isDash = true;
-            if (game.mario.fireballCount < 2 && game.mario.powerupState == game.mario.marioState.fireMario && !game.mario.isTransforming)
+            if (game.mario.powerupState == game.mario.marioState.fireMario && !game.mario.isTransforming)
                 game.mario.ThrowFireball();
             break;
         case 75:  //K
