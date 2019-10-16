@@ -73,7 +73,7 @@ class Hitbox
                 rect((parent.x + this.x - (game.camera.x - 100)) * pixelMultiplier, (parent.y + this.y - this.height / 2) * pixelMultiplier, (this.width * 1.2) * pixelMultiplier, (this.height * 1.2) * pixelMultiplier);
                 pop(); 
             }
-            else if (parent instanceof BaseEnemy || parent instanceof Powerup)
+            else
             {
                 push();
                 fill(0, 0, 255);

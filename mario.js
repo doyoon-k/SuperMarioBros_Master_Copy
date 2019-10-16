@@ -41,6 +41,9 @@ class Mario {
     this.framesToKeepRunning = 0;
     this.framesToKeepRunningDefault = 10;
 
+    this.framesToStayInvincible = 150;
+    this.framesToStayInvincibleDefault = 150;
+
     this.walkingAcceleration = HexFloatToDec("0.098");
     this.runningAcceleration = HexFloatToDec("0.0E4");
     this.releaseDeacceleration = HexFloatToDec("0.0D0");
@@ -292,7 +295,6 @@ class Mario {
 
     if (!this.isTransforming && !game.gameOver) {
       this.Move();
-
       return;
     }
 
@@ -653,9 +655,14 @@ class Mario {
     if (this.speedY > this.maxFallSpeed)
       this.speedY = this.maxFallSpeed;
 
-    if ((this.speedX > 0 && !this.isRubbingRight) || (this.speedX < 0 && !this.isRubbingLeft)) {
+    if (this.isRubbingLeft && this.speedX < 0)
+    this.speedX = 0;
+
+    if (this.isRubbingRight && this.speedX > 0)
+    this.speedX = 0;
+
+    if (this.speedX != 0) 
       this.x += this.speedX;
-    }
 
     if (this.x < game.camera.x - this.initialX + 8)
       this.x = game.camera.x - this.initialX + 8;
@@ -667,6 +674,8 @@ class Mario {
     this.previousX = this.x;
     this.previousY = this.y;
 
+
+    print(this.speedX);
   }
 
   // --- --- ---
@@ -995,8 +1004,20 @@ class Mario {
   Draw() {
 
     if (this.isDamaged){
-      if (this.tickFlash)
-      DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
+
+      //Flash every frame
+      this.tickFlash = !this.tickFlash;
+
+      if (this.framesToStayInvincible == -1) {
+        this.framesToStayInvincible = this.framesToStayInvincibleDefault;
+      }
+
+      if (this.framesToStayInvincible == 0) {
+        this.isDamaged = false;
+      }
+
+      this.framesToStayInvincible--;
+
     }
 
     if (this.isDead) {
@@ -1125,10 +1146,14 @@ class Mario {
       } else {
         this.spriteToDraw = this.turnAround;
       }
+
+      if (!this.isDamaged || this.tickFlash)
       DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
       //isJumping -> draw jump
     } else {
+
       this.spriteToDraw = this.jump;
+      if (!this.isDamaged || this.tickFlash)
       DrawSprite(this.spriteToDraw, this.x, this.y, this.isJumpingLeft, false, this.initialX);
     }
 

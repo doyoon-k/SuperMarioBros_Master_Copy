@@ -30,7 +30,6 @@ let isJumpPast = false;
 function keyPressed() {
     switch (keyCode) {
         case 32:  //Space
-            //game.isGameOver = !game.isGameOver;
             if (!game.mario.isTransforming)
                 if (game.mario.powerupState == 0) {
                     game.mario.PowerupTo(1);
@@ -54,6 +53,7 @@ function keyPressed() {
             break;
         case 85:  //U
             isSelect = true;
+            game.mario.isDamaged = !game.mario.isDamaged;
             if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.menu)
                 game.isSinglePlayer = !game.isSinglePlayer;
             break;
