@@ -19,6 +19,9 @@ class InactiveBlock
         this.x = x;
         this.y = y;
         this.type = type;  // EInactiveBlockType; See below
+
+        this.zWeight = 0;
+
         this.hitbox = hitboxes.inactive_block;
 
         this.spriteToDraw = undefined;

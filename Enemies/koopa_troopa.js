@@ -24,7 +24,7 @@ class KoopaTroopa extends BaseEnemy
         this._isAwakening = false;
         this.isSliding = false;
 
-        this.slidingSpeed = HexFloatToDec("3.000");  // should be tested
+        this.slidingSpeed = HexFloatToDec("3.500");  // should be tested
 
         this.awakeningTimer = undefined;
 
@@ -122,6 +122,8 @@ class KoopaTroopa extends BaseEnemy
         this.isSliding = false;
 
         this.isInstaKilled = true;
+
+        this.isOnGround = false;
 
         this.spriteToDraw = sprites.turtle_shell;
         

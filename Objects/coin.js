@@ -19,6 +19,8 @@ class Coin
         this.x = x;
         this.y = y;
 
+        this.zWeight = 0;
+
         this.hitbox = hitboxes.powerup;
 
         this.sprites = [sprites.coin_1, sprites.coin_1, sprites.coin_2, sprites.coin_3];
