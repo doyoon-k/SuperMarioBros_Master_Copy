@@ -207,6 +207,8 @@ class Powerup
         if (collider instanceof Mario)
         {
             this.Destroy();
+
+            if (!this.isTransforming)
             if (game.mario.powerupState == game.mario.marioState.mario) {
                 game.mario.PowerupTo(game.mario.marioState.bigMario);
             } else {
