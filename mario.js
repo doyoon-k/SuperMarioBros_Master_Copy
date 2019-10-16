@@ -85,10 +85,6 @@ class Mario {
     this.isGravityAssigned = false;
     this.gravityAssigned = 0;
 
-    this.isRubbingLeft = false;
-    this.isRubbingRight = false;
-
-
 
     // this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
     // this.big_mario_climbing_2 = loadImage('Sprites/Mario/big_mario_climbing_2.png');
@@ -476,7 +472,7 @@ class Mario {
         } else {
 
           //Jumping left, pressed left
-          if (this.isMoonwalkingLeft) {
+          if (this.isMoonwalkingLeft && !this.isRubbingLeft) {
 
             if (abs(this.speedX) <= this.maxSpeedWalkX) {
               this.speedX += -this.walkingAcceleration;
@@ -571,7 +567,7 @@ class Mario {
         } else {
 
           //Jumping right, pressed right
-          if (!this.isMoonwalkingLeft) {
+          if (!this.isMoonwalkingLeft && !this.isRubbingLeft) {
 
             if (abs(this.speedX) <= this.maxSpeedWalkX) {
               this.speedX += this.walkingAcceleration;
@@ -675,7 +671,7 @@ class Mario {
     this.previousY = this.y;
 
 
-    print(this.speedX);
+    // print(this.speedX);
   }
 
   // --- --- ---
