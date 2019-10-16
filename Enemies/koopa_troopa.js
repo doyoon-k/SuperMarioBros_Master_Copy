@@ -111,6 +111,11 @@ class KoopaTroopa extends BaseEnemy
 
     InstaKilled(direction)
     {
+        if (this.isInstaKilled)
+        {
+            return;
+        }
+
         clearTimeout(this.awakeningTimer);
         this.isInShell = false;
         this.isAwakening = false;
@@ -187,37 +192,74 @@ class KoopaTroopa extends BaseEnemy
         DrawSprite(this.spriteToDraw, this.x, this.y, !this.isGoingLeft, this.isInstaKilled);
     }
 
-    OnCollisionWith(collider, direction) {}
-        // else if (collider instanceof Mario)
-        // {
-        //     if (collider.isInvincible)
-        //     {
-        //         this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-        //         return;
-        //     }
+    OnCollisionWith(collider, direction)
+    {
+        if (collider == this)
+        {
+            return;
+        }
 
-        //     switch (direction)
-        //     {
-        //         case DIRECTION.Up:
-        //             if (this.isInShell || this.isAwakening)
-        //             {
-        //                 this.ShellPushed(direction);
-        //                 game.statistics.AddScore(SCORES.StompShell);
-        //             }
-        //             else
-        //             {
-        //                 this.Stomped();
-        //             }
-        //             break;
-                
-        //         case DIRECTION.Left:
-        //         case DIRECTION.Right:
-        //             if (this.isInShell || this.isAwakening)
-        //             {
-        //                 this.ShellPushed(direction);
-        //                 game.statistics.AddScore(SCORES.PushShell);
-        //             }
-        //             break;
-        //     }
-        // }
+        if (collider instanceof Mario)
+        {
+            if (collider.isInvincible)
+            {
+                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+                return;
+            }
+
+            switch (direction)
+            {
+                case DIRECTION.Up:
+                    if (this.isInShell || this.isAwakening)
+                    {
+                        this.ShellPushed(direction);
+                        game.statistics.AddScore(SCORES.StompShell);
+                    }
+                    else
+                    {
+                        collider.y = this.y - this.hitbox.height - collider.hitbox.y;
+                        collider.speedY = HexClampTo("6", collider.speedY);
+                        this.Stomped();
+                    }
+                    break;
+                    
+                case DIRECTION.Left:
+                case DIRECTION.Right:
+                    if (this.isInShell || this.isAwakening)
+                    {
+                        this.ShellPushed(direction);
+                        game.statistics.AddScore(SCORES.PushShell);
+                    }
+                    break;
+            }
+        }
+        else if (collider instanceof BaseEnemy)
+        {
+            if (collider instanceof KoopaTroopa && collider.isSliding)
+            {
+                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+                game.statistics.AddScore(SCORES.InstaKillWithShell[map(++this.instaKillCombo, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
+                return;
+            }
+
+            switch (direction)
+            {
+                case DIRECTION.Right:
+                    collider.isGoingLeft = false;
+                    collider.x = this.x + this.hitbox.width / 2 + collider.hitbox.width / 2;
+                    break;
+
+                case DIRECTION.Left:
+                    collider.isGoingLeft = true;
+                    collider.x = this.x - this.hitbox.width / 2 - collider.hitbox.width / 2;
+                    break;
+            }
+        }
+        else if (collider instanceof Fireball)
+        {
+            this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+            //particle here
+            collider.Destroy();
+        }
+    }
 }

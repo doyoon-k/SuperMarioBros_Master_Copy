@@ -114,6 +114,7 @@ class ActiveBlock
                     collider.isGravityAssigned = false;
                     collider.y = this.y - this.hitbox.height + collider.hitbox.y;
 
+                    collider.stompCombo = 0;
                     break;
                 case DIRECTION.Right:
                     collider.speedX = 0;

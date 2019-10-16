@@ -58,6 +58,7 @@ class Physics
       buckets = buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX*1.2, objHitbox_rect.top_Y+speedY*1.2));
       buckets = buckets.concat(this.GetBucket(objHitbox_rect.left_X+speedX*1.2, objHitbox_rect.bottom_Y+speedY*1.2));
       buckets = buckets.concat(this.GetBucket(objHitbox_rect.right_X+speedX*1.2, objHitbox_rect.bottom_Y+speedY*1.2));
+      buckets = new Set(buckets);
 
       let is_CollidedWithBlock = false;
       let is_OnSurface = false;
