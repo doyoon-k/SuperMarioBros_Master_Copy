@@ -49,8 +49,8 @@ class Mario {
     this.framesToStayInvincible = 150;
     this.framesToStayInvincibleDefault = 150;
 
-    this.framesToRampage = 1000;
-    this.framesToRampageDefault = 1000;
+    this.framesToRampage = 720;
+    this.framesToRampageDefault = 720;
 
     this.walkingAcceleration = HexFloatToDec("0.098");
     this.runningAcceleration = HexFloatToDec("0.0E4");
