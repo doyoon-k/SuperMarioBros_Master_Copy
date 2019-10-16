@@ -83,40 +83,5 @@ class BaseEnemy
 
     Update() {}
 
-    OnCollisionWith(collider, direction)
-    {
-        if (collider == this)
-        {
-            return;
-        }
-        
-        if (collider instanceof BaseEnemy)
-        {
-            if (collider instanceof KoopaTroopa && collider.isSliding)
-            {
-                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-                game.statistics.AddScore(SCORES.InstaKillWithShell[map(++this.instaKillCombo, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
-                return;
-            }
-
-            switch (direction)
-            {
-                case DIRECTION.Right:
-                    collider.isGoingLeft = false;
-                    collider.x = this.x + this.hitbox.width / 2 + collider.hitbox.width / 2;
-                    break;
-
-                case DIRECTION.Left:
-                    collider.isGoingLeft = true;
-                    collider.x = this.x - this.hitbox.width / 2 - collider.hitbox.width / 2;
-                    break;
-            }
-        }
-        else if (collider instanceof Fireball)
-        {
-            this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-            //particle here
-            collider.Destroy();
-        }
-    }
+    OnCollisionWith(collider, direction) {}
 }

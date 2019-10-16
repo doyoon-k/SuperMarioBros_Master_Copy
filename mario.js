@@ -1169,22 +1169,32 @@ class Mario {
     Mario will call ScoreManager.score() twice on him, 
     while Goombas will call this.kill() once on them each.
   */
-  OnCollisionWith(collider, direction) {
-    if (collider instanceof ActiveBlock) {
-      switch (direction) {
-        case DIRECTION.Down:
-          this.stompCombo = 0;
-          break;
-      }
+    OnCollisionWith(collider, direction)
+    {
+        if (collider instanceof BaseEnemy)
+        {
+            if (this.isInvincible)
+            {
+                collider.InstaKilled(collider.x >= this.x ? DIRECTION.Left : DIRECTION.Right);
+                return;
+            }
+
+            switch (direction)
+            {
+                case DIRECTION.Right:
+                case DIRECTION.Left:
+                case DIRECTION.Up:
+                    if (!collider.isInShell && !collider.isAwakening)
+                    {
+                        // 대미지 입기
+                    }
+                break;
+            }
+        }
+        else if (collider instanceof Powerup)
+        {
+            collider.Destroy();
+            // 파워업 (중복 호출될 수 있으므로 대비 필요)
+        }
     }
-    else if (collider instanceof InactiveBlock) {
-      switch (direction) {
-        case DIRECTION.Down:
-          this.stompCombo = 0;
-          break;
-      }
-    }
-  }
-  // ※거북이 등껍질 밟으면 튀어오르지 않음
-  // ※soft ceiling hit이랑 hard ceiling hit 중력 값 다른 거 주의
 }
