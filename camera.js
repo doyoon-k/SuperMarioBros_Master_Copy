@@ -27,26 +27,26 @@ class Camera {
 
         game.gameObjects.sort((a, b) => (a.x > b.x) ? 1 : -1);
 
-        for (let i = 0; i < game.gameObjects.length; i++) {
+        for (let object of game.gameObjects) {
             
-            if (game.gameObjects[i].x < this.x + this.activationRange + 56) {
-                game.Enroll(game.gameObjects[i]);
+            if (object.x < this.x + this.activationRange + 56) {
+                game.Enroll(object);
             } else {
                 break;
             }
 
         }
 
-        for (let i = 0; i < game.objectsToUpdate.length; i++) {
+        for (let object of game.objectsToUpdate) {
 
-            if (game.objectsToUpdate[i].y > 15 * 16) {
-                game.objectsToUpdate[i].Destroy();
+            if (object.y > 15 * 16) {
+                object.Destroy();
             }
 
-            if (game.objectsToUpdate[i].x > this.x + this.activationRange + 100) {
-                game.objectsToUpdate[i].Destroy();
-            } else if (game.objectsToUpdate[i].x < this.x - this.activationRange) {
-                game.objectsToUpdate[i].Destroy();
+            if (object.x > this.x + this.activationRange + 100) {
+                object.Destroy();
+            } else if (object.x < this.x - this.activationRange) {
+                object.Destroy();
             } 
 
         }
