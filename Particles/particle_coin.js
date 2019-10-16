@@ -1,3 +1,17 @@
+/*
+  coin.js
+  Super Mario Bros.
+
+  GAM100 
+  Fall 2019
+
+  JoonHo Hwang 
+  DoYoon Kim
+  SeungGeon Kim 
+  
+  All content © 2019 DigiPen (USA) Corporation, all rights reserved.
+*/
+
 class ParticleCoin extends Particle
 {
    constructor(x,y)
@@ -8,8 +22,11 @@ class ParticleCoin extends Particle
       this.animationFrameRate = 1;
       this.lifeSpan = 32;
 
+      //temporary values.
       this.speedY = -HexFloatToDec("0.900")*4;
       this.fallingAcceleration = HexFloatToDec("0.900");
+
+      
    }
 
    *ChangeSprite()
