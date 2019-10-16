@@ -139,7 +139,7 @@ class Goomba extends BaseEnemy
             {
                 case DIRECTION.Up:
                     collider.y = this.y - this.hitbox.height - collider.hitbox.y;
-                    collider.speedY = HexClampTo("10", collider.speedY);
+                    collider.speedY = HexClampTo("9", collider.speedY);
                     this.Stomped();
                     break;
             }

@@ -1265,7 +1265,7 @@ class Mario {
   */
 
   OnCollisionWith(collider, direction) {
-    if (this.speedX != 0 || this.speedY != 0)
+    if (this.speedX != 0)
     {
         return;
     }
@@ -1285,6 +1285,10 @@ class Mario {
       if (this.isInvincible) {
         collider.InstaKilled(collider.x >= this.x ? DIRECTION.Left : DIRECTION.Right);
         return;
+      }
+      if (collider instanceof Goomba && collider.isStomped)
+      {
+          return;
       }
       switch (direction) {
         case DIRECTION.Right:
