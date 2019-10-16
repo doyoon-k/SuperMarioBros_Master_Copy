@@ -187,56 +187,37 @@ class KoopaTroopa extends BaseEnemy
         DrawSprite(this.spriteToDraw, this.x, this.y, !this.isGoingLeft, this.isInstaKilled);
     }
 
-    OnCollisionWith(collider, direction)
-    {
-        if (collider instanceof BaseEnemy)
-        {
-            if (collider instanceof KoopaTroopa && collider.isSliding)
-            {
-                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-                game.statistics.AddScore(SCORES.InstaKillWithShell[map(++this.instaKillCombo, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
-                return;
-            }
+    OnCollisionWith(collider, direction) {}
+        // else if (collider instanceof Mario)
+        // {
+        //     if (collider.isInvincible)
+        //     {
+        //         this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+        //         return;
+        //     }
 
-            this.isGoingLeft = !this.isGoingLeft;
-        }
-        else if (collider instanceof Mario)
-        {
-            if (collider.isInvincible)
-            {
-                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-                return;
-            }
-
-            switch (direction)
-            {
-                case DIRECTION.Up:
-                    if (this.isInShell || this.isAwakening)
-                    {
-                        this.ShellPushed(direction);
-                        game.statistics.AddScore(SCORES.StompShell);
-                    }
-                    else
-                    {
-                        this.Stomped();
-                    }
-                    break;
+        //     switch (direction)
+        //     {
+        //         case DIRECTION.Up:
+        //             if (this.isInShell || this.isAwakening)
+        //             {
+        //                 this.ShellPushed(direction);
+        //                 game.statistics.AddScore(SCORES.StompShell);
+        //             }
+        //             else
+        //             {
+        //                 this.Stomped();
+        //             }
+        //             break;
                 
-                case DIRECTION.Left:
-                case DIRECTION.Right:
-                    if (this.isInShell || this.isAwakening)
-                    {
-                        this.ShellPushed(direction);
-                        game.statistics.AddScore(SCORES.PushShell);
-                    }
-                    break;
-            }
-        }
-        else if (collider instanceof Fireball)
-        {
-            this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-            //particle here
-            collider.Destroy();
-        }
-    }
+        //         case DIRECTION.Left:
+        //         case DIRECTION.Right:
+        //             if (this.isInShell || this.isAwakening)
+        //             {
+        //                 this.ShellPushed(direction);
+        //                 game.statistics.AddScore(SCORES.PushShell);
+        //             }
+        //             break;
+        //     }
+        // }
 }
