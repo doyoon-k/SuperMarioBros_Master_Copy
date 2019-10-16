@@ -255,7 +255,7 @@ class Physics
           // print("Rub!L");
           // print("leftRubbed!");
           if(is_bottom_Y_overlapping||is_top_Y_overlapping)
-            isMarioRubbingLeft = collidableObjHitbox.IsXcoordInBetween(objHitbox_rect.left_X-2,collidableObj);
+            isMarioRubbingLeft = collidableObjHitbox.IsXcoordInBetween(objHitbox_rect.left_X-1,collidableObj);
         }
 
 
@@ -285,15 +285,15 @@ class Physics
 
         if(obj instanceof Mario && (!isMarioRubbingLeft || !isMarioRubbingRight))
         {
-          if(!isMarioRubbingLeft)
-          {
-            // print("!rubL");
-            obj.isRubbingLeft = false;
-          }
           if(!isMarioRubbingRight)
           {
-            // print("!rubR");
+            // print("!rubL");
             obj.isRubbingRight = false;
+          }
+          if(!isMarioRubbingLeft)
+          {
+            // print("!rubR");
+            obj.isRubbingLeft = false;
           }
         }
       }

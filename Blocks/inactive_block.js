@@ -124,11 +124,7 @@ class InactiveBlock
                         collider.Soar();
                         return;
                     }
-                    
-                    if (collider.isInstaKilled)
-                    {
-                        return;
-                    }
+
                     collider.isOnGround = true;
                     collider.y = this.y - this.hitbox.height - collider.hitbox.y;
                     collider.isBouncing = false;
@@ -147,14 +143,13 @@ class InactiveBlock
         }
         else if (collider instanceof Fireball)
         {
-            print(direction)
             switch (direction)
             {
                 case DIRECTION.Up:
                     collider.Bounce();
                     break;
                 
-                case DIRECTION.RIGHT:
+                case DIRECTION.Right:
                 case DIRECTION.Left:
                     collider.Destroy();
                     // particle here
