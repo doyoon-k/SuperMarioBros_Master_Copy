@@ -205,7 +205,7 @@ class Game {
         
         this.interfaceFlow.DrawInterface();
 
-        if (this.interfaceFlow.flowState > 1 && game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame && !game.mario.isTransforming)
+        if (this.interfaceFlow.flowState > 1)
             this.TwinkleAnimate();
 
         if (this.interfaceFlow.flowState > 0) 

@@ -31,7 +31,7 @@ class Mario {
 
 
 
-    this.x = 32;
+    this.x = 32; //32 is initial pos, and 83 * block size is mario pos on checkpoint
     this.y = 208;
 
     this.initialX = 116;
