@@ -21,6 +21,8 @@ class ActiveBlock
         this.originalY = y;
         this.containingItem = containingItem;  // EContainingItemType; See below
 
+        this.zWeight = 0;
+
         this.hitbox = hitboxes.active_block;
 
         // If it is soft or not
@@ -114,6 +116,7 @@ class ActiveBlock
                     collider.isGravityAssigned = false;
                     collider.y = this.y - this.hitbox.height + collider.hitbox.y;
 
+                    collider.stompCombo = 0;
                     break;
                 case DIRECTION.Right:
                     collider.speedX = 0;

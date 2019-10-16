@@ -27,6 +27,8 @@ class Mario {
     //Initial value
     this.hitbox = hitboxes.mario;
 
+    this.zWeight = 9;
+
 
 
     this.x = 32;
@@ -84,10 +86,6 @@ class Mario {
 
     this.isGravityAssigned = false;
     this.gravityAssigned = 0;
-
-    this.isRubbingLeft = false;
-    this.isRubbingRight = false;
-
 
 
     // this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
@@ -520,7 +518,7 @@ class Mario {
         } else {
 
           //Jumping left, pressed left
-          if (this.isMoonwalkingLeft) {
+          if (this.isMoonwalkingLeft && !this.isRubbingLeft) {
 
             if (abs(this.speedX) <= this.maxSpeedWalkX) {
               this.speedX += -this.walkingAcceleration;
@@ -615,7 +613,7 @@ class Mario {
         } else {
 
           //Jumping right, pressed right
-          if (!this.isMoonwalkingLeft) {
+          if (!this.isMoonwalkingLeft && !this.isRubbingLeft) {
 
             if (abs(this.speedX) <= this.maxSpeedWalkX) {
               this.speedX += this.walkingAcceleration;
@@ -719,7 +717,7 @@ class Mario {
     this.previousY = this.y;
 
 
-    print(this.speedX);
+    // print(this.speedX);
   }
 
   // --- --- ---
@@ -1246,22 +1244,32 @@ class Mario {
     Mario will call ScoreManager.score() twice on him, 
     while Goombas will call this.kill() once on them each.
   */
-  OnCollisionWith(collider, direction) {
-    if (collider instanceof ActiveBlock) {
-      switch (direction) {
-        case DIRECTION.Down:
-          this.stompCombo = 0;
-          break;
-      }
+    OnCollisionWith(collider, direction)
+    {
+        if (collider instanceof BaseEnemy)
+        {
+            if (this.isInvincible)
+            {
+                collider.InstaKilled(collider.x >= this.x ? DIRECTION.Left : DIRECTION.Right);
+                return;
+            }
+
+            switch (direction)
+            {
+                case DIRECTION.Right:
+                case DIRECTION.Left:
+                case DIRECTION.Up:
+                    if (!collider.isInShell && !collider.isAwakening)
+                    {
+                        // 대미지 입기
+                    }
+                break;
+            }
+        }
+        else if (collider instanceof Powerup)
+        {
+            collider.Destroy();
+            // 파워업 (중복 호출될 수 있으므로 대비 필요)
+        }
     }
-    else if (collider instanceof InactiveBlock) {
-      switch (direction) {
-        case DIRECTION.Down:
-          this.stompCombo = 0;
-          break;
-      }
-    }
-  }
-  // ※거북이 등껍질 밟으면 튀어오르지 않음
-  // ※soft ceiling hit이랑 hard ceiling hit 중력 값 다른 거 주의
 }

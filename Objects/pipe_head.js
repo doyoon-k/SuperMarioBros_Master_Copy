@@ -21,6 +21,8 @@ class PipeHead
         this.isHorizontal = isHorizontal;
         this.containingMap = containingMap;
 
+        this.zWeight = 0;
+
         this.spriteToDraw = isHorizontal ? sprites.pipe_head_hor : sprites.pipe_head_ver;
 
         this.hitbox = isHorizontal ? hitboxes.pipe_horizontal : hitboxes.pipe_vertical;
@@ -51,6 +53,8 @@ class PipeHead
                     
                     collider.isGravityAssigned = false;
                     collider.y = this.y - this.hitbox.height + collider.hitbox.y;
+                    
+                    collider.stompCombo = 0;
                     break;
 
                 case DIRECTION.Right:

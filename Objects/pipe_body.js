@@ -20,6 +20,8 @@ class PipeBody
         this.y = y;
         this.isHorizontal = isHorizontal;
 
+        this.zWeight = 0;
+
         this.spriteToDraw = isHorizontal ? sprites.pipe_body_hor : sprites.pipe_body_ver;
 
         this.hitbox = isHorizontal ? hitboxes.pipe_horizontal : hitboxes.pipe_vertical;

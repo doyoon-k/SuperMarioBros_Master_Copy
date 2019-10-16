@@ -19,6 +19,8 @@ class Fireball
         this.x = x;
         this.y = y;
 
+        this.zWeight = 6;
+
         this.isGoingLeft = isGoingLeft;
 
         this.spriteToDraw = sprites.fireball_1;

@@ -19,6 +19,8 @@ class Flagpole
         this.x = x;
         this.y = y;
 
+        this.zWeight = 0;
+
         this.flagOffset = 0;
         this.isDragging = false;
 

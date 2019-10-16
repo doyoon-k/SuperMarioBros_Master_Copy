@@ -19,6 +19,8 @@ class Powerup
         this.x = x;
         this.y = y;
 
+        this.zWeight = 4;
+
         this.originalY = y;
         this.type = type;  // EPowerupType; See below
         
@@ -43,6 +45,8 @@ class Powerup
 
         this.speedX = 0;
         this.speedY = 0;
+
+        this.isDestroyed = false;
 
         this.spriteToDraw = undefined;
         switch (this.type)
@@ -201,17 +205,24 @@ class Powerup
         if (collider instanceof Mario)
         {
             this.Destroy();
-            game.statistics.AddScore(SCORES.PowerUp);
-
-            if (this.EPowerupType == EPowerupType.Star)
-            {
-                game.soundManager.Play("star");
-            }
+            // 파워업 (중복 호출될 수 있으므로 대비 필요)
         }
     }
 
     Destroy()
     {
+        if (this.isDestroyed)
+        {
+            return;
+        }
+        this.isDestroyed = true;
+
+        game.statistics.AddScore(SCORES.PowerUp);
+
+        if (this.EPowerupType == EPowerupType.Star)
+        {
+            game.soundManager.Play("star");
+        }
         game.Expel(this);
     }
 }

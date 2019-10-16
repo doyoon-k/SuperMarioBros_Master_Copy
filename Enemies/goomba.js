@@ -59,6 +59,8 @@ class Goomba extends BaseEnemy
         this.isInstaKilled = true;
         this.speedY = this.instaKilledInitialSpeed;
         this.isGoingLeft = direction == DIRECTION.Right;
+
+        this.isOnGround = false;
         
         game.physics.RemoveFromMovingObjectsArray(this);
         game.physics.RemoveFromBucketMap(this);
@@ -109,5 +111,68 @@ class Goomba extends BaseEnemy
             this.Animate();
             
         DrawSprite(this.spriteToDraw, this.x, this.y, false, this.isInstaKilled);
+    }
+    
+    OnCollisionWith(collider, direction)
+    {
+        if (collider == this)
+        {
+            return;
+        }
+
+        if (collider instanceof Mario)
+        {
+            if (collider.isInvincible)
+            {
+                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+                return;
+            }
+
+            switch (direction)
+            {
+                case DIRECTION.Up:
+                    collider.y = this.y - this.hitbox.height - collider.hitbox.y;
+                    collider.speedY = HexClampTo("6", collider.speedY);
+                    this.Stomped();
+                    break;
+                    
+                case DIRECTION.Left:
+                case DIRECTION.Right:
+                    if (this.isInShell || this.isAwakening)
+                    {
+                        this.ShellPushed(direction);
+                        game.statistics.AddScore(SCORES.PushShell);
+                    }
+                    break;
+            }
+        }
+        else if (collider instanceof BaseEnemy)
+        {
+            if (collider instanceof KoopaTroopa && collider.isSliding)
+            {
+                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+                game.statistics.AddScore(SCORES.InstaKillWithShell[map(++this.instaKillCombo, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
+                return;
+            }
+
+            switch (direction)
+            {
+                case DIRECTION.Right:
+                    collider.isGoingLeft = false;
+                    collider.x = this.x + this.hitbox.width / 2 + collider.hitbox.width / 2;
+                    break;
+
+                case DIRECTION.Left:
+                    collider.isGoingLeft = true;
+                    collider.x = this.x - this.hitbox.width / 2 - collider.hitbox.width / 2;
+                    break;
+            }
+        }
+        else if (collider instanceof Fireball)
+        {
+            this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+            //particle here
+            collider.Destroy();
+        }
     }
 }
