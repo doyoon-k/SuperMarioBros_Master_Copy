@@ -1265,19 +1265,12 @@ class Mario {
   */
 
   OnCollisionWith(collider, direction) {
-    if (collider instanceof ActiveBlock) {
-      switch (direction) {
-        case DIRECTION.Down:
-          this.stompCombo = 0;
-          break;
-      }
-    } else if (collider instanceof InactiveBlock) {
-      switch (direction) {
-        case DIRECTION.Down:
-          this.stompCombo = 0;
-          break;
-      }
-    } else if (collider instanceof Powerup) {
+    if (this.speedX != 0 || this.speedY != 0)
+    {
+        return;
+    }
+
+    if (collider instanceof Powerup) {
       collider.Destroy();
       if (collider.type == EPowerupType.Star) {
         this.isInvincible = true;

@@ -198,7 +198,7 @@ class KoopaTroopa extends BaseEnemy
 
     OnCollisionWith(collider, direction)
     {
-        if (collider == this)
+        if (collider === this)
         {
             return;
         }
