@@ -141,6 +141,10 @@ class ActiveBlock
                         return;
                     }
 
+                    if (collider.isInstaKilled)
+                    {
+                        return;
+                    }
                     collider.isOnGround = true;
                     collider.y = this.y - this.hitbox.height - collider.hitbox.y;
                     break;
@@ -197,7 +201,8 @@ class ActiveBlock
                     collider.Bounce();
                     break;
                 
-                default:
+                case DIRECTION.RIGHT:
+                case DIRECTION.Left:
                     collider.Destroy();
                     // particle here
                     break;

@@ -114,5 +114,16 @@ class PipeBody
                     break;
             }
         }
+        else if (collider instanceof Fireball)
+        {
+            switch (direction)
+            {
+                case DIRECTION.RIGHT:
+                case DIRECTION.Left:
+                    collider.Destroy();
+                    // particle here
+                    break;
+            }
+        }
     }
 }

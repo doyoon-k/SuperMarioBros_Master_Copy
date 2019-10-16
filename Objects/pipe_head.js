@@ -117,5 +117,20 @@ class PipeHead
                     break;
             }
         }
+        else if (collider instanceof Fireball)
+        {
+            switch (direction)
+            {
+                case DIRECTION.Up:
+                    collider.Bounce();
+                    break;
+                
+                case DIRECTION.RIGHT:
+                case DIRECTION.Left:
+                    collider.Destroy();
+                    // particle here
+                    break;
+            }
+        }
     }
 }
