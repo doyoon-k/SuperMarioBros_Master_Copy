@@ -105,6 +105,7 @@ class Fireball
 
     Destroy()
     {
+        game.mario.fireballCount--;
         game.Expel(this);
     }
 

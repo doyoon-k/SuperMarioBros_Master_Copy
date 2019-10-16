@@ -148,12 +148,15 @@ class Game {
     {
         this.TIMELastDigit = Math.floor(this.statistics.time / 24) % 10;
         this.statistics.doTickTime = false;
+        this.mario.isClimbing = true;
         // 마리오 멈추기
         // 마리오 주욱 내려가기
     }
 
-    OnFlagEnd()
+    OnFlagDragEnd()
     {
+        setTimeout(() => this.mario.EndGame(), 400);
+        this.mario.isLookingLeft = true;
         // 마리오 턴
         // 마리오 걸어가고 성까지 가면 안 그리기
 

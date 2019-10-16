@@ -118,10 +118,14 @@ class Mario {
     this.tickFlash = false;
     this.tickCount = 0;
 
+    this.isClimbing = false;
+
     this.isDead = false;
     this.isFalling = false;
 
     this.fireballCount = 0;
+
+    this.isEndGame = false;
 
 
 
@@ -218,6 +222,29 @@ class Mario {
 
     this.mario_dead = loadImage('Sprites/Mario/mario_dead.png');
 
+    this.climbing_1 = 0;
+    this.climbing_2 = 0;
+
+    this.big_mario_climbing_1 = loadImage('Sprites/Mario/big_mario_climbing_1.png');
+    this.big_mario_climbing_2 = loadImage('Sprites/Mario/big_mario_climbing_2.png');
+    this.big_mario_climbing_fire_1 = loadImage('Sprites/Mario/big_mario_climbing_fire_1.png');
+    this.big_mario_climbing_fire_2 = loadImage('Sprites/Mario/big_mario_climbing_fire_2.png');
+    this.big_mario_climbing_transform1_1 = loadImage('big_mario_climbing_transform1_1.png');
+    this.big_mario_climbing_transform1_2 = loadImage('big_mario_climbing_transform1_2.png');
+    this.big_mario_climbing_transform2_1 = loadImage('big_mario_climbing_transform2_1.png');
+    this.big_mario_climbing_transform2_2 = loadImage('big_mario_climbing_transform2_2.png');
+    this.big_mario_climbing_transform3_1 = loadImage('big_mario_climbing_transform3_1.png');
+    this.big_mario_climbing_transform3_2 = loadImage('big_mario_climbing_transform3_2.png');
+
+    this.mario_climbing_1 = loadImage('Sprites/Mario/mario_climbing_1.png');
+    this.mario_climbing_2 = loadImage('Sprites/Mario/mario_climbing_2.png');
+    this.mario_climbing_transform1_1 = loadImage('mario_climbing_transform1_1.png');
+    this.mario_climbing_transform1_2 = loadImage('mario_climbing_transform1_2.png');
+    this.mario_climbing_transform2_1 = loadImage('mario_climbing_transform2_1.png');
+    this.mario_climbing_transform2_2 = loadImage('mario_climbing_transform2_2.png');
+    this.mario_climbing_transform3_1 = loadImage('mario_climbing_transform3_1.png');
+    this.mario_climbing_transform3_2 = loadImage('mario_climbing_transform3_2.png');
+
     this.spriteToDraw = this.mario_stand_still;
 
 
@@ -248,6 +275,8 @@ class Mario {
 
     this.jumpKeyReleased = false;
     this.topReached = false;
+
+    this.isBottomReach = false;
 
 
 
@@ -293,11 +322,20 @@ class Mario {
     if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause && !game.isGameOver)
       return;
 
-    if (!this.isTransforming && !game.gameOver) {
+    if (!this.isTransforming && !game.gameOver && !this.isClimbing && !this.isEndGame) {
       this.Move();
       return;
     }
 
+    if (this.isClimbing) 
+      this.y += 1;
+
+    if (this.isEndGame) {
+      this.isClimbing = false;
+      this.isLookingLeft = false;
+      this.x += this.maxSpeedWalkX;
+    }
+ 
     //Run once on gameover
     if (game.isGameOver && !this.isDead) {
       game.lives--;
@@ -850,6 +888,10 @@ class Mario {
     }
   }
 
+  EndGame() {
+    this.isEndGame = true;
+  }
+
   //Called once on Powerup
   PowerupTo(targetState) {
     this.isTransforming = true;
@@ -882,6 +924,8 @@ class Mario {
             this.running_3 = this.mario_running_transform1_3;
             this.turnAround = this.mario_turnaround_transform1;
             this.jump = this.mario_jump_transform1;
+            this.climbing_1 = this.mario_climbing_transform1_1;
+            this.climbing_2 = this.mario_climbing_transform1_2;
             break;
           case 0:
             this.stand_still = this.mario_stand_still_transform2;
@@ -890,6 +934,8 @@ class Mario {
             this.running_3 = this.mario_running_transform2_3;
             this.turnAround = this.mario_turnaround_transform2;
             this.jump = this.mario_jump_transform2;
+            this.climbing_1 = this.mario_climbing_transform2_1;
+            this.climbing_2 = this.mario_climbing_transform2_2;
             break;
           case 1:
             this.stand_still = this.mario_stand_still_transform3;
@@ -898,6 +944,8 @@ class Mario {
             this.running_3 = this.mario_running_transform3_3;
             this.turnAround = this.mario_turnaround_transform3;
             this.jump = this.mario_jump_transform3;
+            this.climbing_1 = this.mario_climbing_transform3_1;
+            this.climbing_2 = this.mario_climbing_transform3_2;
             break;
         }
       } else {
@@ -910,6 +958,8 @@ class Mario {
             this.running_3 = this.big_mario_running_transform1_3;
             this.turnAround = this.big_mario_turnaround_transform1;
             this.jump = this.big_mario_jump_transform1;
+            this.climbing_1 = this.big_mario_climbing_transform3_1;
+            this.climbing_2 = this.big_mario_climbing_transform3_2;
             break;
           case 0:
             this.stand_still = this.big_mario_stand_still_transform2;
@@ -918,6 +968,8 @@ class Mario {
             this.running_3 = this.big_mario_running_transform2_3;
             this.turnAround = this.big_mario_turnaround_transform2;
             this.jump = this.big_mario_jump_transform2;
+            this.climbing_1 = this.big_mario_climbing_transform3_1;
+            this.climbing_2 = this.big_mario_climbing_transform3_2;
             break;
           case 1:
             this.stand_still = this.big_mario_stand_still_transform3;
@@ -926,6 +978,8 @@ class Mario {
             this.running_3 = this.big_mario_running_transform3_3;
             this.turnAround = this.big_mario_turnaround_transform3;
             this.jump = this.big_mario_jump_transform3;
+            this.climbing_1 = this.big_mario_climbing_transform3_1;
+            this.climbing_2 = this.big_mario_climbing_transform3_2;
             break;
         }
         if (this.isEmberRestored && this.tickIndex == 3) {
@@ -935,6 +989,8 @@ class Mario {
           this.running_3 = this.big_mario_running_fire_3;
           this.turnAround = this.big_mario_turnaround_fire;
           this.jump = this.big_mario_jump_fire;
+          this.climbing_1 = this.big_mario_climbing_fire_1;
+          this.climbing_2 = this.big_mario_climbing_fire_2;
         }
       }
     } else {
@@ -947,6 +1003,8 @@ class Mario {
           this.running_3 = this.mario_running_3;
           this.turnAround = this.mario_turnaround;
           this.jump = this.mario_jump;
+          this.climbing_1 = this.mario_climbing_1;
+          this.climbing_2 = this.mario_climbing_2;
           break;
         case this.marioState.bigMario:
           this.hitbox = hitboxes.big_mario;
@@ -957,6 +1015,8 @@ class Mario {
           this.turnAround = this.big_mario_turnaround;
           this.jump = this.big_mario_jump;
           this.duck = this.big_mario_duck;
+          this.climbing_1 = this.big_mario_climbing_1;
+          this.climbing_2 = this.big_mario_climbing_2;
           break;
         case this.marioState.fireMario:
           this.hitbox = hitboxes.big_mario;
@@ -967,6 +1027,8 @@ class Mario {
           this.turnAround = this.big_mario_turnaround_fire;
           this.jump = this.big_mario_jump_fire;
           this.duck = this.big_mario_duck_fire;
+          this.climbing_1 = this.big_mario_climbing_fire_1;
+          this.climbing_2 = this.big_mario_climbing_fire_2;
           break;
       }
     }
@@ -982,7 +1044,7 @@ class Mario {
       } else {
         deltaX = 3;
       }
-      game.Enroll(new Fireball(this.x + deltaX, this.y + 16));
+      game.Enroll(new Fireball(this.x + deltaX + 16, this.y - 16, this.isLookingLeft));
       this.fireballCount++;
     }
   }
@@ -1024,6 +1086,15 @@ class Mario {
 
       this.framesToStayInvincible--;
 
+    }
+
+    if (this.isClimbing) {
+
+      if (!this.isBottomReach)
+      this.Animate(this.climbing_1, this.climbing_2, this.transformFrameRate);
+
+      DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
+      return;
     }
 
     if (this.isDead) {

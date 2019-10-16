@@ -68,7 +68,7 @@ class Physics
       {
         let collidableObjHitbox = collidableObj.hitbox;
         // //temporary
-        if(collidableObj instanceof PipeBody || collidableObj instanceof PipeHead)
+        if(collidableObj instanceof Flagpole || collidableObj instanceof PipeHead)
           collidableObjHitbox.DebugDraw(collidableObj);
 
         let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
