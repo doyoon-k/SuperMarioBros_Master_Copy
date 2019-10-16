@@ -165,21 +165,16 @@ class Game {
         this.TIMELastDigit = Math.floor(this.statistics.time / 24) % 10;
         this.statistics.doTickTime = false;
         this.mario.isClimbing = true;
-        // 마리오 멈추기
-        // 마리오 주욱 내려가기
     }
 
     OnFlagDragEnd()
     {
-        setTimeout(() => this.mario.EndGame(), 400);
+        setTimeout(() => {
+            this.mario.EndGame();
+            this.soundManager.Play("level_clear");
+            this.statistics.TimeToScore();
+        }, 400);
         this.mario.isLookingLeft = true;
-        // 마리오 턴
-        // 마리오 걸어가고 성까지 가면 안 그리기
-
-        this.soundManager.Play("level_clear");
-
-        // 성 들어가는 거 끝나면
-        this.statistics.TimeToScore();
     }
 
     OnTimeToScoreEnd()

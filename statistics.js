@@ -76,7 +76,7 @@ class Statistics
         
         if (this.isConvertingTimeToScore)
         {
-            game.soundManager.sounds.time_to_score.loop();
+            game.soundManager.sounds.time_to_score.play();
             if (this.time >= 24)
             {
                 this.time -= 24;

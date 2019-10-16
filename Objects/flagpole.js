@@ -28,6 +28,8 @@ class Flagpole
         this.maxFlagOffset = 8 * BLOCK_SIZE - BLOCK_SIZE * 1 / 3;
 
         this.hitbox = hitboxes.flagpole;
+
+        this.hasCollided = false;
     }
 
     Update()
@@ -70,9 +72,17 @@ class Flagpole
     {
         if (collider instanceof Mario)
         {
+            if (this.hasCollided)
+            {
+                return;
+            }
+
+            this.hasCollided = true;
             game.LevelClear();
             if (!game.mario.isEndGame)
-            game.mario.x = this.x - 16;
+            {
+                game.mario.x = this.x - 16;
+            }
             this.DragFlagDown();
         }
     }
