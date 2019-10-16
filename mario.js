@@ -227,21 +227,21 @@ class Mario {
     this.big_mario_climbing_2 = loadImage('Sprites/Mario/big_mario_climbing_2.png');
     this.big_mario_climbing_fire_1 = loadImage('Sprites/Mario/big_mario_climbing_fire_1.png');
     this.big_mario_climbing_fire_2 = loadImage('Sprites/Mario/big_mario_climbing_fire_2.png');
-    this.big_mario_climbing_transform1_1 = loadImage('big_mario_climbing_transform1_1.png');
-    this.big_mario_climbing_transform1_2 = loadImage('big_mario_climbing_transform1_2.png');
-    this.big_mario_climbing_transform2_1 = loadImage('big_mario_climbing_transform2_1.png');
-    this.big_mario_climbing_transform2_2 = loadImage('big_mario_climbing_transform2_2.png');
-    this.big_mario_climbing_transform3_1 = loadImage('big_mario_climbing_transform3_1.png');
-    this.big_mario_climbing_transform3_2 = loadImage('big_mario_climbing_transform3_2.png');
+    this.big_mario_climbing_transform1_1 = loadImage('Sprites/Mario/big_mario_climbing_transform1_1.png');
+    this.big_mario_climbing_transform1_2 = loadImage('Sprites/Mario/big_mario_climbing_transform1_2.png');
+    this.big_mario_climbing_transform2_1 = loadImage('Sprites/Mario/big_mario_climbing_transform2_1.png');
+    this.big_mario_climbing_transform2_2 = loadImage('Sprites/Mario/big_mario_climbing_transform2_2.png');
+    this.big_mario_climbing_transform3_1 = loadImage('Sprites/Mario/big_mario_climbing_transform3_1.png');
+    this.big_mario_climbing_transform3_2 = loadImage('Sprites/Mario/big_mario_climbing_transform3_2.png');
 
     this.mario_climbing_1 = loadImage('Sprites/Mario/mario_climbing_1.png');
     this.mario_climbing_2 = loadImage('Sprites/Mario/mario_climbing_2.png');
-    this.mario_climbing_transform1_1 = loadImage('mario_climbing_transform1_1.png');
-    this.mario_climbing_transform1_2 = loadImage('mario_climbing_transform1_2.png');
-    this.mario_climbing_transform2_1 = loadImage('mario_climbing_transform2_1.png');
-    this.mario_climbing_transform2_2 = loadImage('mario_climbing_transform2_2.png');
-    this.mario_climbing_transform3_1 = loadImage('mario_climbing_transform3_1.png');
-    this.mario_climbing_transform3_2 = loadImage('mario_climbing_transform3_2.png');
+    this.mario_climbing_transform1_1 = loadImage('Sprites/Mario/mario_climbing_transform1_1.png');
+    this.mario_climbing_transform1_2 = loadImage('Sprites/Mario/mario_climbing_transform1_2.png');
+    this.mario_climbing_transform2_1 = loadImage('Sprites/Mario/mario_climbing_transform2_1.png');
+    this.mario_climbing_transform2_2 = loadImage('Sprites/Mario/mario_climbing_transform2_2.png');
+    this.mario_climbing_transform3_1 = loadImage('Sprites/Mario/mario_climbing_transform3_1.png');
+    this.mario_climbing_transform3_2 = loadImage('Sprites/Mario/mario_climbing_transform3_2.png');
 
     this.spriteToDraw = this.mario_stand_still;
 
