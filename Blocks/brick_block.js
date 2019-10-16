@@ -60,12 +60,13 @@ class BrickBlock extends ActiveBlock
         {
             if (this.isCoinTimedOut)
             {
+                this.containingItem = EContainingItemType.None;
+
                 game.statistics.IncrementCoin();
                 game.statistics.AddScore(SCORES.Coin);
                 game.soundManager.Play("coin");
                 
                 this.spriteToDraw = sprites.block_empty;
-
                 this.BouncingEndCallBack = () => this.Emptied();
                 return;
             }
