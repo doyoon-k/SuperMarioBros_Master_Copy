@@ -217,7 +217,6 @@ class Powerup
                 } else {
                     collider.PowerupTo(collider.marioState.fireMario);
                 }
-                game.soundManager.Play("powerup");
             }
         }
     }

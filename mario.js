@@ -909,13 +909,16 @@ class Mario {
     switch (targetState) {
       case this.marioState.mario:
         this.nextPowerupState = this.marioState.mario;
+        game.soundManager.Play("mario_power_down");
         break;
       case this.marioState.bigMario:
         this.nextPowerupState = this.marioState.bigMario;
+        game.soundManager.Play("mario_power_up");
         break;
       case this.marioState.fireMario:
         this.isEmberRestored = true;
         this.nextPowerupState = this.marioState.fireMario;
+        game.soundManager.Play("mario_power_up");
         break;
     }
   }
@@ -1046,9 +1049,10 @@ class Mario {
   // --- --- ---
 
   ThrowFireball() {
-    if (this.framesToKeepThrowing < this.framesToKeepThrowingDefault)
-      this.framesToKeepThrowing = this.framesToKeepThrowingDefault;
     if (this.fireballCount < 2) {
+      game.soundManager.Play("mario_shoot");
+      if (this.framesToKeepThrowing < this.framesToKeepThrowingDefault)
+        this.framesToKeepThrowing = this.framesToKeepThrowingDefault;
       let deltaX = 0;
       if (this.isLookingLeft) {
         deltaX = -3;
@@ -1294,7 +1298,6 @@ class Mario {
         } else {
           this.PowerupTo(this.marioState.fireMario);
         }
-        game.soundManager.Play("powerup");
       }
 
     } else if (collider instanceof BaseEnemy) {
