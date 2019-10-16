@@ -170,7 +170,7 @@ function Draw() {
   background(146, 144, 255);
   game.Update();
   game.Draw();
-  text(++temp_frame_count, width / 2, height / 2 - 50);
+//   text(++temp_frame_count, width / 2, height / 2 - 50);
 }
 
 function mouseClicked() {

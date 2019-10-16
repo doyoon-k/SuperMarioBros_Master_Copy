@@ -30,7 +30,7 @@ function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertic
   push();
 
   //base position
-  ellipse(x * pixelMultiplier, y * pixelMultiplier, 25);
+//   ellipse(x * pixelMultiplier, y * pixelMultiplier, 25);
 
   if (isFlippedVertically) {
     baseHeight = sprite.height;
@@ -47,7 +47,7 @@ function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertic
   translate((x - xMultiplier * sprite.width / 2) * pixelMultiplier, (y - yMultiplier * sprite.height) * pixelMultiplier);
 
   //Drawing position
-  ellipse(0, 0, 5);
+//   ellipse(0, 0, 5);
 
   scale(xMultiplier, yMultiplier);
 
@@ -86,7 +86,7 @@ function HexClampTo(append, toClamp) {
     toClamp -= HexFloatToDec("1");
 
   toClamp += HexFloatToDec(append);
-  print (toClamp)
+//   print (toClamp)
   return toClamp;
 }
 

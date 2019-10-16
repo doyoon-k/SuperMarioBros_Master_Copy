@@ -324,7 +324,7 @@ class Mario {
   //Call the needed functions
   Update() {
 
-    this.Debug();
+    // this.Debug();
 
     if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause && !game.isGameOver)
       return;

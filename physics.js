@@ -49,8 +49,8 @@ class Physics
     {
       let objHitbox = obj.hitbox;
       //temporary
-      if(obj instanceof Mario)
-      objHitbox.DebugDraw(obj);
+    //   if(obj instanceof Mario)
+    //   objHitbox.DebugDraw(obj);
 
       let objHitbox_rect = objHitbox.GetRect(obj);
       let speedX = obj.speedX;
@@ -70,8 +70,8 @@ class Physics
       {
         let collidableObjHitbox = collidableObj.hitbox;
         // //temporary
-        if(collidableObj instanceof Flagpole || collidableObj instanceof PipeHead)
-          collidableObjHitbox.DebugDraw(collidableObj);
+        // if(collidableObj instanceof Flagpole || collidableObj instanceof PipeHead)
+        //   collidableObjHitbox.DebugDraw(collidableObj);
 
         let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
         let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y + 1, collidableObj);
