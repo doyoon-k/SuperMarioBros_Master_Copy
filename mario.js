@@ -49,6 +49,9 @@ class Mario {
     this.framesToStayInvincible = 150;
     this.framesToStayInvincibleDefault = 150;
 
+    this.framesToRampage = 1000;
+    this.framesToRampageDefault = 1000;
+
     this.walkingAcceleration = HexFloatToDec("0.098");
     this.runningAcceleration = HexFloatToDec("0.0E4");
     this.releaseDeacceleration = HexFloatToDec("0.0D0");
@@ -1081,6 +1084,20 @@ class Mario {
   //Call Animate() & Draw Mario
   Draw() {
 
+    if (this.isInvincible) {
+
+      if (this.framesToRampage == -1) {
+        this.framesToRampage = this.framesToRampageDefault;
+      }
+
+      if (this.framesToRampage == 0) {
+        this.isInvincible = false;
+      }
+      
+      this.framesToRampage--;
+
+    }
+
     if (this.isDamaged) {
 
       //Flash every frame
@@ -1272,14 +1289,17 @@ class Mario {
 
     if (collider instanceof Powerup) {
       collider.Destroy();
+      if (!this.isTransforming) {
       if (collider.type == EPowerupType.Star) {
         this.isInvincible = true;
-      } else if (!this.isTransforming)
+      } else 
         if (this.powerupState == this.marioState.mario) {
           this.PowerupTo(this.marioState.bigMario);
         } else {
           this.PowerupTo(this.marioState.fireMario);
         }
+        game.soundManager.Play("powerup");
+      }
 
     } else if (collider instanceof BaseEnemy) {
       if (this.isInvincible) {
