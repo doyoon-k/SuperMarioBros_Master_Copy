@@ -13,7 +13,7 @@
 */
 
 const BLOCK_SIZE = 16;
-const LEVEL_SECONDS = 50;
+const LEVEL_SECONDS = 160;
 const ONE_FRAME_SECONDS  = 1 / 60;
 
 const SCREEN_WIDTH_IN_BLOCK = 16;

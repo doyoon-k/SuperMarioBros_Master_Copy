@@ -84,6 +84,8 @@ class BrickBlock extends ActiveBlock
             return;
         }
         
+        game.soundManager.Play("powerup");
+        
         let powerUpType = NaN;
         switch (this.containingItem)
         {
