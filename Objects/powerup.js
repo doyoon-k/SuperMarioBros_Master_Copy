@@ -205,7 +205,11 @@ class Powerup
         if (collider instanceof Mario)
         {
             this.Destroy();
-            // 파워업 (중복 호출될 수 있으므로 대비 필요)
+            if (game.mario.powerupState == game.mario.marioState.mario) {
+                game.mario.PowerupTo(game.mario.marioState.bigMario);
+            } else {
+                game.mario.PowerupTo(game.mario.marioState.fireMario);
+            }
         }
     }
 

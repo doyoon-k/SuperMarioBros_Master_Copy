@@ -69,13 +69,8 @@ class Physics
       {
         let collidableObjHitbox = collidableObj.hitbox;
         // //temporary
-<<<<<<< HEAD
-        // if(collidableObj instanceof PipeBody || collidableObj instanceof PipeHead)
-        //   collidableObjHitbox.DebugDraw(collidableObj);
-=======
         if(collidableObj instanceof Flagpole || collidableObj instanceof PipeHead)
           collidableObjHitbox.DebugDraw(collidableObj);
->>>>>>> f7ac7fe01d8da25605d05c8ff115203f1f044072
 
         let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
         let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y + 1, collidableObj);

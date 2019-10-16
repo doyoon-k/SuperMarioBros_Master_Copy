@@ -1260,12 +1260,18 @@ class Mario {
           this.stompCombo = 0;
           break;
       }
-    }
-    else if (collider instanceof InactiveBlock) {
+    } else if (collider instanceof InactiveBlock) {
       switch (direction) {
         case DIRECTION.Down:
           this.stompCombo = 0;
           break;
+      }
+    } else if (collider instanceof Powerup) {
+      collider.Destroy();
+      if (this.powerupState == this.marioState.mario) {
+        this.PowerupTo(this.marioState.bigMario);
+      } else {
+        this.PowerupTo(this.marioState.fireMario);
       }
     }
   }
