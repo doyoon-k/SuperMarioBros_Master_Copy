@@ -27,15 +27,6 @@ class SoundManager
             underground_tempo_up: loadSound("SFX/bgm_underground_melody_tempo_up.mp3"),
             star_tempo_up: loadSound("SFX/bgm_star_tempo_up.mp3"),
         
-            overworld_volume_down: loadSound("SFX/bgm_overworld_volume_down.mp3"),
-            underground_volume_down: loadSound("SFX/bgm_underground_melody_volume_down.mp3"),
-            star_volume_down: loadSound("SFX/bgm_star_volume_down.mp3"),
-            
-            overworld_tempo_up_volume_down: loadSound("SFX/bgm_overworld_tempo_up_volume_down.mp3"),
-            underground_tempo_up_volume_down: loadSound("SFX/bgm_underground_melody_tempo_up_volume_down.mp3"),
-            star_tempo_up_volume_down: loadSound("SFX/bgm_star_tempo_up_volume_down.mp3"),
-        
-        
             hurry_up: loadSound("SFX/environmental_100_time_left.mp3"),
             level_clear: loadSound("SFX/environmental_level_clear.mp3"),
             life_lost: loadSound("SFX/environmental_life_lost.mp3"),
@@ -64,9 +55,7 @@ class SoundManager
             pause: loadSound("SFX/environment_pause.mp3")
           };
           
-        this.BGMs = ["overworld", "overworld_tempo_up", "overworld_volume_down", "overworld_tempo_up_volume_down",
-                     "underground", "underground_tempo_up", "underground_volume_down", "underground_tempo_up_volume_down",
-                     "star", "star_tempo_up", "star_volume_down", "star_tempo_up_volume_down"];
+        this.BGMs = ["overworld", "overworld_tempo_up", "underground", "underground_tempo_up", "star", "star_tempo_up"];
 
         this.SFXsBeingPlayed = [];
 
@@ -102,19 +91,20 @@ class SoundManager
         let newBGM;
         if (BGMName.includes("overworld"))
         {
-            newBGM = "overworld" + (isTempoUp ? "_tempo_up" : "") + (isMelodyVolumeDown ? "_volume_down" : "");
+            newBGM = "overworld" + (isTempoUp ? "_tempo_up" : "");
         }
         else if (BGMName.includes("underground"))
         {
-            newBGM = "underground" + (isTempoUp ? "_tempo_up" : "") + (isMelodyVolumeDown ? "_volume_down" : "");
+            newBGM = "underground" + (isTempoUp ? "_tempo_up" : "");
         }
         else if (BGMName.includes("star"))
         {
-            newBGM = "star" + (isTempoUp ? "_tempo_up" : "") + (isMelodyVolumeDown ? "_volume_down" : "");
+            newBGM = "star" + (isTempoUp ? "_tempo_up" : "");
         }
 
         if (BGMName == newBGM)
         {
+            this.currentBGM.setVolume(isMelodyVolumeDown ? 0.5 : 1);
             return;
         }
         
@@ -123,6 +113,7 @@ class SoundManager
 
         this.currentBGM = this.sounds[newBGM];
         this.currentBGM.play(0, this.currentBGM.playbackRate, this.currentBGM.output.gain.value, time);
+        this.currentBGM.setVolume(isMelodyVolumeDown ? 0.5 : 1);
     }
 
     Play(soundName)

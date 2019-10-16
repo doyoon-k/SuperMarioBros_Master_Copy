@@ -66,11 +66,15 @@ class InactiveBlock
                     
                     collider.isGravityAssigned = false;
                     collider.y = this.y - this.hitbox.height + collider.hitbox.y;
+<<<<<<< HEAD
+                    
+=======
 
                     if (game.mario.isClimbing)
                         game.mario.isBottomReach = true;
 
                     collider.stompCombo = 0;
+>>>>>>> f7ac7fe01d8da25605d05c8ff115203f1f044072
                     break;
                 case DIRECTION.Down:
                     
@@ -94,67 +98,28 @@ class InactiveBlock
 
             }
         }
-        else if (collider instanceof BaseEnemy)
+        else if (collider instanceof BaseEnemy || collider instanceof Powerup)
         {
             switch (direction)
             {
                 case DIRECTION.Up:
                     collider.isOnGround = true;
                     collider.y = this.y - this.hitbox.height - collider.hitbox.y;
+                    // print("!");
                     break;
+                case DIRECTION.Down:
 
+                    break;
                 case DIRECTION.Right:
-                    collider.isGoingLeft = false;
-                    collider.x = this.x + this.hitbox.width / 2 + collider.hitbox.width / 2;
+
+                    break;
+                case DIRECTION.Left:
+
                     break;
 
-                case DIRECTION.Left:
-                    collider.isGoingLeft = true;
-                    collider.x = this.x - this.hitbox.width / 2 - collider.hitbox.width / 2;
-                    break;
             }
         }
-        else if (collider instanceof Powerup)
-        {
-            switch (direction)
-            {
-                case DIRECTION.Up:
-                    if (collider.type == EPowerupType.Star)
-                    {
-                        collider.Soar();
-                        return;
-                    }
-                    
-                    collider.isOnGround = true;
-                    collider.y = this.y - this.hitbox.height - collider.hitbox.y;
-                    collider.isBouncing = false;
-                    break;
-                
-                case DIRECTION.Right:
-                    collider.isGoingLeft = false;
-                    collider.x = this.x + this.hitbox.width / 2 + collider.hitbox.width / 2;
-                    break;
 
-                case DIRECTION.Left:
-                    collider.isGoingLeft = true;
-                    collider.x = this.x - this.hitbox.width / 2 - collider.hitbox.width / 2;
-                    break;
-            }
-        }
-        else if (collider instanceof Fireball)
-        {
-            switch (direction)
-            {
-                case DIRECTION.Up:
-                    collider.Bounce();
-                    break;
-                
-                default:
-                    collider.Destroy();
-                    // particle here
-                    break;
-            }
-        }
     }
 }
 

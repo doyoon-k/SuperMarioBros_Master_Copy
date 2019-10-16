@@ -74,7 +74,6 @@ class Flagpole
             if (!game.mario.isEndGame)
             game.mario.x = this.x - 16;
             this.DragFlagDown();
-            game.soundManager.Play("flag_down");
         }
     }
 }
