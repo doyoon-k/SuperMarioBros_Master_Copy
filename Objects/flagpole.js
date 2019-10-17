@@ -68,23 +68,23 @@ class Flagpole
         let yDifference = this.y - marioY;
         if (yDifference < BLOCK_SIZE)
         {
-            game.statistics.AddScore(SCORES.Flagpole[0], true);
+            game.statistics.AddScore(SCORES.Flagpole[0]);
         }
         else if (yDifference < BLOCK_SIZE * 3)
         {
-            game.statistics.AddScore(SCORES.Flagpole[1], true);
+            game.statistics.AddScore(SCORES.Flagpole[1]);
         }
         else if (yDifference < BLOCK_SIZE * 5)
         {
-            game.statistics.AddScore(SCORES.Flagpole[2], true);
+            game.statistics.AddScore(SCORES.Flagpole[2]);
         }
         else if (yDifference < BLOCK_SIZE * 8)
         {
-            game.statistics.AddScore(SCORES.Flagpole[3], true);
+            game.statistics.AddScore(SCORES.Flagpole[3]);
         }
         else
         {
-            game.statistics.AddScore(SCORES.Flagpole[4], true);
+            game.statistics.AddScore(SCORES.Flagpole[4]);
         }
     }
 
