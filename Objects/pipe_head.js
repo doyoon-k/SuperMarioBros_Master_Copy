@@ -25,7 +25,8 @@ class PipeHead
 
         this.spriteToDraw = isHorizontal ? sprites.pipe_head_hor : sprites.pipe_head_ver;
 
-        this.hitbox = isHorizontal ? hitboxes.pipe_horizontal : hitboxes.pipe_vertical;
+        // this.hitbox = isHorizontal ? hitboxes.pipe_horizontal : hitboxes.pipe_vertical;
+        this.hitbox = new Hitbox(0, 0, BLOCK_SIZE * 2, BLOCK_SIZE-1);
     }
 
     Update() {}

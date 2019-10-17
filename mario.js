@@ -49,6 +49,9 @@ class Mario {
     this.framesToStayInvincible = 150;
     this.framesToStayInvincibleDefault = 150;
 
+    this.framesToRampage = 720;
+    this.framesToRampageDefault = 720;
+
     this.walkingAcceleration = HexFloatToDec("0.098");
     this.runningAcceleration = HexFloatToDec("0.0E4");
     this.releaseDeacceleration = HexFloatToDec("0.0D0");
@@ -414,6 +417,7 @@ class Mario {
             this.isDuckJump = true;
 
           this.isJumpPast = true;
+          this.y -= 1;
           this.isJumping = true;
 
           this.jumpKeyReleased = false;
@@ -906,13 +910,16 @@ class Mario {
     switch (targetState) {
       case this.marioState.mario:
         this.nextPowerupState = this.marioState.mario;
+        game.soundManager.Play("mario_power_down");
         break;
       case this.marioState.bigMario:
         this.nextPowerupState = this.marioState.bigMario;
+        game.soundManager.Play("mario_power_up");
         break;
       case this.marioState.fireMario:
         this.isEmberRestored = true;
         this.nextPowerupState = this.marioState.fireMario;
+        game.soundManager.Play("mario_power_up");
         break;
     }
   }
@@ -1043,9 +1050,10 @@ class Mario {
   // --- --- ---
 
   ThrowFireball() {
-    if (this.framesToKeepThrowing < this.framesToKeepThrowingDefault)
-      this.framesToKeepThrowing = this.framesToKeepThrowingDefault;
     if (this.fireballCount < 2) {
+      game.soundManager.Play("mario_shoot");
+      if (this.framesToKeepThrowing < this.framesToKeepThrowingDefault)
+        this.framesToKeepThrowing = this.framesToKeepThrowingDefault;
       let deltaX = 0;
       if (this.isLookingLeft) {
         deltaX = -3;
@@ -1080,6 +1088,20 @@ class Mario {
 
   //Call Animate() & Draw Mario
   Draw() {
+
+    if (this.isInvincible) {
+
+      if (this.framesToRampage == -1) {
+        this.framesToRampage = this.framesToRampageDefault;
+      }
+
+      if (this.framesToRampage == 0) {
+        this.isInvincible = false;
+      }
+      
+      this.framesToRampage--;
+
+    }
 
     if (this.isDamaged) {
 
@@ -1265,33 +1287,32 @@ class Mario {
   */
 
   OnCollisionWith(collider, direction) {
-    if (collider instanceof ActiveBlock) {
-      switch (direction) {
-        case DIRECTION.Down:
-          this.stompCombo = 0;
-          break;
-      }
-    } else if (collider instanceof InactiveBlock) {
-      switch (direction) {
-        case DIRECTION.Down:
-          this.stompCombo = 0;
-          break;
-      }
-    } else if (collider instanceof Powerup) {
+
+    if (collider instanceof Powerup) {
       collider.Destroy();
+      if (!this.isTransforming) {
       if (collider.type == EPowerupType.Star) {
         this.isInvincible = true;
-      } else if (!this.isTransforming)
+      } else 
         if (this.powerupState == this.marioState.mario) {
           this.PowerupTo(this.marioState.bigMario);
         } else {
           this.PowerupTo(this.marioState.fireMario);
         }
+      }
 
     } else if (collider instanceof BaseEnemy) {
       if (this.isInvincible) {
         collider.InstaKilled(collider.x >= this.x ? DIRECTION.Left : DIRECTION.Right);
         return;
+      }
+      if (collider instanceof Goomba && collider.isStomped)
+      {
+          return;
+      }
+      if (collider instanceof KoopaTroopa && (collider.isInShell || collider.isAwakening))
+      {
+          return;
       }
       switch (direction) {
         case DIRECTION.Right:

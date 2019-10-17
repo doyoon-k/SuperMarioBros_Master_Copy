@@ -60,12 +60,13 @@ class BrickBlock extends ActiveBlock
         {
             if (this.isCoinTimedOut)
             {
+                this.containingItem = EContainingItemType.None;
+
                 game.statistics.IncrementCoin();
                 game.statistics.AddScore(SCORES.Coin);
                 game.soundManager.Play("coin");
                 
                 this.spriteToDraw = sprites.block_empty;
-
                 this.BouncingEndCallBack = () => this.Emptied();
                 return;
             }
@@ -82,6 +83,8 @@ class BrickBlock extends ActiveBlock
             this.BouncingEndCallBack = () => this.spriteToDraw = game.IsUnderground() ? sprites.block_brick_underground : sprites.block_brick;
             return;
         }
+        
+        game.soundManager.Play("powerup");
         
         let powerUpType = NaN;
         switch (this.containingItem)

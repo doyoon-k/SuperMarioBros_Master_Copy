@@ -82,10 +82,11 @@ function HexFloatToDec(hexStr) {
 
 // Designed specifically for upward clamping 
 function HexClampTo(append, toClamp) {
-  while (toClamp <= -HexFloatToDec("1"))
-    toClamp += HexFloatToDec("1");
+  while (toClamp >= HexFloatToDec("1"))
+    toClamp -= HexFloatToDec("1");
 
-  toClamp -= HexFloatToDec(append);
+  toClamp += HexFloatToDec(append);
+  print (toClamp)
   return toClamp;
 }
 

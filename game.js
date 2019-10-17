@@ -120,10 +120,13 @@ class Game {
 
                 if (!this.mario.isTransforming) {
                 this.camera.Update();
-                this.physics.Update();
-
+                
+                this.physics.UpdateMovingObjectsPrevCoords();
+                    
                 this.objectsToUpdate.forEach(object => object.Update());
                 
+                this.physics.UpdateBucketMap();
+                    
                 this.physics.CheckCollision();
 
                 this.statistics.Update();

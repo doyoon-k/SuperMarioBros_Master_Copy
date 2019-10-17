@@ -33,6 +33,8 @@ class KoopaTroopa extends BaseEnemy
         this.hitbox = hitboxes.koopa_troopa;
 
         this.spriteToDraw = sprites.turtle_1;
+
+        game.physics.RegisterToMovingObjectsArray(this);
     }
 
     get isAwakening()
@@ -68,7 +70,7 @@ class KoopaTroopa extends BaseEnemy
 
         this.spriteToDraw = sprites.turtle_shell;
 
-        game.statistics.AddScore(SCORES.Stomp[map(++game.mario.stompCombo, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1, true)]);
+        game.statistics.AddScore(SCORES.Stomp[map(game.mario.stompCombo++, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1, true)]);
     
         game.soundManager.Play("enemy_stomped");
     }
@@ -183,7 +185,7 @@ class KoopaTroopa extends BaseEnemy
     Update()
     {
         this.Move();
-        // this.Gravitate();
+        this.Gravitate();
     }
 
     Draw()
@@ -196,7 +198,7 @@ class KoopaTroopa extends BaseEnemy
 
     OnCollisionWith(collider, direction)
     {
-        if (collider == this)
+        if (collider === this)
         {
             return;
         }
@@ -220,7 +222,7 @@ class KoopaTroopa extends BaseEnemy
                     else
                     {
                         collider.y = this.y - this.hitbox.height - collider.hitbox.y;
-                        collider.speedY = HexClampTo("6", collider.speedY);
+                        collider.speedY = -HexClampTo("4", collider.speedY);
                         this.Stomped();
                     }
                     break;
@@ -240,7 +242,7 @@ class KoopaTroopa extends BaseEnemy
             if (collider instanceof KoopaTroopa && collider.isSliding)
             {
                 this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-                game.statistics.AddScore(SCORES.InstaKillWithShell[map(++this.instaKillCombo, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
+                game.statistics.AddScore(SCORES.InstaKillWithShell[map(this.instaKillCombo++, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
                 return;
             }
 

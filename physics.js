@@ -23,6 +23,7 @@ class Physics
   {
     this.bucketMap = [];
     this.movingObjects = [];
+    this.movingObjectsPrevCoordsMap = new Map();
 
     this.InitializeArrays();
   }
@@ -76,7 +77,7 @@ class Physics
         let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y + 1, collidableObj);
         let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y - 1, collidableObj);
         
-        let willCollide = collidableObjHitbox.IsColliding(objHitbox_rect, speedX, speedY, collidableObj);
+        let willCollide = collidableObjHitbox.IsColliding(objHitbox_rect, speedX, speedY, collidableObj)||objHitbox.IsColliding(collidableObjHitbox_rect,0,0,obj);
 
         if (is_CollidedWithBlock && collidableObj instanceof ActiveBlock)
           continue;
@@ -95,8 +96,7 @@ class Physics
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
               // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
-              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock
-                  || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
+              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
               {
                 is_OnSurface = true;
               }
@@ -118,9 +118,10 @@ class Physics
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
               // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
-              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock
-                || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
-                 is_OnSurface = true;
+              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
+              {
+                is_OnSurface = true;
+              }
               // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
               // if(obj instanceof Mario)
               // print("r-t-u");
@@ -179,9 +180,10 @@ class Physics
             // print("!");
             collidableObj.OnCollisionWith(obj, DIRECTION.Up);
             // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
-            if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock
-              || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
-            is_OnSurface = true;
+            if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
+            { 
+              is_OnSurface = true;
+            }
           }
           else if (speedX > 0 && speedY == 0)
           {
@@ -190,9 +192,10 @@ class Physics
               // print("?");
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
               // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
-              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock
-                || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
-              is_OnSurface = true;
+              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
+              {
+                is_OnSurface = true;
+              }
             }
             else
             {
@@ -208,8 +211,7 @@ class Physics
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
               // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
-              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock
-                || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
+              if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
               is_OnSurface = true;
             }
             else
@@ -223,8 +225,7 @@ class Physics
           }
           else // speedX == 0 && speedY == 0 
           {
-            if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock
-              || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
+            if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
             {
               if(objHitbox_rect.bottom_Y < collidableObjHitbox_rect.bottom_Y)
               {
@@ -257,44 +258,42 @@ class Physics
           if(is_bottom_Y_overlapping||is_top_Y_overlapping)
             isMarioRubbingLeft = collidableObjHitbox.IsXcoordInBetween(objHitbox_rect.left_X-1,collidableObj);
         }
-
-
-        if(obj instanceof Mario && (isMarioRubbingLeft || isMarioRubbingRight))
-        {
-            if(isMarioRubbingLeft)
-            {
-              obj.isRubbingLeft = true;
-              // print("rub L");
-            }
-            if(isMarioRubbingRight)
-            {
-              obj.isRubbingRight = true;
-            }
-        }
-
-        if (obj instanceof Mario && !is_OnSurface)
-        {
-          obj.isJumping = true;
-          // print("B : "+collidableObj.x+","+collidableObj.y);
-          // print("M : "+objHitbox_rect.left_X+","+objHitbox_rect.bottom_Y);
-        }
-        else if ((obj instanceof Goomba || obj instanceof Powerup) && !is_OnSurface)
-        {
-          obj.isOnGround = false;
-        }
-
-        if(obj instanceof Mario && (!isMarioRubbingLeft || !isMarioRubbingRight))
-        {
-          if(!isMarioRubbingRight)
+      }
+      if(obj instanceof Mario && (isMarioRubbingLeft || isMarioRubbingRight))
+      {
+          if(isMarioRubbingLeft)
           {
-            // print("!rubL");
-            obj.isRubbingRight = false;
+            obj.isRubbingLeft = true;
+            // print("rub L");
           }
-          if(!isMarioRubbingLeft)
+          if(isMarioRubbingRight)
           {
-            // print("!rubR");
-            obj.isRubbingLeft = false;
+            obj.isRubbingRight = true;
           }
+      }
+
+      if (obj instanceof Mario && !is_OnSurface)
+      {
+        obj.isJumping = true;
+        // print("B : "+collidableObj.x+","+collidableObj.y);
+        // print("M : "+objHitbox_rect.left_X+","+objHitbox_rect.bottom_Y);
+      }
+      else if ((obj instanceof Goomba || obj instanceof Powerup) && !is_OnSurface)
+      {
+        obj.isOnGround = false;
+      }
+
+      if(obj instanceof Mario && (!isMarioRubbingLeft || !isMarioRubbingRight))
+      {
+        if(!isMarioRubbingRight)
+        {
+          // print("!rubL");
+          obj.isRubbingRight = false;
+        }
+        if(!isMarioRubbingLeft)
+        {
+          // print("!rubR");
+          obj.isRubbingLeft = false;
         }
       }
     }
@@ -358,11 +357,27 @@ class Physics
   RegisterToMovingObjectsArray(object)
   {
     this.movingObjects.push(object);
+    let object_hitbox_rect = object.hitbox.GetRect(object);
+    this.movingObjectsPrevCoordsMap.set(object,{ left_X: object_hitbox_rect.left_X, right_X: object_hitbox_rect.right_X,top_Y:object_hitbox_rect.top_Y,bottom_Y:object_hitbox_rect.bottom_Y});
   }
 
   RemoveFromBucketMap(object)
   {
-    let object_hitbox_rect = object.hitbox.GetRect(object);
+    let object_hitbox_rect;
+
+    if (this.movingObjects.indexOf(object) != -1)
+    {
+      object_hitbox_rect = this.movingObjectsPrevCoordsMap.get(object);  
+    }
+    else
+    {
+      object_hitbox_rect = object.hitbox.GetRect(object);
+    }
+
+    if (!object_hitbox_rect)
+    {
+        return;
+    }
     // if(object.prevX == undefined || object.prevY == undefined)
     // return;
 
@@ -416,15 +431,34 @@ class Physics
     if (this.movingObjects.indexOf(object) != -1)
     {
       this.movingObjects.splice(this.movingObjects.indexOf(object), 1);
+      this.movingObjectsPrevCoordsMap.delete(object);
     }
   }
 
-  Update()
+  UpdateBucketMap()
   {
     for (let object of this.movingObjects)
     {
       this.RemoveFromBucketMap(object);
       this.RegisterToBucketMap(object);
+    }
+  }
+
+  UpdateMovingObjectsPrevCoords()
+  {
+    for (let obj of this.movingObjects)
+    {
+      let prevCoords = this.movingObjectsPrevCoordsMap.get(obj);
+      if (!prevCoords)
+      {
+          return;
+      }
+      
+      let object_hitbox_rect = obj.hitbox.GetRect(obj);
+      prevCoords.left_X = object_hitbox_rect.left_X;
+      prevCoords.right_X = object_hitbox_rect.right_X;
+      prevCoords.bottom_Y = object_hitbox_rect.bottom_Y;
+      prevCoords.top_Y = object_hitbox_rect.top_Y;
     }
   }
 

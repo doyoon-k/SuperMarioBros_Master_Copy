@@ -208,14 +208,16 @@ class Powerup
         if (collider instanceof Mario)
         {
             this.Destroy();
+            if (!this.isTransforming) {
             if (this.type == EPowerupType.Star) {
                 collider.isInvincible = true;
-            } else if (!collider.isTransforming)
+            } else
                 if (collider.powerupState == collider.marioState.mario) {
                     collider.PowerupTo(collider.marioState.bigMario);
                 } else {
                     collider.PowerupTo(collider.marioState.fireMario);
                 }
+            }
         }
     }
 

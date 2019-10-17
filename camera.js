@@ -16,7 +16,7 @@ class Camera {
 
     constructor() {
         this.x = 100;
-        this.activationRange = 100;
+        this.activationRange = 120;
         this.d = 0;
     }
 

@@ -38,6 +38,8 @@ class Fireball
         this.speedY = 0;
 
         this.hitbox = hitboxes.fireball;
+
+        this.isDestroyed = false;
         
         game.physics.RegisterToMovingObjectsArray(this);
         game.physics.RegisterToBucketMap(this);
@@ -108,6 +110,12 @@ class Fireball
 
     Destroy()
     {
+        if (this.isDestroyed)
+        {
+            return;
+        }
+
+        this.isDestroyed = true;
         game.mario.fireballCount--;
         game.Expel(this);
     }
