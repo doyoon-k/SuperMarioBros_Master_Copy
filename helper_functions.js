@@ -122,7 +122,15 @@ function setFlowState(state) {
 }
 
 function Reset() {
-  game = new Game();
+  if (g_lives != 0) {
+    tempStatistics = game.statistics;
+    tempStatistics.time = LEVEL_SECONDS * 60;
+    game = new Game();
+    game.statistics = tempStatistics;
+  } else {
+    game = new Game();
+  }
   game.mapLoader = new MapLoader();
+  game.isGameOver = false;
   game.LoadNewMap("Stages/stage1.json");
 }

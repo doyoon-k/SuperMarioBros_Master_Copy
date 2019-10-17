@@ -49,7 +49,7 @@ class Goomba extends BaseEnemy
 
         game.statistics.AddScore(SCORES.Stomp[map(game.mario.stompCombo++, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1, true)]);
     
-        game.soundManager.Play("enemy_stomped");
+        g_soundManager.Play("enemy_stomped");
     }
 
     InstaKilled(direction)
@@ -69,7 +69,7 @@ class Goomba extends BaseEnemy
 
         game.statistics.AddScore(SCORES.InstaKillGoomba);
     
-        game.soundManager.Play("enemy_instakilled");
+        g_soundManager.Play("enemy_instakilled");
     }
 
     *ChangeSprite()

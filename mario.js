@@ -348,7 +348,7 @@ class Mario {
     //Run once on gameover
     if (game.isGameOver && !this.isDead) {
       g_lives--;
-      game.soundManager.Play("life_lost");
+      g_soundManager.Play("life_lost");
       this.spriteToDraw = this.mario_dead;
       g_interfaceFlow.flowState = g_interfaceFlow.screenState.pause;
       setTimeout(() => this.Kill(), 500);
@@ -363,12 +363,21 @@ class Mario {
       this.speedY += 0.5;
       //Called once on y coord exceed
       if (this.y > 1200) {
-        //Requires case division
         g_interfaceFlow.isReset = true;
+        if (g_lives > 0) {
           //To Make Safe
+          game.camera = new Camera;
+          g_interfaceFlow.screenTick = false;
+          g_interfaceFlow.flowState = g_interfaceFlow.screenState.preGame;
+        } else {
+          //To Make Safe
+          game.camera = new Camera;
           g_interfaceFlow.screenTick = false;
           g_interfaceFlow.flowState = g_interfaceFlow.screenState.endGame;
-        
+        }
+
+        game.isGameOver = false;
+
       }
     }
 
@@ -420,9 +429,9 @@ class Mario {
         if (!this.isJumpPast) {
 
           if (this.powerupState == this.marioState.mario) {
-            game.soundManager.Play("mario_jump");
+            g_soundManager.Play("mario_jump");
           } else {
-            game.soundManager.Play("big_mario_jump");
+            g_soundManager.Play("big_mario_jump");
           }
 
           if (this.isDucking)
@@ -740,8 +749,6 @@ class Mario {
     this.previousX = this.x;
     this.previousY = this.y;
 
-
-    // print(this.speedX);
   }
 
   // --- --- ---
@@ -922,16 +929,16 @@ class Mario {
     switch (targetState) {
       case this.marioState.mario:
         this.nextPowerupState = this.marioState.mario;
-        game.soundManager.Play("mario_power_down");
+        g_soundManager.Play("mario_power_down");
         break;
       case this.marioState.bigMario:
         this.nextPowerupState = this.marioState.bigMario;
-        game.soundManager.Play("mario_power_up");
+        g_soundManager.Play("mario_power_up");
         break;
       case this.marioState.fireMario:
         this.isEmberRestored = true;
         this.nextPowerupState = this.marioState.fireMario;
-        game.soundManager.Play("mario_power_up");
+        g_soundManager.Play("mario_power_up");
         break;
     }
   }
@@ -1063,7 +1070,7 @@ class Mario {
 
   ThrowFireball() {
     if (this.fireballCount < 2) {
-      game.soundManager.Play("mario_shoot");
+      g_soundManager.Play("mario_shoot");
       if (this.framesToKeepThrowing < this.framesToKeepThrowingDefault)
         this.framesToKeepThrowing = this.framesToKeepThrowingDefault;
       let deltaX = 0;

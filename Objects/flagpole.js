@@ -59,7 +59,7 @@ class Flagpole
 
     DragFlagDown()
     {
-        game.soundManager.Play("flag_down");
+        g_soundManager.Play("flag_down");
         this.isDragging = true;
     }
 

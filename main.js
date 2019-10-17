@@ -18,9 +18,13 @@ let game;
 let font;
 let sprites;
 
+let g_soundManager;
+
 let FPS = 60;
 let a;
 let temp_frame_count = 0;
+
+let g_marioSprite;
 
 let g_lives = 3;
 let g_interfaceFlow;
@@ -29,6 +33,7 @@ let g_interfaceFlow;
 let pixelMultiplier = 3.5;
 
 function preload() {
+  g_marioSprite = loadImage("Sprites/Mario/mario_stand_still.png");
   font = loadFont("Font/font.ttf");
   sprites = {
     block_ground: loadImage("Sprites/Block/block_ground.png"),
@@ -157,6 +162,8 @@ function preload() {
 function setup() {
   createCanvas(SCREEN_WIDTH_IN_BLOCK * BLOCK_SIZE * pixelMultiplier, SCREEN_HEIGHT_IN_BLOCK * BLOCK_SIZE * pixelMultiplier);
 
+  g_soundManager = new SoundManager();
+  
   //Essential to stop image functions blurring the iamge all up
   noSmooth();
   imageMode(CORNER);

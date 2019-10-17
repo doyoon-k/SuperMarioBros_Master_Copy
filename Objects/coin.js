@@ -36,7 +36,7 @@ class Coin
     {
         game.statistics.IncrementCoin();
         game.statistics.AddScore(SCORES.Coin);
-        game.soundManager.Play("coin");
+        g_soundManager.Play("coin");
         game.Expel(this);
     }
 

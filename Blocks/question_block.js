@@ -46,13 +46,13 @@ class QuestionBlock extends ActiveBlock
         {
             game.statistics.IncrementCoin();
             game.statistics.AddScore(SCORES.Coin);
-            game.soundManager.Play("coin");
+            g_soundManager.Play("coin");
 
             this.BouncingEndCallBack = () => this.Emptied();
             return;
         }
 
-        game.soundManager.Play("powerup");
+        g_soundManager.Play("powerup");
 
         let powerUpType = NaN;
         switch (this.containingItem)

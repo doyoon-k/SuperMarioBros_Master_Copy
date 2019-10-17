@@ -46,7 +46,7 @@ class BrickBlock extends ActiveBlock
             }
             else
             {
-                game.soundManager.Play("block_hit");
+                g_soundManager.Play("block_hit");
                 this.BouncingEndCallBack = () => {
                     game.physics.RemoveFromMovingObjectsArray(this);
                     this.spriteToDraw = game.IsUnderground() ? sprites.block_brick_underground : sprites.block_brick;
@@ -64,7 +64,7 @@ class BrickBlock extends ActiveBlock
 
                 game.statistics.IncrementCoin();
                 game.statistics.AddScore(SCORES.Coin);
-                game.soundManager.Play("coin");
+                g_soundManager.Play("coin");
                 
                 this.spriteToDraw = sprites.block_empty;
                 this.BouncingEndCallBack = () => this.Emptied();
@@ -78,13 +78,13 @@ class BrickBlock extends ActiveBlock
 
             game.statistics.IncrementCoin();
             game.statistics.AddScore(SCORES.Coin);
-            game.soundManager.Play("coin");
+            g_soundManager.Play("coin");
 
             this.BouncingEndCallBack = () => this.spriteToDraw = game.IsUnderground() ? sprites.block_brick_underground : sprites.block_brick;
             return;
         }
         
-        game.soundManager.Play("powerup");
+        g_soundManager.Play("powerup");
         
         let powerUpType = NaN;
         switch (this.containingItem)
@@ -116,7 +116,7 @@ class BrickBlock extends ActiveBlock
     Break()
     {
         // particle here
-        game.soundManager.Play("block_break");
+        g_soundManager.Play("block_break");
         this.Destroy();
 
         game.statistics.AddScore(SCORES.BreakBrickBlock);

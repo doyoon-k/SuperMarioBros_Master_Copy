@@ -19,7 +19,6 @@ class Game {
         this.mario = new Mario();
         this.camera = new Camera();
         this.statistics = new Statistics();
-        this.soundManager = new SoundManager();
 
         this.backgroundObjects = [];
         this.gameObjects = [];
@@ -170,7 +169,7 @@ class Game {
     OneUp()
     {
         g_lives++;
-        this.soundManager.Play("mario_1up");
+        g_soundManager.Play("mario_1up");
     }
 
     LevelClear(nextLevel)
@@ -184,7 +183,7 @@ class Game {
     {
         setTimeout(() => {
             this.mario.EndGame();
-            this.soundManager.Play("level_clear");
+            g_soundManager.Play("level_clear");
             this.statistics.TimeToScore();
         }, 400);
         this.mario.isLookingLeft = true;

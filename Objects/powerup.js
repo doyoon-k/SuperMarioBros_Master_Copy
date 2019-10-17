@@ -233,7 +233,7 @@ class Powerup
 
         if (this.type == EPowerupType.Star)
         {
-            game.soundManager.Play("star");
+            g_soundManager.Play("star");
         }
         game.Expel(this);
     }

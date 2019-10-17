@@ -18,7 +18,6 @@ class InterfaceFlow {
 
         this.logo = loadImage("Sprites/Misc/misc_logo.png");
         this.indicator = loadImage("Sprites/Misc/misc_indicator_goomba.png");
-        this.mario = loadImage("Sprites/Mario/mario_stand_still.png");
 
         this.screenState = {
             wallPaper: -1,
@@ -51,7 +50,11 @@ class InterfaceFlow {
                 if (!this.screenTick) {
                     if (this.isExit) {
                         if (!game.isGameOver) {
-                            setTimeout(function () { setFlowState(3); game.soundManager.Play("overworld");}, 100);
+                            if (this.isReset) {
+                                Reset();
+                                this.isReset = false;
+                            }
+                            setTimeout(function () { setFlowState(3); g_soundManager.Play("overworld");}, 100);
                             this.screenTick = true;
                         } else {
                             setTimeout(function () { setFlowState(5); }, 100);
@@ -65,7 +68,7 @@ class InterfaceFlow {
                             if (this.isReset) {
                             Reset();
                             this.isReset = false;
-                        }
+                            }
                             setTimeout(function () { setFlowState(2); }, 100);
                             this.screenTick = false;
                         }
@@ -112,11 +115,11 @@ class InterfaceFlow {
                 break;
             case this.screenState.inGame:
                 this.flowState = this.screenState.pause;
-                game.soundManager.PauseResume(true);
+                g_soundManager.PauseResume(true);
                 break;
             case this.screenState.pause:
                 this.flowState = this.screenState.inGame;
-                game.soundManager.PauseResume(false);
+                g_soundManager.PauseResume(false);
                 break;
         }
     }
@@ -150,7 +153,7 @@ class InterfaceFlow {
 
                 DrawText("WORLD 1-1", 88, 88, 8);
 
-                DrawSprite(this.mario, 100, 130);
+                DrawSprite(g_marioSprite, 100, 130);
                 DrawText("  *  " + g_lives, 100, 128, 8);
 
                 break;
