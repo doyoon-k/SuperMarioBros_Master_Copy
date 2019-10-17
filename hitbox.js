@@ -85,7 +85,7 @@ class Hitbox
     }
 }
 
- const hitboxes = {
+const hitboxes = {
     mario : new Hitbox(16, 0, 10, 12),
     big_mario : new Hitbox(16, 0, 12, 24),
     big_mario_duck : new Hitbox(16, 0, 12, 12),
@@ -100,8 +100,8 @@ class Hitbox
     active_block: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE),
     inactive_block: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE),
 
-    pipe_horizontal: new Hitbox(0, 0, BLOCK_SIZE * 2, BLOCK_SIZE),
+    pipe_horizontal: new Hitbox(0, 0, BLOCK_SIZE * 2, BLOCK_SIZE - 1),
     pipe_vertical: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE * 2),
     
-    flagpole: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE * 8)
+    flagpole: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE * 9)
 };

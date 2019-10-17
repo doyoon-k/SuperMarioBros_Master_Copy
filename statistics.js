@@ -48,7 +48,7 @@ class Statistics
     {
         if (amount == "1UP")
         {
-            // 1-up
+            game.OneUp();
             return;
         }
         
