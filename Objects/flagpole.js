@@ -69,22 +69,37 @@ class Flagpole
         if (yDifference < BLOCK_SIZE)
         {
             game.statistics.AddScore(SCORES.Flagpole[0], true);
+            let particleFlagScore = new ParticleFlagScore(this.x, this.y, this.y - this.hitbox.height,SCORES.Flagpole[0]);
+            game.gameObjects.push(particleFlagScore);
+            game.Enroll(particleFlagScore);
         }
         else if (yDifference < BLOCK_SIZE * 3)
         {
             game.statistics.AddScore(SCORES.Flagpole[1], true);
+            let particleFlagScore = new ParticleFlagScore(this.x, this.y, this.y - this.hitbox.height, SCORES.Flagpole[1]);
+            game.gameObjects.push(particleFlagScore);
+            game.Enroll(particleFlagScore);
         }
         else if (yDifference < BLOCK_SIZE * 5)
         {
             game.statistics.AddScore(SCORES.Flagpole[2], true);
+            let particleFlagScore = new ParticleFlagScore(this.x, this.y, this.y - this.hitbox.height,SCORES.Flagpole[2]);
+            game.gameObjects.push(particleFlagScore);
+            game.Enroll(particleFlagScore);
         }
         else if (yDifference < BLOCK_SIZE * 8)
         {
             game.statistics.AddScore(SCORES.Flagpole[3], true);
+            let particleFlagScore = new ParticleFlagScore(this.x, this.y, this.y - this.hitbox.height,SCORES.Flagpole[3]);
+            game.gameObjects.push(particleFlagScore);
+            game.Enroll(particleFlagScore);
         }
         else
         {
             game.statistics.AddScore(SCORES.Flagpole[4], true);
+            let particleFlagScore = new ParticleFlagScore(this.x, this.y, this.y - this.hitbox.height,SCORES.Flagpole[4]);
+            game.gameObjects.push(particleFlagScore);
+            game.Enroll(particleFlagScore);
         }
     }
 

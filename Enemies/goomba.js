@@ -67,6 +67,11 @@ class Goomba extends BaseEnemy
         game.physics.RemoveFromMovingObjectsArray(this);
         game.physics.RemoveFromBucketMap(this);
 
+        // let particleScore = new ParticleScore(this.x, this.y - 100, 100);
+        
+        // game.gameObjects.push(particleScore);
+        // game.Enroll(particleScore);
+
         game.statistics.AddScore(SCORES.InstaKillGoomba);
     
         game.soundManager.Play("enemy_instakilled");

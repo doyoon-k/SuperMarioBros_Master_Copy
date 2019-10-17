@@ -92,6 +92,14 @@ class ActiveBlock
                 
                     this.Hit();
 
+                    // let particleBrick = new ParticleBrick(this.x, this.y-BLOCK_SIZE/2);
+                    // game.gameObjects.push(particleBrick);
+                    // game.Enroll(particleBrick);
+                    
+                    let particleCoin = new ParticleCoin(this.x, this.y - BLOCK_SIZE);
+                    game.gameObjects.push(particleCoin);
+                    game.Enroll(particleCoin);
+
                     if (this.isBouncing) {
 
                         collider.gravityAssigned = HexFloatToDec("0.9");
@@ -105,7 +113,6 @@ class ActiveBlock
                         collider.isGravityAssigned = true;
                         collider.y = this.y + collider.hitbox.height;
                         collider.speedY = 0;
-
                     }
             
                     break;

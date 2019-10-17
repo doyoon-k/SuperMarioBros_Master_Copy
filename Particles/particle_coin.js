@@ -9,7 +9,7 @@ class ParticleCoin extends Particle
       this.lifeSpan = 32;
 
       this.speedY = -HexFloatToDec("0.900")*4;
-      this.fallingAcceleration = HexFloatToDec("0.900");
+      this.fallingAcceleration = HexFloatToDec("0.400");
    }
 
    *ChangeSprite()
@@ -42,7 +42,28 @@ class ParticleCoin extends Particle
 
    Destroy()
    {
-       //particle 담아놓은 배열에서 this 객체 splice해버림.
+    let index = game.objectsToUpdate.indexOf(this);
+    if (index != -1)
+    {
+        game.objectsToUpdate.splice(index, 1);
+    }
+
+    index = game.objectsToDraw[this.zWeight].indexOf(this);
+    if (index != -1)
+    {
+        game.objectsToDraw[this.zWeight].splice(index, 1);
+    }
+
+    index = game.gameObjects.indexOf(this);
+    if (index != -1)
+    {
+        game.gameObjects.splice(index, 1);
+    }
+
+       let particleScore = new ParticleScore(this.x, this.y, 200);
+       game.gameObjects.push(particleScore);
+       game.Enroll(particleScore);
+
    }
 
    Update()
