@@ -18,16 +18,17 @@ let game;
 let font;
 let sprites;
 
-let g_soundManager;
+let g_soundManager = 0;
 
 let FPS = 60;
 let a;
 let temp_frame_count = 0;
 
-let g_marioSprite;
+let g_marioSprite = 0;
 
 let g_lives = 3;
-let g_interfaceFlow;
+let g_interfaceFlow = 0;
+let g_isNewGame = false;
 
 //Should be 2 By default, but feel free to change it
 let pixelMultiplier = 3.5;

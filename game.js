@@ -212,7 +212,7 @@ class Game {
         
         g_interfaceFlow.DrawInterface();
 
-        if (g_interfaceFlow.flowState > 1)
+        if (g_interfaceFlow.flowState > 1 || game.isGameOver)
             this.TwinkleAnimate();
 
         if (g_interfaceFlow.flowState > 0) 

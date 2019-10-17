@@ -285,6 +285,8 @@ class Mario {
 
     this.isBottomReach = false;
 
+    this.isFellToDeath = false;
+
 
 
     this.stompCombo = 0;
@@ -329,6 +331,11 @@ class Mario {
     if (g_interfaceFlow.flowState == g_interfaceFlow.screenState.pause && !game.isGameOver)
       return;
 
+    if (this.y > 300) {
+      game.isGameOver = true;
+      this.isFellToDeath = true;
+    }
+
     if (!this.isTransforming && !game.isGameOver && !this.isClimbing && !this.isEndGame) {
       this.Move();
       return;
@@ -355,14 +362,11 @@ class Mario {
       this.isDead = true;
     }
 
-    if (this.y > 1200)
-      game.isGameOver = true;
-
     if (this.isFalling) {
       this.y += this.speedY;
-      this.speedY += 0.5;
+      this.speedY += 0.25;
       //Called once on y coord exceed
-      if (this.y > 1200) {
+      if (!this.isFellToDeath && this.y > 1500 || this.isFellToDeath && this.y > 2500) {
         g_interfaceFlow.isReset = true;
         if (g_lives > 0) {
           //To Make Safe
@@ -374,6 +378,7 @@ class Mario {
           game.camera = new Camera;
           g_interfaceFlow.screenTick = false;
           g_interfaceFlow.flowState = g_interfaceFlow.screenState.endGame;
+          g_isNewGame = true;
         }
 
         game.isGameOver = false;
@@ -384,7 +389,7 @@ class Mario {
   }
 
   Kill() {
-    this.speedY = -6.5;
+    this.speedY = -4.5;
     this.isFalling = true;
   }
 
