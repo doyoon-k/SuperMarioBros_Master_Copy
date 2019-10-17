@@ -5,7 +5,7 @@ class Particle
        this.x = x;
        this.y = y;
 
-       this.zWeight = 10;
+       this.zWeight = 9;
 
        this.spriteToDraw = null;
        this.animationFrameCount = 0;

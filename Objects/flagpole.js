@@ -63,6 +63,31 @@ class Flagpole
         this.isDragging = true;
     }
 
+    ScoreAccordingToHeight(marioY)
+    {
+        let yDifference = this.y - marioY;
+        if (yDifference < BLOCK_SIZE)
+        {
+            game.statistics.AddScore(SCORES.Flagpole[0], true);
+        }
+        else if (yDifference < BLOCK_SIZE * 3)
+        {
+            game.statistics.AddScore(SCORES.Flagpole[1], true);
+        }
+        else if (yDifference < BLOCK_SIZE * 5)
+        {
+            game.statistics.AddScore(SCORES.Flagpole[2], true);
+        }
+        else if (yDifference < BLOCK_SIZE * 8)
+        {
+            game.statistics.AddScore(SCORES.Flagpole[3], true);
+        }
+        else
+        {
+            game.statistics.AddScore(SCORES.Flagpole[4], true);
+        }
+    }
+
     Destroy()
     {
         game.Expel(this);
@@ -79,10 +104,11 @@ class Flagpole
 
             this.hasCollided = true;
             game.LevelClear();
-            if (!game.mario.isEndGame)
+            if (!collider.isEndGame)
             {
-                game.mario.x = this.x - 16;
+                collider.x = this.x - 16;
             }
+            this.ScoreAccordingToHeight(collider.y);
             this.DragFlagDown();
         }
     }

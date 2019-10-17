@@ -27,7 +27,7 @@ class Mario {
     //Initial value
     this.hitbox = hitboxes.mario;
 
-    this.zWeight = 9;
+    this.zWeight = 10;
 
 
 
