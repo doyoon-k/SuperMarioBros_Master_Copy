@@ -229,7 +229,7 @@ class KoopaTroopa extends BaseEnemy
                     
                 case DIRECTION.Left:
                 case DIRECTION.Right:
-                    if (this.isInShell || this.isAwakening)
+                    if ((this.isInShell || this.isAwakening) && !collider.isDamaged)
                     {
                         this.ShellPushed(direction);
                         game.statistics.AddScore(SCORES.PushShell);

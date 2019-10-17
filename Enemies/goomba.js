@@ -149,7 +149,7 @@ class Goomba extends BaseEnemy
                     break;
                 case DIRECTION.Left:
                 case DIRECTION.Right:
-                    if (collider.isJumping) 
+                    if (collider.isJumping && !collider.isDamaged) 
                     {
                         collider.y = this.y - this.hitbox.height - collider.hitbox.y;
                         collider.speedY = -HexClampTo("4", collider.speedY);

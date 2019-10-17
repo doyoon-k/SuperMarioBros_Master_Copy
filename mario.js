@@ -1130,8 +1130,8 @@ class Mario {
 
     if (this.isDamaged) {
 
-      //Flash every frame
-      this.tickFlash = !this.tickFlash;
+        //Flash every frame
+        this.tickFlash = !this.tickFlash;
 
       if (this.framesToStayInvincible == -1) {
         this.framesToStayInvincible = this.framesToStayInvincibleDefault;
@@ -1174,7 +1174,15 @@ class Mario {
 
     if (this.isInvincible) {
 
-      if (this.tickCount > 1) {
+      let baseIndex = 0;
+      
+      if (this.framesToRampage < 300) {
+        baseIndex = 2;
+      } else {
+        baseIndex = 1;
+      }
+
+      if (this.tickCount > baseIndex) {
         if (this.tickIndex > 1) {
           this.tickIndex = 0;
         } else {
