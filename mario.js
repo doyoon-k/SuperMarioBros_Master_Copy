@@ -335,7 +335,7 @@ class Mario {
     }
 
     if (this.isClimbing)
-      this.y += 3;
+      this.y += 2.5;
 
     if (this.isEndGame) {
       this.y += 1;
@@ -1316,18 +1316,6 @@ class Mario {
       }
       switch (direction) {
         case DIRECTION.Right:
-          if (!this.isJumping) {
-          if (!this.isTransforming && !this.isDamaged)
-            if (this.powerupState != this.marioState.mario) {
-              this.PowerupTo(this.marioState.mario);
-              this.isDamaged = true;
-            } else {
-              game.isGameOver = true;
-            }
-          } else {
-            //nothin
-          }
-          break;
         case DIRECTION.Left:
           if (!this.isJumping) {
           if (!this.isTransforming && !this.isDamaged)

@@ -233,6 +233,10 @@ class KoopaTroopa extends BaseEnemy
                     {
                         this.ShellPushed(direction);
                         game.statistics.AddScore(SCORES.PushShell);
+                    } else if (collider.isJumping) {
+                        collider.y = this.y - this.hitbox.height - collider.hitbox.y;
+                        collider.speedY = -HexClampTo("4", collider.speedY);
+                        this.Stomped();
                     }
                     break;
             }
