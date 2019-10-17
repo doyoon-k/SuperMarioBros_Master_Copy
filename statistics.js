@@ -76,7 +76,7 @@ class Statistics
         
         if (this.isConvertingTimeToScore)
         {
-            game.soundManager.sounds.time_to_score.play();
+            g_soundManager.sounds.time_to_score.play();
             if (this.time >= 24)
             {
                 this.time -= 24;
@@ -84,7 +84,7 @@ class Statistics
             }
             else
             {
-                game.soundManager.sounds.time_to_score.stop();
+                g_soundManager.sounds.time_to_score.stop();
                 this.isConvertingTimeToScore = false;
                 setTimeout(() => game.OnTimeToScoreEnd(), 1000);
             }
@@ -99,7 +99,7 @@ class Statistics
             
             if (this.time == 2400)
             {
-                game.soundManager.Play("hurry_up");
+                g_soundManager.Play("hurry_up");
             }
             else if (this.time == 0)
             {

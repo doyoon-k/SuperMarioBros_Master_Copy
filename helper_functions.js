@@ -117,12 +117,20 @@ function clamp(value,min,max)
 
 function setFlowState(state) {
   if (state != g_interfaceFlow.screenState.menu)
-  g_interfaceFlow.isMenu = false;
+    g_interfaceFlow.isMenu = false;
+  if (state == g_interfaceFlow.screenState.preGame && g_isNewGame) {
+    game.statistics = new Statistics();
+    g_isNewGame = false;
+  }
   g_interfaceFlow.flowState = state;
 }
 
 function Reset() {
+  let tempStatistics = game.statistics;
+  tempStatistics.time = LEVEL_SECONDS * 60;
   game = new Game();
+  game.statistics = tempStatistics;
   game.mapLoader = new MapLoader();
+  game.isGameOver = false;
   game.LoadNewMap("Stages/stage1.json");
 }
