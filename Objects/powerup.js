@@ -208,14 +208,27 @@ class Powerup
         if (collider instanceof Mario)
         {
             this.Destroy();
-            if (!this.isTransforming) {
-            if (this.type == EPowerupType.Star) {
-                collider.isInvincible = true;
-            } else
-                if (collider.powerupState == collider.marioState.mario) {
-                    collider.PowerupTo(collider.marioState.bigMario);
-                } else {
-                    collider.PowerupTo(collider.marioState.fireMario);
+            if (!collider.isTransforming) {
+                switch (this.type) {
+                    case EPowerupType.Star:
+                        collider.isInvincible = true;
+                        break;
+                    case EPowerupType.Mushroom:
+                        collider.PowerupTo(collider.marioState.bigMario);
+                        break;
+                    case EPowerupType.FireFlower:
+                        if (collider.powerupState == collider.marioState.mario) {
+                            collider.PowerupTo(collider.marioState.bigMario);
+                        } else if (collider.powerupState == collider.marioState.bigMario) {
+                            collider.PowerupTo(collider.marioState.fireMario);
+                        } else {
+                            //Earn Points
+                        }
+                        break;
+                    case EPowerupType.OneUp:
+                        g_lives++;
+                        //Oneup sound here
+                        break;
                 }
             }
         }

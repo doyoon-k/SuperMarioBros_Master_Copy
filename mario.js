@@ -137,7 +137,8 @@ class Mario {
     /*
       We first tried to manage color-changing sprites dynamically by processing screen pixels (only around mario) during runtime, 
       but loading all those pixels and comparing their colors EVERY FRAME took so much computing resource that it almost halved the game's frame. 
-      That's the reason that Joonho made pre-colored versions of the sprites and we're just switching over them.
+      Even if we pre-did it and saved them as separate sprites, it is basically a inferior version of this switching one.
+      That's the reason that Joonho made pre-colored versions of the sprites ahead and we're just switching over them.
     */
 
 
@@ -1315,14 +1316,27 @@ class Mario {
     if (collider instanceof Powerup) {
       collider.Destroy();
       if (!this.isTransforming) {
-        if (collider.type == EPowerupType.Star) {
-          this.isInvincible = true;
-        } else
-          if (this.powerupState == this.marioState.mario) {
+        switch (collider.type) {
+          case EPowerupType.Star:
+            this.isInvincible = true;
+            break;
+          case EPowerupType.Mushroom:
             this.PowerupTo(this.marioState.bigMario);
-          } else {
-            this.PowerupTo(this.marioState.fireMario);
-          }
+            break;
+          case EPowerupType.FireFlower:
+            if (this.powerupState == this.marioState.mario) {
+              this.PowerupTo(this.marioState.bigMario);
+            } else if (this.powerupState == this.marioState.bigMario) {
+              this.PowerupTo(this.marioState.fireMario);
+            } else {
+              //Earn Points
+            }
+            break;
+          case EPowerupType.OneUp:
+            g_lives++;
+            g_soundManager.Play("mario_1up");
+            break;
+        }
       }
 
     } else if (collider instanceof BaseEnemy) {
@@ -1353,7 +1367,17 @@ class Mario {
           break;
         case DIRECTION.Up:
           if (!collider.isInShell && !collider.isAwakening) {
-            // 대미지 입기
+            if (!this.isJumping) {
+              if (!this.isTransforming && !this.isDamaged)
+                if (this.powerupState != this.marioState.mario) {
+                  this.PowerupTo(this.marioState.mario);
+                  this.isDamaged = true;
+                } else {
+                  game.isGameOver = true;
+                }
+            } else {
+              //nothin
+            }
           }
           break;
       }
