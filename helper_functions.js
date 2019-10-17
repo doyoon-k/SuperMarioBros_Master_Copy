@@ -86,7 +86,6 @@ function HexClampTo(append, toClamp) {
     toClamp -= HexFloatToDec("1");
 
   toClamp += HexFloatToDec(append);
-  print (toClamp)
   return toClamp;
 }
 

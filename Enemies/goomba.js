@@ -83,77 +83,85 @@ class Goomba extends BaseEnemy
         }
     }
 
-    Animate()
+    Animate() 
     {
-        if (this.isStomped)
+        if (this.isStomped) 
         {
             return;
         }
 
-        if (this.animationFrameRate < this.animationFrameCount)
+        if (this.animationFrameRate < this.animationFrameCount) 
         {
             this.animationFrameCount = 0;
             this.animator.next();
         }
-        else
-        {
+        else {
             this.animationFrameCount++;
         }
     }
 
-    Update()
+    Update() 
     {
         this.Move();
         this.Gravitate();
     }
 
-    Draw()
+    Draw() 
     {
         if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame && !game.mario.isTransforming)
             this.Animate();
-            
+
         DrawSprite(this.spriteToDraw, this.x, this.y, false, this.isInstaKilled);
     }
-    
-    OnCollisionWith(collider, direction)
+
+    OnCollisionWith(collider, direction) 
     {
-        if (collider === this)
+        if (collider === this) 
         {
             return;
         }
 
-        if (collider instanceof Mario)
+        if (collider instanceof Mario) 
         {
-            if (this.isStomped)
+            if (this.isStomped) 
             {
                 return;
             }
 
-            if (collider.isInvincible)
+            if (collider.isInvincible) 
             {
                 this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
                 return;
             }
 
-            switch (direction)
+            switch (direction) 
             {
                 case DIRECTION.Up:
                     collider.y = this.y - this.hitbox.height - collider.hitbox.y;
                     collider.speedY = -HexClampTo("4", collider.speedY);
                     this.Stomped();
                     break;
+                case DIRECTION.Left:
+                case DIRECTION.Right:
+                    if (collider.isJumping) 
+                    {
+                        collider.y = this.y - this.hitbox.height - collider.hitbox.y;
+                        collider.speedY = -HexClampTo("4", collider.speedY);
+                        this.Stomped();
+                        break;
+                    }
             }
         }
-        else if (collider instanceof BaseEnemy)
+        else if (collider instanceof BaseEnemy) 
         {
-            if (collider instanceof KoopaTroopa && collider.isSliding)
+            if (collider instanceof KoopaTroopa && collider.isSliding) 
             {
                 this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
                 game.statistics.AddScore(SCORES.InstaKillWithShell[map(this.instaKillCombo++, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
                 return;
             }
 
-            switch (direction)
+            switch (direction) 
             {
                 case DIRECTION.Right:
                     collider.isGoingLeft = false;
