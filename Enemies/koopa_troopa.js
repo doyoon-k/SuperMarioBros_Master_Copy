@@ -70,7 +70,7 @@ class KoopaTroopa extends BaseEnemy
 
         this.spriteToDraw = sprites.turtle_shell;
 
-        game.statistics.AddScore(SCORES.Stomp[map(++game.mario.stompCombo, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1, true)]);
+        game.statistics.AddScore(SCORES.Stomp[map(game.mario.stompCombo++, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1, true)]);
     
         game.soundManager.Play("enemy_stomped");
     }
@@ -242,7 +242,7 @@ class KoopaTroopa extends BaseEnemy
             if (collider instanceof KoopaTroopa && collider.isSliding)
             {
                 this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-                game.statistics.AddScore(SCORES.InstaKillWithShell[map(++this.instaKillCombo, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
+                game.statistics.AddScore(SCORES.InstaKillWithShell[map(this.instaKillCombo++, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1, true)]);
                 return;
             }
 
