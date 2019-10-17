@@ -417,6 +417,7 @@ class Mario {
             this.isDuckJump = true;
 
           this.isJumpPast = true;
+          this.y -= 1;
           this.isJumping = true;
 
           this.jumpKeyReleased = false;
