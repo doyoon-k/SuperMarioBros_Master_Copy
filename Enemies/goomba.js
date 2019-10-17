@@ -137,6 +137,7 @@ class Goomba extends BaseEnemy
                     break;
                     
                 case DIRECTION.Left:
+                    break;
                 case DIRECTION.Right:
                     if (this.isInShell || this.isAwakening)
                     {

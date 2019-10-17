@@ -1295,6 +1295,7 @@ class Mario {
       }
       switch (direction) {
         case DIRECTION.Right:
+          if (!this.isJumping) {
           if (!this.isTransforming && !this.isDamaged)
             if (this.powerupState != this.marioState.mario) {
               this.PowerupTo(this.marioState.mario);
@@ -1302,8 +1303,12 @@ class Mario {
             } else {
               game.isGameOver = true;
             }
+          } else {
+            //nothin
+          }
           break;
         case DIRECTION.Left:
+          if (!this.isJumping) {
           if (!this.isTransforming && !this.isDamaged)
             if (this.powerupState != this.marioState.mario) {
               this.PowerupTo(this.marioState.mario);
@@ -1311,6 +1316,9 @@ class Mario {
             } else {
               game.isGameOver = true;
             }
+          } else {
+            //nothin
+          }
           break;
         case DIRECTION.Up:
           if (!collider.isInShell && !collider.isAwakening) {
