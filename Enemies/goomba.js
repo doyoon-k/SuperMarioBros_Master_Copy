@@ -95,7 +95,8 @@ class Goomba extends BaseEnemy
             this.animationFrameCount = 0;
             this.animator.next();
         }
-        else {
+        else
+        {
             this.animationFrameCount++;
         }
     }
