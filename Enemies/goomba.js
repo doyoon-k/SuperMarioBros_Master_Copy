@@ -108,7 +108,7 @@ class Goomba extends BaseEnemy
 
     Draw() 
     {
-        if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame && !game.mario.isTransforming)
+        if (g_interfaceFlow.flowState == g_interfaceFlow.screenState.inGame && !game.mario.isTransforming)
             this.Animate();
 
         DrawSprite(this.spriteToDraw, this.x, this.y, false, this.isInstaKilled);

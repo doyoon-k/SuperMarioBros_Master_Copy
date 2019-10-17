@@ -7,7 +7,7 @@
 
   JoonHo Hwang Arranged & Wrote all of the main properties and functions
   DoYoon Kim 
-  SeungGeon Kim Arranged the function calls afterwards to match the 'interfaceFlow scene' switch mechanism
+  SeungGeon Kim Arranged the function calls afterwards to match the 'g_interfaceFlow scene' switch mechanism
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -20,7 +20,6 @@ class Game {
         this.camera = new Camera();
         this.statistics = new Statistics();
         this.soundManager = new SoundManager();
-        this.interfaceFlow = new InterfaceFlow();
 
         this.backgroundObjects = [];
         this.gameObjects = [];
@@ -31,7 +30,6 @@ class Game {
         this.twinkleFrameRate = 10;
         this.twinkleIndex = 0;
 
-        this.lives = 3;
         this.isGameOver = true;
         this.isSinglePlayer = true;
 
@@ -97,23 +95,23 @@ class Game {
             //83 * BLOCK_SIZE에서 스폰
         }
 
-        this.interfaceFlow.Update();
+        g_interfaceFlow.Update();
 
-        switch (game.interfaceFlow.flowState) 
+        switch (g_interfaceFlow.flowState) 
         {
-            case game.interfaceFlow.screenState.blackScreen:
+            case g_interfaceFlow.screenState.blackScreen:
 
                 break;
-            case game.interfaceFlow.screenState.pause:
+            case g_interfaceFlow.screenState.pause:
                 this.mario.Update();
                 break;
-            case game.interfaceFlow.screenState.menu:
+            case g_interfaceFlow.screenState.menu:
                 this.camera.Update();
                 break; 
-            case game.interfaceFlow.screenState.preGame:
+            case g_interfaceFlow.screenState.preGame:
 
                 break;
-            case game.interfaceFlow.screenState.inGame:
+            case g_interfaceFlow.screenState.inGame:
 
 
                 this.mario.Update();
@@ -132,7 +130,7 @@ class Game {
                 this.statistics.Update();
                 }
             break; 
-            case game.interfaceFlow.screenState.endGame:
+            case g_interfaceFlow.screenState.endGame:
 
                 break;
         }
@@ -171,7 +169,7 @@ class Game {
 
     OneUp()
     {
-        this.lives++;
+        g_lives++;
         this.soundManager.Play("mario_1up");
     }
 
@@ -210,15 +208,15 @@ class Game {
             this.objectsToDraw[zWeight].forEach(object => object.Draw());
         }
 
-        if (4 > this.interfaceFlow.flowState > 0) 
+        if (4 > g_interfaceFlow.flowState > 0) 
         this.mario.Draw();
         
-        this.interfaceFlow.DrawInterface();
+        g_interfaceFlow.DrawInterface();
 
-        if (this.interfaceFlow.flowState > 1)
+        if (g_interfaceFlow.flowState > 1)
             this.TwinkleAnimate();
 
-        if (this.interfaceFlow.flowState > 0) 
+        if (g_interfaceFlow.flowState > 0) 
             this.statistics.DrawStatistics();
     }
 }

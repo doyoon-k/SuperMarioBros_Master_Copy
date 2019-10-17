@@ -326,7 +326,7 @@ class Mario {
 
     this.Debug();
 
-    if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause && !game.isGameOver)
+    if (g_interfaceFlow.flowState == g_interfaceFlow.screenState.pause && !game.isGameOver)
       return;
 
     if (!this.isTransforming && !game.isGameOver && !this.isClimbing && !this.isEndGame) {
@@ -347,17 +347,29 @@ class Mario {
 
     //Run once on gameover
     if (game.isGameOver && !this.isDead) {
-      game.lives--;
+      g_lives--;
       game.soundManager.Play("life_lost");
       this.spriteToDraw = this.mario_dead;
-      game.interfaceFlow.flowState = game.interfaceFlow.screenState.pause;
+      g_interfaceFlow.flowState = g_interfaceFlow.screenState.pause;
       setTimeout(() => this.Kill(), 500);
       this.isDead = true;
     }
 
+    if (this.y > 1200)
+      game.isGameOver = true;
+
     if (this.isFalling) {
       this.y += this.speedY;
       this.speedY += 0.5;
+      //Called once on y coord exceed
+      if (this.y > 1200) {
+        //Requires case division
+        g_interfaceFlow.isReset = true;
+          //To Make Safe
+          g_interfaceFlow.screenTick = false;
+          g_interfaceFlow.flowState = g_interfaceFlow.screenState.endGame;
+        
+      }
     }
 
   }
@@ -737,7 +749,7 @@ class Mario {
   //Manage the animations
   Animate(sprite1, sprite2, newFrameRate, sprite3, isTransform) {
 
-    if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause)
+    if (g_interfaceFlow.flowState == g_interfaceFlow.screenState.pause)
       return;
 
     this.animationFrameRate = newFrameRate;
@@ -1098,7 +1110,7 @@ class Mario {
       if (this.framesToRampage == 0) {
         this.isInvincible = false;
       }
-      
+
       this.framesToRampage--;
 
     }
@@ -1184,7 +1196,7 @@ class Mario {
 
           this.Animate(this.big_mario_jump, this.mario_swimming, this.transformFrameRate, this.big_mario_swimming, true);
 
-          if (game.interfaceFlow.flowState != game.interfaceFlow.screenState.pause) {
+          if (g_interfaceFlow.flowState != g_interfaceFlow.screenState.pause) {
             if (this.tickCount > 2) {
               this.tickFlash = !this.tickFlash;
               this.tickCount = 0;
@@ -1212,7 +1224,7 @@ class Mario {
           }
           this.tickCount++;
 
-          if (game.interfaceFlow.flowState != game.interfaceFlow.screenState.pause)
+          if (g_interfaceFlow.flowState != g_interfaceFlow.screenState.pause)
             this.RefreshSpritePool();
 
           DrawSprite(this.spriteToDraw, this.x, this.y, this.isLookingLeft, false, this.initialX);
@@ -1291,14 +1303,14 @@ class Mario {
     if (collider instanceof Powerup) {
       collider.Destroy();
       if (!this.isTransforming) {
-      if (collider.type == EPowerupType.Star) {
-        this.isInvincible = true;
-      } else 
-        if (this.powerupState == this.marioState.mario) {
-          this.PowerupTo(this.marioState.bigMario);
-        } else {
-          this.PowerupTo(this.marioState.fireMario);
-        }
+        if (collider.type == EPowerupType.Star) {
+          this.isInvincible = true;
+        } else
+          if (this.powerupState == this.marioState.mario) {
+            this.PowerupTo(this.marioState.bigMario);
+          } else {
+            this.PowerupTo(this.marioState.fireMario);
+          }
       }
 
     } else if (collider instanceof BaseEnemy) {
@@ -1306,25 +1318,23 @@ class Mario {
         collider.InstaKilled(collider.x >= this.x ? DIRECTION.Left : DIRECTION.Right);
         return;
       }
-      if (collider instanceof Goomba && collider.isStomped)
-      {
-          return;
+      if (collider instanceof Goomba && collider.isStomped) {
+        return;
       }
-      if (collider instanceof KoopaTroopa && (collider.isInShell || collider.isAwakening))
-      {
-          return;
+      if (collider instanceof KoopaTroopa && (collider.isInShell || collider.isAwakening)) {
+        return;
       }
       switch (direction) {
         case DIRECTION.Right:
         case DIRECTION.Left:
           if (!this.isJumping) {
-          if (!this.isTransforming && !this.isDamaged)
-            if (this.powerupState != this.marioState.mario) {
-              this.PowerupTo(this.marioState.mario);
-              this.isDamaged = true;
-            } else {
-              game.isGameOver = true;
-            }
+            if (!this.isTransforming && !this.isDamaged)
+              if (this.powerupState != this.marioState.mario) {
+                this.PowerupTo(this.marioState.mario);
+                this.isDamaged = true;
+              } else {
+                game.isGameOver = true;
+              }
           } else {
             //nothin
           }

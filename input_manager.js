@@ -54,12 +54,12 @@ function keyPressed() {
             break;
         case 85:  //U
             isSelect = true;
-            if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.menu)
+            if (g_interfaceFlow.flowState == g_interfaceFlow.screenState.menu)
                 game.isSinglePlayer = !game.isSinglePlayer;
             break;
         case 73:  //I
             isStart = true;
-            game.interfaceFlow.OnStartPressed();
+            g_interfaceFlow.OnStartPressed();
             break;
         case 74:  //J
             isDash = true;

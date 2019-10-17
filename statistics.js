@@ -114,7 +114,7 @@ class Statistics
         DrawText(this.isPlayerMario ? "MARIO" : "LUIGI", 24, 24, 8);
         DrawText(this.score.toString().padStart(6, '0'), 24, 32, 8);
 
-        if (game.interfaceFlow.flowState < 4) {
+        if (g_interfaceFlow.flowState < 4) {
             image(game.IsUnderground() ? this.undergroundCoinSprites[game.twinkleIndex] : this.coinSprites[game.twinkleIndex],
                   88 * pixelMultiplier, 25 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
         } else {
@@ -126,7 +126,7 @@ class Statistics
         DrawText(this.world + "-" + this.level, 152, 32, 8);
         
         DrawText("TIME", 200, 24, 8);
-        if (!isNaN(this.time) && (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame || game.interfaceFlow.flowState == game.interfaceFlow.screenState.pause))
+        if (!isNaN(this.time) && (g_interfaceFlow.flowState == g_interfaceFlow.screenState.inGame || g_interfaceFlow.flowState == g_interfaceFlow.screenState.pause))
         {
             DrawText(Math.floor(this.time / 24).toString().padStart(3, '0'), 208, 32, 8);
         }

@@ -53,7 +53,7 @@ class ParticleCoin extends Particle
            return;
        }
 
-       if (game.interfaceFlow.flowState == game.interfaceFlow.screenState.inGame)
+       if (g_interfaceFlow.flowState == g_interfaceFlow.screenState.inGame)
        {
            this.Animate();
            this.y += this.speedY;

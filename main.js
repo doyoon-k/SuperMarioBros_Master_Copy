@@ -22,6 +22,9 @@ let FPS = 60;
 let a;
 let temp_frame_count = 0;
 
+let g_lives = 3;
+let g_interfaceFlow;
+
 //Should be 2 By default, but feel free to change it
 let pixelMultiplier = 3.5;
 
@@ -157,6 +160,8 @@ function setup() {
   //Essential to stop image functions blurring the iamge all up
   noSmooth();
   imageMode(CORNER);
+
+  g_interfaceFlow = new InterfaceFlow();
 
   game = new Game();
   game.mapLoader = new MapLoader();

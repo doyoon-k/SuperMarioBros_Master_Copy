@@ -41,6 +41,8 @@ class InterfaceFlow {
         //isExit -> black -> blue, !isExit it is the opposite
         this.isExit = false;
 
+        this.isReset = false;
+
     }
 
     Update() {
@@ -60,6 +62,10 @@ class InterfaceFlow {
                             setTimeout(function () { setFlowState(4); }, 100);
                             this.screenTick = false;
                         } else {
+                            if (this.isReset) {
+                            Reset();
+                            this.isReset = false;
+                        }
                             setTimeout(function () { setFlowState(2); }, 100);
                             this.screenTick = false;
                         }
@@ -79,10 +85,12 @@ class InterfaceFlow {
                     this.isExit = true;
                 }
                 break;
-            case this.screenState.endGame:
+            case this.screenState.endGame: // 5
                 if (!this.screenTick) {
                     setTimeout(function () { setFlowState(0); }, 3000);
                     this.screenTick = true;
+                    this.isMenu = false;
+                    this.isExit = false;
                 }
                 break;
         }
@@ -95,7 +103,7 @@ class InterfaceFlow {
 
                 //Do some initialize-at-the-start-of-every-game thing, like lives
                 game.isGameOver = false;
-                game.lives = 3;
+                g_lives = 3;
 
                 this.flowState = this.screenState.wallPaper;
                 this.isExit = false;
@@ -143,11 +151,13 @@ class InterfaceFlow {
                 DrawText("WORLD 1-1", 88, 88, 8);
 
                 DrawSprite(this.mario, 100, 130);
-                DrawText("  *  " + game.lives, 100, 128, 8);
+                DrawText("  *  " + g_lives, 100, 128, 8);
 
                 break;
             case this.screenState.endGame:
-                DrawSprite(this.logo, 100, 200);
+                background(0);
+
+                DrawText("GAME OVER", 88, 88, 8);
                 break;
         }
 
