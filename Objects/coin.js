@@ -24,7 +24,7 @@ class Coin
         this.hitbox = hitboxes.powerup;
 
         this.sprites = [sprites.coin_1, sprites.coin_1, sprites.coin_2, sprites.coin_3];
-        this.undergroundSprites = [sprites.coin_underground_1, sprites.coin_underground_2, sprites.coin_underground_3];
+        this.undergroundSprites = [sprites.coin_underground_1, sprites.coin_underground_1, sprites.coin_underground_2, sprites.coin_underground_3];
     }
 
     Draw()
@@ -59,6 +59,6 @@ class Coin
 
     Update()
     {
-        
+
     }
 }
