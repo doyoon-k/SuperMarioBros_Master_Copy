@@ -208,5 +208,6 @@ class Goomba extends BaseEnemy
             //particle here
             collider.Destroy();
         }
+  
     }
 }
