@@ -31,6 +31,7 @@ class MapLoader
       game.mapLoader.CreateBlocks(game.mapLoader.mapData.blocks);
       game.mapLoader.CreateCharacters(game.mapLoader.mapData.characters);
       game.mapLoader.CreateEnvironments(game.mapLoader.mapData.environments);
+      game.mapLoader.CreateItems(game.mapLoader.mapData.items);
     }
 
     //determines the blocktype and create & add the block instance in gameObjects array and BucketMap.

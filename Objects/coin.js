@@ -56,4 +56,9 @@ class Coin
             }
         }
     }
+
+    Update()
+    {
+        
+    }
 }
