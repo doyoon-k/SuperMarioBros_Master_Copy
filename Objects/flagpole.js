@@ -101,7 +101,7 @@ class Flagpole
         
         game.statistics.AddScore(score);
 
-        let particleFlagScore = new ParticleFlagScore(this.x + BLOCK_SIZE / 2, this.y, this.y - BLOCK_SIZE, score);
+        let particleFlagScore = new ParticleFlagScore(this.x + BLOCK_SIZE / 2, this.y, this.y - BLOCK_SIZE * 8, score);
         game.gameObjects.push(particleFlagScore);
         game.Enroll(particleFlagScore);
     }

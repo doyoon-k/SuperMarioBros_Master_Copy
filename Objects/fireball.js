@@ -19,7 +19,7 @@ class Fireball
         this.x = x;
         this.y = y;
 
-        this.zWeight = 6;
+        this.zWeight = 4;
 
         this.isGoingLeft = isGoingLeft;
 

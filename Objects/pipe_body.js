@@ -20,7 +20,7 @@ class PipeBody
         this.y = y;
         this.isHorizontal = isHorizontal;
 
-        this.zWeight = 11;
+        this.zWeight = 8;
 
         this.spriteToDraw = sprites[(isHorizontal ? "pipe_body_hor" : "pipe_body_ver") + (game.isUnderground ? "_underground" : "")];
 
