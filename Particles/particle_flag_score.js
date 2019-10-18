@@ -1,18 +1,33 @@
 /*
+<<<<<<< HEAD
   physics.js
+=======
+  particle_flag_score.js
+>>>>>>> 5dde7e04a1dc8232ad78e4a8bb6983f45319f088
   Super Mario Bros.
 
   GAM100 
   Fall 2019
 
+<<<<<<< HEAD
   JoonHo Hwang did ---
   DoYoon Kim wrote this all
   SeungGeon Kim did ---
+=======
+  JoonHo Hwang 
+  DoYoon Kim Wrote all of this base on Joonho Hwang's class
+  SeungGeon Kim
+
+
+>>>>>>> 5dde7e04a1dc8232ad78e4a8bb6983f45319f088
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5dde7e04a1dc8232ad78e4a8bb6983f45319f088
 class ParticleFlagScore extends ParticleScore
 {
     constructor(x, initialY, finalY, score)

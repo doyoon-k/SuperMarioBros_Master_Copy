@@ -37,8 +37,6 @@ class Game {
         this.isUnderground = false;
 
         this.hasPassedCheckpoint = false;
-
-        this.TIMELastDigit = NaN;
     }
 
     Enroll(object) 
@@ -203,12 +201,7 @@ class Game {
 
     OnTimeToScoreEnd()
     {
-        if (this.TIMELastDigit == 1 || this.TIMELastDigit == 3 || this.TIMELastDigit == 6)
-        {
-            // 폭죽
-        } 
         setTimeout(() => Reset("Stages/stage1.json", 5), 3000);
-        // 다음 레벨 로드
     }
 
     Draw() 
