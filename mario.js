@@ -290,6 +290,7 @@ class Mario {
 
     this.isPipeDown = false;
     this.isPipeRight = false;
+    this.isPipeUp = false;
     this.isPipePlayed = false;
 
 
@@ -324,7 +325,8 @@ class Mario {
     text("powerupState : " + this.powerupState, 10, 220);
     text("isRubbingLeft : " + this.isRubbingLeft, 10, 360);
     text("isRubbingRight : " + this.isRubbingRight, 10, 380);
-    text("x: " + this.x, 10, 380);
+    text("x: " + this.x, 10, 400);
+    text("y: " + this.y, 10, 420);
   }
 
   // --- --- ---
@@ -332,13 +334,28 @@ class Mario {
   //Call the needed functions
   Update() {
 
-    if (isDPadDown)
-      //game.mario.isPipeDown = true; 
+    print (this.x + " " + this.y)
 
-    if (isDPadRight)
-      //game.mario.isPipeRight = true; 
+    if (isDPadDown && this.x < 920 && this.x > 900 && this.y == 144)
+      game.mario.isPipeDown = true; 
+
+    if (g_interfaceFlow.flowState == 6 && isDPadRight && this.x > 185 && this.y == 208)
+      game.mario.isPipeRight = true; 
 
     this.Debug();
+
+    if (this.isPipeUp) {
+      if (!this.isPipePlayed) {
+        this.isPipePlayed = true;
+        g_soundManager.Play("mario_power_down");
+      }
+      if (this.y > 175) { 
+      this.y -= 1;
+      } else {
+        this.isPipeUp = false;
+      }
+      return;
+    }
 
     if (this.isPipeDown) {
       if (!this.isPipePlayed) {
@@ -1150,7 +1167,7 @@ class Mario {
   //Call Animate() & Draw Mario
   Draw() {
 
-    if (this.isPipeDown) {
+    if (this.isPipeDown || this.isPipeRight || this.isPipeUp) {
       DrawSprite(this.stand_still, this.x, this.y, this.isLookingLeft, false, this.initialX);
       return;
     }

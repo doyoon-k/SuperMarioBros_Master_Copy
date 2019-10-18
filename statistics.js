@@ -135,7 +135,9 @@ class Statistics
         DrawText(this.world + "-" + this.level, 152, 32, 8);
         
         DrawText("TIME", 200, 24, 8);
-        if (!isNaN(this.time) && (g_interfaceFlow.flowState == g_interfaceFlow.screenState.inGame || g_interfaceFlow.flowState == g_interfaceFlow.screenState.pause))
+        if (!isNaN(this.time) && (g_interfaceFlow.flowState == g_interfaceFlow.screenState.inGame || 
+            g_interfaceFlow.flowState == g_interfaceFlow.screenState.pause || 
+            g_interfaceFlow.flowState == g_interfaceFlow.screenState.underWorld))
         {
             DrawText(Math.floor(this.time / 24).toString().padStart(3, '0'), 208, 32, 8);
         }
