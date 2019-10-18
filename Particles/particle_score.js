@@ -1,3 +1,19 @@
+/*
+  particle_score.js
+  Super Mario Bros.
+
+  GAM100 
+  Fall 2019
+
+  JoonHo Hwang 
+  DoYoon Kim Wrote all of this base on Joonho Hwang's class
+  SeungGeon Kim
+
+
+  
+  All content © 2019 DigiPen (USA) Corporation, all rights reserved.
+*/
+
 class ParticleScore extends Particle
 {
    constructor(x,y,score)

@@ -1,3 +1,17 @@
+/*
+  pipe_intersect.js
+  Super Mario Bros.
+
+  GAM100 
+  Fall 2019
+
+  JoonHo Hwang
+  DoYoon Kim Wrote all of this base on Joonho Hwang's class
+  SeungGeon Kim 
+  
+  All content © 2019 DigiPen (USA) Corporation, all rights reserved.
+*/
+
 class PipeIntersect
 {
     constructor(x, y)
