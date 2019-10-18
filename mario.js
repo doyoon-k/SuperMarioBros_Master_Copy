@@ -1358,7 +1358,7 @@ class Mario {
       if (collider instanceof Goomba && collider.isStomped) {
         return;
       }
-      if (collider instanceof KoopaTroopa && ((collider.isInShell || collider.isAwakening) || collider.framesAfterPush < 100)) {
+      if (collider instanceof KoopaTroopa && (collider.isInShell || collider.isAwakening)) {
         return;
       }
       switch (direction) {
