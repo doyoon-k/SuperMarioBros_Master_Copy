@@ -19,7 +19,7 @@ class BaseEnemy
         this.x = x;
         this.y = y;
 
-        this.zWeight = 5;
+        this.zWeight = 2;
 
         this.isGoingLeft = true;
 

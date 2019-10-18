@@ -21,7 +21,7 @@ class PipeHead
         this.isHorizontal = isHorizontal;
         this.containingMap = containingMap;
 
-        this.zWeight = 11;
+        this.zWeight = 8;
 
         this.spriteToDraw = sprites[(isHorizontal ? "pipe_head_hor" : "pipe_head_ver") + (game.isUnderground ? "_underground" : "")];
 
