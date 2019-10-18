@@ -49,7 +49,7 @@ class ParticleFirework extends Particle
 
     Update()
     {
-        if (this.count == 3)
+        if (this.count == 2)
         {
             this.Destroy();
             return;
