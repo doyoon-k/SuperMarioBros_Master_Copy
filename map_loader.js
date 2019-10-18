@@ -194,6 +194,11 @@ class MapLoader
                     newObject = new PipeBody(x, y, false);
                     break;
                 
+                case "Pipe Intersect":
+                    newObject = new PipeIntersect(x, y);
+                    game.gameObjects.push(newObject);
+                    continue;
+              
                 case "Flag":
                     newObject = new Flagpole(x, y, parent);
                     break;
