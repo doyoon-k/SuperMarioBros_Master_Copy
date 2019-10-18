@@ -65,7 +65,7 @@ class InactiveBlock
                     collider.isDuckJump = false;
                     
                     collider.isGravityAssigned = false;
-                    collider.y = this.y - this.hitbox.height + collider.hitbox.y;
+                    collider.y = this.y - this.hitbox.height - collider.hitbox.y;
 
                     if (game.mario.isClimbing)
                         game.mario.isBottomReach = true;

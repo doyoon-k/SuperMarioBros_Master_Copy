@@ -122,7 +122,7 @@ class ActiveBlock
                     collider.isDuckJump = false;
                     
                     collider.isGravityAssigned = false;
-                    collider.y = this.y - this.hitbox.height + collider.hitbox.y;
+                    collider.y = this.y - this.hitbox.height - collider.hitbox.y;
 
                     collider.stompCombo = 0;
                     break;
