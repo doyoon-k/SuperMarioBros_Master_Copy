@@ -26,7 +26,8 @@ class InterfaceFlow {
             menu: 2,
             inGame: 3,
             preGame: 4,
-            endGame: 5
+            endGame: 5,
+            underWorld: 6
         };
 
         this.isScreenBlack = false;

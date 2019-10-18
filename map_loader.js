@@ -217,7 +217,17 @@ class MapLoader
     {
        for(let item of items)
        {
-         
+         let x = item.position.x;
+         let y = item.position.y;
+         let itemType = item.itemType;
+         switch (itemType)
+         {
+           case "Coin":
+             let coin = new Coin(x, y);
+             game.gameObjects.push(coin);
+             game.physics.RegisterToBucketMap(coin);
+             break;
+         }
        }
     }
 }

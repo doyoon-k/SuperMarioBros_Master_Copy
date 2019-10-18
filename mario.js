@@ -324,6 +324,7 @@ class Mario {
     text("powerupState : " + this.powerupState, 10, 220);
     text("isRubbingLeft : " + this.isRubbingLeft, 10, 360);
     text("isRubbingRight : " + this.isRubbingRight, 10, 380);
+    text("x: " + this.x, 10, 380);
   }
 
   // --- --- ---
@@ -332,7 +333,7 @@ class Mario {
   Update() {
 
     if (isDPadDown)
-      //game.mario.isPipeDown = true; WIP
+      //game.mario.isPipeDown = true; 
 
     this.Debug();
 
@@ -340,7 +341,7 @@ class Mario {
       if (!this.isPipePlayed) {
         this.isPipePlayed = true;
         g_soundManager.Play("mario_power_down");
-        setTimeout(() => game.LoadNewMap(), GOOMBA_REMAINS_STOMPED_SECONDS * 1000);
+        setTimeout(() => Reset("Stages/underground1.json", 6), GOOMBA_REMAINS_STOMPED_SECONDS * 1000);
     }
       this.y += 1;
       return;

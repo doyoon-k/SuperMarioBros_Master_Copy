@@ -16,7 +16,7 @@
 
 //Translates & flips & draws sprites (16x16 system onto 32x32 system if pixelmultiplier is 2)
 function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertically = false, initialX = 100) {
-  
+
   //Keep working on this here
 
   // game.camera.x to left, initialX to right, REMEMBER THAT DEFAULT initalX is 1 0 0
@@ -94,23 +94,18 @@ function ReturnAbsoluteAcceleration(speed, acceleration) {
   return speed;
 }
 
-function CheckIsRectContainsThisPoint(x,y,LeftX,topY,RightX,bottomY)
-{
-  return ((LeftX<x)&&(x<RightX))?(((topY<y)&&(y<bottomY))?true:false):false;
+function CheckIsRectContainsThisPoint(x, y, LeftX, topY, RightX, bottomY) {
+  return ((LeftX < x) && (x < RightX)) ? (((topY < y) && (y < bottomY)) ? true : false) : false;
 }
 
-function clamp(value,min,max)
-{
-  if(value<min)
-  {
+function clamp(value, min, max) {
+  if (value < min) {
     return min;
   }
-  else if(value>max)
-  {
+  else if (value > max) {
     return max;
   }
-  else 
-  {
+  else {
     return value;
   }
 }
@@ -125,7 +120,9 @@ function setFlowState(state) {
   g_interfaceFlow.flowState = state;
 }
 
-function Reset() {
+function Reset(targetMap = "Stages/stage1.json", targetState) {
+  if (targetState)
+    InterfaceFlow.flowState = targetState;
   let tempStatistics = game.statistics;
   tempStatistics.time = LEVEL_SECONDS * 60;
   tempStatistics.doTickTime = true;
@@ -133,12 +130,17 @@ function Reset() {
   game.statistics = tempStatistics;
   game.mapLoader = new MapLoader();
   game.isGameOver = false;
-  game.LoadNewMap("Stages/stage1.json");
-  if (!g_isCheckedPoint) {
-    game.mario.x = 32; //32 is initial pos, and 83 * block size is mario pos on checkpoint
-    game.mario.startX = 32;
+  game.LoadNewMap(targetMap);
+  if (targetState != 6) {
+    if (!g_isCheckedPoint) {
+      game.mario.x = 32; //32 is initial pos, and 83 * block size is mario pos on checkpoint
+      game.mario.startX = 32;
+    } else {
+      game.mario.x = 83 * BLOCK_SIZE;
+      game.mario.startX = 83 * BLOCK_SIZE;
+    }
   } else {
-    game.mario.x = 83 * BLOCK_SIZE;
-    game.mario.startX = 83 * BLOCK_SIZE;
+    game.mario.x = 32;
+    game.mario.y = 32;
   }
 }
