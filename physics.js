@@ -369,6 +369,9 @@ class Physics
   {
     let object_hitbox_rect;
 
+    if (object.hitbox == undefined)
+      return;
+
     if (this.movingObjects.indexOf(object) != -1)
     {
       object_hitbox_rect = this.movingObjectsPrevCoordsMap.get(object);  

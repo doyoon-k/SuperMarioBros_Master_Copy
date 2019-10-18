@@ -89,7 +89,16 @@ class ActiveBlock
             switch (direction)
             {
                 case DIRECTION.Down:
+                
                     this.Hit();
+
+                    if (this.containingItem == EContainingItemType.Coin)
+                    {
+                        let particleCoin = new ParticleCoin(this.x, this.y - BLOCK_SIZE / 2);
+                        
+                        game.gameObjects.push(particleCoin);
+                        game.Enroll(particleCoin);
+                    }
 
                     if (this.isBouncing) {
 

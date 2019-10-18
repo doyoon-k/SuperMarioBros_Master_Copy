@@ -90,6 +90,12 @@ class Game {
         {
             this.gameObjects.splice(index, 1);
         }
+
+        index = this.particlesToUpdate.indexOf(object);
+        if (index != -1)
+        {
+            this.particlesToUpdate.splice(index, 1);
+        }
     }
 
     Update()

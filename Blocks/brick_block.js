@@ -66,10 +66,6 @@ class BrickBlock extends ActiveBlock
                 game.statistics.AddScore(SCORES.Coin);
                 g_soundManager.Play("coin");
 
-                let particleCoin = new ParticleCoin(this.x, this.y - BLOCK_SIZE);
-                game.gameObjects.push(particleCoin);
-                game.Enroll(particleCoin);
-                
                 this.spriteToDraw = sprites.block_empty;
                 this.BouncingEndCallBack = () => this.Emptied();
                 return;
@@ -83,11 +79,7 @@ class BrickBlock extends ActiveBlock
             game.statistics.IncrementCoin();
             game.statistics.AddScore(SCORES.Coin);
             g_soundManager.Play("coin");
-
-            let particleCoin = new ParticleCoin(this.x, this.y - BLOCK_SIZE);
-            game.gameObjects.push(particleCoin);
-            game.Enroll(particleCoin);
-
+            
             this.BouncingEndCallBack = () => this.spriteToDraw = game.IsUnderground() ? sprites.block_brick_underground : sprites.block_brick;
             return;
         }
