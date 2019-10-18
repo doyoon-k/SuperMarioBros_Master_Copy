@@ -64,8 +64,6 @@ class PipeHead
                     break;
                     
                 case DIRECTION.Left:
-                    if (this.containingMap)
-                    collider.isPipeRight = true;
                     collider.speedX = 0;
                     collider.x = (this.x) - ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - BLOCK_SIZE;
                     collider.isRubbingRight = true;

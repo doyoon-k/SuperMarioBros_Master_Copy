@@ -136,7 +136,7 @@ class Game {
                 
                 this.physics.UpdateBucketMap();
                     
-                if (!game.mario.isPipeDown)
+                    if (!game.mario.isPipeDown && !game.mario.isPipeRight && !game.mario.isPipeUp)
                 this.physics.CheckCollision();
 
                 this.statistics.Update();

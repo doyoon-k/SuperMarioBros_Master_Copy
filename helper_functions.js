@@ -133,8 +133,10 @@ function Reset(targetMap = "Stages/stage1.json", targetState) {
   game.LoadNewMap(targetMap);
   if (targetState != 6) {
     if (targetState == g_interfaceFlow.screenState.inGame) {
-      game.mario.x = 100; //32 is initial pos, and 83 * block size is mario pos on checkpoint
+      game.mario.x = 2608; //32 is initial pos, and 83 * block size is mario pos on checkpoint
+      game.mario.y = 208;
       g_soundManager.Play("overworld")
+      game.mario.isPipeUp = true;
     } else {
     if (!g_isCheckedPoint) {
       game.mario.x = 32; //32 is initial pos, and 83 * block size is mario pos on checkpoint
