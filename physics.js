@@ -79,7 +79,7 @@ class Physics
         
         let willCollide = collidableObjHitbox.IsColliding(objHitbox_rect, speedX, speedY, collidableObj)||objHitbox.IsColliding(collidableObjHitbox_rect,0,0,obj);
 
-        if (is_CollidedWithBlock && collidableObj instanceof ActiveBlock)
+        if (is_CollidedWithBlock && collidableObj instanceof ActiveBlock && obj instanceof Mario)
           continue;
         //temporary
 
