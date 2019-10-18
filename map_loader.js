@@ -173,7 +173,7 @@ class MapLoader
             let x = environment.position.x;
             let y = environment.position.y;
             let isParent = environment.isParent;
-            let containingMap = environment.containingMap | null;
+            let containingMap = environment.containingMap;
             let environmentType = environment.environmentType;
 
             let newObject;

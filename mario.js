@@ -334,8 +334,6 @@ class Mario {
   //Call the needed functions
   Update() {
 
-    print (this.x + " " + this.y)
-
     if (isDPadDown && this.x < 920 && this.x > 900 && this.y == 144)
       game.mario.isPipeDown = true; 
 
