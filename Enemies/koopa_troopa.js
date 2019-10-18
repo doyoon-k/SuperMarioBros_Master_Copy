@@ -74,8 +74,6 @@ class KoopaTroopa extends BaseEnemy
         this.isInShell = true;
         this.awakeningTimer = setTimeout(() => this.Awakening(), KOOPA_TROOPA_AWAKENING_SECONDS * 1000);
 
-        //Wheres him dying
-
         this.spriteToDraw = sprites.turtle_shell;
 
         game.statistics.AddScore(SCORES.Stomp[map(game.mario.stompCombo++, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1)]);
