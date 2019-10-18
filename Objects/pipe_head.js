@@ -23,7 +23,7 @@ class PipeHead
 
         this.zWeight = 0;
 
-        this.spriteToDraw = isHorizontal ? sprites.pipe_head_hor : sprites.pipe_head_ver;
+        this.spriteToDraw = (isHorizontal ? sprites.pipe_head_hor : sprites.pipe_head_ver) + (game.isUnderground ? "_underground" : "");
 
         this.hitbox = isHorizontal ? hitboxes.pipe_horizontal : hitboxes.pipe_vertical;
     }

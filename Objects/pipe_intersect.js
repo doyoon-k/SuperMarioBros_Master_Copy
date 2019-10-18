@@ -7,7 +7,7 @@ class PipeIntersect
 
         this.zWeight = 0;
 
-        this.spriteToDraw = sprites.pipe_intersect_underground;
+        this.spriteToDraw = sprites.pipe_intersect + (game.isUnderground ? "_underground" : "");
     }
 
     Update() { }
@@ -19,22 +19,6 @@ class PipeIntersect
 
     Destroy()
     {
-        let index = game.objectsToUpdate.indexOf(this);
-        if (index != -1)
-        {
-            game.objectsToUpdate.splice(index, 1);
-        }
-
-        index = game.objectsToDraw[this.zWeight].indexOf(this);
-        if (index != -1)
-        {
-            game.objectsToDraw[this.zWeight].splice(index, 1);
-        }
-
-        index = this.gameObjects.indexOf(this);
-        if (index != -1)
-        {
-            game.gameObjects.splice(index, 1);
-        }
+        game.Expel(this);
     }
 }

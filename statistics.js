@@ -122,7 +122,7 @@ class Statistics
         DrawText(this.score.toString().padStart(6, '0'), 24, 32, 8);
 
         if (g_interfaceFlow.flowState < 4) {
-            image(game.IsUnderground() ? this.undergroundCoinSprites[game.twinkleIndex] : this.coinSprites[game.twinkleIndex],
+            image(game.isUnderground ? this.undergroundCoinSprites[game.twinkleIndex] : this.coinSprites[game.twinkleIndex],
                   88 * pixelMultiplier, 25 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
         } else {
             image(this.sprites.coin_underground_1, 88 * pixelMultiplier, 25 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);

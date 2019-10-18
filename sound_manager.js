@@ -125,7 +125,7 @@ class SoundManager
                 this.starTimeout = setTimeout(() => {
                     if (!this.sounds.hurry_up.isPlaying())
                     {
-                        this.Play(game.IsUnderground() ? "underground" : "overworld");
+                        this.Play(game.isUnderground ? "underground" : "overworld");
                     }
                     this.starTimeout = undefined;
                 }, STAR_BGM_LASTS_SECONDS * 1000);
