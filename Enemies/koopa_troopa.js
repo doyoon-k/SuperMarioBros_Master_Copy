@@ -24,6 +24,8 @@ class KoopaTroopa extends BaseEnemy
         this._isAwakening = false;
         this.isSliding = false;
 
+        this.framesAfterPush = 0;
+
         this.slidingSpeed = HexFloatToDec("3.500");  // should be tested
 
         this.awakeningTimer = undefined;
@@ -50,6 +52,10 @@ class KoopaTroopa extends BaseEnemy
 
     Move()
     {
+
+        if (this.framesAfterPush < 100 && this.isSliding)
+            this.framesAfterPush++;
+
         if (this.isInShell || this.isAwakening)
         {
             return;
@@ -67,6 +73,8 @@ class KoopaTroopa extends BaseEnemy
         }
         this.isInShell = true;
         this.awakeningTimer = setTimeout(() => this.Awakening(), KOOPA_TROOPA_AWAKENING_SECONDS * 1000);
+
+        //Wheres him dying
 
         this.spriteToDraw = sprites.turtle_shell;
 
@@ -229,14 +237,14 @@ class KoopaTroopa extends BaseEnemy
                     
                 case DIRECTION.Left:
                 case DIRECTION.Right:
-                    if ((this.isInShell || this.isAwakening) && !collider.isDamaged)
-                    {
-                        this.ShellPushed(direction);
-                        game.statistics.AddScore(SCORES.PushShell);
-                    } else if (collider.isJumping) {
+                if (collider.isJumping && !collider.isDamaged &&
+                        !this.isInShell) {
                         collider.y = this.y - this.hitbox.height - collider.hitbox.y;
                         collider.speedY = -HexClampTo("4", collider.speedY);
                         this.Stomped();
+                    } else {
+                      this.ShellPushed(direction);
+                      game.statistics.AddScore(SCORES.StompShell);
                     }
                     break;
             }

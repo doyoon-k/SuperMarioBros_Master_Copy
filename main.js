@@ -25,6 +25,7 @@ let a;
 let temp_frame_count = 0;
 
 let g_marioSprite = 0;
+let g_isCheckedPoint = false;
 
 let g_lives = 3;
 let g_interfaceFlow = 0;

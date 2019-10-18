@@ -133,4 +133,9 @@ function Reset() {
   game.mapLoader = new MapLoader();
   game.isGameOver = false;
   game.LoadNewMap("Stages/stage1.json");
+  if (!g_isCheckedPoint) {
+    game.mario.x = 32; //32 is initial pos, and 83 * block size is mario pos on checkpoint
+  } else {
+    game.mario.x = 83 * BLOCK_SIZE;
+  }
 }

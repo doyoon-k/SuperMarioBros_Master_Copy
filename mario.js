@@ -29,9 +29,8 @@ class Mario {
 
     this.zWeight = 10;
 
-
-
     this.x = 32; //32 is initial pos, and 83 * block size is mario pos on checkpoint
+
     this.y = 208;
 
     this.initialX = 116;
@@ -287,7 +286,7 @@ class Mario {
     this.isBottomReach = false;
 
     this.isFellToDeath = false;
-
+    
 
 
     this.stompCombo = 0;
@@ -328,6 +327,9 @@ class Mario {
   Update() {
 
     this.Debug();
+
+    if (this.x > 83 * BLOCK_SIZE && !g_isCheckedPoint)
+      g_isCheckedPoint = true;
 
     if (g_interfaceFlow.flowState == g_interfaceFlow.screenState.pause && !game.isGameOver)
       return;
@@ -379,6 +381,7 @@ class Mario {
           game.camera = new Camera;
           g_interfaceFlow.screenTick = false;
           g_interfaceFlow.flowState = g_interfaceFlow.screenState.endGame;
+          g_isCheckedPoint = false;
           g_isNewGame = true;
         }
 
@@ -1355,7 +1358,7 @@ class Mario {
       if (collider instanceof Goomba && collider.isStomped) {
         return;
       }
-      if (collider instanceof KoopaTroopa && (collider.isInShell || collider.isAwakening)) {
+      if (collider instanceof KoopaTroopa && ((collider.isInShell || collider.isAwakening) || collider.framesAfterPush < 100)) {
         return;
       }
       switch (direction) {
