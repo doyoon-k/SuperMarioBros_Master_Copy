@@ -44,13 +44,9 @@ class Physics
 
   CheckCollision()
   {
-    // let tempMovingObjectsContainer = [];
     for (let obj of this.movingObjects)
     {
       let objHitbox = obj.hitbox;
-      //temporary
-      // if(obj instanceof Mario)
-      // objHitbox.DebugDraw(obj);
 
       let objHitbox_rect = objHitbox.GetRect(obj);
       let speedX = obj.speedX;
@@ -69,9 +65,6 @@ class Physics
       for (let collidableObj of buckets)
       {
         let collidableObjHitbox = collidableObj.hitbox;
-        // //temporary
-        // if(collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead)
-        //   collidableObjHitbox.DebugDraw(collidableObj);
 
         let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
         let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y + 1, collidableObj);
@@ -81,12 +74,9 @@ class Physics
 
         if (is_CollidedWithBlock && collidableObj instanceof ActiveBlock && obj instanceof Mario)
           continue;
-        //temporary
 
         if (willCollide)
         {
-          // if (obj instanceof Mario && collidableObj instanceof InactiveBlock)
-          //   print("!");
           if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
             is_CollidedWithBlock = true;
           
@@ -95,21 +85,14 @@ class Physics
             if (objHitbox_rect.bottom_Y-0.5 <= collidableObjHitbox_rect.top_Y) //1) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
               if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
               {
                 is_OnSurface = true;
               }
-              // print("!");
-              // if(obj instanceof Mario)
-              // print("l-t-up");
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //1) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Right);
-              // if(obj instanceof Mario)
-              // print("l-t-l");
             }
           }
           else if (speedX < 0 && speedY > 0)
@@ -117,21 +100,14 @@ class Physics
             if (objHitbox_rect.bottom_Y-0.5 <= collidableObjHitbox_rect.top_Y) //2) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
               if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
               {
                 is_OnSurface = true;
               }
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
-              // if(obj instanceof Mario)
-              // print("r-t-u");
             }
             else if (is_bottom_Y_overlapping || is_top_Y_overlapping) //2) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Left);
-              // if(obj instanceof Mario)
-              // print("r-t-r");
             }
           }
           else if (speedX > 0 && speedY < 0)
@@ -139,16 +115,10 @@ class Physics
             if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Up);
-              // if(obj instanceof Mario && collidableObj instanceof ActiveBlock)
-              // print("l-b-d");
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)//3) b)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Right);
-              // if(obj instanceof Mario && collidableObj instanceof ActiveBlock)
-              // print("l-b-l");
             }
           }
           else if (speedX < 0 && speedY < 0)
@@ -156,30 +126,19 @@ class Physics
             if (objHitbox_rect.top_Y > collidableObjHitbox_rect.bottom_Y)//3) a) 
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-              // print(collidableObjHitbox_rect.right_X+","+objHitbox_rect.left_X);
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Up);
-              // if(obj instanceof Mario)
-              // print("r-b-d");
             }
             else if (is_top_Y_overlapping || is_bottom_Y_overlapping)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Left);
-              // if(obj instanceof Mario)
-              // print("r-b-r");
             }
           }
           else if (speedX == 0 && speedY < 0)
           {
-            // print("!");
             collidableObj.OnCollisionWith(obj, DIRECTION.Down);
-            // obj.OnCollisionWith(collidableObj, DIRECTION.Up);
           }
           else if (speedX == 0 && speedY > 0)
           {
-            // print("!");
             collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-            // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
             if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
             { 
               is_OnSurface = true;
@@ -189,9 +148,7 @@ class Physics
           {
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.bottom_Y)
             {
-              // print("?");
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
               if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
               {
                 is_OnSurface = true;
@@ -200,9 +157,6 @@ class Physics
             else
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Left);
-              // obj.OnCollisionWith(collidiableObj, DIRECTION.Right);
-              // if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-              //   is_OnBlockSurface = true;
             }
           }
           else if (speedX < 0 && speedY == 0)
@@ -210,18 +164,13 @@ class Physics
             if (objHitbox_rect.bottom_Y < collidableObjHitbox_rect.bottom_Y)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
               if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody)
               is_OnSurface = true;
             }
             else
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Right);
-              // obj.OnCollisionWith(collidableObj, DIRECTION.Left);
-              // if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
-              //   is_OnBlockSurface = tradkue;
             }
-            // print("surface_r");
           }
           else // speedX == 0 && speedY == 0 
           {
@@ -233,21 +182,10 @@ class Physics
                 collidableObj.OnCollisionWith(obj, DIRECTION.Up);
               }
             }
-            // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
           }
-  
-          // if (this.movingObjects.indexOf(collidableObj) != -1)
-          // {
-          //   this.movingObjects.splice(this.movingObjects.indexOf(obj),1);
-          //   tempMovingObjectsContainer.push(obj);
-
-          //   this.movingObjects.splice(this.movingObjects.indexOf(collidableObj),1);
-          //   tempMovingObjectsContainer.push(collidableObj);
-          // }
         }
         if(obj instanceof Mario && (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody))
         {
-          // print("Rub!R");
           let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y-1,collidableObj);
           let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y-1,collidableObj);
           if(is_bottom_Y_overlapping||is_top_Y_overlapping)
@@ -255,8 +193,6 @@ class Physics
         }
         if(obj instanceof Mario && (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody))
         {
-          // print("Rub!L");
-          // print("leftRubbed!");
           let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y-1,collidableObj);
           let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y-1,collidableObj);
           if(is_bottom_Y_overlapping||is_top_Y_overlapping)
@@ -268,7 +204,6 @@ class Physics
           if(isMarioRubbingLeft)
           {
             obj.isRubbingLeft = true;
-            // print("rub L");
           }
           if(isMarioRubbingRight)
           {
@@ -279,8 +214,6 @@ class Physics
       if (obj instanceof Mario && !is_OnSurface)
       {
         obj.isJumping = true;
-        // print("B : "+collidableObj.x+","+collidableObj.y);
-        // print("M : "+objHitbox_rect.left_X+","+objHitbox_rect.bottom_Y);
       }
       else if ((obj instanceof Goomba || obj instanceof Powerup) && !is_OnSurface)
       {
@@ -291,22 +224,14 @@ class Physics
       {
         if(!isMarioRubbingRight)
         {
-          // print("!rubL");
           obj.isRubbingRight = false;
         }
         if(!isMarioRubbingLeft)
         {
-          // print("!rubR");
           obj.isRubbingLeft = false;
         }
       }
     }
-    // for (let obj of tempMovingObjectsContainer)
-    // {
-    //   this.movingObjects.push(obj);  
-    // }
-
-    // tempMovingObjectsContainer = null;
   }
   
 
@@ -324,10 +249,6 @@ class Physics
   RegisterToBucketMap(object)
   {
     let object_hitbox_rect = object.hitbox.GetRect(object);
-    // if (object instanceof Mario)
-    // {
-    //   text("l_x : "+object_hitbox_rect.left_X+ "r_x : "+object_hitbox_rect.right_X,width/2,height/2);  
-    // }
 
     let i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
     let j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);
@@ -385,8 +306,6 @@ class Physics
     {
         return;
     }
-    // if(object.prevX == undefined || object.prevY == undefined)
-    // return;
 
     let i = floor(object_hitbox_rect.left_X / bucketMap_one_cell_width);
     let j = floor(object_hitbox_rect.top_Y / bucketMap_one_cell_height);

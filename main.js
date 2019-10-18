@@ -20,10 +20,6 @@ let sprites;
 
 let g_soundManager = 0;
 
-let FPS = 60;
-let a;
-let temp_frame_count = 0;
-
 let g_marioSprite = 0;
 let g_isCheckedPoint = false;
 
@@ -188,11 +184,4 @@ function Draw() {
   }
   game.Update();
   game.Draw();
-  text(++temp_frame_count, width / 2, height / 2 - 50);
-}
-
-function mouseClicked() {
-//   FPS = FPS == 60 ? 1 : 60;
-//   clearInterval(a);
-//   a = setInterval(Draw, 1 / FPS * 1000);
 }

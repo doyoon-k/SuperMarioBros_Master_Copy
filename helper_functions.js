@@ -29,9 +29,6 @@ function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertic
 
   push();
 
-  //base position
-  ellipse(x * pixelMultiplier, y * pixelMultiplier, 25);
-
   if (isFlippedVertically) {
     baseHeight = sprite.height;
     yMultiplier = -1;
@@ -45,9 +42,6 @@ function DrawSprite(sprite, x, y, isFlippedHorizontally = false, isFlippedVertic
   }
 
   translate((x - xMultiplier * sprite.width / 2) * pixelMultiplier, (y - yMultiplier * sprite.height) * pixelMultiplier);
-
-  //Drawing position
-  ellipse(0, 0, 5);
 
   scale(xMultiplier, yMultiplier);
 

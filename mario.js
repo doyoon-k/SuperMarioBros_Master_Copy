@@ -304,32 +304,6 @@ class Mario {
 
   // --- --- ---
 
-  Debug() {
-    text("frameRate : " + this.animationFrameRate, 10, 80);
-    text("frameCount : " + this.frameCount, 10, 20);
-    text("framesToKeepRunning : " + this.framesToKeepRunning, 10, 40);
-    text("speedX : " + this.speedX, 10, 60);
-    text("speedY : " + this.speedY, 10, 140);
-    text("currentGravity : " + this.currentGravity, 10, 100);
-    text("isJumping : " + this.isJumping, 10, 120);
-    text("isMoonwalkingLeft : " + this.isMoonwalkingLeft, 10, 340);
-    text("isJumpingLeft : " + this.isJumpingLeft, 10, 280);
-    text("isLookingLeft : " + this.isLookingLeft, 10, 300);
-    text("isDucking : " + this.isDucking, 10, 320);
-    text("isJumpPast : " + this.isJumping, 10, 160);
-    text("isDashJump : " + this.isDashJump, 10, 240);
-    text("potentialHold : " + this.potentialHoldGravity, 10, 180);
-    text("isTransforming : " + this.isTransforming, 10, 200);
-    text("tickIndex : " + this.tickIndex, 10, 260);
-    text("powerupState : " + this.powerupState, 10, 220);
-    text("isRubbingLeft : " + this.isRubbingLeft, 10, 360);
-    text("isRubbingRight : " + this.isRubbingRight, 10, 380);
-    text("x: " + this.x, 10, 400);
-    text("y: " + this.y, 10, 420);
-  }
-
-  // --- --- ---
-
   //Call the needed functions
   Update() {
 
@@ -338,8 +312,6 @@ class Mario {
 
     if (g_interfaceFlow.flowState == 6 && isDPadRight && this.x > 185 && this.y == 208)
       game.mario.isPipeRight = true; 
-
-    this.Debug();
 
     if (this.isPipeUp) {
       if (!this.isPipePlayed) {
