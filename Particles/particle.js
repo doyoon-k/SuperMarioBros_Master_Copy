@@ -2,9 +2,8 @@ class Particle
 {
     constructor(x,y)
     {
-       this.x = x;
-       this.y = y;
-
+        this.x = x;
+        this.y = y;
        this.zWeight = 9;
 
        this.spriteToDraw = null;
