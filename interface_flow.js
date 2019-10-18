@@ -139,8 +139,14 @@ class InterfaceFlow {
                 DrawText("©", 105, 128, 8, color(254, 204, 197));
                 DrawText("1985 NINTENDO", 112, 128, 8, color(254, 204, 197));
 
-                DrawText("1 PLAYER GAME", 88, 160, 8);
-                DrawText("2 PLAYER GAME", 88, 175, 8);
+                DrawText("1 PLAYER GAME", 88, 150, 8);
+                DrawText("2 PLAYER GAME", 88, 165, 8);
+
+                let tempString = "000000";
+                if (game.statistics.highScore != 0)
+                    //tempString = 
+
+                DrawText("TOP- " + game.statistics.highScore, 98, 190, 8);
 
                 if (game.isSinglePlayer) {
                     DrawSprite(this.indicator, 76, 161);
