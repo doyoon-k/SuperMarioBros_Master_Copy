@@ -752,7 +752,8 @@
             "position": {
                 "x": 216,
                 "y": 208
-            }
+            },
+            "containingMap": "stage1.json"
         },
         {
             "environmentType": "Pipe Intersect",

@@ -5604,7 +5604,8 @@
             "position": {
                 "x": 928,
                 "y": 160
-            }
+            },
+            "containingMap": "underground1.json"
         },
         {
             "environmentType": "Pipe Body Horizontal",
