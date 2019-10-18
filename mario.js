@@ -6,7 +6,7 @@
   Fall 2019
 
   JoonHo Hwang found lots and lots of bugs in Mario's movement QA-ing constantly, and Wrote the stompCombo related codes.
-  DoYoon Kim fixed found bugs related to collisions and suggested changes.
+  DoYoon Kim did ---
   SeungGeon Kim Wrote about 99% of this entire script.
 
 

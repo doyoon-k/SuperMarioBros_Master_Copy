@@ -58,7 +58,6 @@ class Physics
       buckets = new Set(buckets);
 
       let is_CollidedWithBlock = false;
-      let is_CollidedWithFlag = false;
       let is_OnSurface = false;
       let isMarioRubbingRight = false;
       let isMarioRubbingLeft = false;
@@ -75,20 +74,11 @@ class Physics
 
         if (is_CollidedWithBlock && collidableObj instanceof ActiveBlock && obj instanceof Mario)
           continue;
-<<<<<<< HEAD
-        if (is_CollidedWithFlag && obj instanceof Mario && collidableObj instanceof Flagpole)
-          continue;
-        //temporary
-=======
->>>>>>> 5dde7e04a1dc8232ad78e4a8bb6983f45319f088
 
         if (willCollide)
         {
           if (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock)
             is_CollidedWithBlock = true;
-          
-          if (collidableObj instanceof Flagpole)
-            is_CollidedWithFlag = true;
           
           if (speedX > 0 && speedY > 0) //1)
           {
