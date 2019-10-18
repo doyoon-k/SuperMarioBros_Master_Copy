@@ -167,10 +167,12 @@ class MapLoader
 
     CreateEnvironments(environments)
     {
+      let parent = null;
         for (let environment of environments)
         {
             let x = environment.position.x;
             let y = environment.position.y;
+            let isParent = environment.isParent;
             let environmentType = environment.environmentType;
 
             let newObject;
@@ -193,11 +195,16 @@ class MapLoader
                     break;
                 
                 case "Flag":
-                    newObject = new Flagpole(x, y);
+                    newObject = new Flagpole(x, y, parent);
                     break;
             }
             game.gameObjects.push(newObject);
             game.physics.RegisterToBucketMap(newObject);
+
+            if (isParent)
+            {
+              parent = newObject;
+            }
         }
     }
 

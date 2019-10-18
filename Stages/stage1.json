@@ -5660,6 +5660,63 @@
             "position": {
                 "x": 3176,
                 "y": 192
+            },
+            "isParent": true
+        },
+        {
+            "environmentType": "Flag",
+            "position": {
+                "x": 3176,
+                "y": 176
+            }
+        },
+        {
+            "environmentType": "Flag",
+            "position": {
+                "x": 3176,
+                "y": 160
+            }
+        },
+        {
+            "environmentType": "Flag",
+            "position": {
+                "x": 3176,
+                "y": 144
+            }
+        },
+        {
+            "environmentType": "Flag",
+            "position": {
+                "x": 3176,
+                "y": 128
+            }
+        },
+        {
+            "environmentType": "Flag",
+            "position": {
+                "x": 3176,
+                "y": 112
+            }
+        },
+        {
+            "environmentType": "Flag",
+            "position": {
+                "x": 3176,
+                "y": 96
+            }
+        },
+        {
+            "environmentType": "Flag",
+            "position": {
+                "x": 3176,
+                "y": 80
+            }
+        },
+        {
+            "environmentType": "Flag",
+            "position": {
+                "x": 3176,
+                "y": 64
             }
         }
     ],
