@@ -208,6 +208,17 @@ class Powerup
         if (collider instanceof Mario)
         {
             this.Destroy();
+
+            game.statistics.AddScore(SCORES.PowerUp);
+                
+            let particleScore = new ParticleScore(this.x, this.y - BLOCK_SIZE, SCORES.PowerUp);
+            game.gameObjects.push(particleScore);
+            game.Enroll(particleScore);
+
+            if (this.type == EPowerupType.Star)
+            {
+                g_soundManager.Play("star");
+            }
             if (!collider.isTransforming) {
                 switch (this.type) {
                     case EPowerupType.Star:
@@ -242,16 +253,6 @@ class Powerup
         }
         this.isDestroyed = true;
 
-        game.statistics.AddScore(SCORES.PowerUp);
-                
-        let particleScore = new ParticleScore(this.x, this.y - BLOCK_SIZE, SCORES.PowerUp);
-        game.gameObjects.push(particleScore);
-        game.Enroll(particleScore);
-
-        if (this.type == EPowerupType.Star)
-        {
-            g_soundManager.Play("star");
-        }
         game.Expel(this);
     }
 }

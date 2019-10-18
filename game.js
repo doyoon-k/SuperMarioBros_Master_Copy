@@ -33,7 +33,7 @@ class Game {
         this.isGameOver = true;
         this.isSinglePlayer = true;
 
-        this.underworldMapList = ["underground1.json"];
+        this.underworldMapList = ["Stages/underground1.json"];
         this.isUnderground = false;
 
         this.hasPassedCheckpoint = false;
@@ -136,7 +136,7 @@ class Game {
                 
                 this.physics.UpdateBucketMap();
                     
-                if (!game.mario.isPipeDown)
+                    if (!game.mario.isPipeDown && !game.mario.isPipeRight && !game.mario.isPipeUp)
                 this.physics.CheckCollision();
 
                 this.statistics.Update();
