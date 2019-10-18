@@ -173,7 +173,7 @@ function setup() {
   game.LoadNewMap("Stages/stage1.json");
 
   // frameRate() is not working well
-  a = setInterval(Draw, 1 / FPS * 1000);
+  a = setInterval(Draw, 1 / 60 * 1000);
 }
 
 function Draw() {
