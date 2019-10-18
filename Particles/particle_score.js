@@ -6,20 +6,8 @@ class ParticleScore extends Particle
 
        this.offsetX = x-game.camera.x+100;
        this.score = score;
-       this.speedY = -HexFloatToDec("1.800");
+       this.speedY = -HexFloatToDec("0.800");
        this.lifeSpan = 75;
-       this.animationFrameCount = 0;
-       this.animationFrameRate = 3;
-   }
-
-   Animate()
-   {
-       if(this.animationFrameRate<this.animationFrameCount)
-       {
-          this.animationFrameCount = 0;
-          this.y += this.speedY;
-       }
-       this.animationFrameCount++;
    }
 
    Draw()
@@ -67,7 +55,7 @@ class ParticleScore extends Particle
 
         if (g_interfaceFlow.flowState == g_interfaceFlow.screenState.inGame)
        {
-           this.Animate();
+        this.y += this.speedY;
            this.lifeSpan--;
        }
     }
