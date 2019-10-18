@@ -47,7 +47,7 @@ class QuestionBlock extends ActiveBlock
             game.statistics.IncrementCoin();
             game.statistics.AddScore(SCORES.Coin);
             g_soundManager.Play("coin");
-            
+
             let particleCoin = new ParticleCoin(this.x, this.y - BLOCK_SIZE);
             game.gameObjects.push(particleCoin);
             game.Enroll(particleCoin);

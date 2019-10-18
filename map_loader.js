@@ -173,17 +173,18 @@ class MapLoader
             let x = environment.position.x;
             let y = environment.position.y;
             let isParent = environment.isParent;
+            let containingMap = environment.containingMap | null;
             let environmentType = environment.environmentType;
 
             let newObject;
             switch (environmentType)
             {
                 case "Pipe Head Horizontal":
-                    newObject = new PipeHead(x, y, true);
+                    newObject = new PipeHead(x, y, true, containingMap);
                     break;
 
                 case "Pipe Head Vertical":
-                    newObject = new PipeHead(x, y, false);
+                    newObject = new PipeHead(x, y, false, containingMap);
                     break;
                 
                 case "Pipe Body Horizontal":
