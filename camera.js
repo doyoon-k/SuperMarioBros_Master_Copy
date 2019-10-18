@@ -22,21 +22,13 @@ class Camera {
 
     Update() {
 
-        if (!g_isCheckedPoint) {
-        if (this.x < 200 && g_interfaceFlow.flowState == g_interfaceFlow.screenState.inGame) {
-            this.d = this.x - 200;
-        }
-    } else {
-        this.d = 0;
-    }
-
-        if (game.mario.x > this.x + this.d)
-            this.x = game.mario.x - this.d;
+        if (game.mario.x + this.d > this.x)
+            this.x = game.mario.x + this.d;
 
         game.gameObjects.sort((a, b) => (a.x > b.x) ? 1 : -1);
 
         for (let object of game.gameObjects) {
-            
+
             if (object.x < this.x + this.activationRange + 56) {
                 game.Enroll(object);
             } else {
@@ -55,7 +47,7 @@ class Camera {
                 object.Destroy();
             } else if (object.x < this.x - this.activationRange) {
                 object.Destroy();
-            } 
+            }
 
         }
 
