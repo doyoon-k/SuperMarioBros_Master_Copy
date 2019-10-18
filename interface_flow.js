@@ -90,7 +90,7 @@ class InterfaceFlow {
                 break;
             case this.screenState.endGame: // 5
                 if (!this.screenTick) {
-                    setTimeout(function () { setFlowState(0); }, 3000);
+                    setTimeout(function () { setFlowState(0); }, 6000);
                     this.screenTick = true;
                     this.isMenu = false;
                     this.isExit = false;
@@ -142,16 +142,14 @@ class InterfaceFlow {
                 DrawText("1 PLAYER GAME", 88, 150, 8);
                 DrawText("2 PLAYER GAME", 88, 165, 8);
 
-                let tempString = "000000";
-                if (game.statistics.highScore != 0)
-                    //tempString = 
+                let tempString = game.statistics.highScore.toString().padStart(6, '0')
 
-                DrawText("TOP- " + game.statistics.highScore, 98, 190, 8);
+                DrawText("TOP- " + tempString, 98, 190, 8);
 
                 if (game.isSinglePlayer) {
-                    DrawSprite(this.indicator, 76, 161);
+                    DrawSprite(this.indicator, 76, 150);
                 } else {
-                    DrawSprite(this.indicator, 76, 176);
+                    DrawSprite(this.indicator, 76, 165);
                 }
                 break;
             case this.screenState.preGame:
@@ -166,7 +164,7 @@ class InterfaceFlow {
             case this.screenState.endGame:
                 background(0);
 
-                DrawText("GAME OVER", 88, 88, 8);
+                DrawText("GAME OVER", 88, 130, 8);
                 break;
         }
 
