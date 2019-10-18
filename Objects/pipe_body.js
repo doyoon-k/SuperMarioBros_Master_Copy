@@ -51,7 +51,7 @@ class PipeBody
                     collider.isDuckJump = false;
                     
                     collider.isGravityAssigned = false;
-                    collider.y = this.y - this.hitbox.height + collider.hitbox.y;
+                    collider.y = this.y - this.hitbox.height - collider.hitbox.y;
                     break;
 
                 case DIRECTION.Right:
