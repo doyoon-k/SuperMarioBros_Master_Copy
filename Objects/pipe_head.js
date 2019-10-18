@@ -23,7 +23,7 @@ class PipeHead
 
         this.zWeight = 0;
 
-        this.spriteToDraw = (isHorizontal ? sprites.pipe_head_hor : sprites.pipe_head_ver) + (game.isUnderground ? "_underground" : "");
+        this.spriteToDraw = sprites[(isHorizontal ? "pipe_head_hor" : "pipe_head_ver") + (game.isUnderground ? "_underground" : "")];
 
         this.hitbox = isHorizontal ? hitboxes.pipe_horizontal : hitboxes.pipe_vertical;
     }
@@ -64,6 +64,8 @@ class PipeHead
                     break;
                     
                 case DIRECTION.Left:
+                    if (this.containingMap)
+                    collider.isPipeRight = true;
                     collider.speedX = 0;
                     collider.x = (this.x) - ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - BLOCK_SIZE;
                     collider.isRubbingRight = true;
