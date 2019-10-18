@@ -41,23 +41,6 @@ class ParticleCoin extends Particle
 
    Destroy()
    {
-    // let index = game.objectsToUpdate.indexOf(this);
-    // if (index != -1)
-    // {
-    //     game.objectsToUpdate.splice(index, 1);
-    // }
-
-    // index = game.objectsToDraw[this.zWeight].indexOf(this);
-    // if (index != -1)
-    // {
-    //     game.objectsToDraw[this.zWeight].splice(index, 1);
-    // }
-
-    // index = game.gameObjects.indexOf(this);
-    // if (index != -1)
-    // {
-    //     game.gameObjects.splice(index, 1);
-    // }
 
        let particleScore = new ParticleScore(this.x, this.y, SCORES.Coin);
        game.gameObjects.push(particleScore);

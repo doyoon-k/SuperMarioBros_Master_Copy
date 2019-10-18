@@ -27,7 +27,10 @@ class ParticleFlagScore extends ParticleScore
 
     Draw()
     {
+        push();
+        textAlign(CENTER);
         DrawText(this.score, this.x - game.camera.x + 100, this.y, 5);
+        pop();
     }
 
     // Draw()
