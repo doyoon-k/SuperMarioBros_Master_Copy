@@ -47,12 +47,18 @@ class Goomba extends BaseEnemy
         this.spriteToDraw = sprites["goomba_stomped" + (game.IsUnderground() ? "_underground" : "")];
         setTimeout(() => this.Destroy(), GOOMBA_REMAINS_STOMPED_SECONDS * 1000);
 
-        game.statistics.AddScore(SCORES.Stomp[map(game.mario.stompCombo++, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1)]);
+        let score = SCORES.Stomp[map(game.mario.stompCombo++, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1)];
+        game.statistics.AddScore(score);
+
+        let particleScore = new ParticleScore(this.x, this.y - BLOCK_SIZE, score);
+        game.gameObjects.push(particleScore);
+        game.Enroll(particleScore);
+
     
         g_soundManager.Play("enemy_stomped");
     }
 
-    InstaKilled(direction)
+    InstaKilled(direction, isWithShell)
     {
         if (this.isInstaKilled)
         {
@@ -67,14 +73,16 @@ class Goomba extends BaseEnemy
         game.physics.RemoveFromMovingObjectsArray(this);
         game.physics.RemoveFromBucketMap(this);
 
-        // let particleScore = new ParticleScore(this.x, this.y - 100, 100);
-        
-        // game.gameObjects.push(particleScore);
-        // game.Enroll(particleScore);
-
-        game.statistics.AddScore(SCORES.InstaKillGoomba);
-    
         g_soundManager.Play("enemy_instakilled");
+
+        if (!isWithShell)
+        {
+            game.statistics.AddScore(SCORES.InstaKillGoomba);
+        
+            let particleScore = new ParticleScore(this.x, this.y - BLOCK_SIZE, SCORES.InstaKillGoomba);
+            game.gameObjects.push(particleScore);
+            game.Enroll(particleScore);
+        }
     }
 
     *ChangeSprite()
@@ -122,7 +130,7 @@ class Goomba extends BaseEnemy
 
     OnCollisionWith(collider, direction) 
     {
-        if (collider === this) 
+        if (collider === this || this.isInstaKilled) 
         {
             return;
         }
@@ -162,8 +170,22 @@ class Goomba extends BaseEnemy
         {
             if (collider instanceof KoopaTroopa && collider.isSliding) 
             {
-                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-                game.statistics.AddScore(SCORES.InstaKillWithShell[map(this.instaKillCombo++, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1)]);
+                let index = collider.instaKilledObjects.indexOf(this);
+                if (index != -1)
+                {
+                    return;
+                }
+                collider.instaKilledObjects.push(this);
+                
+                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right, true);
+
+                let score = SCORES.InstaKillWithShell[map(collider.instaKillCombo++, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1)];
+                game.statistics.AddScore(score);
+                
+                let particleScore = new ParticleScore(this.x, this.y - BLOCK_SIZE, score);
+                game.gameObjects.push(particleScore);
+                game.Enroll(particleScore);
+
                 return;
             }
 

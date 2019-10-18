@@ -89,16 +89,7 @@ class ActiveBlock
             switch (direction)
             {
                 case DIRECTION.Down:
-                
                     this.Hit();
-
-                    // let particleBrick = new ParticleBrick(this.x, this.y-BLOCK_SIZE/2);
-                    // game.gameObjects.push(particleBrick);
-                    // game.Enroll(particleBrick);
-                    
-                    let particleCoin = new ParticleCoin(this.x, this.y - BLOCK_SIZE);
-                    game.gameObjects.push(particleCoin);
-                    game.Enroll(particleCoin);
 
                     if (this.isBouncing) {
 
@@ -117,6 +108,11 @@ class ActiveBlock
             
                     break;
                 case DIRECTION.Up:
+                    if (this.isHidden)
+                    {
+                        return;
+                    }
+                    
                     collider.speedY = 0;
                     collider.isJumping = false;
                     collider.isDuckJump = false;
@@ -127,11 +123,21 @@ class ActiveBlock
                     collider.stompCombo = 0;
                     break;
                 case DIRECTION.Right:
+                    if (this.isHidden)
+                    {
+                        return;
+                    }
+
                     collider.speedX = 0;
                     collider.x = (this.x) + ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - BLOCK_SIZE;
                     collider.isRubbingLeft = true;
                     break;
                 case DIRECTION.Left:
+                    if (this.isHidden)
+                    {
+                        return;
+                    }
+
                     collider.speedX = 0;
                     collider.x = (this.x) - ((this.hitbox.width / 2) + (collider.hitbox.width / 2)) - BLOCK_SIZE;
                     collider.isRubbingRight = true;

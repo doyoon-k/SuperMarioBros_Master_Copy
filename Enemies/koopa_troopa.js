@@ -29,8 +29,10 @@ class KoopaTroopa extends BaseEnemy
         this.slidingSpeed = HexFloatToDec("3.500");  // should be tested
 
         this.awakeningTimer = undefined;
+        this.collisionTimeout = undefined;
 
         this.instaKillCombo = 0;
+        this.instaKilledObjects = [];
 
         this.hitbox = hitboxes.koopa_troopa;
 
@@ -67,14 +69,22 @@ class KoopaTroopa extends BaseEnemy
         {
             this.isSliding = false;
         }
+
         this.isInShell = true;
         this.awakeningTimer = setTimeout(() => this.Awakening(), KOOPA_TROOPA_AWAKENING_SECONDS * 1000);
 
         this.spriteToDraw = sprites.turtle_shell;
 
-        game.statistics.AddScore(SCORES.Stomp[map(game.mario.stompCombo++, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1)]);
-    
+        let score = SCORES.Stomp[map(game.mario.stompCombo++, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1)];
+        game.statistics.AddScore(score);
+                
+        let particleScore = new ParticleScore(this.x, this.y - BLOCK_SIZE, score);
+        game.gameObjects.push(particleScore);
+        game.Enroll(particleScore);
+
         g_soundManager.Play("enemy_stomped");
+        
+        game.physics.RemoveFromMovingObjectsArray(this);
     }
 
     Awakening()
@@ -96,6 +106,8 @@ class KoopaTroopa extends BaseEnemy
         {
             this.isGoingLeft = this.x > game.mario.x ? false : true;
         }
+
+        game.physics.RegisterToMovingObjectsArray(this);
     }
 
     ShellPushed(direction)
@@ -107,16 +119,18 @@ class KoopaTroopa extends BaseEnemy
         this.isSliding = true;
 
         this.shouldCollideWithMario = false;
-        setTimeout(() => this.shouldCollideWithMario = true, 200);
+        setTimeout(() => this.shouldCollideWithMario = true, 100);
 
         this.isGoingLeft = direction != DIRECTION.Left;
 
         this.spriteToDraw = sprites.turtle_shell;
 
         g_soundManager.Play("enemy_instakilled");
+        
+        game.physics.RegisterToMovingObjectsArray(this);
     }
 
-    InstaKilled(direction)
+    InstaKilled(direction, isWithShell=false)
     {
         if (this.isInstaKilled)
         {
@@ -140,9 +154,16 @@ class KoopaTroopa extends BaseEnemy
         game.physics.RemoveFromMovingObjectsArray(this);
         game.physics.RemoveFromBucketMap(this);
 
-        game.statistics.AddScore(SCORES.InstaKillKoopaTroopa);
-    
         g_soundManager.Play("enemy_instakilled");
+
+        if (!isWithShell)
+        {
+            game.statistics.AddScore(SCORES.InstaKillKoopaTroopa);
+                
+            let particleScore = new ParticleScore(this.x, this.y - BLOCK_SIZE, SCORES.InstaKillKoopaTroopa);
+            game.gameObjects.push(particleScore);
+            game.Enroll(particleScore);
+        }
     }
 
     *ChangeSprite()
@@ -203,10 +224,16 @@ class KoopaTroopa extends BaseEnemy
 
     OnCollisionWith(collider, direction)
     {
-        if (collider === this)
+        if (collider === this || this.isInstaKilled)
         {
             return;
         }
+
+        if (this.collisionTimeout)
+        {
+            return;
+        }
+        this.collisionTimeout = setTimeout(() => this.collisionTimeout = undefined, 100);
 
         if (collider instanceof Mario)
         {
@@ -215,18 +242,18 @@ class KoopaTroopa extends BaseEnemy
                 this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
                 return;
             }
-            if (!this.shouldCollideWithMario)
-            {
-                return;
-            }
 
             switch (direction)
             {
                 case DIRECTION.Up:
                     if (this.isInShell || this.isAwakening)
                     {
-                        this.ShellPushed(direction);
+                        this.ShellPushed(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
                         game.statistics.AddScore(SCORES.StompShell);
+                
+                        let particleScore = new ParticleScore(this.x, this.y - BLOCK_SIZE, SCORES.StompShell);
+                        game.gameObjects.push(particleScore);
+                        game.Enroll(particleScore);
                     }
                     else
                     {
@@ -238,6 +265,11 @@ class KoopaTroopa extends BaseEnemy
                     
                 case DIRECTION.Left:
                 case DIRECTION.Right:
+                    if (!this.shouldCollideWithMario)
+                    {
+                        return;
+                    }
+
                     if (collider.isJumping && !collider.isDamaged && !this.isInShell && !this.isAwakening)
                     {
                         collider.y = this.y - this.hitbox.height - collider.hitbox.y;
@@ -246,8 +278,12 @@ class KoopaTroopa extends BaseEnemy
                     }
                     else
                     {
-                      this.ShellPushed(direction);
-                      game.statistics.AddScore(SCORES.StompShell);
+                        this.ShellPushed(direction);
+                        game.statistics.AddScore(SCORES.PushShell);
+                
+                        let particleScore = new ParticleScore(this.x, this.y - BLOCK_SIZE, SCORES.PushShell);
+                        game.gameObjects.push(particleScore);
+                        game.Enroll(particleScore);
                     }
                     break;
             }
@@ -256,8 +292,21 @@ class KoopaTroopa extends BaseEnemy
         {
             if (collider instanceof KoopaTroopa && collider.isSliding)
             {
-                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
-                game.statistics.AddScore(SCORES.InstaKillWithShell[map(this.instaKillCombo++, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1)]);
+                let index = collider.instaKilledObjects.indexOf(this);
+                if (index != -1)
+                {
+                    return;
+                }
+                collider.instaKilledObjects.push(this);
+                
+                this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right, true);
+                
+                let score = SCORES.InstaKillWithShell[map(collider.instaKillCombo++, 0, SCORES.InstaKillWithShell.length - 1, 0, SCORES.InstaKillWithShell.length - 1)];
+                game.statistics.AddScore(score);
+                
+                let particleScore = new ParticleScore(this.x, this.y - BLOCK_SIZE, score);
+                game.gameObjects.push(particleScore);
+                game.Enroll(particleScore);
                 return;
             }
 

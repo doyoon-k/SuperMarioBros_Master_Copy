@@ -14,7 +14,7 @@
 
 class PipeHead
 {
-    constructor(x, y, isHorizontal, containingMap)
+    constructor(x, y, isHorizontal, containingMap=null)
     {
         this.x = x;
         this.y = y;
@@ -25,7 +25,6 @@ class PipeHead
 
         this.spriteToDraw = isHorizontal ? sprites.pipe_head_hor : sprites.pipe_head_ver;
 
-        // this.hitbox = isHorizontal ? hitboxes.pipe_horizontal : hitboxes.pipe_vertical;
         this.hitbox = isHorizontal ? hitboxes.pipe_horizontal : hitboxes.pipe_vertical;
     }
 
