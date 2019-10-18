@@ -60,6 +60,8 @@ class Statistics
         {
             this.highScore = this.score;
         }
+
+        return amount;
     }
 
     IncrementCoin()

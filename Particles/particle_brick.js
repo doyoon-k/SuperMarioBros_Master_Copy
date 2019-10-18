@@ -7,7 +7,7 @@ class ParticleBrick extends Particle
 
         this.spriteToDraw = sprites.particle_brick;
 
-        this.speedY = -HexFloatToDec("0.900") * 4;
+        this.speedY = -HexFloatToDec("1.200") * 4;
         this.fallingAcceleration = HexFloatToDec("0.400");
 
         this.rotationFactor = 0;
