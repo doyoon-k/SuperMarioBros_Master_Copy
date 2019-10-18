@@ -181,7 +181,11 @@ function setup() {
 }
 
 function Draw() {
-  background(146, 144, 255);
+  if (g_interfaceFlow.flowState != g_interfaceFlow.screenState.underWorld) {
+    background(146, 144, 255);
+  } else {
+    background(0, 0, 0);
+  }
   game.Update();
   game.Draw();
   text(++temp_frame_count, width / 2, height / 2 - 50);

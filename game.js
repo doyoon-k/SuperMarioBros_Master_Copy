@@ -216,7 +216,7 @@ class Game {
             this.objectsToDraw[zWeight].forEach(object => object.Draw());
         }
 
-        if (4 > g_interfaceFlow.flowState > 0) 
+        if (4 > g_interfaceFlow.flowState > 0 || g_interfaceFlow.flowState == g_interfaceFlow.screenState.underWorld) 
         this.mario.Draw();
         
         g_interfaceFlow.DrawInterface();

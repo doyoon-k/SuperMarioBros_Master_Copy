@@ -122,7 +122,7 @@ function setFlowState(state) {
 
 function Reset(targetMap = "Stages/stage1.json", targetState) {
   if (targetState)
-    InterfaceFlow.flowState = targetState;
+    g_interfaceFlow.flowState = targetState;
   let tempStatistics = game.statistics;
   tempStatistics.time = LEVEL_SECONDS * 60;
   tempStatistics.doTickTime = true;
@@ -132,14 +132,18 @@ function Reset(targetMap = "Stages/stage1.json", targetState) {
   game.isGameOver = false;
   game.LoadNewMap(targetMap);
   if (targetState != 6) {
+    if (targetState == g_interfaceFlow.screenState.inGame) {
+      game.mario.x = 100; //32 is initial pos, and 83 * block size is mario pos on checkpoint
+      g_soundManager.Play("overworld")
+    } else {
     if (!g_isCheckedPoint) {
       game.mario.x = 32; //32 is initial pos, and 83 * block size is mario pos on checkpoint
-      game.mario.startX = 32;
     } else {
       game.mario.x = 83 * BLOCK_SIZE;
-      game.mario.startX = 83 * BLOCK_SIZE;
     }
+  }
   } else {
+    g_soundManager.Play("underground")
     game.mario.x = 32;
     game.mario.y = 32;
   }
