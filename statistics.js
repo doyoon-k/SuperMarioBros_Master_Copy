@@ -58,7 +58,7 @@ class Statistics
 
         if (this.highScore < this.score)
         {
-            this.highScore = tihs.score;
+            this.highScore = this.score;
         }
     }
 

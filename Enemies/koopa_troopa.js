@@ -24,6 +24,8 @@ class KoopaTroopa extends BaseEnemy
         this._isAwakening = false;
         this.isSliding = false;
 
+        this.shouldCollideWithMario = true;
+
         this.slidingSpeed = HexFloatToDec("3.500");  // should be tested
 
         this.awakeningTimer = undefined;
@@ -61,7 +63,6 @@ class KoopaTroopa extends BaseEnemy
 
     Stomped()
     {
-        print("stomp call")
         if (this.isSliding)
         {
             this.isSliding = false;
@@ -78,7 +79,6 @@ class KoopaTroopa extends BaseEnemy
 
     Awakening()
     {
-        print("awake call")
         this.isInShell = false;
         this.isAwakening = true;
 
@@ -87,7 +87,6 @@ class KoopaTroopa extends BaseEnemy
 
     Recover()
     {
-        print("recover call")
         this.isInShell = false;
         this.isAwakening = false;
 
@@ -106,6 +105,9 @@ class KoopaTroopa extends BaseEnemy
         this.isInShell = false;
         this.isAwakening = false;
         this.isSliding = true;
+
+        this.shouldCollideWithMario = false;
+        setTimeout(() => this.shouldCollideWithMario = true, 200);
 
         this.isGoingLeft = direction != DIRECTION.Left;
 
@@ -189,15 +191,6 @@ class KoopaTroopa extends BaseEnemy
     {
         this.Move();
         this.Gravitate();
-
-        if (this.isInShell)
-        text("inshell", width/2, height/2);
-
-        if (this.isAwakening)
-        text("awakening", width/2, height/2+10);
-
-        if (this.isSliding)
-        text("sliding", width/2, height/2+20);
     }
 
     Draw()
@@ -217,11 +210,13 @@ class KoopaTroopa extends BaseEnemy
 
         if (collider instanceof Mario)
         {
-            print("asdf")
-
             if (collider.isInvincible)
             {
                 this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
+                return;
+            }
+            if (!this.shouldCollideWithMario)
+            {
                 return;
             }
 
