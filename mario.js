@@ -30,6 +30,7 @@ class Mario {
     this.zWeight = 10;
 
     this.x = 32; //32 is initial pos, and 83 * block size is mario pos on checkpoint
+    this.startX = 32;
 
     this.y = 208;
 
@@ -1180,8 +1181,8 @@ class Mario {
 
       let baseIndex = 0;
       
-      if (this.framesToRampage < 300) {
-        baseIndex = 2;
+      if (this.framesToRampage < 120) {
+        baseIndex = 10;
       } else {
         baseIndex = 1;
       }
