@@ -159,6 +159,8 @@ class Game {
         
         this.physics.RegisterToMovingObjectsArray(this.mario);
         this.physics.RegisterToBucketMap(this.mario);
+
+        g_soundManager.shouldHurry = false;
     }
 
     IsUnderground()

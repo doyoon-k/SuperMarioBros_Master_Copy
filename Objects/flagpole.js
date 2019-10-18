@@ -14,10 +14,11 @@
 
 class Flagpole
 {
-    constructor(x, y)
+    constructor(x, y, parent=null)
     {
         this.x = x;
         this.y = y;
+        this.parent = parent;
 
         this.zWeight = 0;
 
@@ -26,14 +27,18 @@ class Flagpole
 
         this.flagDraggingStep = 2.5;
         this.maxFlagOffset = 8 * BLOCK_SIZE - BLOCK_SIZE * 1 / 3;
-
-        this.hitbox = hitboxes.flagpole;
+        this.hitbox = hitboxes.inactive_block;
 
         this.hasCollided = false;
     }
 
     Update()
     {
+        if (this.parent)
+        {
+            return;
+        }
+        
         if (this.isDragging)
         {
             this.flagOffset += this.flagDraggingStep;
@@ -49,6 +54,11 @@ class Flagpole
 
     Draw()
     {
+        if (this.parent)
+        {
+            return;
+        }
+ 
         for (let i = 0; i < 9; ++i)
         {
             DrawSprite(sprites.flagpole, this.x, this.y - i * BLOCK_SIZE);
@@ -68,19 +78,19 @@ class Flagpole
         let yDifference = this.y - marioY;
         let score;
 
-        if (yDifference < BLOCK_SIZE)
+        if (yDifference <= BLOCK_SIZE)
         {
             score = SCORES.Flagpole[0];
         }
-        else if (yDifference < BLOCK_SIZE * 3)
+        else if (yDifference <= BLOCK_SIZE * 3)
         {
             score = SCORES.Flagpole[1];
         }
-        else if (yDifference < BLOCK_SIZE * 5)
+        else if (yDifference <= BLOCK_SIZE * 5)
         {
             score = SCORES.Flagpole[2];
         }
-        else if (yDifference < BLOCK_SIZE * 8)
+        else if (yDifference <= BLOCK_SIZE * 8)
         {
             score = SCORES.Flagpole[3];
         }
@@ -102,6 +112,12 @@ class Flagpole
 
     OnCollisionWith(collider, direction)
     {
+        if (this.parent)
+        {
+            this.parent.OnCollisionWith(collider, direction);
+            return;
+        }
+
         if (collider instanceof Mario)
         {
             if (this.hasCollided)

@@ -102,6 +102,4 @@ const hitboxes = {
 
     pipe_horizontal: new Hitbox(0, 0, BLOCK_SIZE * 2, BLOCK_SIZE),
     pipe_vertical: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE * 2),
-    
-    flagpole: new Hitbox(0, 0, BLOCK_SIZE, BLOCK_SIZE * 9)
 };
