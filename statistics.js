@@ -111,7 +111,7 @@ class Statistics
             else if (this.time == 0)
             {
                 this.doTickTime = false;
-                // call something that time is over
+                game.isGameOver = true;
             }
         }
     }

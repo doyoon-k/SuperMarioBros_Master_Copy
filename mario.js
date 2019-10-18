@@ -30,6 +30,7 @@ class Mario {
     this.zWeight = 10;
 
     this.x = 32; //32 is initial pos, and 83 * block size is mario pos on checkpoint
+    this.startX = 32;
 
     this.y = 208;
 
@@ -286,7 +287,7 @@ class Mario {
     this.isBottomReach = false;
 
     this.isFellToDeath = false;
-    
+
 
 
     this.stompCombo = 0;
@@ -369,7 +370,7 @@ class Mario {
       this.y += this.speedY;
       this.speedY += 0.25;
       //Called once on y coord exceed
-      if (!this.isFellToDeath && this.y > 1500 || this.isFellToDeath && this.y > 2500) {
+      if (!this.isFellToDeath && this.y > 2000 || this.isFellToDeath && this.y > 3000) {
         g_interfaceFlow.isReset = true;
         if (g_lives > 0) {
           //To Make Safe
@@ -379,6 +380,7 @@ class Mario {
         } else {
           //To Make Safe
           game.camera = new Camera;
+          g_soundManager.Play("game_over");
           g_interfaceFlow.screenTick = false;
           g_interfaceFlow.flowState = g_interfaceFlow.screenState.endGame;
           g_isCheckedPoint = false;
@@ -1179,8 +1181,8 @@ class Mario {
 
       let baseIndex = 0;
       
-      if (this.framesToRampage < 300) {
-        baseIndex = 2;
+      if (this.framesToRampage < 120) {
+        baseIndex = 10;
       } else {
         baseIndex = 1;
       }
