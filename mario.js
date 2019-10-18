@@ -399,7 +399,7 @@ class Mario {
       this.isLookingLeft = false;
       this.isJumping = false;
 
-      if (this.x < 3260) {
+      if (this.x < 3240) {
       this.x += this.maxSpeedWalkX;
     } else {
       this.hide = true;
@@ -1170,6 +1170,7 @@ class Mario {
   Draw() {
 
     if (this.isPipeDown || this.isPipeRight || this.isPipeUp) {
+      this.RefreshSpritePool();
       DrawSprite(this.stand_still, this.x, this.y, this.isLookingLeft, false, this.initialX);
       return;
     }
