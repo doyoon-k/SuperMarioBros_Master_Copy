@@ -124,18 +124,25 @@ function Reset(targetMap = "Stages/stage1.json", targetState) {
   if (targetState)
     g_interfaceFlow.flowState = targetState;
   let tempStatistics = game.statistics;
+  let tempMarioState = game.mario.powerupState;
   tempStatistics.time = LEVEL_SECONDS * 60;
   tempStatistics.doTickTime = true;
   game = new Game();
+  if (targetState != 5)
   game.statistics = tempStatistics;
   game.mapLoader = new MapLoader();
   game.isGameOver = false;
   game.LoadNewMap(targetMap);
+  if (targetState == 5) {
+    g_interfaceFlow.screenTick = false;
+    g_isCheckedPoint = false;
+  } else 
   if (targetState != 6) {
     if (targetState == g_interfaceFlow.screenState.inGame) {
+      game.mario.powerupState = tempMarioState;
       game.mario.x = 2608; //32 is initial pos, and 83 * block size is mario pos on checkpoint
       game.mario.y = 208;
-      g_soundManager.Play("overworld")
+      g_soundManager.Play("overworld");
       game.mario.isPipeUp = true;
     } else {
     if (!g_isCheckedPoint) {
@@ -145,8 +152,9 @@ function Reset(targetMap = "Stages/stage1.json", targetState) {
     }
   }
   } else {
-    g_soundManager.Play("underground")
+    g_soundManager.Play("underground");
     game.mario.x = 32;
     game.mario.y = 32;
+    game.mario.powerupState = tempMarioState;
   }
 }
