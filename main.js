@@ -181,7 +181,7 @@ function setup() {
 }
 
 function Draw() {
-  if (g_interfaceFlow.flowState != g_interfaceFlow.screenState.underWorld) {
+  if (g_interfaceFlow.flowState != g_interfaceFlow.screenState.underWorld && !game.isUnderground) {
     background(146, 144, 255);
   } else {
     background(0, 0, 0);

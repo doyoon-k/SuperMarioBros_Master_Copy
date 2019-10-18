@@ -123,7 +123,7 @@ class Statistics
         DrawText(this.isPlayerMario ? "MARIO" : "LUIGI", 24, 24, 8);
         DrawText(this.score.toString().padStart(6, '0'), 24, 32, 8);
 
-        if (g_interfaceFlow.flowState < 4) {
+        if (g_interfaceFlow.flowState < 4 || g_interfaceFlow.flowState == 6) {
             image(game.isUnderground ? this.undergroundCoinSprites[game.twinkleIndex] : this.coinSprites[game.twinkleIndex],
                   88 * pixelMultiplier, 25 * pixelMultiplier, 8 * pixelMultiplier, 8 * pixelMultiplier);
         } else {

@@ -7,7 +7,7 @@
 
   JoonHo Hwang 
   DoYoon Kim 
-  SeungGeon Kim Wrote this
+  SeungGeon Kim Wrote this all
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */
@@ -114,12 +114,17 @@ class InterfaceFlow {
                 this.isMenu = true;
 
                 break;
+            case this.screenState.underWorld:
             case this.screenState.inGame:
                 this.flowState = this.screenState.pause;
                 g_soundManager.PauseResume(true);
                 break;
             case this.screenState.pause:
-                this.flowState = this.screenState.inGame;
+                if (game.isUnderground) {  
+                    this.flowState = this.screenState.underWorld;
+                } else {
+                    this.flowState = this.screenState.inGame;
+                }
                 g_soundManager.PauseResume(false);
                 break;
         }

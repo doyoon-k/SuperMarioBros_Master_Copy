@@ -216,19 +216,17 @@ class Game {
 
         if (game.mario.isPipeDown || game.mario.isPipeUp || game.mario.isPipeRight) {
 
-
             if (4 > g_interfaceFlow.flowState > 0 || g_interfaceFlow.flowState == g_interfaceFlow.screenState.underWorld)
                 if (!game.mario.hide)
                     this.mario.Draw();
 
+            this.backgroundObjects.forEach(object => object.Draw());
+            for (let zWeight in this.objectsToDraw)
+            {
+                this.objectsToDraw[zWeight].forEach(object => object.Draw());
+            }
 
-        this.backgroundObjects.forEach(object => object.Draw());
-        for (let zWeight in this.objectsToDraw)
-        {
-            this.objectsToDraw[zWeight].forEach(object => object.Draw());
-        }
-
-    } else {
+        } else {
 
             this.backgroundObjects.forEach(object => object.Draw());
             for (let zWeight in this.objectsToDraw) {
@@ -239,11 +237,11 @@ class Game {
                 if (!game.mario.hide)
                     this.mario.Draw();
         
-    }
+        }
         
         g_interfaceFlow.DrawInterface();
 
-        if (g_interfaceFlow.flowState > 1 || game.isGameOver)
+        if (g_interfaceFlow.flowState > 0)
             this.TwinkleAnimate();
 
         if (g_interfaceFlow.flowState > 0) 

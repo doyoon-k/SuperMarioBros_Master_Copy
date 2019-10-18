@@ -5,7 +5,7 @@ class ParticleFlagScore extends ParticleScore
         super(x, initialY, score);
         this.initailY = initialY;
         this.finalY = finalY;
-        this.speedY = -HexFloatToDec("1.800");
+        this.speedY = -HexFloatToDec("1.400");
     }
 
     Animate() {}

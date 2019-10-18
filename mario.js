@@ -9,8 +9,6 @@
   DoYoon Kim did ---
   SeungGeon Kim Wrote about 99% of this entire script.
 
-  - Main Contributor Comment -
-
 
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
@@ -401,7 +399,7 @@ class Mario {
       this.isLookingLeft = false;
       this.isJumping = false;
 
-      if (this.x < 3260) {
+      if (this.x < 3240) {
       this.x += this.maxSpeedWalkX;
     } else {
       this.hide = true;
@@ -1172,6 +1170,7 @@ class Mario {
   Draw() {
 
     if (this.isPipeDown || this.isPipeRight || this.isPipeUp) {
+      this.RefreshSpritePool();
       DrawSprite(this.stand_still, this.x, this.y, this.isLookingLeft, false, this.initialX);
       return;
     }

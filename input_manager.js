@@ -30,8 +30,8 @@ let isJumpPast = false;
 function keyPressed() {
     switch (keyCode) {
         case 32:  //Space
-        //game.mario.isInvincible = !game.mario.isInvincible;
-            if (!game.mario.isTransforming)
+            if (!game.mario.isTransforming && g_interfaceFlow.flowState == g_interfaceFlow.screenState.inGame ||
+                g_interfaceFlow.flowState == g_interfaceFlow.screenState.underWorld)
                 if (game.mario.powerupState == 0) {
                     game.mario.PowerupTo(1);
                 } else if (game.mario.powerupState == 1) {
