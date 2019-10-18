@@ -7,8 +7,8 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 8,
-                "y": 16
+                "x": 72,
+                "y": 48
             }
         },
         {
@@ -16,8 +16,53 @@
             "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
-                "x": 8,
-                "y": 32
+                "x": 88,
+                "y": 48
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 104,
+                "y": 48
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 120,
+                "y": 48
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 136,
+                "y": 48
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 152,
+                "y": 48
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 168,
+                "y": 48
             }
         },
         {
@@ -103,7 +148,7 @@
         },
         {
             "ItemType": "No Item",
-            "blockType": "GroundBlock",
+            "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
                 "x": 8,
@@ -112,133 +157,7 @@
         },
         {
             "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 24,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 40,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 56,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 72,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 88,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 104,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 120,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 136,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 152,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 168,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 184,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 200,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 216,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 232,
-                "y": 192
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "GroundBlock",
+            "blockType": "BrickBlock",
             "isContainingItem": false,
             "position": {
                 "x": 8,
@@ -247,11 +166,209 @@
         },
         {
             "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 72,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 88,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 104,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 120,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 136,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 152,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 168,
+                "y": 176
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 72,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 88,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 104,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 120,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 136,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 152,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 168,
+                "y": 192
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 72,
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 88,
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 104,
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 120,
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 136,
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 152,
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "BrickBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 168,
+                "y": 208
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 8,
+                "y": 224
+            }
+        },
+        {
+            "ItemType": "No Item",
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
                 "x": 24,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -260,7 +377,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 40,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -269,7 +386,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 56,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -278,7 +395,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 72,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -287,7 +404,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 88,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -296,7 +413,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 104,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -305,7 +422,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 120,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -314,7 +431,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 136,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -323,7 +440,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 152,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -332,7 +449,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 168,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -341,7 +458,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 184,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -350,7 +467,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 200,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -359,7 +476,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 216,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -368,7 +485,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 232,
-                "y": 208
+                "y": 224
             }
         },
         {
@@ -377,7 +494,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 248,
-                "y": 192
+                "y": 224
             }
         },
         {
@@ -385,8 +502,134 @@
             "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 264,
-                "y": 192
+                "x": 8,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 24,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 40,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 56,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 72,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 88,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 104,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 120,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 136,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 152,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 168,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 184,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 200,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 216,
+                "y": 240
+            }
+        },
+        {
+            "ItemType": "No Item",
+            "blockType": "GroundBlock",
+            "isContainingItem": false,
+            "position": {
+                "x": 232,
+                "y": 240
             }
         },
         {
@@ -395,7 +638,7 @@
             "isContainingItem": false,
             "position": {
                 "x": 248,
-                "y": 208
+                "y": 240
             }
         },
         {
@@ -404,259 +647,16 @@
             "isContainingItem": false,
             "position": {
                 "x": 264,
-                "y": 208
+                "y": 224
             }
         },
         {
             "ItemType": "No Item",
-            "blockType": "BrickBlock",
+            "blockType": "GroundBlock",
             "isContainingItem": false,
             "position": {
-                "x": 72,
-                "y": 144
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 88,
-                "y": 144
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 104,
-                "y": 144
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 120,
-                "y": 144
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 136,
-                "y": 144
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 152,
-                "y": 144
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 72,
-                "y": 160
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 88,
-                "y": 160
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 104,
-                "y": 160
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 120,
-                "y": 160
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 136,
-                "y": 160
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 152,
-                "y": 160
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 72,
-                "y": 176
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 88,
-                "y": 176
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 104,
-                "y": 176
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 120,
-                "y": 176
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 136,
-                "y": 176
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 152,
-                "y": 176
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 168,
-                "y": 144
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 168,
-                "y": 160
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 168,
-                "y": 176
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 72,
-                "y": 16
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 88,
-                "y": 16
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 104,
-                "y": 16
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 120,
-                "y": 16
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 136,
-                "y": 16
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 152,
-                "y": 16
-            }
-        },
-        {
-            "ItemType": "No Item",
-            "blockType": "BrickBlock",
-            "isContainingItem": false,
-            "position": {
-                "x": 168,
-                "y": 16
+                "x": 264,
+                "y": 240
             }
         }
     ],
@@ -664,73 +664,10 @@
     ],
     "environments": [
         {
-            "environmentType": "Pipe Head Vertical",
-            "position": {
-                "x": 216,
-                "y": 176
-            }
-        },
-        {
-            "environmentType": "Pipe Body Vertical",
-            "position": {
-                "x": 232,
-                "y": 176
-            }
-        },
-        {
-            "environmentType": "Pipe Intersect",
-            "position": {
-                "x": 244,
-                "y": 176
-            }
-        },
-        {
             "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 256,
-                "y": 176
-            }
-        },
-        {
-            "environmentType": "Pipe Body Horizontal",
-            "position": {
-                "x": 256,
-                "y": 160
-            }
-        },
-        {
-            "environmentType": "Pipe Body Horizontal",
-            "position": {
-                "x": 256,
-                "y": 144
-            }
-        },
-        {
-            "environmentType": "Pipe Body Horizontal",
-            "position": {
-                "x": 256,
-                "y": 128
-            }
-        },
-        {
-            "environmentType": "Pipe Body Horizontal",
-            "position": {
-                "x": 256,
-                "y": 112
-            }
-        },
-        {
-            "environmentType": "Pipe Body Horizontal",
-            "position": {
-                "x": 256,
-                "y": 96
-            }
-        },
-        {
-            "environmentType": "Pipe Body Horizontal",
-            "position": {
-                "x": 256,
-                "y": 80
+                "y": 48
             }
         },
         {
@@ -744,21 +681,84 @@
             "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 256,
-                "y": 48
+                "y": 80
             }
         },
         {
             "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 256,
-                "y": 32
+                "y": 96
             }
         },
         {
             "environmentType": "Pipe Body Horizontal",
             "position": {
                 "x": 256,
-                "y": 16
+                "y": 112
+            }
+        },
+        {
+            "environmentType": "Pipe Body Horizontal",
+            "position": {
+                "x": 256,
+                "y": 128
+            }
+        },
+        {
+            "environmentType": "Pipe Body Horizontal",
+            "position": {
+                "x": 256,
+                "y": 144
+            }
+        },
+        {
+            "environmentType": "Pipe Body Horizontal",
+            "position": {
+                "x": 256,
+                "y": 160
+            }
+        },
+        {
+            "environmentType": "Pipe Body Horizontal",
+            "position": {
+                "x": 256,
+                "y": 176
+            }
+        },
+        {
+            "environmentType": "Pipe Body Horizontal",
+            "position": {
+                "x": 256,
+                "y": 192
+            }
+        },
+        {
+            "environmentType": "Pipe Body Horizontal",
+            "position": {
+                "x": 256,
+                "y": 208
+            }
+        },
+        {
+            "environmentType": "Pipe Body Vertical",
+            "position": {
+                "x": 232,
+                "y": 208
+            }
+        },
+        {
+            "environmentType": "Pipe Head Vertical",
+            "position": {
+                "x": 216,
+                "y": 208
+            }
+        },
+        {
+            "environmentType": "Pipe Intersect",
+            "position": {
+                "x": 244,
+                "y": 208
             }
         }
     ],
@@ -767,48 +767,6 @@
             "itemType": "Coin",
             "position": {
                 "x": 88,
-                "y": 64
-            }
-        },
-        {
-            "itemType": "Coin",
-            "position": {
-                "x": 104,
-                "y": 64
-            }
-        },
-        {
-            "itemType": "Coin",
-            "position": {
-                "x": 120,
-                "y": 64
-            }
-        },
-        {
-            "itemType": "Coin",
-            "position": {
-                "x": 136,
-                "y": 64
-            }
-        },
-        {
-            "itemType": "Coin",
-            "position": {
-                "x": 152,
-                "y": 64
-            }
-        },
-        {
-            "itemType": "Coin",
-            "position": {
-                "x": 72,
-                "y": 96
-            }
-        },
-        {
-            "itemType": "Coin",
-            "position": {
-                "x": 88,
                 "y": 96
             }
         },
@@ -837,13 +795,6 @@
             "itemType": "Coin",
             "position": {
                 "x": 152,
-                "y": 96
-            }
-        },
-        {
-            "itemType": "Coin",
-            "position": {
-                "x": 168,
                 "y": 96
             }
         },
@@ -894,6 +845,55 @@
             "position": {
                 "x": 168,
                 "y": 128
+            }
+        },
+        {
+            "itemType": "Coin",
+            "position": {
+                "x": 72,
+                "y": 160
+            }
+        },
+        {
+            "itemType": "Coin",
+            "position": {
+                "x": 88,
+                "y": 160
+            }
+        },
+        {
+            "itemType": "Coin",
+            "position": {
+                "x": 104,
+                "y": 160
+            }
+        },
+        {
+            "itemType": "Coin",
+            "position": {
+                "x": 120,
+                "y": 160
+            }
+        },
+        {
+            "itemType": "Coin",
+            "position": {
+                "x": 136,
+                "y": 160
+            }
+        },
+        {
+            "itemType": "Coin",
+            "position": {
+                "x": 152,
+                "y": 160
+            }
+        },
+        {
+            "itemType": "Coin",
+            "position": {
+                "x": 168,
+                "y": 160
             }
         }
     ]
