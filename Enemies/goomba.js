@@ -21,7 +21,7 @@ class Goomba extends BaseEnemy
 
         this.hitbox = hitboxes.goomba;
 
-        this.spriteToDraw = sprites["goomba" + (game.IsUnderground() ? "_underground_1" : "_1")];
+        this.spriteToDraw = sprites["goomba" + (game.isUnderground ? "_underground_1" : "_1")];
 
         game.physics.RegisterToMovingObjectsArray(this);
     }
@@ -44,7 +44,7 @@ class Goomba extends BaseEnemy
             return;
         }
         this.isStomped = true;
-        this.spriteToDraw = sprites["goomba_stomped" + (game.IsUnderground() ? "_underground" : "")];
+        this.spriteToDraw = sprites["goomba_stomped" + (game.isUnderground ? "_underground" : "")];
         setTimeout(() => this.Destroy(), GOOMBA_REMAINS_STOMPED_SECONDS * 1000);
 
         let score = SCORES.Stomp[map(game.mario.stompCombo++, 0, SCORES.Stomp.length - 1, 0, SCORES.Stomp.length - 1)];
@@ -89,9 +89,9 @@ class Goomba extends BaseEnemy
     {
         while (true)
         {
-            this.spriteToDraw = sprites["goomba" + (game.IsUnderground() ? "_underground_1" : "_1")];
+            this.spriteToDraw = sprites["goomba" + (game.isUnderground ? "_underground_1" : "_1")];
             yield;
-            this.spriteToDraw = sprites["goomba" + (game.IsUnderground() ? "_underground_2" : "_2")];
+            this.spriteToDraw = sprites["goomba" + (game.isUnderground ? "_underground_2" : "_2")];
             yield;
         }
     }

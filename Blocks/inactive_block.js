@@ -28,15 +28,15 @@ class InactiveBlock
         switch (this.type)
         {
             case EInactiveBlockType.Ground:
-                this.spriteToDraw = sprites["block_ground" + (game.IsUnderground() ? "_underground" : "")];
+                this.spriteToDraw = sprites["block_ground" + (game.isUnderground ? "_underground" : "")];
                 break;
 
             case EInactiveBlockType.Hard:
-                this.spriteToDraw = sprites["block_hard" + (game.IsUnderground() ? "_underground" : "")];
+                this.spriteToDraw = sprites["block_hard" + (game.isUnderground ? "_underground" : "")];
                 break;
 
             case EInactiveBlockType.Empty:
-                this.spriteToDraw = sprites["block_empty" + (game.IsUnderground() ? "_underground" : "")];
+                this.spriteToDraw = sprites["block_empty" + (game.isUnderground ? "_underground" : "")];
                 break;
         }
     }
