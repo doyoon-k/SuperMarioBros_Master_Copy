@@ -30,6 +30,8 @@ class Statistics
         this.doTickTime = true;
         this.isConvertingTimeToScore = false;
 
+        this.highScore = 0;
+
         this.sprites = {
             coin_1 : loadImage("Sprites/Misc/misc_hud_coin_1.png"),
             coin_2 : loadImage("Sprites/Misc/misc_hud_coin_2.png"),
@@ -53,6 +55,11 @@ class Statistics
         }
         
         this.score += amount;
+
+        if (this.highScore < this.score)
+        {
+            this.highScore = this.score;
+        }
     }
 
     IncrementCoin()

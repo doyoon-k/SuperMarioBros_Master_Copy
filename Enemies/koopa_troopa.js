@@ -24,7 +24,7 @@ class KoopaTroopa extends BaseEnemy
         this._isAwakening = false;
         this.isSliding = false;
 
-        this.framesAfterPush = 0;
+        this.shouldCollideWithMario = true;
 
         this.slidingSpeed = HexFloatToDec("3.500");  // should be tested
 
@@ -52,10 +52,6 @@ class KoopaTroopa extends BaseEnemy
 
     Move()
     {
-
-        if (this.framesAfterPush < 100 && this.isSliding)
-            this.framesAfterPush++;
-
         if (this.isInShell || this.isAwakening)
         {
             return;
@@ -73,8 +69,6 @@ class KoopaTroopa extends BaseEnemy
         }
         this.isInShell = true;
         this.awakeningTimer = setTimeout(() => this.Awakening(), KOOPA_TROOPA_AWAKENING_SECONDS * 1000);
-
-        //Wheres him dying
 
         this.spriteToDraw = sprites.turtle_shell;
 
@@ -111,6 +105,9 @@ class KoopaTroopa extends BaseEnemy
         this.isInShell = false;
         this.isAwakening = false;
         this.isSliding = true;
+
+        this.shouldCollideWithMario = false;
+        setTimeout(() => this.shouldCollideWithMario = true, 200);
 
         this.isGoingLeft = direction != DIRECTION.Left;
 
@@ -218,6 +215,10 @@ class KoopaTroopa extends BaseEnemy
                 this.InstaKilled(this.x >= collider.x ? DIRECTION.Left : DIRECTION.Right);
                 return;
             }
+            if (!this.shouldCollideWithMario)
+            {
+                return;
+            }
 
             switch (direction)
             {
@@ -237,12 +238,14 @@ class KoopaTroopa extends BaseEnemy
                     
                 case DIRECTION.Left:
                 case DIRECTION.Right:
-                if (collider.isJumping && !collider.isDamaged &&
-                        !this.isInShell) {
+                    if (collider.isJumping && !collider.isDamaged && !this.isInShell && !this.isAwakening)
+                    {
                         collider.y = this.y - this.hitbox.height - collider.hitbox.y;
                         collider.speedY = -HexClampTo("4", collider.speedY);
                         this.Stomped();
-                    } else {
+                    }
+                    else
+                    {
                       this.ShellPushed(direction);
                       game.statistics.AddScore(SCORES.StompShell);
                     }
