@@ -23,6 +23,7 @@ class Game {
         this.backgroundObjects = [];
         this.gameObjects = [];
         this.objectsToUpdate = [];
+        this.particlesToUpdate = [];
         this.objectsToDraw = {};
 
         this.twinkleFrameCount = 0;
@@ -47,7 +48,12 @@ class Game {
         {
             return;
         }
-        if (this.objectsToUpdate.indexOf(object) == -1)
+
+        if (object instanceof Particle && this.particlesToUpdate.indexOf(object) == -1)
+        {
+            this.particlesToUpdate.push(object);
+        }
+        else if (this.objectsToUpdate.indexOf(object) == -1)
         {
             this.objectsToUpdate.push(object);
         }
@@ -91,7 +97,6 @@ class Game {
         if (!this.hasPassedCheckpoint && this.mario.x >= 87 * BLOCK_SIZE)
         {
             this.hasPassedCheckpoint = true;
-            //83 * BLOCK_SIZE에서 스폰
         }
 
         g_interfaceFlow.Update();
@@ -113,8 +118,8 @@ class Game {
             case g_interfaceFlow.screenState.underWorld:
             case g_interfaceFlow.screenState.inGame:
 
-
                 this.mario.Update();
+                this.particlesToUpdate.forEach(particle => particle.Update());
 
                 if (!this.mario.isTransforming) {
                 this.camera.Update();

@@ -1383,7 +1383,7 @@ class Mario {
       if (collider instanceof Goomba && collider.isStomped) {
         return;
       }
-      if (collider instanceof KoopaTroopa && (collider.isInShell || collider.isAwakening)) {
+      if (collider instanceof KoopaTroopa && (collider.isInShell || collider.isAwakening || !collider.shouldCollideWithMario)) {
         return;
       }
       switch (direction) {
