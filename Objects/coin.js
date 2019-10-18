@@ -29,7 +29,7 @@ class Coin
 
     Draw()
     {
-        DrawSprite(this.x, this.y, game.isUnderground ? this.undergroundSprites[game.twinkleIndex] : this.sprites[game.twinkleIndex]);
+        DrawSprite(game.isUnderground ? this.undergroundSprites[game.twinkleIndex] : this.sprites[game.twinkleIndex], this.x, this.y);
     }
 
     Destroy()
