@@ -115,6 +115,10 @@ class Fireball
             return;
         }
 
+        let particleFirework = new ParticleFirework(this.x, this.y,true);
+        game.gameObjects.push(particleFirework);
+        game.Enroll(particleFirework);
+
         this.isDestroyed = true;
         game.mario.fireballCount--;
         game.Expel(this);

@@ -13,7 +13,7 @@ class ParticleScore extends Particle
    Draw()
    {
        push();
-    //    textAlign(CENTER);
+       textAlign(CENTER);
        DrawText(this.score, this.offsetX, this.y, 5);
        pop();
     //    push();
