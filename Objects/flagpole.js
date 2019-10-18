@@ -130,7 +130,7 @@ class Flagpole
             game.LevelClear();
             if (!collider.isEndGame)
             {
-                collider.x = this.x - 16;
+                collider.x = this.x - 20;
             }
             this.ScoreAccordingToHeight(collider.y);
             this.DragFlagDown();
