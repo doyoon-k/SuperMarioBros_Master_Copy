@@ -195,11 +195,13 @@ class ActiveBlock
                     collider.isOnGround = true;
                     collider.y = this.y - this.hitbox.height - collider.hitbox.y;
                     collider.isBouncing = false;
+                    collider.isOnGround = true;
                     break;
 
                 case DIRECTION.Right:
                     collider.isGoingLeft = false;
                     collider.x = this.x + this.hitbox.width / 2 + collider.hitbox.width / 2;
+                    
                     break;
 
                 case DIRECTION.Left:
