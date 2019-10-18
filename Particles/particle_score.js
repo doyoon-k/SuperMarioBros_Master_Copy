@@ -4,6 +4,7 @@ class ParticleScore extends Particle
    {
        super(x,y);
 
+       this.offsetX = x-game.camera.x+100;
        this.score = score;
        this.speedY = -HexFloatToDec("1.800");
        this.lifeSpan = 75;
@@ -24,8 +25,8 @@ class ParticleScore extends Particle
    Draw()
    {
        push();
-       textAlign(CENTER);
-       DrawText(this.score, this.x - (game.camera.x - 100), this.y, 5);
+    //    textAlign(CENTER);
+       DrawText(this.score, this.offsetX, this.y, 5);
        pop();
     //    push();
     //    textSize(10);
