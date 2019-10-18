@@ -39,6 +39,8 @@ class Mario {
     this.speedX = 0;
     this.speedY = 0;
 
+    this.isPipeDown = false;
+
     //needed to do the 10-frame speed conservation thing
     this.framesToKeepRunning = 0;
     this.framesToKeepRunningDefault = 10;
@@ -288,6 +290,8 @@ class Mario {
 
     this.isFellToDeath = false;
 
+    this.isPipePlayed = false;
+
 
 
     this.stompCombo = 0;
@@ -327,7 +331,20 @@ class Mario {
   //Call the needed functions
   Update() {
 
+    if (isDPadDown)
+      //game.mario.isPipeDown = true; WIP
+
     this.Debug();
+
+    if (this.isPipeDown) {
+      if (!this.isPipePlayed) {
+        this.isPipePlayed = true;
+        g_soundManager.Play("mario_power_down");
+        setTimeout(() => game.LoadNewMap(), GOOMBA_REMAINS_STOMPED_SECONDS * 1000);
+    }
+      this.y += 1;
+      return;
+    }
 
     if (this.x > 83 * BLOCK_SIZE && !g_isCheckedPoint)
       g_isCheckedPoint = true;
@@ -1118,6 +1135,11 @@ class Mario {
 
   //Call Animate() & Draw Mario
   Draw() {
+
+    if (this.isPipeDown) {
+      DrawSprite(this.stand_still, this.x, this.y, this.isLookingLeft, false, this.initialX);
+      return;
+    }
 
     if (this.isInvincible) {
 

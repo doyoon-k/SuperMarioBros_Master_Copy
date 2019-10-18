@@ -128,6 +128,7 @@ function setFlowState(state) {
 function Reset() {
   let tempStatistics = game.statistics;
   tempStatistics.time = LEVEL_SECONDS * 60;
+  tempStatistics.doTickTime = true;
   game = new Game();
   game.statistics = tempStatistics;
   game.mapLoader = new MapLoader();
