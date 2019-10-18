@@ -22,6 +22,14 @@ class Camera {
 
     Update() {
 
+        if (!g_isCheckedPoint) {
+        if (this.x < 200 && g_interfaceFlow.flowState == g_interfaceFlow.screenState.inGame) {
+            this.d = this.x - 200;
+        }
+    } else {
+        this.d = 0;
+    }
+
         if (game.mario.x > this.x + this.d)
             this.x = game.mario.x - this.d;
 

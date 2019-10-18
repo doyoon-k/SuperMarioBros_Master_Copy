@@ -49,8 +49,8 @@ class Physics
     {
       let objHitbox = obj.hitbox;
       //temporary
-      // if(obj instanceof Mario)
-      // objHitbox.DebugDraw(obj);
+      if(obj instanceof Mario)
+      objHitbox.DebugDraw(obj);
 
       let objHitbox_rect = objHitbox.GetRect(obj);
       let speedX = obj.speedX;
@@ -70,8 +70,8 @@ class Physics
       {
         let collidableObjHitbox = collidableObj.hitbox;
         // //temporary
-        // if(collidableObj instanceof Flagpole || collidableObj instanceof PipeHead)
-        //   collidableObjHitbox.DebugDraw(collidableObj);
+        if(collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead)
+          collidableObjHitbox.DebugDraw(collidableObj);
 
         let collidableObjHitbox_rect = collidableObjHitbox.GetRect(collidableObj);
         let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y + 1, collidableObj);
@@ -92,7 +92,7 @@ class Physics
           
           if (speedX > 0 && speedY > 0) //1)
           {
-            if (objHitbox_rect.bottom_Y <= collidableObjHitbox_rect.top_Y) //1) a)
+            if (objHitbox_rect.bottom_Y-0.5 <= collidableObjHitbox_rect.top_Y) //1) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
               // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
@@ -114,7 +114,7 @@ class Physics
           }
           else if (speedX < 0 && speedY > 0)
           {
-            if (objHitbox_rect.bottom_Y <= collidableObjHitbox_rect.top_Y) //2) a)
+            if (objHitbox_rect.bottom_Y-0.5 <= collidableObjHitbox_rect.top_Y) //2) a)
             {
               collidableObj.OnCollisionWith(obj, DIRECTION.Up);
               // obj.OnCollisionWith(collidableObj, DIRECTION.Down);
@@ -248,6 +248,8 @@ class Physics
         if(obj instanceof Mario && (collidableObj instanceof ActiveBlock || collidableObj instanceof InactiveBlock || collidableObj instanceof PipeHead || collidableObj instanceof PipeBody))
         {
           // print("Rub!R");
+          let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y-1,collidableObj);
+          let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y-1,collidableObj);
           if(is_bottom_Y_overlapping||is_top_Y_overlapping)
             isMarioRubbingRight = collidableObjHitbox.IsXcoordInBetween(objHitbox_rect.right_X+1,collidableObj);
         }
@@ -255,6 +257,8 @@ class Physics
         {
           // print("Rub!L");
           // print("leftRubbed!");
+          let is_bottom_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.bottom_Y-1,collidableObj);
+          let is_top_Y_overlapping = collidableObjHitbox.IsYcoordInBetween(objHitbox_rect.top_Y-1,collidableObj);
           if(is_bottom_Y_overlapping||is_top_Y_overlapping)
             isMarioRubbingLeft = collidableObjHitbox.IsXcoordInBetween(objHitbox_rect.left_X-1,collidableObj);
         }
