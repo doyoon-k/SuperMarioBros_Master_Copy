@@ -390,8 +390,11 @@ class Mario {
       return;
     }
 
-    if (this.isClimbing)
+    if (this.isClimbing && this.y < 208) {
       this.y += 2.5;
+    } else {
+      this.isClimbing = false;
+    }
 
     if (this.isEndGame) {
       this.y += 1;
