@@ -6,10 +6,10 @@ class ParticleCoin extends Particle
 
       this.spriteToDraw = sprites.particle_coin_1;
       this.animationFrameRate = 1;
-      this.lifeSpan = 32;
+      this.lifeSpan = 64;
 
-      this.speedY = -HexFloatToDec("0.900")*4;
-      this.fallingAcceleration = HexFloatToDec("0.400");
+      this.speedY = -HexFloatToDec("3.20");
+      this.fallingAcceleration = HexFloatToDec("0.16");
    }
 
    *ChangeSprite()
@@ -29,7 +29,6 @@ class ParticleCoin extends Particle
        {
            this.animationFrameCount = 0;
            this.animator.next();
-           this.speedY += this.fallingAcceleration;
        }
 
         this.animationFrameCount++;
@@ -79,6 +78,7 @@ class ParticleCoin extends Particle
        if (g_interfaceFlow.flowState == g_interfaceFlow.screenState.inGame)
        {
            this.Animate();
+           this.speedY += this.fallingAcceleration;
            this.y += this.speedY;
            this.lifeSpan--;
        }
