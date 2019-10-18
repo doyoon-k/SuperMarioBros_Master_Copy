@@ -7,7 +7,7 @@
 
   JoonHo Hwang 
   DoYoon Kim 
-  SeungGeon Kim Wrote this
+  SeungGeon Kim Wrote this all
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
 */

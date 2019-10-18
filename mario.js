@@ -9,8 +9,6 @@
   DoYoon Kim did ---
   SeungGeon Kim Wrote about 99% of this entire script.
 
-  - Main Contributor Comment -
-
 
   
   All content © 2019 DigiPen (USA) Corporation, all rights reserved.
