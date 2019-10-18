@@ -22,6 +22,7 @@ class Camera {
 
     Update() {
 
+        if (g_interfaceFlow.flowState != g_interfaceFlow.screenState.underWorld)
         if (game.mario.x + this.d > this.x)
             this.x = game.mario.x + this.d;
 

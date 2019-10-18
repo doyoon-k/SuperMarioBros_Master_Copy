@@ -110,6 +110,7 @@ class Game {
             case g_interfaceFlow.screenState.preGame:
 
                 break;
+            case g_interfaceFlow.screenState.underWorld:
             case g_interfaceFlow.screenState.inGame:
 
 
