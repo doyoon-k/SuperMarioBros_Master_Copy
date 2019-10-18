@@ -27,7 +27,7 @@ class Mario {
     //Initial value
     this.hitbox = hitboxes.mario;
 
-    this.zWeight = 10;
+    this.zWeight = 7;
 
     this.x = 32; //32 is initial pos, and 83 * block size is mario pos on checkpoint
     this.startX = 32;
