@@ -206,21 +206,40 @@ class Game {
         if (this.TIMELastDigit == 1 || this.TIMELastDigit == 3 || this.TIMELastDigit == 6)
         {
             // 폭죽
-        }
-        // 검정 화면
+        } 
+        setTimeout(() => Reset("Stages/stage1.json", 5), 3000);
         // 다음 레벨 로드
     }
 
     Draw() 
     {
+
+        if (game.mario.isPipeDown || game.mario.isPipeUp || game.mario.isPipeRight) {
+
+
+            if (4 > g_interfaceFlow.flowState > 0 || g_interfaceFlow.flowState == g_interfaceFlow.screenState.underWorld)
+                if (!game.mario.hide)
+                    this.mario.Draw();
+
+
         this.backgroundObjects.forEach(object => object.Draw());
         for (let zWeight in this.objectsToDraw)
         {
             this.objectsToDraw[zWeight].forEach(object => object.Draw());
         }
 
-        if (4 > g_interfaceFlow.flowState > 0 || g_interfaceFlow.flowState == g_interfaceFlow.screenState.underWorld) 
-        this.mario.Draw();
+    } else {
+
+            this.backgroundObjects.forEach(object => object.Draw());
+            for (let zWeight in this.objectsToDraw) {
+                this.objectsToDraw[zWeight].forEach(object => object.Draw());
+            }
+
+            if (4 > g_interfaceFlow.flowState > 0 || g_interfaceFlow.flowState == g_interfaceFlow.screenState.underWorld)
+                if (!game.mario.hide)
+                    this.mario.Draw();
+        
+    }
         
         g_interfaceFlow.DrawInterface();
 

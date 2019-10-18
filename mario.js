@@ -30,7 +30,6 @@ class Mario {
     this.zWeight = 10;
 
     this.x = 32; //32 is initial pos, and 83 * block size is mario pos on checkpoint
-    this.startX = 32;
 
     this.y = 208;
 
@@ -297,6 +296,8 @@ class Mario {
 
     this.stompCombo = 0;
 
+    this.hide = false;
+
 
 
     this.RefreshSpritePool();
@@ -399,7 +400,12 @@ class Mario {
       this.isClimbing = false;
       this.isLookingLeft = false;
       this.isJumping = false;
+
+      if (this.x < 3260) {
       this.x += this.maxSpeedWalkX;
+    } else {
+      this.hide = true;
+    }
     }
 
     //Run once on gameover
