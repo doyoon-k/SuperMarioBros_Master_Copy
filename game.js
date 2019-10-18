@@ -33,8 +33,8 @@ class Game {
         this.isGameOver = true;
         this.isSinglePlayer = true;
 
-        this.underworldMapList = [];
-        this.map = undefined;
+        this.underworldMapList = ["underground1.json"];
+        this.isUnderground = false;
 
         this.hasPassedCheckpoint = false;
 
@@ -161,17 +161,14 @@ class Game {
         this.objectsToUpdate = [];
         this.physics.InitializeArrays();
 
+        this.isUnderground = this.underworldMapList.includes(mapFile);
+
         this.mapLoader.LoadMap(mapFile);
         
         this.physics.RegisterToMovingObjectsArray(this.mario);
         this.physics.RegisterToBucketMap(this.mario);
 
         g_soundManager.shouldHurry = false;
-    }
-
-    IsUnderground()
-    {
-        return this.underworldMapList.includes(this.map);
     }
 
     OneUp()

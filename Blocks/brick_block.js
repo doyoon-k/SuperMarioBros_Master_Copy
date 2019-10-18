@@ -21,7 +21,7 @@ class BrickBlock extends ActiveBlock
         this.coinTimer = undefined;
         this.isCoinTimedOut = false;
 
-        this.spriteToDraw = game.IsUnderground() ? sprites.block_brick_underground : sprites.block_brick;
+        this.spriteToDraw = game.isUnderground ? sprites.block_brick_underground : sprites.block_brick;
     }
 
     Draw()
@@ -32,7 +32,7 @@ class BrickBlock extends ActiveBlock
     Hit()
     {
         this.isBouncing = true;
-        if (game.IsUnderground())
+        if (game.isUnderground)
         {
             this.spriteToDraw = sprites.block_brick_hit_underground;
         }
@@ -49,7 +49,7 @@ class BrickBlock extends ActiveBlock
                 g_soundManager.Play("block_hit");
                 this.BouncingEndCallBack = () => {
                     game.physics.RemoveFromMovingObjectsArray(this);
-                    this.spriteToDraw = game.IsUnderground() ? sprites.block_brick_underground : sprites.block_brick;
+                    this.spriteToDraw = game.isUnderground ? sprites.block_brick_underground : sprites.block_brick;
                 };
             }
 
@@ -88,7 +88,7 @@ class BrickBlock extends ActiveBlock
             game.gameObjects.push(particleCoin);
             game.Enroll(particleCoin);
 
-            this.BouncingEndCallBack = () => this.spriteToDraw = game.IsUnderground() ? sprites.block_brick_underground : sprites.block_brick;
+            this.BouncingEndCallBack = () => this.spriteToDraw = game.isUnderground ? sprites.block_brick_underground : sprites.block_brick;
             return;
         }
         
