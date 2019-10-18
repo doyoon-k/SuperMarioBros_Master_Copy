@@ -7,7 +7,7 @@ class PipeIntersect
 
         this.zWeight = 0;
 
-        this.spriteToDraw = sprites.pipe_intersect + (game.isUnderground ? "_underground" : "");
+        this.spriteToDraw = sprites["pipe_intersect" + (game.isUnderground ? "_underground" : "")];
     }
 
     Update() { }

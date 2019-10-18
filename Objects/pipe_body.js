@@ -22,7 +22,7 @@ class PipeBody
 
         this.zWeight = 0;
 
-        this.spriteToDraw = (isHorizontal ? sprites.pipe_body_hor : sprites.pipe_body_ver) + (game.isUnderground ? "_underground" : "");
+        this.spriteToDraw = sprites[(isHorizontal ? "pipe_body_hor" : "pipe_body_ver") + (game.isUnderground ? "_underground" : "")];
 
         this.hitbox = isHorizontal ? hitboxes.pipe_horizontal : hitboxes.pipe_vertical;
     }
