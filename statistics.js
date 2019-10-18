@@ -43,7 +43,7 @@ class Statistics
         };
 
         this.coinSprites = [this.sprites.coin_1, this.sprites.coin_1, this.sprites.coin_2, this.sprites.coin_3];
-        this.undergroundCoinSprites = [this.coin_underground_1, this.coin_underground_2, this.coin_underground_3];
+        this.undergroundCoinSprites = [this.sprites.coin_underground_1, this.sprites.coin_underground_1, this.sprites.coin_underground_2, this.sprites.coin_underground_3];
     }
 
     AddScore(amount)

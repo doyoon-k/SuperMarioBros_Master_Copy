@@ -52,7 +52,7 @@ function preload() {
     block_question_underground_1: loadImage("Sprites/Block/block_question_underground_1.png"),
     block_question_underground_2: loadImage("Sprites/Block/block_question_underground_2.png"),
     block_question_underground_3: loadImage("Sprites/Block/block_question_underground_3.png"),
-    block_brick_underground: loadImage("Sprites/Block/block_brick.png"),
+    block_brick_underground: loadImage("Sprites/Block/block_brick_underground.png"),
     block_brick_hit_underground: loadImage("Sprites/Block/block_brick_hit_underground.png"),
 
 

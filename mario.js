@@ -333,7 +333,7 @@ class Mario {
   Update() {
 
     if (isDPadDown)
-      //game.mario.isPipeDown = true; 
+      game.mario.isPipeDown = true; 
 
     this.Debug();
 
